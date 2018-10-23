@@ -1,0 +1,166 @@
+
+
+p.title{
+    font-family: 'Sedgwick Ave Display', cursive;
+    font-size: 30px;
+    
+    color:#F20000;
+    
+}
+body{
+    background-color: #cacaca;
+}
+nav.menu-nav ul{
+    list-style-type: none;
+    margin: 0;                      /*espace entre les blocks du menu*/
+    padding: 0;
+    overflow: hidden;
+    background-color: #006699;
+
+}
+nav.menu-nav ul li.btn{
+    float: left;                   /*alignement des bloks*/
+    
+    
+}
+
+nav.menu-nav ul li.btn a{
+    display: block;               /*style du menu*/
+    color: white;
+    text-align: center;
+    padding: 15px 15px;           /*taille block menu*/
+    text-decoration: none;               
+    
+}
+
+nav.menu-nav ul li.btn:hover a{  /*Controle l'animation du menu*/
+    text-decoration: none;       /*enleve le soulignage des menus à référence*/
+    color: #006699;
+    background-color: white;
+    padding: 15px 15px;          /* taille block après animation*/
+    transition:0.3s all;         /*défini le temps d'animation*/
+    
+}
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 22px;
+  width: 100%;
+  border: none;
+  text-align:left;
+  outline: none;
+  font-size: 15px;
+  border-style: solid;
+  border-width: 5px;
+
+}
+.collapsible:after{
+    content:'\02C3''\0000A0';
+    color:white;
+    float:left;
+    
+    
+}
+.active:after{
+    content: '\02C5''\0000A0';
+    color:white;
+    float:left;
+'
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+
+}
+.content {
+  color:black;
+  padding: 0px 50px;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.5s all;
+  background-color: white;
+}
+
+h2
+{
+    background-color : #cacaca;
+}
+div.help {
+    border: solid black 3px;
+    margin: 0 0;
+    margin-top: 50px;             /*espace entre bordure et le menu*/
+    width : full;               /*taille espace bordure horizontale*/
+    height: 100px;                /*taille cadre verticale*/
+}
+h2 {
+    border: solid black 3px;
+    width : 200px;
+    margin-left : 20px;           /*positionnement du texte sur la bordure*/
+    margin-top: -20px;
+}
+p.txthelp {
+    padding: 10px;
+    font-family : Arial;
+}
+p.helptxt{
+	text-align: center;
+}
+
+	
+form.dossier{
+	margin: 20px;
+}
+input.entrée{
+     border-radius: 8px;
+}
+
+#logo{
+  top : -10px;
+  left : 33px;
+  z-index: 2;s
+  width: 300px;
+  height: 100px;
+
+}
+select.menude{
+  width : 200px;               /*taille espace bordure horizontale*/
+  height: full px;
+}
+option.menua{
+  padding: 50px 60px;
+  margin-top: 2px;
+  margin-left: 2px;
+  border-style: solid;
+  border-width: 1.2px;
+  border-radius: 5px;
+  background-position: left ;
+	background-image: url(../img/helpadministrator.png);
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+
+option.menut{
+  padding: 50px 60px;
+  margin-top: 2px;
+  margin-left: 2px;
+  border-style: solid;
+  border-width: 1.2px;
+  border-radius: 5px;
+  background-position: left ;
+	background-image: url(../img/helptechnician.png);
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+option.menuu{
+  padding: 50px 60px;
+  margin-top: 2px;
+  margin-left: 2px;
+  border-style: solid;
+  border-width: 1.2px;
+  border-radius: 5px;
+  background-position: left ;
+	background-image: url(../img/helpadministrator.png);
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}

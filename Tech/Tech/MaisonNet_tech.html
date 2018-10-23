@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">                                             <!--définition du type de codage sur la page html-->
+  <title>MaisonNet</title>                                           <!--titre de la page-->
+  <link rel="stylesheet" type="text/css" href="css/style_tech.css">
+    
+</head>
+
+<body>
+<img id="logo" src="img/logo_provisoire2.png"> </img>
+  
+    <nav class="menu-nav">
+        <ul>
+            <li class="btn">
+              <a href="MaisonNet_tech.html">
+                Client
+              </a>                
+            </li>
+            <li class="btn">
+              <a href="MaisonNet_tech_contact.html">
+                Contact
+                </a> 
+            </li>
+            <li class="btn">
+              <a href="MaisonNet_tech_notif.html">
+                Notification
+                </a> 
+            </li>
+
+        </ul>
+        
+    </nav>
+
+<form class="dossier" method="post" action="php/user_id.php">
+No. client : <input type="text" name="username" >
+<input  align="right" type="submit" value="Entrée" >
+</form>
+<button class="collapsible"> Salon</button>
+<div class="content">
+  <p >Capteur</p>
+</div>
+<button class="collapsible"> Cuisine</button>
+<div class="content">
+  <p>Capteur</p>
+</div>
+<button class="collapsible">  Toilette</button>
+<div class="content">
+  <p>Capteur</p>
+</div>
+<button class="collapsible" > Chambre 1</button>
+<div class="content">
+  <p>Capteur</p>
+</div>
+<button class="collapsible"> Chambre 2</button>
+<div class="content">
+  <p>Capteur</p>
+</div>
+<button class="collapsible"> Chambre 3</button>
+<div class="content">
+  <p>Capteur</p>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body>
+
+
+</html>
