@@ -71,7 +71,7 @@
 
   <h2>Exemple de Validation par PHP</h2>
   <p><span class="error">* zone obligatoire</span></p>
-  <form method="post" action= > <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>   //PROBLEME ICI ?
+  <form method="post" action= >                                     //Mettre l'adresse de trasnfert ici
     Nom: <input type="text" name="nom">
     <span class="error">*
       <?php echo $nameError;?></span>
