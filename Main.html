@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  	<meta charset="utf-8">
+  	<title>User Interface</title>
+
+  	<link rel="stylesheet" href="main.css"> <!--feuille css-->
+ 	 <link rel="icon" href="Images/logo_provisoire_mini.png"> <!--icone-->
+  
+</head>
+
+<body>
+
+	<img id="logo" src="Images/logo_provisoire2.png"> </img>
+	<a href="absent.html" ><img id="switch" src="Images/switchOn.png"> </img> </a>
+
+	<div id="menu">  <!--conteneur-->
+		<ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
+
+			<li class="active"><a href="Main.html"> Mode Présence </a></li>
+			<li><a href="absent.html"> Mode Absence </a></li>
+
+  		</ul>
+	</div>
+		
+	<button class="collapsible">Salon</button> <!--créée le bouton dépliant-->
+	<div class="content"> <!--conteneur-->
+		<img class="imagesbutton" src="Images/temperature.png" alt="temperature"></img>
+		<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
+	</div> 
+
+	<button class="collapsible">Chambre 1</button>
+	<div class="content">
+		<img class="imagesbutton" src="Images/temperature.png" alt="temperature"></img>
+		<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
+	</div> 
+	
+	<button class="collapsible">Chambre 2</button>	
+	<div class="content">
+		<img class="imagesbutton" src="Images/temperature.png" alt="temperature"></img>
+		<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
+	</div>
+	 
+
+	<div class="help">  <!-- Cadre de demande d'aide -->
+       	<h2>Besoin d'aide ?</h2>
+       	<p class="txthelp">
+
+       	<a href="" onclick= "popupHelp()"> <img class="imageshelp" src="Images/helpquestionmark.png" alt="FAQ"></img> </a>
+
+      	<a href="" onclick= "popupContact()"><img class="imageshelp" src="Images/helptechnician.png" alt="Contact Tech"></img> </a>
+
+
+      	<img class="imageshelp" src="Images/helpadministrator.png" alt="Contact Admin"></img>
+
+       	</p>
+	</div>
+
+
+	<script>
+
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+  			coll[i].addEventListener("click", function() {
+    			this.classList.toggle("active");
+    			var content = this.nextElementSibling;
+   				if (content.style.maxHeight){
+      				content.style.maxHeight = null;
+      				content.style.display = "none"; //cache le contenu
+    			} else {
+    				content.style.display = "block"; //révèle le contenu
+      				content.style.maxHeight = content.scrollHeight + "px";
+    			} 
+  			});
+		}
+
+
+
+		function popupHelp() {
+    		var myWindow = window.open("aide.html", "", "width=200, height=100");
+		}
+
+		function popupContact() {
+    		var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
+		}
+
+	</script>
+	 
+
+</body>
+
+</html>
