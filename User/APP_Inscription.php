@@ -87,9 +87,9 @@
     Commentaire: <textarea name="commentaire" rows="5" cols="40"></textarea>
     <br><br>
     Genre:
-    <input type="radio" name="genre" <?php if (isset($gender) && $gender=="femme" ) echo "checked" ;?> value="Femme">
-    <input type="radio" name="genre" <?php if (isset($gender) && $gender=="homme" ) echo "checked" ;?> value="Homme">
-    <input type="radio" name="genre" <?php if (isset($gender) && $gender=="autre" ) echo "checked" ;?> value="Autre">
+    <input type="radio" name="genre" value="Femme"> <?php if (isset($gender) && $gender=="femme" ) echo "checked" ;?> Femme
+    <input type="radio" name="genre" value="Homme"> <?php if (isset($gender) && $gender=="homme" ) echo "checked" ;?> Homme
+    <input type="radio" name="genre" value="Autre"> <?php if (isset($gender) && $gender=="autre" ) echo "checked" ;?> Autre
     <span class="error"><?php echo $genreError;?></span>
     <br><br>
     <input type="submit" name="Submit" value="Submit">
