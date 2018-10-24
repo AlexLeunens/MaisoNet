@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title>User Interface</title>
+
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="images/favicon.png">
+</head>
+
+<body>
+
+	<img id="logo" src="Images/logo_provisoire2.png"> </img>
+	<a href="Main.html" ><img id="switch" src="Images/switchOff.png"> </img></a>
+
+	<div id="menu">  <!--conteneur-->
+		<ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
+
+				<li><a href="Main.html"> Mode Présence </a></li>
+            <li class="active"><a href="absent.html"> Mode Absence </a></li>
+
+  		</ul>
+	</div>
+		
+	<p class="piece">Economies</p>
+		<div class="panel">
+			<img class="imagesbutton" src="Images/temperature.png" alt="temperature"></img>
+			<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
+		</div>
+
+	<p class="piece">Sécurité</p>
+		<div class="panel">
+			<img class="imagesbutton" src="Images/temperature.png" alt="temperature"></img>
+		</div>
+	
+
+	<div class="help">  <!-- Cadre de demande d'aide -->
+       <h2>Besoin d'aide ?</h2>
+       <p class="txthelp">
+       <a href="" onclick= "popupHelp()"> <img class="imageshelp" src="Images/helpquestionmark.png" alt="volets"></img> </a>
+       <img class="imageshelp" src="Images/helptechnician.png" alt="volets"></img>
+       <img class="imageshelp" src="Images/helpadministrator.png" alt="volets"></img>
+           
+       </p>
+	</div>
+
+
+
+	<script>
+		var piece = document.getElementsByClassName("piece");
+		var panel = document.getElementsByClassName('panel'); //selec piece et panel
+
+		for (var i = 0; i < piece.length; i++) { //pour tout bouton
+	    	piece[i].onclick = function() {
+		        var setClasses = !this.classList.contains('active'); //selec classes actives qui ne sont pas celle sur laquelle on a cliqué
+		        setClass(piece, 'active', 'remove'); //les rend inactives
+		        setClass(panel, 'show', 'remove'); // cache le contenu
+
+		        if (setClasses) {
+		            this.classList.toggle("active"); //rend celle cliquée active (piece)
+		            this.nextElementSibling.classList.toggle("show"); //affiche le contenu (panel)
+		        }
+	    	}
+		}
+
+		function setClass(els, className, fnName) {
+		    for (var i = 0; i < els.length; i++) { //chaque piece selec avec !this.classList.contains('active')
+		        els[i].classList[fnName](className); //les prend une par une, puis désactive une propriété
+		    }
+		}
+
+		function popupHelp() {
+    		var myWindow = window.open("aide.html", "", "width=200,height=100");
+		}  	
+	</script>
+	
+</body>
+</html>

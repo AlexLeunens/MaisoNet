@@ -1,0 +1,203 @@
+body{
+  background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("Images/bgall.jpg");
+}
+
+#menu {
+   background-color: rgba(250, 250, 250, 0.8); /*rgba(255, 195, 77, 0.5)*/
+   /*background-image: url("Images/bgtestyess.jpg");*/
+   position: absolute;
+   top: 0px;
+	 left: -10px;
+	 width: 110%;
+   height: 15%;
+}
+
+#onglets{ /* conteneur des listes */
+	font : bold 20px Georgia, arial, serif;
+  list-style-type : none;
+  /*padding-bottom : 33px; /* hauteur de la ligne, plus = plus bas */
+  margin-left : 0;
+  position: absolute;
+  top: 59%;
+
+  background-color: rgba(220, 160 , 0, 0.7);
+  width: 100%;
+
+}
+
+#onglets li{ /*les éléments de liste */
+  float : left;
+  height : 29px; /* Hauteur onglet */
+  background-color: rgba(150, 150 , 150, 1); /* explicite */
+
+  margin : 2px 2px 0 2px !important;  /* Pour les navigateurs autre que IE */
+  /*margin : 1px 2px 0 2px;  /* Pour IE  */
+  border : 1px solid #000; /* couleur bordure */
+  border-radius: 5px 5px 0px 0px;
+}
+
+#onglets li.active{
+  border-bottom: 1px solid #fff; /* barre blanche en dessous de l'actif pour cacher la barre noire*/
+  background-color: #fff; /* explicite */
+}
+
+#onglets a{ /* Liens (texte) */
+  display : block; /* fait en sorte qu'on puisse cliquer partout */
+  color : #666;
+  text-decoration : none;
+  padding : 4px; /* marge */
+}
+
+#onglets a:hover, { /* quand on passe la souris dessus */
+   background : #fff; /* explicite */
+}
+
+ /* Bouton utilisé pour ouvrir/fermer */
+.collapsible {
+  background-color: #006699;
+  color: #fff;
+  cursor: pointer; /*la main*/
+  padding: 18px;
+
+  width: 150px; /*was 100%*/
+  height: 150px; /*was auto*/
+  border-radius: 50%; /*was 10px*/
+  display: inline-block;
+
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+
+  position: relative; /*was relative*/
+
+  top: 150px;
+
+  margin-bottom: 20px; /*mets une marge en bas pour séparer des éléments*/
+  margin-right: 20px;
+
+}
+
+#logo{
+  position : absolute;
+  top : -10px;
+  left : 33px;
+  z-index: 2;
+  width: 300px;
+  height: 100px;
+
+}
+
+
+#switch{
+  position : absolute;
+  top : 80px;
+  right : 33px;
+  z-index: 2;
+  width:100px;
+  height: auto;
+
+}
+
+.imagesbutton{
+	width:200px;
+   height: auto;
+}
+
+div.help {
+   border: solid black 3px;
+   width : full;               /*taille espace bordure horizontale*/
+   height: 100px;                /*taille cadre verticale*/
+   position: fixed;   /*permet de le fixer sur l'écran*/
+   bottom: 0;
+   left: 50px;
+   background: #fff;
+}
+h2 {
+  border: solid black 3px;
+   width : 205px;
+   margin-left : 20px;           /*positionnement du texte sur la bordure*/
+   margin-top: -20px;
+   background-color : white;
+}
+p.txthelp {
+   padding: 10px;
+   font-family : Arial;
+}
+
+.imageshelp{
+	width:75px;
+   height: auto;
+   position: relative;
+   top: -25px;
+   left: 50px;
+   margin-left: 150px;
+   margin-right: 150px;
+}
+
+
+
+/* Le bouton bleu selon la piece */
+p.piece {
+    background-color: rgba(100,135,240,0.9); /*rgba(100,135,240,0.9) pour bleu*/
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+
+    text-align: center;
+    line-height: 150px;
+
+    border: none;
+    outline: none;
+    transition: 0.1s;
+
+    position: relative;
+    top: 120px;
+    margin-right: 20px;
+
+    width: 150px; /*was 100%*/
+    height: 150px; /*was auto*/
+    border-radius: 50%; /*was 10px*/
+    display: inline-block;
+}
+
+/* quand cliqué ou survolé */
+p.piece.active, p.piece:hover {
+    background-color: #0066aa;
+}
+
+/* ajoute la fleche */
+p.piece:after {
+    content: '\25b7';
+    color: white;
+    float: left;
+}
+
+p.piece.active:after {
+    content: '\25bd'; 
+}
+
+/* panneau avec fonctions */
+div.panel {
+    background-color: rgba(220,220,220,0.7);
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    margin-bottom:10px;
+
+    position: absolute; /*was relative*/
+    top:320px; /*was 150px*/
+
+    height: 500px;
+    width: 98%;
+    border: solid #666 1px;
+    border-radius: 10px;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 500px; /* doit être sup à la hauteur des éléments */
+}
+
+
