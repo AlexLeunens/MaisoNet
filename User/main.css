@@ -196,7 +196,7 @@ div.helpPanel {
   margin-bottom:10px;
 
   position: fixed; /*was absolute*/
-  top:320px;
+  top:200px;
   right: 150px;
 
   height: 500px;
