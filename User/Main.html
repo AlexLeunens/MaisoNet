@@ -41,18 +41,15 @@
 		</div>
 
 	 
+	<p class="help"> <img class="imageHelpMenu" src="Images/helpmenu.png" alt="Help"></img> </p>
+	<div class="helpPanel">
 
-	<div class="help">  <!-- Cadre de demande d'aide -->
-       	<h2>Besoin d'aide ?</h2>
-       	<p class="txthelp">
+		<a href="" onclick= "popupHelp()"><img class="imageshelp" src="Images/helpquestionmark.png" alt="FAQ"></img></a>
 
-       	<a href="" onclick= "popupHelp()"> <img class="imageshelp" src="Images/helpquestionmark.png" alt="FAQ"></img> </a>
+		<a href="" onclick= "popupContact()"><img class="imageshelp" src="Images/helptechnician.png" alt="Contact Tech"></img> </a>
 
-      	<a href="" onclick= "popupContact()"><img class="imageshelp" src="Images/helptechnician.png" alt="Contact Tech"></img> </a>
+		<img class="imageshelp" src="Images/helpadministrator.png" alt="Contact Admin"></img>
 
-      	<img class="imageshelp" src="Images/helpadministrator.png" alt="Contact Admin"></img>
-
-       	</p>
 	</div>
 
 
@@ -78,6 +75,20 @@
 		    for (var i = 0; i < els.length; i++) { //chaque piece selec avec !this.classList.contains('active')
 		        els[i].classList[fnName](className); //les prend une par une, puis désactive une propriété
 		    }
+		}
+		
+		var help = document.getElementsByClassName("help")
+		var helpPanel = document.getElementsByClassName("helpPanel")		
+
+		help[0].onclick = function() {
+			var setClasses = !this.classList.contains('active'); // vérifie si help actif
+			setClass(help, 'active', 'remove'); //les rend inactives
+			setClass(helpPanel, 'show', 'remove'); // cache le contenu
+
+			if (setClasses) { //si help pas deja actif
+				this.classList.toggle("active");
+			this.nextElementSibling.classList.toggle("show");
+			}
 		}
 
 
