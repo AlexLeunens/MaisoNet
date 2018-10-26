@@ -106,7 +106,7 @@ body{
 
 .imagestemperature{
 	width:200px;
-	height: 200px;
+	height: auto;
 }
 
 /* Le bouton bleu selon la piece */
