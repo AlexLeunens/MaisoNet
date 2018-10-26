@@ -104,11 +104,6 @@ body{
    height: auto;
 }
 
-.imagestemperature{
-	width:300px;
-	height: auto;
-}
-
 /* Le bouton bleu selon la piece */
 p.piece {
     background-color: rgba(100,135,240,0.9); /*rgba(100,135,240,0.9) pour bleu*/
@@ -200,8 +195,8 @@ div.helpPanel {
   opacity: 0;
   margin-bottom:10px;
 
-  position: absolute; /*was relative*/
-  top:320px; /*was 150px*/
+  position: fixed; /*was absolute*/
+  top:320px;
   right: 150px;
 
   height: 500px;
