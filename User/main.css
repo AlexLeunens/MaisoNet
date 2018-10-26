@@ -195,8 +195,8 @@ div.helpPanel {
   opacity: 0;
   margin-bottom:10px;
 
-  position: fixed; /*was absolute*/
-  top:200px;
+  position: absolute; /*was absolute*/
+  top:320px;
   right: 150px;
 
   height: 500px;
