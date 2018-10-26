@@ -104,6 +104,11 @@ body{
    height: auto;
 }
 
+.imagestemperature{
+	width:200px;
+	height: auto;
+}
+
 /* Le bouton bleu selon la piece */
 p.piece {
     background-color: rgba(100,135,240,0.9); /*rgba(100,135,240,0.9) pour bleu*/
