@@ -106,7 +106,6 @@ p.piece {
     background-color: rgba(100,135,240,0.9); /*rgba(100,135,240,0.9) pour bleu*/
     color: white;
     cursor: pointer;
-    padding: 5px;
 
     text-align: center;
     line-height: 150px;
@@ -147,7 +146,7 @@ div.panel {
     margin-bottom:10px;
 
     position: absolute; /*was relative*/
-    top:320px; /*was 150px*/
+    top:175px; /*was 150px*/
 
     height: 500px;
     width: 98%;
