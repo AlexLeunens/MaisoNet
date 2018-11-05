@@ -137,6 +137,21 @@ option.menua{
   background-repeat: no-repeat;
 }
 
+option.menua:hover{
+  padding: 50px 60px;
+  margin-top: 2px;
+  margin-left: 2px;
+  border-style: solid;
+  border-width: 1.2px;
+  border-radius: 5px;
+  background-position: left ;
+  background-image: url(../img/helpadministrator.png);
+  background-color: grey;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+
 option.menut{
   padding: 50px 60px;
   margin-top: 2px;
@@ -149,6 +164,22 @@ option.menut{
   background-size: 40px 40px;
   background-repeat: no-repeat;
 }
+
+option.menut:hover{
+  padding: 50px 60px;
+  margin-top: 2px;
+  margin-left: 2px;
+  border-style: solid;
+  border-width: 1.2px;
+  border-radius: 5px;
+  background-position: left ;
+  background-image: url(../img/helpadministrator.png);
+  background-color: grey;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+
 option.menuu{
   padding: 50px 60px;
   margin-top: 2px;
@@ -161,6 +192,22 @@ option.menuu{
   background-size: 40px 40px;
   background-repeat: no-repeat;
 }
+
+option.menuu:hover{
+  padding: 50px 60px;
+  margin-top: 2px;
+  margin-left: 2px;
+  border-style: solid;
+  border-width: 1.2px;
+  border-radius: 5px;
+  background-position: left ;
+  background-image: url(../img/helpadministrator.png);
+  background-color: grey;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+}
+
 ul.listeg{
     margin-top: 10px;
     background-color: #E1E1E0;
@@ -183,6 +230,19 @@ li.gc{
 }
 
 
-@media screen and (max-width:1024px){
+@media screen and (max-width:px){
+	
+	#logo{
+		display: block;
+    		margin-left: auto;
+    		margin-right: auto;
+    		width: 50%;
+	}
+	
+	nav {
+		
+	}
+	
+	
 
 }
