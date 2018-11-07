@@ -44,7 +44,7 @@
     } else {
       $website = test_input($_POST["website" ]);
       // Vérifier que la syntaxe URL est valide
-      if (!preg_match(" /\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i " ,$website )) {
+      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i" ,$website )) {
         $websiteError = "URL invalide";
       }
     }
@@ -69,9 +69,10 @@
   }
   ?>
 
-  <h2>Exemple de Validation par PHP</h2>
-  <p><span class="error">* zone obligatoire</span></p>
-  <form method="post" action=  >                                         //Mettre l'adresse ici 
+  <h2>Dossier d'inscription MaisoNET</h2>
+  <p><span class="error">* zone obligatoire</span></p> 
+  
+  <form method="post" action= >   
     Nom: <input type="text" name="nom">
     <span class="error">*
       <?php echo $nameError;?></span>
@@ -84,10 +85,10 @@
     <span class="error">
       <?php echo $websiteError;?></span>
     <br><br>
-    Commentaire: <textarea name="commentaire" rows="5" cols="40"></textarea>
+    Comment: <textarea name="commentaire" rows="5" cols="40"></textarea>
     <br><br>
     Genre:
-    <input type="radio" name="genre" value="Femme"> <?php if (isset($gender) && $gender=="femme" ) echo "checked" ;?> Femme
+    <input type="radio" name="genre" value="Femme" > <?php if (isset($gender) && $gender=="femme" ) echo "checked" ;?> Femme
     <input type="radio" name="genre" value="Homme"> <?php if (isset($gender) && $gender=="homme" ) echo "checked" ;?> Homme
     <input type="radio" name="genre" value="Autre"> <?php if (isset($gender) && $gender=="autre" ) echo "checked" ;?> Autre
     <span class="error"><?php echo $genreError;?></span>
