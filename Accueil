@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+	<style >
+  body {background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("/mnt/monster/home/eleves/f/fseurratboulaye/Images/maison_connectee.jpg") no-repeat center center fixed;
+        background-repeat: no-repeat;
+        background-size: 1280px 950px;
+}
+  #logo1 {
+    position: absolute;
+    top: 0px;
+    left:240px;
+    width: 600px;
+    height: 225px;
+    background: url() 0 0;
+
+}
+	.button1 {
+   		background-color: #006699;
+    	border: 2px solid #e7e7e7;
+    	color: white;
+    	padding: 20px 32px;
+    	text-align: center;
+    	text-decoration: none;
+    	display: inline-block;
+    	font-size: 12px;
+    	margin: 4px 2px;
+    	cursor: pointer;
+    	border-radius: 12px;
+      position: fixed;
+      top: 40px;
+      right: 10px;
+    	}
+    .button1:hover{
+    	transition:0.5s;
+    	background-color: #f9b000
+    	}
+    table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.button2 {
+      background-color: #006699;
+      border: 2px solid #e7e7e7;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 12px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 12px;
+      position: fixed;
+      top: 40px;
+      right: 170px;
+      }
+    .button2:hover{
+      transition:0.5s;
+      background-color: #f9b000
+      }
+
+    table {
+    position:absolute;
+    top:150px;
+    margin-top: 100px;
+    margin-left: 160px;
+    border-collapse: collapse;
+    width: 75%;
+}
+th, td {
+    text-align: left;
+    padding: 12px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #32bff3;
+    color:white;
+}
+	</style>
+  </head>
+
+	<body>
+		<img id="logo1" src="Images/logo_provisoire2.png" > 
+    </img>
+		<a href="#" class="button1">Se Connecter</a>
+		<a href="#" class="button2">S'inscrire</a>
+
+  <table >
+
+    <tr>
+      <th>Qu'est ce que MaisoNet ?</th>
+      <th>Que proposons-nous?</th>
+      <th>Quels sont nos tarifs?</th>
+    </tr>
+   <tr>
+      <td>Texte descriptif MaisoNet</td>
+      <td>Différentes installations possibles</td>
+      <td>L'installation coûte ...</td>
+    </tr>
+
+  </table>
+</body>
+</html>
