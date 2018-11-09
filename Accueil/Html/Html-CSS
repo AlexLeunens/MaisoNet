@@ -89,8 +89,6 @@ th {
 		<a href="#" class="button2">S'inscrire</a>
 
   <table >
-  	<cite lang="fr">
-
     <tr>
       <th>Qu'est ce que MaisoNet ?</th>
       <th>Que proposons-nous?</th>
@@ -101,7 +99,6 @@ th {
       <td>Différentes installations possibles</td>
       <td>L'installation coûte ...</td>
     </tr>
-	</cite>
   </table>
 </body>
 </html>
