@@ -2,61 +2,60 @@
 <html>
 <head>
   <style>
-    .error {color: #FF0000;}
+    .erreur {color: #FF0000;}
 </style>
 </head>
-
 <body>
  <?php
-    $nameError = "";
-    $emailError = "" ;
-    $genreError = "";
-    $websiteError = "";
-    $name = "";
+    $nomErreur = "";
+    $emailErreur = "" ;
+    $genreErreur = "";
+    $siteErreur = "";
+    $nom = "";
     $email = "";
     $genre = "";
     $commentaire = ""
-    $website = "";
+    $site = "";
   
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["name"])) {
-      $nameError = "Le nom est obligatoire";
+    if (empty($_POST["nom"])) {
+      $nomErreur = "Le nom est obligatoire";
     } else {
-      $name = test_input($_POST["name"]);
+      $nom = test_input($_POST["nom"]);
       // Vérifier que le nom ne comporte que des lettres et des espaces
-      if (!preg_match(" /^[a-zA-Z ]*$ /",$name)) {
-        $nameError = "Seulement des lettres et des espaces sont acceptés";
+      if (!preg_match(" /^[a-zA-Z ]*$ /",$nom)) {
+        $nomErreur = "Seulement des lettres et des espaces sont acceptés";
       }
     }
     
     if (empty($_POST["email"])) {
-      $emailError = "Le mail est obligatoire";
+      $emailErreur = "Le mail est obligatoire";
     } else {
       $email = test_input($_POST["email"]);
       // Vérifier que le format mail est valide
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailError = "Le format mail est invalide";
+        $emailErreur = "Le format mail est invalide";
       }
     }
       
-    if (empty($_POST["website" ])) {
-      $website = "";
+    if (empty($_POST["site" ])) {
+      $site = "";
     } else {
-      $website = test_input($_POST["website" ]);
+      $site = test_input($_POST["site" ]);
       // Vérifier que la syntaxe URL est valide
-      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i" ,$website )) {
-        $websiteError = "URL invalide";
+      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\ .)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i" ,$website )) {
+        $siteErreur = "URL invalide";
       }
     }
   
     if (empty($_POST["commentaire" ])) {
       $commentaire = "";
     } else {
-      $commentaire = test_input($_POST["comment" ]);
+      $commentaire = test_input($_POST["commentaire" ]);
     }
   
     if (empty($_POST["genre" ])) {
-      $genreError = "Le genre est obligatoire";
+      $genreErreur = "Le genre est obligatoire";
     } else {
       $genre = test_input($_POST["genre" ]);
     }
@@ -70,20 +69,20 @@
   ?>
 
   <h2>Dossier d'inscription MaisoNET</h2>
-  <p><span class="error">* zone obligatoire</span></p> 
-  
-  <form method="post" action= >   
+  <p><span class="erreur"> * zone obligatoire </span></p> 
+
+  <form method="post" action= >               //Adresse de de MySql (à revoir possiblement)
     Nom: <input type="text" name="nom">
-    <span class="error">*
-      <?php echo $nameError;?></span>
+    <span class="erreur">*
+      <?php echo $nomErreur;?></span>
     <br><br>
     E-mail: <input type="text" name="E-mail">
-    <span class="error">*
-      <?php echo $emailError;?></span>
+    <span class="erreur">*
+      <?php echo $emailErreur;?></span>
     <br><br>
     Site Web: <input type="text" name="site web">
-    <span class="error">
-      <?php echo $websiteError;?></span>
+    <span class="erreur">
+      <?php echo $siteErreur;?></span>
     <br><br>
     Comment: <textarea name="commentaire" rows="5" cols="40"></textarea>
     <br><br>
@@ -93,7 +92,7 @@
     <input type="radio" name="genre" value="Autre"> <?php if (isset($gender) && $gender=="autre" ) echo "checked" ;?> Autre
     <span class="error"><?php echo $genreError;?></span>
     <br><br>
-    <input type="submit" name="Submit" value="Submit">
+    <input type="submit" name="Envoyer" value="Envoyer">
   </form>
   </body>
 
