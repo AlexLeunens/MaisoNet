@@ -1,0 +1,83 @@
+  body {
+  background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("Images/maison_connectee.jpg") no-repeat center center fixed;
+  background-size: 100% 100%;
+  }
+
+  #logo1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+	.button1 {
+ 		background-color: #006699;
+  	border: 2px solid #e7e7e7;
+  	color: white;
+  	padding: 20px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 12px;
+  	margin: 4px 2px;
+  	cursor: pointer;
+  	border-radius: 12px;
+    position: fixed;
+    top: 40px;
+    right: 10px;
+	}
+  .button1:hover{
+  	transition:0.5s;
+  	background-color: #f9b000
+  }
+
+  .button2 {
+    background-color: #006699;
+    border: 2px solid #e7e7e7;
+    color: white;
+    padding: 20px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    position: fixed;
+    top: 40px;
+    right: 170px;
+  }
+  .button2:hover{
+    transition:0.5s;
+    background-color: #f9b000
+  }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 25%;
+  border-radius: 5px;
+  background-color: white;
+  display: inline-block;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  padding: 2px 16px;
+  background-color: #CDDDFF;
+}
+
+.imgCard{
+  width:auto;
+  height: 100px;
+  margin-left: 25%; /*half of width to center*/
+}
