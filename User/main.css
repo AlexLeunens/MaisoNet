@@ -100,9 +100,13 @@ div.fonctions {
   justify-content: start; /*aligne sur la gauche*/
   grid-gap: 20px; /* marge */
 
+  /*Ajoute la barre de scroll pour trop d'elements*/
+  overflow-y: hidden;
+  overflow-x: visible;
+	
   position: absolute;
   width: 100%;
-  height: 50%;
+  height: 88%;
   top: 15%;
 }
 
