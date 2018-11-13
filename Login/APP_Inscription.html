@@ -6,7 +6,7 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .error {color: #FF0000;
+    .erreur {color: #FF0000;
       position:relative;
       top:30px;
     }
@@ -38,59 +38,60 @@
 
  <?php
 
-    $nameError = "";
-    $emailError = "" ;
-    $genreError = "";
-    $websiteError = "";
-    $name = "";
+    $nom = "";
     $email = "";
     $genre = "";
     $commentaire = ""
     $website = "";
+
+    $nomErreur = "";
+    $emailErreur = "" ;
+    $genreErreur = "";
+    $siteErreur = "";
   
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["name"])) {
-      $nameError = "Le nom est obligatoire";
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {                                     //Vérifie que le serveur demande des données (POST)
+
+    if (empty($_POST["$nom"])) {                                                  //Cas où la case nom n'est pas remplie
+      $nomErreur = "Le nom est obligatoire";
     } else {
+      $nom = test_input($_POST["$nom"]);                                          
 
-      $name = test_input($_POST["name"]);
-      // Vérifier que le nom ne comporte que des lettres et des espaces
-
-      if (!preg_match(" /^[a-zA-Z ]*$ /",$name)) {
-        $nameError = "Seulement des lettres et des espaces sont acceptés";
+      if (!preg_match("/^[a-zA-Z ]*$ /",$nom)) {                                  // Vérifier que le nom ne comporte que des lettres et des espaces
+        $nomErreur = "Seulement des lettres et des espaces sont acceptés";
       }
     }
     
-    if (empty($_POST["email"])) {
-      $emailError = "Le mail est obligatoire";
+    if (empty($_POST["$email"])) {
+      $emailErreur = "Le mail est obligatoire";
     } else {
-      $email = test_input($_POST["email"]);
-      // Vérifier que le format mail est valide
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailError = "Le format mail est invalide";
+
+      $email = test_input($_POST["$email"]);                                      
+
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {                           // Vérifier que le format mail est valide
+        $emailErreur = "Le format mail est invalide";
       }
     }
       
-    if (empty($_POST["website" ])) {
+    if (empty($_POST[ "$website"])) {
       $website = "";
     } else {
-      $website = test_input($_POST["website" ]);
+      $website = test_input($_POST[ "$website" ]);
       // Vérifier que la syntaxe URL est valide
       if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i" ,$website )) {
-        $websiteError = "URL invalide";
+        $websiteErreur = "URL invalide";
       }
     }
   
-    if (empty($_POST["commentaire" ])) {
+    if (empty($_POST[ "$commentaire" ])) {
       $commentaire = "";
     } else {
-      $commentaire = test_input($_POST["comment" ]);
+      $commentaire = test_input($_POST[ "$commentaire" ]);
     }
   
-    if (empty($_POST["genre" ])) {
-      $genreError = "Le genre est obligatoire";
+    if (empty($_POST[ "$genre" ])) {
+      $genreErreur = "Le genre est obligatoire";
     } else {
-      $genre = test_input($_POST["genre" ]);
+      $genre = test_input($_POST[ "$genre" ]);
     }
   
   function test_input($data) {
@@ -102,36 +103,36 @@
   ?>
 
   <h1><div class="static"><i><u>Dossier d'inscription MaisoNET</u></i></div></h1>
-  <p><span class="error">* Zone obligatoire</span></p> 
+  <p><span class="erreur">* Zone obligatoire</span></p> 
   
   <form method="post" action= >   
 
     <div class="aligner">Nom: </div><input class="ligne" type="text" name="nom" >
-    <span class="error"> * <?php echo $nameError;?></span>
+    <span class="erreur"> * <?php echo $nameError;?></span>
     <br><br>
 
     <div class="aligner">Adresse: </div><input class="ligne" type="text" name="nom" >
-    <span class="error">*</span>
+    <span class="erreur">*</span>
     <br><br>
 
     <div class="aligner">Date de Naissance: </div><input class="ligne" type="text" name="nom" >
-    <span class="error">*</span>
+    <span class="erreur">*</span>
     <br><br>
 
     <div class="aligner">Pays: </div><input class="ligne" type="text" name="nom" >
-    <span class="error">*</span>
+    <span class="erreur">*</span>
     <br><br>
 
     <div class="aligner">Code Postal: </div><input class="ligne" type="text" name="nom" >
-    <span class="error">*</span>
+    <span class="erreur">*</span>
     <br><br>
 
     <div class="aligner">E-mail: </div> <input class="ligne" type="text" name="E-mail">
-    <span class="error">*<?php echo $emailError;?></span>
+    <span class="erreur">*<?php echo $emailError;?></span>
 
     <br><br>
     <div class="aligner">Site Web: </div> <input class="ligne" type="text" name="site web">
-    <span class="error"><?php echo $websiteError;?></span>
+    <span class="erreur"><?php echo $websiteError;?></span>
     <br><br>
     <div class="aligner">Commentaire: </div> <textarea class="ligne" name="commentaire" rows="5" cols="40"></textarea>
     <br><br>
