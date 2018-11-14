@@ -1,6 +1,7 @@
   body {
-  background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url("Images/maison_connectee.jpg") no-repeat center center fixed;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("Images/maison_connectee.jpg") no-repeat center center fixed;
   background-size: 100% 100%;
+  opacity:0.9;
   }
 
   #logo1 {
