@@ -121,6 +121,16 @@ input.entrée{
   height: 100px;
 }
 
+#listContacts{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 78.5vh;
+  overflow:scroll;
+  overflow-x: hidden; 
+}
+
+
 .card{
   padding: 50px 60px;
   margin-top: 2px;
