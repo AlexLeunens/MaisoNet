@@ -13,19 +13,36 @@
 <body>
 
 	<img id="logo" src="Images/logo_provisoire2.png"> </img>
-	<a href="absent.html" ><img id="switch" src="Images/switchOn.png"> </img> </a>
+	<!--<a href="absent.html" ><img id="switch" src="Images/switchOn.png"> </img> </a> -->
+
+
+	<img class="avatar" src="Images/avatar.png" onclick="openNav()"> </img>
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
+	  <a href="#">About</a>
+	  <a href="#">Services</a>
+	  <a href="#">Clients</a>
+	  <a href="#">Contact</a>
+	</div>
+
+
+
 
 	<div id="menu">  <!--conteneur-->
 		<ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
-
-			<li class="active"><a href="Main.html"> Mode Présence </a></li>
-			<li><a href="absent.html"> Mode Absence </a></li>
+			<li id="liPresent" class="active"><a href="javascript:switchClick()"> Mode Présence </a></li>
+			<li id="liAbsent"><a href="javascript:switchClick()"> Mode Absence </a></li>
 			<p id="switchText"> Mode Présence </p>
 
+			<label class="switch" onclick="openPage(this)">
+			  <input type="checkbox" id="switchPresence" unchecked>
+			  <span class="slider round"></span>
+			</label>
   		</ul>
 	</div>
 	
-	<div class="fonctions">
+
+	<div id= "Present" class="fonctions">
 		<p class="piece">Salon</p>
 			<div class="panel">
 				<img class="imagestemperature" src="Images/temperature+.png" alt="temperature"></img>
@@ -44,7 +61,22 @@
 				<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
 			</div>
 	</div>
-	 
+
+
+	<div id= "Absent" class="fonctions" style="display:none;">
+		<p class="piece">Economies</p>
+			<div class="panel">
+				<img class="imagesbutton" src="Images/temperature.png" alt="temperature"></img>
+				<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
+			</div>
+
+		<p class="piece">Sécurité</p>
+			<div class="panel">
+				<img class="imagesbutton" src="Images/temperature.png" alt="temperature"></img>
+			</div>
+		</div>
+
+
 	<p class="help"> <img class="imageHelpMenu" src="Images/helpmenu.png" alt="Help"></img> </p>
 	<div class="helpPanel">
 
@@ -62,6 +94,7 @@
 		var piece = document.getElementsByClassName("piece");
 		var panel = document.getElementsByClassName('panel'); //selec piece et panel
 
+
 		for (var i = 0; i < piece.length; i++) { //pour tout bouton
 	    	piece[i].onclick = function() {
 		        var setClasses = !this.classList.contains('active'); //selec classes actives qui ne sont pas celle sur laquelle on a cliqué
@@ -74,12 +107,6 @@
 		        }
 	    	}
 		}
-
-		function setClass(els, className, fnName) {
-		    for (var i = 0; i < els.length; i++) { //chaque piece selec avec !this.classList.contains('active')
-		        els[i].classList[fnName](className); //les prend une par une, puis désactive une propriété
-		    }
-		}
 		
 		var help = document.getElementsByClassName("help")
 		var helpPanel = document.getElementsByClassName("helpPanel")		
@@ -91,19 +118,63 @@
 
 			if (setClasses) { //si help pas deja actif
 				this.classList.toggle("active");
-			this.nextElementSibling.classList.toggle("show");
+				this.nextElementSibling.classList.toggle("show");
 			}
 		}
 
+		function setClass(els, className, fnName) {
+		    for (var i = 0; i < els.length; i++) { //chaque piece selec avec !this.classList.contains('active')
+		        els[i].classList[fnName](className); //les prend une par une, puis désactive une propriété
+		    }
+		}
+
+		function openNav() {
+		    document.getElementById("mySidenav").style.width = "250px";
+		}
+		function closeNav() {
+		    document.getElementById("mySidenav").style.width = "0";
+		}
 
 		function popupHelp() {
     		var myWindow = window.open("aide.html", "", "width=200, height=100");
 		}
-
 		function popupContact() {
     		var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
 		}
 
+
+		function switchClick(){
+			document.getElementById("switchPresence").click();
+		}
+
+
+		function openPage(elmnt) {
+		    var i, tabcontent, pageName, ongletActif;
+		    var checkBox = document.getElementById("switchPresence");
+		    var ongletPresent = document.getElementById("liPresent");
+		    var ongletAbsent = document.getElementById("liAbsent");
+
+		    tabcontent = document.getElementsByClassName("fonctions");
+		    
+		    if (checkBox.checked == true){
+		    	pageName = "Present";
+		    	ongletAbsent.classList.remove("active"); /*update les onglets*/
+		    	ongletPresent.classList.add("active");
+		    }else{
+		    	pageName = "Absent";
+		    	ongletPresent.classList.remove("active");
+		    	ongletAbsent.classList.add("active");
+		    }
+
+		    for (i = 0; i < tabcontent.length; i++) {
+		        tabcontent[i].style.display = "none"; //hide all
+		    }
+		    document.getElementById(pageName).style.display = "grid"; //disp selected		    
+		}
+
+		if (document.getElementById("switchPresence").checked == false) {
+			document.getElementById("switchPresence").click(); /*Permet d'update le switch lors d'un rafraichissement*/
+		}
 	</script>
 	 
 
