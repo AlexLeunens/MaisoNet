@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title>User Interface</title>
+
+  <link rel="stylesheet" href="FAQ.css"> <!--feuille css-->
+  <link rel="icon" href="Images//favicon.png"> <!--icone-->
+  
+</head>
+
+<body>
+
+<h1>FAQ</h1>
+<img id="logo" src="Images/logo_provisoire2.png"> </img>
+
+<div class="row">
+  <div class="Menu">
+    <h2>Menu</h2>
+    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+    <ul id="myMenu">
+      <li><a id="defaultOpen" href="javascript:openPage('Utilisation', this)">Utilisation</a></li>
+      <li><a href="javascript:openPage('Tarifs', this)">Tarifs</a></li>
+      <li><a href="javascript:openPage('Profil', this)">Profil</a></li>
+      <li><a href="javascript:openPage('Patates', this)">Patates</a></li>
+      <li><a href="javascript:openPage('Température', this)">Température</a></li>
+      <li><a href="javascript:openPage('Volets', this)">Volets</a></li>
+      <li><a href="javascript:openPage('Meurtre', this)">Meurtre</a></li>
+      <li><a href="javascript:openPage('Patates2', this)">Patates, Volume 2</a></li>
+      <li><a href="javascript:openPage('Llamas', this)">Llamas</a></li>
+    </ul>
+  </div>
+  
+ <div id="Utilisation" class="Elements">
+    <h2>Utilisation</h2>
+    <p>Cliquez sur les boutons. Soyez heureux. Payez-nous.</p>
+  </div>
+
+  <div id="Tarifs" class="Elements">
+    <h2>Tarifs</h2>
+    <p>Vous pouvez devenir premium contre la modique somme de 2999€, une boîte de cookies et votre âme.</p>
+  </div>
+
+  <div id="Profil" class="Elements">
+    <h2>Profil</h2>
+    <p>C'est vous ! Malheureusement.</p>
+  </div>
+
+  <div id="Patates" class="Elements">
+    <h2>Patates</h2>
+    <div> 
+    <object type="text/html" data="https://fr.wikipedia.org/wiki/Pomme_de_terre" width="800px" height="700px" style="overflow:auto;border:5px ridge blue">
+    </object>
+ </div>
+  </div>
+
+  <div id="Température" class="Elements">
+    <h2>Température</h2>
+    <p>Si vous avez chaud, enlevez des habits. Si vous avez froid, ajoutez-en.</p>
+  </div>
+
+  <div id="Volets" class="Elements">
+    <h2>Volets</h2>
+    <p>S'ouvre et se ferme. Nous déclinons toute responsabilité en cas d'usage non conforme.</p>
+  </div>
+
+  <div id="Meurtre" class="Elements">
+    <h2>Meurtre</h2>
+    <p>A éviter, de préférence.</p>
+  </div>
+
+  <div id="Patates2" class="Elements">
+    <h2>Patates, Volume 2</h2>
+    <p>Potatoes are good. Potatoes are life. </p>
+  </div>
+
+  <div id="Llamas" class="Elements">
+    <h2>Llamas</h2>
+    <p>Caaaaaaaarrl !</p>
+  </div>
+
+
+
+</div>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("mySearch");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myMenu");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+
+function openPage(pageName,elmnt) {
+    var i, elements;
+    elements = document.getElementsByClassName("Elements");
+    for (i = 0; i < elements.length; i++) {
+        elements[i].style.display = "none";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.classList.toggle("focus");
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>

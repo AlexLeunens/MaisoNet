@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create a column layout with Flexbox */
+.row {
+  display: flex;
+}
+
+#logo{
+  position : absolute;
+  top : -10px;
+  right : 0px;
+  z-index: 2;
+  width: auto;
+  height: 12%;
+}
+
+/* Left column (menu) */
+.Menu {
+  flex: 35%;
+  padding: 15px 0;
+  background-color: lightgray; /*#4CAF50 beau vert*/
+  height: 90vh;
+}
+
+/* Right column (page content) */
+.Elements {
+  flex: 65%;
+  padding: 15px;
+  background-color: rgba(250, 250, 250, 0.8);
+  display: none;
+  height: 90vh;
+}
+
+/* Style the search box */
+#mySearch {
+  width: 100%;
+  font-size: 18px;
+  padding: 11px;
+  border:1px solid #ddd;
+}
+
+/* Style the navigation menu inside the left column */
+#myMenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myMenu li a {
+  backgrxound-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myMenu li a:hover {
+  background-color: #eee;
+}
+#myMenu li a:focus {
+  background-color: #4CAF50;
+}
