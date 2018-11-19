@@ -130,6 +130,10 @@ input.entrée{
   overflow-x: hidden; 
 }
 
+.icon{
+  height: 50px;
+  width: 60px;
+}
 
 .card{
   padding: 50px 60px;
