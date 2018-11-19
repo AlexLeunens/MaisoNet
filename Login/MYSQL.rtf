@@ -1,0 +1,166 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf100
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 -- phpMyAdmin SQL Dump\
+-- version 4.7.7\
+-- https://www.phpmyadmin.net/\
+--\
+-- H\'f4te : localhost:3306\
+-- G\'e9n\'e9r\'e9 le :  lun. 19 nov. 2018 \'e0 15:16\
+-- Version du serveur :  5.6.38\
+-- Version de PHP :  7.2.1\
+\
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";\
+SET time_zone = "+00:00";\
+\
+--\
+-- Base de donn\'e9es :  `formation_mysql`\
+--\
+\
+-- --------------------------------------------------------\
+\
+--\
+-- Structure de la table `Capteur`\
+--\
+\
+CREATE TABLE `Capteur` (\
+  `ID` int(11) UNSIGNED ZEROFILL NOT NULL,\
+  `Type` varchar(255) NOT NULL DEFAULT 'Temp\'e9rature',\
+  `Etat` varchar(255) NOT NULL DEFAULT 'Fonctionnel',\
+  `Affichage` varchar(255) NOT NULL\
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;\
+\
+--\
+-- D\'e9chargement des donn\'e9es de la table `Capteur`\
+--\
+\
+INSERT INTO `Capteur` (`ID`, `Type`, `Etat`, `Affichage`) VALUES\
+(00000000001, 'Temp\'e9rature', 'Fonctionnel', ''),\
+(00000000002, 'Volets', 'Fonctionnel', '');\
+\
+-- --------------------------------------------------------\
+\
+--\
+-- Structure de la table `Fonction`\
+--\
+\
+CREATE TABLE `Fonction` (\
+  `Types` varchar(255) NOT NULL DEFAULT 'Utilisateur'\
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;\
+\
+--\
+-- D\'e9chargement des donn\'e9es de la table `Fonction`\
+--\
+\
+INSERT INTO `Fonction` (`Types`) VALUES\
+('Administrateur'),\
+('Utilisateur'),\
+('Utilisateur'),\
+('Technicien');\
+\
+-- --------------------------------------------------------\
+\
+--\
+-- Structure de la table `Maison`\
+--\
+\
+CREATE TABLE `Maison` (\
+  `Adresse` varchar(255) NOT NULL,\
+  `Code Postal` int(255) NOT NULL\
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;\
+\
+-- --------------------------------------------------------\
+\
+--\
+-- Structure de la table `Pays`\
+--\
+\
+CREATE TABLE `Pays` (\
+  `Nom` varchar(255) NOT NULL\
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;\
+\
+--\
+-- D\'e9chargement des donn\'e9es de la table `Pays`\
+--\
+\
+INSERT INTO `Pays` (`Nom`) VALUES\
+('France'),\
+('France');\
+\
+-- --------------------------------------------------------\
+\
+--\
+-- Structure de la table `Pi\'e8ce`\
+--\
+\
+CREATE TABLE `Pi\'e8ce` (\
+  `Nom` varchar(255) NOT NULL DEFAULT 'Salon'\
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;\
+\
+-- --------------------------------------------------------\
+\
+--\
+-- Structure de la table `utilisateurs`\
+--\
+\
+CREATE TABLE `utilisateurs` (\
+  `id` int(11) NOT NULL,\
+  `Nom` varchar(255) NOT NULL,\
+  `Pr\'e9nom` varchar(255) NOT NULL,\
+  `Date_de_naissance` date NOT NULL,\
+  `E-mail` varchar(255) NOT NULL,\
+  `mdp` varchar(255) NOT NULL,\
+  `N\'b0_T\'e9l\'e9phone` int(255) NOT NULL\
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;\
+\
+--\
+-- D\'e9chargement des donn\'e9es de la table `utilisateurs`\
+--\
+\
+INSERT INTO `utilisateurs` (`id`, `Nom`, `Pr\'e9nom`, `Date_de_naissance`, `E-mail`, `mdp`, `N\'b0_T\'e9l\'e9phone`) VALUES\
+(1, 'Levy', 'Jullian', '1998-01-16', 'jullian.levy@isep.fr', 'isep2018', 612145233);\
+\
+--\
+-- Index pour les tables d\'e9charg\'e9es\
+--\
+\
+--\
+-- Index pour la table `Capteur`\
+--\
+ALTER TABLE `Capteur`\
+  ADD PRIMARY KEY (`ID`),\
+  ADD KEY `Type` (`Type`);\
+\
+--\
+-- Index pour la table `Pays`\
+--\
+ALTER TABLE `Pays`\
+  ADD KEY `Pays` (`Nom`);\
+\
+--\
+-- Index pour la table `utilisateurs`\
+--\
+ALTER TABLE `utilisateurs`\
+  ADD PRIMARY KEY (`id`) USING BTREE,\
+  ADD UNIQUE KEY `E-mail` (`E-mail`);\
+\
+--\
+-- AUTO_INCREMENT pour les tables d\'e9charg\'e9es\
+--\
+\
+--\
+-- AUTO_INCREMENT pour la table `Capteur`\
+--\
+ALTER TABLE `Capteur`\
+  MODIFY `ID` int(11) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;\
+\
+--\
+-- AUTO_INCREMENT pour la table `utilisateurs`\
+--\
+ALTER TABLE `utilisateurs`\
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;\
+}
