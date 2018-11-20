@@ -2,31 +2,38 @@
 <html>
 <head>
   <style>
-    body {background: url("papier.jpg") no-repeat center center fixed;
+    body {background:url("/mnt/monster/home/eleves/f/fseurratboulaye/Images/papier.jpg") no-repeat center;
+
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: cover; 
         background-attachment: fixed;
     }
     .erreur {color: #FF0000;
       position:relative;
       top:30px;
+      font-size:30px;
     }
     .aligner{position:relative;
       top:30px;
+      font-size:30px;
     }
     .ligne{position:relative;
       top:30px;
+      width:300px;
+      height:50px;
+      font-size:30px;
     }
     #logo1 {
     	position:fixed;
-    	top: 0px;
-    	right:0px;
+    	bottom: 70px;
+    	right:20px;
     	background: url() 0 0;
     }
     div.static {
     position: fixed;
-    top:50px;
-    left:375px;
+    top:100px;
+    left:750px;
+    font-size:60px;
     color :#f84110;
   }
 </style>
@@ -37,15 +44,24 @@
  <?php
 
     $nom = "";
+    $adresse = "";
+    $datenaissance = "";
+    $pays = "";
+    $codepostal = "";
     $email = "";
     $genre = "";
     $commentaire = ""
     $website = "";
 
     $nomErreur = "";
+    $adresseErreur = "";
+    $datenaissanceErreur = "";
+    $paysErreur = "";
+    $codepostalErreur = "";
     $emailErreur = "" ;
     $genreErreur = "";
-    $siteErreur = "";
+    $websiteErreur = "";
+
   
   if ($_SERVER["REQUEST_METHOD"] == "POST") {                                     //Vérifie que le serveur demande des données (POST)
 
@@ -54,7 +70,7 @@
     } else {
       $nom = test_input($_POST["nom"]);                                          
 
-      if (!preg_match("/^[a-zA-Z ]*$ /",$nom)) {                                  // Vérifier que le nom ne comporte que des lettres et des espaces
+      if (!preg_match("/ ^ [a-zA-Z ] * $ /",$nom)) {                                  // Vérifie que le nom ne comporte que des lettres et des espaces
         $nomErreur = "Seulement des lettres et des espaces sont acceptés";
       }
     }
@@ -65,21 +81,11 @@
 
       $email = test_input($_POST["email"]);                                      
 
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {                           // Vérifier que le format mail est valide
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {                           // Vérifie que le format mail est valide
         $emailErreur = "Le format mail est invalide";
-      }
+       }
     }
-      
-    if (empty($_POST[ "website"])) {
-      $website = "";
-    } else {
-      $website = test_input($_POST[ "website" ]);
-      // Vérifier que la syntaxe URL est valide
-      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i" ,$website )) {
-        $websiteErreur = "URL invalide";
-      }
-    }
-  
+
     if (empty($_POST[ "commentaire" ])) {
       $commentaire = "";
     } else {
@@ -91,21 +97,21 @@
     } else {
       $genre = test_input($_POST[ "genre" ]);
     }
-  
+  }
   function test_input($data) {
-    $data = trim($data);
+    $data = trim(data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
   }
   ?>
-  <form method="post" action="Bienvenue.php" > 
+  <form method="post" action="Inscription.html">
 
     <h1><div class="static"><i><u>Dossier d'inscription MaisoNET</u></i></div></h1>
     <p><span class="erreur">* Zone obligatoire</span></p> 
 
     <div class="aligner">Nom: </div><input class="ligne" type="text" name="nom" >
-    <span class="erreur"> * <?php echo $nomErreur;?></span>
+    <span class="erreur"> * <?php echo $nameError;?></span>
     <br><br>
 
     <div class="aligner">Adresse: </div><input class="ligne" type="text" name="adresse" >
@@ -138,19 +144,38 @@
     <div class="aligner"><u>Genre: </u></div>
     <br><br>
     
-    Femme <input type="radio" name="genre" value="Femme" > 
-    <?php if (isset($genre) && $genre=="femme" ) echo "vérifié" ;?> 
+    <font size="+2">Femme</font> <input type="radio" name="genre" value="Femme" > 
+    <?php if (isset($genre) && $genre == "femme" ) echo "checked" ;?> 
    
-    Homme<input type="radio" name="genre" value="Homme"> 
-    <?php if (isset($genre) && $genre=="homme" ) echo "vérifié" ;?>
+    <font size="+2"> Homme </font> <input type="radio" name="genre" value="Homme"> 
+    <?php if (isset($genre) && $genre == "homme" ) echo "checked" ;?>
 
-    Autre <input type="radio" name="genre" value="Autre"> 
-    <?php if (isset($genre) && $genre=="autre" ) echo "vérifié" ;?>
+    <font size="+2"> Autre </font> <input type="radio" name="genre" value="Autre"> 
+    <?php if (isset($genre) && $genre == "autre" ) echo "checked" ;?>
     <br><br>
 
     <input class="ligne" type="submit" name="Envoyer" value="Envoyer">
 
   </form>
+
+
+
+
+//Vérification
+
+  <div class="aligner"><u>Donnees envoyees : </u></div>
+
+  <?php echo $nom ; ?>
+  <br>
+  <?php echo $email ; ?>
+  <br>
+  <?php echo $website ; ?>
+  <br>
+  <?php echo $commentaire ; ?>
+  <br>
+  <?php echo $genre ; ?>
+  <br>
+
   </body>
 
 </html>
