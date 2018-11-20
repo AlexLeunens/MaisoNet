@@ -1,15 +1,21 @@
+html {
+  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images/bgall3.jpg") no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: white;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Create a column layout with Flexbox */
-.row {
-  display: flex;
+h1 {
+  color: whitesmoke;
 }
 
 #logo{
@@ -21,21 +27,38 @@ body {
   height: 12%;
 }
 
+/* Create a column layout with Flexbox */
+.row {
+  min-height: 0;
+}
+
 /* Left column (menu) */
 .Menu {
-  flex: 35%;
+  width: 25%;
+  min-width: 150px;
+
   padding: 15px 0;
   background-color: lightgray; /*#4CAF50 beau vert*/
-  height: 90vh;
+
+  height: 90%;
+
+  position: fixed;
+  overflow-x: auto;
+  margin-right: 0px;
 }
 
 /* Right column (page content) */
 .Elements {
-  flex: 65%;
   padding: 15px;
   background-color: rgba(250, 250, 250, 0.8);
   display: none;
-  height: 90vh;
+
+  height: 90%;
+  position: fixed;
+
+  left: 25.6%;
+  width: 73.6%;
+  margin-left: 0px;
 }
 
 /* Style the search box */
