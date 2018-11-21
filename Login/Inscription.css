@@ -1,0 +1,37 @@
+html {
+
+  body {background:url("/mnt/monster/home/eleves/f/fseurratboulaye/Images/papier.jpg") no-repeat center;
+
+        background-repeat: no-repeat;
+        background-size: cover; 
+        background-attachment: fixed;
+    }
+    .erreur {color: #FF0000;
+      position:relative;
+      top:30px;
+      font-size:30px;
+    }
+    .aligner{position:relative;
+      top:30px;
+      font-size:30px;
+    }
+    .ligne{position:relative;
+      top:30px;
+      width:300px;
+      height:50px;
+      font-size:30px;
+    }
+    #logo1 {
+    	position:fixed;
+    	bottom: 70px;
+    	right:20px;
+    	background: url() 0 0;
+    }
+    div.static {
+    position: fixed;
+    top:100px;
+    left:750px;
+    font-size:60px;
+    color :#f84110;
+  }
+}
