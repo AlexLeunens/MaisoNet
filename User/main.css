@@ -260,7 +260,7 @@ div.panel {
     opacity: 0;
     margin-bottom:10px;
 
-    float :left; /*was relative*/
+    position : absolute; /*was relative*/
     top:175px; /*was 150px*/
 
     height: 100%;
