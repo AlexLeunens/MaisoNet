@@ -1,4 +1,4 @@
-html 
+html {
 
 <?php
     $nom = "";
@@ -57,10 +57,34 @@ html
     }
   }
   function test_input($data) {
-    $data = trim(data);
+    $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
   }
   
+  if (isset($genre) && $genre == "femme" ) echo "checked" ;
+  if (isset($genre) && $genre == "homme" ) echo "checked" ;
+  if (isset($genre) && $genre == "autre" ) echo "checked" ;
+  
+  echo $nom ;
+  echo $adresse ;
+  echo $datenaissance ; 
+  echo $pays ; 
+  echo $codepostal ;
+  echo $email ;
+  echo $website ;
+  echo $commentaire ; 
+  echo $genre ; 
+  
+  echo $nomErreur ;
+  echo $adresseErreur ;
+  echo $datenaissanceErreur ; 
+  echo $paysErreur ; 
+  echo $codepostalErreur ;
+  echo $emailErreur ;
+  echo $websiteErreur ;
+  echo $commentaireErreur ; 
+  echo $genreErreur ; 
+
   ?>
