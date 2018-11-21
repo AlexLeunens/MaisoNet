@@ -33,7 +33,7 @@ html
   
     div.static {
     position: fixed;
-    top:100px;
+    top:50px;
     left:500px;
     font-size:40px;
     color :#f84110;
