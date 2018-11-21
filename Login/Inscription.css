@@ -16,6 +16,7 @@ html
       top:30px;
       left:30px;
       color:white;
+        font-size:15px;
     }
   
     .button{position:relative;
@@ -41,6 +42,6 @@ html
     position: fixed;
     top:50px;
     left:35%;
-    font-size:60px;
+    font-size:45px;
     color :#3e9ff0;
   }
