@@ -1,93 +1,361 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-  <meta charset="utf-8">                                             <!--définition du type de codage sur la page html-->
-  <title>MaisonNet</title>                                           <!--titre de la page-->
-  <link rel="stylesheet" type="text/css" href="css/style_admin.css">
-    
-</head>
-
-<body>
-<a href="MaisonNet_admin.html">
-    <img id="logo" src="img/logo_provisoire2.png" href="MaisonNet_admin.html"> 
-</a>
-  
-    <nav class="menu-nav">
-        <ul>
-            <li class="btn">
-              <a href="MaisonNet_admin.html">
-                Client
-              </a>                
-            </li>
-            <li class="btn">
-              <a href="MaisonNet_admin_contact.html">
-                Contact
-                </a> 
-            </li>
-            <li class="btn">
-              <a href="MaisonNet_admin_notif.html">
-                Notification
-                </a> 
-            </li>
-            <li class="btn">
-              <a href="MaisonNet_admin_gestclient.html">
-                Gestion client
-                </a> 
-            </li>
-
-        </ul>
-        
-    </nav>
-
-<form class="dossier" method="post" action="php/user_id.php">
-No. client : <input type="text" name="username" >
-<input  align="right" type="submit" value="Entrée" >
-</form>
-<button class="collapsible"> Salon</button>
-<div class="content">
-  <p >Capteur</p>
-</div>
-<button class="collapsible"> Cuisine</button>
-<div class="content">
-  <p>Capteur</p>
-</div>
-<button class="collapsible">  Toilette</button>
-<div class="content">
-  <p>Capteur</p>
-</div>
-<button class="collapsible" > Chambre 1</button>
-<div class="content">
-  <p>Capteur</p>
-</div>
-<button class="collapsible"> Chambre 2</button>
-<div class="content">
-  <p>Capteur</p>
-</div>
-<button class="collapsible"> Chambre 3</button>
-<div class="content">
-  <p>Capteur</p>
-</div>
-
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
+html {
+  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images/bgall3.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
 }
-</script>
 
-</body>
+* {
+  box-sizing: border-box; /*utile pour le responsive*/
+}
 
 
-</html>
+#menu {
+   background-color: rgba(250, 250, 250, 0.8); /*rgba(255, 195, 77, 0.5)*/
+   /*background-image: url("Images/bgtestyess.jpg");*/
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   width: 100%;
+   height: 15%;
+}
+
+
+#onglets{ /* conteneur des listes */
+  font : bold 20px Georgia, arial, serif;
+  list-style-type : none;
+  margin-left : 0;
+  position: absolute;
+  bottom: -20px; /*aligne avec le bas du menu*/
+
+  background-color: rgba(220, 160 , 0, 0.7); /*220,160,0 : orange   110, 180, 0 : vert*/
+  width: 100%;
+}
+#onglets :focus{
+  background-color: #fff;
+  border-radius: 5px 5px 0px 0px;
+  height: 35px; /* Hauteur onglet */
+}
+
+#onglet li:focus{
+  border : 1px solid #fff; /* couleur bordure */
+}
+#onglets li{ /*les éléments de liste */
+  float : left;
+  height : 30px; /* Hauteur onglet */
+  background-color: rgba(150, 150 , 150, 1); /* explicite */
+
+  margin : 2px 2px 0 2px;
+  border : 1px solid #000; /* couleur bordure */
+  border-radius: 5px 5px 0px 0px;
+}
+
+#onglets a{ /* Liens (texte) */
+  display : block; /* fait en sorte qu'on puisse cliquer partout */
+  color : #666;
+  text-decoration : none;
+  padding : 4px; /* marge */
+
+}
+
+#onglets a:hover { /* quand on passe la souris dessus */
+   background : #fff; /* explicite */
+}
+
+
+
+
+#logo{
+  position : absolute;
+  top : -10px;
+  left : 0px;
+  z-index: 2;
+  width: auto;
+  height: 12%;
+}
+
+
+img.avatar {
+  position : absolute;
+  top : 0;
+  right : 0px;
+  z-index: 4;
+  width: auto;
+  height: 10%;
+  max-height: 50px;
+  max-width: 100px;
+
+  font-size:30px;
+  cursor:pointer;
+}
+
+/* panneau avec fonctions d'aide */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    font-size: 36px;
+}
+
+div.avatarPanel.show {
+  opacity: 1;
+  max-height: 500px; /* doit être sup à la hauteur des éléments */
+}
+
+
+.imagesbutton{
+  width:200px;
+   height: auto;
+}
+
+.imagestemperature{
+  width:200px;
+  height: auto;
+}
+
+div.Elements{
+
+  top: 15%;
+  
+  position: absolute;
+  width: 100%;
+  height: 88%;
+}
+/*permet de s'adapter a la taille de la fenêtre*/
+#Client {
+
+
+  /*Ajoute la barre de scroll pour trop d'elements*/
+  overflow-y: hidden;
+  overflow-x: visible;
+
+  left: 0px;
+
+  position: absolute;
+  width: 100%;
+  height: 88%;
+  top: 15%;
+}
+
+/* Le bouton bleu selon la piece */
+p.piece {
+    background-color: rgba(100,135,240,0.9); /*rgba(100,135,240,0.9) pour bleu*/
+    color: white;
+    cursor: pointer;
+
+    text-align: center;
+    line-height: 150px;
+
+    border: none;
+    outline: none;
+    transition: 0.1s;
+
+    float: left;
+    margin-right:10px;
+    width: 150px; /*was 100%*/
+    height: 150px; /*was auto*/
+    border-radius: 50%; /*was 10px*/
+}
+
+/* quand cliqué ou survolé */
+p.piece.active, p.piece:hover {
+    background-color: #0066aa;
+}
+
+/* ajoute la fleche */
+p.piece:after {
+    content: '\25b7';
+    color: white;
+    float: left;
+}
+
+p.piece.active:after {
+    content: '\25bd'; 
+}
+
+/* panneau avec fonctions */
+div.panel {
+    background-color: rgba(220,220,220,0.7);
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    margin-bottom:10px;
+
+    position: absolute; /*was relative*/
+    top:175px; /*was 150px*/
+
+    height: 100%;
+    width: 98%;
+    border: solid #666 1px;
+    border-radius: 10px;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 500px; /* doit être sup à la hauteur des éléments */
+}
+
+/*Menu d'aide*/
+p.help {
+  z-index: 2;
+  cursor: pointer;
+
+  position: fixed;   /*permet de le fixer sur l'écran*/
+  bottom: 0;
+  right: 0px;
+
+  transition: 0.1s;
+}
+p.help.active {}
+
+img.imageHelpMenu {
+  width: 75px;
+  height: 75px;
+}
+
+/* panneau avec fonctions d'aide */
+div.helpPanel {
+  background-color: rgba(220,220,220,0.7);
+  max-height: 0;
+  margin-top:500px; /*doit être = a heigth*/
+  overflow: hidden;
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+
+  position: fixed;
+  bottom:20px;
+  right: 75px;
+
+  height: 45%;
+  width: 10%;
+  min-width: 75px;
+  border: solid #666 1px;
+  border-radius: 10px;
+}
+
+div.helpPanel.show {
+  opacity: 1;
+  max-height: 500px; /* doit être sup à la hauteur des éléments */
+  margin-top:0; /*pour commencer la transition du bas*/ 
+}
+
+
+.imageshelp{
+  width: 60%;
+  height: auto;
+  min-width: 50px;
+  display: block;
+  margin: 30% auto;
+}
+
+
+
+
+/*pour tel*/
+@media screen and (max-width: 480px) {
+
+#menu {
+   height: 12%;
+}
+
+#onglets{ /* conteneur des listes */
+  font : bold 20px Georgia, arial, serif;
+  position: absolute;
+  bottom: -20px; /*aligne avec le bas du menu*/
+  height: 20px;
+  padding: 0px 0 0 0px;
+
+
+  background-color: rgba(220, 160 , 0, 0.7);
+  width: 100%;
+  
+}
+
+
+
+
+
+/*ajoute le slider blanc*/
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 1px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+div.Elements {
+  top: 12%;
+}
+
+  /* Le bouton bleu selon la piece */
+p.piece {
+  line-height: 100px;
+  overflow: hidden;
+
+  width: 100px; /*was 100%*/
+  height: 100px; /*was auto*/
+
+  display: inline-block;
+}
+
+p.piece:after {
+content: '';
+}
+
+p.piece.active:after {
+content: '';
+}
+
+div.panel {
+    top:120px; /*was 150px*/
+
+    height: 100%;
+    width: 98%;
+    border: solid #666 1px;
+    border-radius: 10px;
+}
+
+img.imageHelpMenu {
+  width: 50px;
+  height: 50px;
+}
+
+.imageshelp{
+  width:60%;
+  min-width: 35px;
+}
+
+}
