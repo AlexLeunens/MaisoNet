@@ -1,4 +1,4 @@
-html {
+html 
 
     {   background:url("papier.jpg") no-repeat center;
         background-repeat: no-repeat;
@@ -38,4 +38,3 @@ html {
     font-size:60px;
     color :#f84110;
   }
-}
