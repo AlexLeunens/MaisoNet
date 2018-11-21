@@ -9,6 +9,7 @@ html
     .erreur {color: #FF0000;
       position:relative;
       top:30px;
+      left:30px;
     }
   
     .aligner{position:relative;
@@ -23,6 +24,7 @@ html
     .ligne{
         position:relative;
         top:30px;
+        left:30px;
 }
   
     #logo1 {
@@ -36,6 +38,6 @@ html
     position: fixed;
     top:50px;
     left:35%;
-    font-size:30px;
+    font-size:60px;
     color :#3e9ff0;
   }
