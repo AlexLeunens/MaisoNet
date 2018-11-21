@@ -7,7 +7,7 @@
 
 <body>
 
-	<img id="logo1" src="logo_provisoire_mini.png" ></img> 
+	<img id="logo1" src="Images/logo_provisoire_mini.png" ></img> 
 
   <form method="post" action="Inscription.html">
 
@@ -15,7 +15,7 @@
     <p><span class="erreur">* Zone obligatoire</span></p> 
 
     <div class="aligner">Nom: </div><input class="ligne" type="text" name="nom" >
-    <span class="erreur"> * <?php echo $nameError;?></span>
+    <span class="erreur"> * </span>
     <br><br>
 
     <div class="aligner">Adresse: </div><input class="ligne" type="text" name="adresse" >
@@ -35,11 +35,11 @@
     <br><br>
 
     <div class="aligner">E-mail: </div> <input class="ligne" type="text" name="E-mail">
-    <span class="erreur">*<?php echo $emailErreur;?></span>
+    <span class="erreur">*</span>
     <br><br>
 
     <div class="aligner">Site Web: </div> <input class="ligne" type="text" name="site web">
-    <span class="erreur"><?php echo $websiteErreur;?></span>
+    <span class="erreur"></span>
     <br><br>
 
     <div class="aligner">Commentaire: </div> <textarea class="ligne" name="commentaire" rows="5" cols="40"></textarea>
@@ -49,42 +49,15 @@
     <br><br>
     
     <font size="+2">Femme</font> <input type="radio" name="genre" value="Femme" > 
-    <?php if (isset($genre) && $genre == "femme" ) echo "checked" ;?> 
    
     <font size="+2"> Homme </font> <input type="radio" name="genre" value="Homme"> 
-    <?php if (isset($genre) && $genre == "homme" ) echo "checked" ;?>
 
     <font size="+2"> Autre </font> <input type="radio" name="genre" value="Autre"> 
-    <?php if (isset($genre) && $genre == "autre" ) echo "checked" ;?>
     <br><br>
 
     <input class="ligne" type="submit" name="Envoyer" value="Envoyer">
 
   </form>
-
-  //Vérification
-
-  <div class="aligner"><u>Donnees envoyees : </u></div>
-
-  <?php echo $nom ; ?>
-  <br>
-  <?php echo $adresse ; ?>
-  <br>
-  <?php echo $datenaissance ; ?>
-  <br>
-  <?php echo $pays ; ?>
-  <br>
-  <?php echo $codepostal ; ?>
-  <br>
-  <?php echo $email ; ?>
-  <br>
-  <?php echo $website ; ?>
-  <br>
-  <?php echo $commentaire ; ?>
-  <br>
-  <?php echo $genre ; ?>
-  <br>
-
   </body>
 
 </html>
