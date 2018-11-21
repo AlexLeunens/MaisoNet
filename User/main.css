@@ -229,7 +229,7 @@ p.piece {
     outline: none;
     transition: 0.1s;
 
-    position: relative;
+    float : left;
     width: 150px; /*was 100%*/
     height: 150px; /*was auto*/
     border-radius: 50%; /*was 10px*/
