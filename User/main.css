@@ -427,3 +427,12 @@ img.imageHelpMenu {
 
 }
 
+div.block{
+  margin-left: 20px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 20px;
+  display: inline-block;
+  text-align: center;
+  
+}
