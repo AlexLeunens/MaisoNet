@@ -9,7 +9,6 @@ html
     .erreur {color: #FF0000;
       position:relative;
       top:30px;
-      font-size:30px;
     }
   
     .aligner{position:relative;
@@ -21,7 +20,6 @@ html
       top:30px;
       width:300px;
       height:50px;
-      font-size:30px;
     }
   
     #logo1 {
@@ -34,7 +32,7 @@ html
     div.static {
     position: fixed;
     top:50px;
-    left:450px;
-    font-size:45px;
+    left:20%;
+    font-size:30px;
     color :#3e9ff0;
   }
