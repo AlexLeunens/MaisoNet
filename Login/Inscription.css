@@ -50,9 +50,9 @@ html
   transition: 0.3s;
   position : fixed;
   width: 60%;
-  height: 60%;
+  height: 80%;
   left:20%;
-  top:10%;
+  top:12%;
   border-radius: 5px;
   background-color: white;
   display: inline-block;
