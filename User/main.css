@@ -188,7 +188,8 @@ div.avatarPanel.show {
 
 
 .imagesbutton{
-  width:200px;
+  width:10%;
+  min-width: 30px;
    height: auto;
 }
 
