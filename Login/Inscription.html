@@ -1,63 +1,62 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Dossier d'inscritpion MaisoNet</title>
-   	<link rel="stylesheet" href= "Inscription.css" >    <!--Appel du code CSS-->
-   	<link rel="stylesheet" href= "Inscription.php" >    <!--Appel du code PHP-->
+   <link rel="stylesheet" href= "Inscription.css" >    <--Appel du code CSS-->
+   <link rel="stylesheet" href= "Inscription.php" >    <--Appel du code PHP-->
 </head>
-
+<title>Dossier d'inscritpion MaisoNet</title>
 <body>
 
 	<img id="logo1" src="logo_provisoire_mini.png" ></img> 
 
-  <form method="post" action="Inscription.html">
+  <form method="post" action="ConfirmationInscription.html">
 
     <h1><div class="static"><i><u>Dossier d'inscription MaisoNET</u></i></div></h1>
     <p><span class="erreur">* Zone obligatoire</span></p> 
+    <div class="card">
+        <div class="aligner">Nom: </div><input class="ligne" type="text" name="nom" >
+        <span class="erreur"> * </span>
+        <br><br>
 
-    <div class="aligner">Nom: </div><input class="ligne" type="text" name="nom" >
-    <span class="erreur"> * </span>
-    <br><br>
+        <div class="aligner">Adresse: </div><input class="ligne" type="text" name="adresse" >
+        <span class="erreur">*</span>
+        <br><br>
 
-    <div class="aligner">Adresse: </div><input class="ligne" type="text" name="adresse" >
-    <span class="erreur">*</span>
-    <br><br>
+        <div class="aligner">Date de Naissance: </div><input class="ligne" type="text" name="DateNaissance" >
+        <span class="erreur">*</span>
+        <br><br>
 
-    <div class="aligner">Date de Naissance: </div><input class="ligne" type="text" name="DateNaissance" >
-    <span class="erreur">*</span>
-    <br><br>
+        <div class="aligner">Pays: </div><input class="ligne" type="text" name="Pays" >
+        <span class="erreur">*</span>
+        <br><br>
 
-    <div class="aligner">Pays: </div><input class="ligne" type="text" name="Pays" >
-    <span class="erreur">*</span>
-    <br><br>
+        <div class="aligner">Code Postal: </div><input class="ligne" type="text" name="CodePostal" >
+        <span class="erreur">*</span>
+        <br><br>
 
-    <div class="aligner">Code Postal: </div><input class="ligne" type="text" name="CodePostal" >
-    <span class="erreur">*</span>
-    <br><br>
+        <div class="aligner">E-mail: </div> <input class="ligne" type="text" name="E-mail">
+        <span class="erreur">*</span>
+        <br><br>
 
-    <div class="aligner">E-mail: </div> <input class="ligne" type="text" name="E-mail">
-    <span class="erreur">*</span>
-    <br><br>
+        <div class="aligner">Site Web: </div> <input class="ligne" type="text" name="site web">
+        <span class="erreur"></span>
+        <br><br>
 
-    <div class="aligner">Site Web: </div> <input class="ligne" type="text" name="site web">
-    <span class="erreur"></span>
-    <br><br>
+        <div class="aligner">Commentaire: </div> <textarea class="ligne" name="commentaire" rows="5" cols="40"></textarea>
+        <br><br>
 
-    <div class="aligner">Commentaire: </div> <textarea class="ligne" name="commentaire" rows="5" cols="40"></textarea>
-    <br><br>
-
-    <div class="aligner"><u>Genre: </u></div>
-    <br><br>
+        <div class="aligner"><u>Genre: </u></div>
+        <br><br>
     
-    <font size="+2">Femme</font> <input type="radio" name="genre" value="Femme" > 
+        <font size="+2">Femme</font> <input type="radio" name="genre" value="Femme" > 
    
-    <font size="+2"> Homme </font> <input type="radio" name="genre" value="Homme"> 
+        <font size="+2"> Homme </font> <input type="radio" name="genre" value="Homme"> 
 
-    <font size="+2"> Autre </font> <input type="radio" name="genre" value="Autre"> 
-    <br><br>
+        <font size="+2"> Autre </font> <input type="radio" name="genre" value="Autre"> 
+        <br><br>
 
-    <input class="button" type="submit" name="Envoyer" value="Envoyer">
-
+        <input class="ligne" type="submit" name="Envoyer" value="Envoyer" >
+    </div>
   </form>
   </body>
 
