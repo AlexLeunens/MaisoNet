@@ -61,6 +61,7 @@ html {
 
 #onglets a:hover { /* quand on passe la souris dessus */
    background : #fff; /* explicite */
+   border-radius: 5px 5px 0px 0px;
 }
 
 
@@ -108,13 +109,13 @@ img.avatar {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color:#666;
     display: block;
     transition: 0.3s;
 }
 
 .sidenav a:hover {
-    color: #f1f1f1;
+    color: white;
 }
 
 .sidenav .closebtn {
@@ -122,6 +123,7 @@ img.avatar {
     top: 0;
     left: 0px;
     font-size: 36px;
+    color:#666;
 }
 
 div.avatarPanel.show {
