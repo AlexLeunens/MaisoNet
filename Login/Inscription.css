@@ -34,7 +34,7 @@ html
     #logo1 {
     	position:fixed;
     	bottom: 12%;
-    	right:18%;
+    	right:20%;
     	background: url() 0 0;
     }
   
@@ -56,7 +56,7 @@ html
   border-radius: 5px;
   background-color: white;
   display: inline-block;
-  overflow:auto;
+  overflow-y:auto;
 
 }
 .card:hover {
