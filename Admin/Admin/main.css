@@ -282,17 +282,19 @@ div.helpPanel.show {
 
 
 /*pour tel*/
-@media screen and (max-width: 480px) {
-
+@media screen and (max-width: 570px) {
+html{
+  margin:0;
+}
 #menu {
-   height: 12%;
+   height: 14%;
    margin-top: 0px;
 }
 
 #onglets{ /* conteneur des listes */
   font : bold 20px Georgia, arial, serif;
   position: -20px; /*aligne avec le bas du menu*/
-  height: 70px;
+  height: auto;
   padding: 0px 0 0 0px;
 
 
@@ -300,11 +302,6 @@ div.helpPanel.show {
   width: 100%;
   
 }
-
-
-
-
-
 /*ajoute le slider blanc*/
 .slider:before {
   position: absolute;
@@ -317,7 +314,9 @@ div.helpPanel.show {
   -webkit-transition: .4s;
   transition: .4s;
 }
-
+form.dossier{
+  margin-top: 50px;
+}
 div.Elements {
   top: 12%;
 }
@@ -375,10 +374,8 @@ div.bloc{
   right:0;
   bottom:0;
   left:0;
-  background-color: rgba(0,0,0,0.5)
+  background-color: rgba(0,0,0,0.2);
   z-index:1000;
-  color:black;
-  
 }
 
 #masque:target{
