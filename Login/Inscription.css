@@ -33,7 +33,7 @@ html
   
     #logo1 {
     	position:fixed;
-    	bottom: 70px;
+    	bottom: 12%;
     	right:18%;
     	background: url() 0 0;
     }
@@ -50,12 +50,13 @@ html
   transition: 0.3s;
   position : fixed;
   width: 60%;
-  height: 90%;
+  height: 80%;
   left:20%;
   top:12%;
   border-radius: 5px;
   background-color: white;
   display: inline-block;
+  overflow:auto;
 
 }
 .card:hover {
