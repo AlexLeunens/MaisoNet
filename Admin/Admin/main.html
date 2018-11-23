@@ -22,7 +22,7 @@
 	  <a href="#">Profil</a>
 	  <a href="#">Services</a>
 	  <a href="#">Contact</a>
-	  <a href="#">Se Déconnecter</a>
+	  <a href="#">Se DÃ©connecter</a>
 	</div>
 
 
@@ -42,7 +42,7 @@
 	<div id= "Client" class="Elements">
 		<form class="dossier" method="post" action="php/user_id.php">
 			No. client : <input type="text" name="username" >
-		<input  align="right" type="submit" value="Entrée" >
+		<input  align="right" type="submit" value="EntrÃ©e" >
 		</form>
 		<p class="piece">Salon</p>
 			<div class="panel">
@@ -103,11 +103,11 @@
 
 	</div>
 
-	<p><a href="#masque">Afficher la fenêtre modale</a></p>
+	<p><a href="#masque"></a></p>
 		<div id="masque">
 		  <div class="fenetre-modale">
-			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
-			  title="Fermer la fenêtre" class="btn-fermer" 
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenÃªtre" 
+			  title="Fermer la fenÃªtre" class="btn-fermer" 
 			  src="Images/fmodale_fermer.jpg" /></a>
 			<h2>Bonjour</h2>
 		  </div> <!-- .fenetre-modale -->
@@ -117,11 +117,11 @@
 		var panel = document.getElementsByClassName('panel'); //selec piece et panel
 		for (var i = 0; i < piece.length; i++) { //pour tout bouton
 	    	piece[i].onclick = function() {
-		        var setClasses = !this.classList.contains('active'); //selec classes actives qui ne sont pas celle sur laquelle on a cliqué
+		        var setClasses = !this.classList.contains('active'); //selec classes actives qui ne sont pas celle sur laquelle on a cliquÃ©
 		        setClass(piece, 'active', 'remove'); //les rend inactives
 		        setClass(panel, 'show', 'remove'); // cache le contenu
 		        if (setClasses) {
-		            this.classList.toggle("active"); //rend celle cliquée active (piece)
+		            this.classList.toggle("active"); //rend celle cliquÃ©e active (piece)
 		            this.nextElementSibling.classList.toggle("show"); //affiche le contenu (panel)
 		        }
 	    	}
@@ -130,7 +130,7 @@
 		var help = document.getElementsByClassName("help")
 		var helpPanel = document.getElementsByClassName("helpPanel")		
 		help[0].onclick = function() {
-			var setClasses = !this.classList.contains('active'); // vérifie si help actif
+			var setClasses = !this.classList.contains('active'); // vÃ©rifie si help actif
 			setClass(help, 'active', 'remove'); //les rend inactives
 			setClass(helpPanel, 'show', 'remove'); // cache le contenu
 			if (setClasses) { //si help pas deja actif
@@ -140,7 +140,7 @@
 		}
 		function setClass(els, className, fnName) {
 		    for (var i = 0; i < els.length; i++) { //chaque piece selec avec !this.classList.contains('active')
-		        els[i].classList[fnName](className); //les prend une par une, puis désactive une propriété
+		        els[i].classList[fnName](className); //les prend une par une, puis dÃ©sactive une propriÃ©tÃ©
 		    }
 		}
 		function openNav() {
