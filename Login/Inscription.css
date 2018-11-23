@@ -50,6 +50,7 @@ html
   transition: 0.3s;
   width: 60%;
   height: 30%;
+  position : fixed;
   left:20%;
   top:40%;
   border-radius: 5px;
