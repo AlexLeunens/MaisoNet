@@ -331,7 +331,7 @@ div.helpPanel.show {
 
 
 /*pour tel*/
-@media screen and (max-width: 25%) {
+@media screen and (max-width: 480px) {
 
 #menu {
    height: 12%;
