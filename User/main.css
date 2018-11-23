@@ -329,6 +329,14 @@ div.helpPanel.show {
   margin: 30% auto;
 }
 
+div.block{
+  margin-left: 20px;
+  position : static;
+  display: inline-block;
+  text-align: center;
+  
+}
+
 
 
 
