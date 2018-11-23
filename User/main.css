@@ -140,8 +140,8 @@ img.avatar {
   z-index: 4;
   width: auto;
   height: 10%;
-  max-height: 50%;
-  max-width: 100%;
+  max-height: 50px;
+  max-width: 100px;
 
   font-size:30px;
   cursor:pointer;
