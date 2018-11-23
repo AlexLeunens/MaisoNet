@@ -190,11 +190,12 @@ div.avatarPanel.show {
 .imagesbutton{
   width:50%;
   min-width: 150px;
-   height: auto;
+  height: auto;
 }
 
 .imagestemperature{
-  width:200px;
+  width:50%;
+  min-width: 150px;
   height: auto;
 }
 
