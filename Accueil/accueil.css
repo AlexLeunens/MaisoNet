@@ -85,10 +85,11 @@
   	transition: 0.3s;
   
   	border-radius: 5px;
-  	background-color: white;
+  	background-color: #CDDDFF;
 
   	margin-right: auto;
   	margin-left: auto;
+	margin-top:2%;
 
   	width: 60%;
   	overflow: hidden;
