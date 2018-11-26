@@ -12,23 +12,21 @@
 
 <body>
 
-	<img id="logo" src="Images/logo_provisoire2.png"> </img>
-	<!--<a href="absent.html" ><img id="switch" src="Images/switchOn.png"> </img> </a> -->
-
-
 	<img class="avatar" src="Images/avatar.png" onclick="openNav()"> </img>
 	<div id="mySidenav" class="sidenav">
 	  <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
 	  <a href="#">Profil</a>
 	  <a href="#">Services</a>
 	  <a href="#">Contact</a>
-	  <a href="#">Se Déconnecter</a>
+	  <a href="#">Déconnexion</a>
 	</div>
 
 
 
 
 	<div id="menu">  <!--conteneur-->
+		<img id="logo" src="Images/logo_provisoire2.png"> </img>
+
 		<ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
 			<li id="liPresent" class="active"><a href="javascript:switchClick()"> Mode Présence </a></li>
 			<li id="liAbsent"><a href="javascript:switchClick()"> Mode Absence </a></li>
@@ -46,12 +44,12 @@
 		<p class="piece">Salon</p>
 			<div class="panel">
 				<div class="block">
-				<img class="imagestemperature" src="Images/temperature+.png" alt="temperature"></img>
-				<p> Valeur température</p>
+					<img class="imagestemperature" src="Images/temperature+.png" alt="temperature"></img>
+					<p> Valeur température</p>
 				</div>
 				<div class="block">
-				<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
-				<p> Etat des volets </p>
+					<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
+					<p> Etat des volets </p>
 				</div>
 			</div>
 
@@ -72,18 +70,18 @@
 	<div id= "Absent" class="fonctions" style="display:none;">
 		<p class="piece">Economies</p>
 			<div class="panel">
-				<img class="imagestemperature" src="Images/temperature+.png" alt="temperature"></img>
+				<img class="imagesbutton" src="Images/temperature+.png" alt="temperature"></img>
 				<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
 			</div>
 
 		<p class="piece">Sécurité</p>
 			<div class="panel">
-				<img class="imagestemperature" src="Images/temperature+.png" alt="temperature"></img>
+				<img class="imagesbutton" src="Images/temperature+.png" alt="temperature"></img>
 			</div>
 		</div>
 
 
-	<p class="help"> <img class="imageHelpMenu" src="Images/helpmenu.png" alt="Help"></img> </p>
+	<p class="help"> ? </p>
 	<div class="helpPanel">
 
 		<a href="" onclick= "popupHelp()"><img class="imageshelp" src="Images/helpquestionmark.png" alt="FAQ"></img></a>
