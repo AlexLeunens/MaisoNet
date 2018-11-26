@@ -84,7 +84,7 @@
 	<p class="help"> ? </p>
 	<div class="helpPanel">
 
-		<a href="" onclick= "popupHelp()"><img class="imageshelp" src="Images/helpquestionmark.png" alt="FAQ"></img></a>
+		<a href="" onclick= "tabFAQ()"><img class="imageshelp" src="Images/helpquestionmark.png" alt="FAQ"></img></a>
 
 		<a href="" onclick= "popupContact()"><img class="imageshelp" src="Images/helptechnician.png" alt="Contact Tech"></img> </a>
 
@@ -144,6 +144,11 @@
 		}
 		function popupContact() {
     		var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
+		}
+		
+		function tabFAQ() {
+  		var win = window.open("FAQ.html", '_blank');
+ 	 	win.focus();
 		}
 
 
