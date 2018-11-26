@@ -87,10 +87,10 @@
   	border-radius: 5px;
   	background-color: white;
 
-  	margin-right: 10%;
-  	margin-left: 10%;
+  	margin-right: auto;
+  	margin-left: auto;
 
-  	width: 50%;
+  	width: 60%;
   	overflow: hidden;
 }
 
