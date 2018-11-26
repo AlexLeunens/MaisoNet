@@ -15,10 +15,10 @@
 	<img class="avatar" src="Images/avatar.png" onclick="openNav()"> </img>
 	<div id="mySidenav" class="sidenav">
 	  <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
-	  <a href="#">About</a>
+	  <a href="#">Profil</a>
 	  <a href="#">Services</a>
-	  <a href="#">Clients</a>
 	  <a href="#">Contact</a>
+	  <a href="#">Déconnexion</a>
 	</div>
 
 
@@ -43,8 +43,13 @@
 	<div id= "Present" class="fonctions">
 		<p class="piece">Salon</p>
 			<div class="panel">
-				<img class="imagestemperature" src="Images/temperature+.png" alt="temperature"></img>
-				<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
+				<div class="block">
+					<img class="imagestemperature" src="Images/temperature+.png" alt="temperature"></img>
+					<p> Valeur température</p>
+				</div>
+				<div class="block">
+					<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
+					<p> Etat des volets </p>
 			</div>
 
 		<p class="piece">Chambre 1</p>
@@ -134,7 +139,7 @@
 		}
 
 		function popupHelp() {
-    		var myWindow = window.open("FAQ.html", "", "width=200, height=100");
+    		var myWindow = window.open("FAQ.html", "", "width=1200, height=1000");
 		}
 		function popupContact() {
     		var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
