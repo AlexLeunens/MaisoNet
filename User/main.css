@@ -251,6 +251,14 @@ div.panel.show {
     max-height: 500px; /* doit être sup à la hauteur des éléments */
 }
 
+div.block{
+  margin-left: 20px;
+  position : static;
+  display: inline-block;
+  text-align: center;
+  
+}
+
 /*Menu d'aide*/
 p.help {
   background-color: rgba(220,160,0,0.9);
