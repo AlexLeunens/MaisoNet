@@ -1,442 +1,55 @@
-html {
-  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images/bgall3.jpg") no-repeat center center fixed;
-  background-size: cover;
-  height: 100%;
-  overflow: hidden;
-  margin: 0;
-}
-
-* {
-  box-sizing: border-box; /*utile pour le responsive*/
-}
-
-
-#menu {
-   background-color: rgba(250, 250, 250, 0.8); /*rgba(255, 195, 77, 0.5)*/
-   /*background-image: url("Images/bgtestyess.jpg");*/
-   position: absolute;
-   top: 0px;
-   left: 0px;
-   width: 100%;
-   height: 15%;
-}
-
-
-#onglets{ /* conteneur des listes */
-  font : bold 20px Georgia, arial, serif;
-  list-style-type : none;
-  margin-left : 0;
-  position: absolute;
-  bottom: -20px; /*aligne avec le bas du menu*/
-
-  background-color: rgba(220, 160 , 0, 0.7); /*220,160,0 : orange   110, 180, 0 : vert*/
-  width: 100%;
-}
-#onglets :focus{
-  background-color: #fff;
-  border-radius: 5px 5px 0px 0px;
-
-}
-
-#onglet li:focus{
-  border : 1px solid #fff; /* couleur bordure */
-}
-#onglets li{ /*les éléments de liste */
-  float : left;
-  height : 30px; /* Hauteur onglet */
-  background-color: rgba(150, 150 , 150, 1); /* explicite */
-
-  margin : 2px 2px 0 2px;
-  border : 1px solid #000; /* couleur bordure */
-  border-radius: 5px 5px 0px 0px;
-}
-
-#onglets a{ /* Liens (texte) */
-  display : block; /* fait en sorte qu'on puisse cliquer partout */
-  color : #666;
-  text-decoration : none;
-  padding : 4px; /* marge */
-
-}
-
-#onglets a:hover { /* quand on passe la souris dessus */
-   background : #fff; /* explicite */
-   border-radius: 5px 5px 0px 0px;
-}
-
-
-
-
-#logo{
-  position : absolute;
-  top : -10px;
-  left : 0px;
-  z-index: 2;
-  width: auto;
-  height: 12%;
-}
-
-
-img.avatar {
-  position : absolute;
-  top : 0;
-  right : 0px;
-  z-index: 4;
-  width: auto;
-  height: 10%;
-  max-height: 50px;
-  max-width: 100px;
-
-  font-size:30px;
-  cursor:pointer;
-}
-
-/* panneau avec fonctions d'aide */
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 3;
-    top: 0;
-    right: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color:#666;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: white;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    left: 0px;
-    font-size: 36px;
-    color:#666;
-}
-
-div.avatarPanel.show {
-  opacity: 1;
-  max-height: 500px; /* doit être sup à la hauteur des éléments */
-}
-
-
-.imagesbutton{
-  width:200px;
-   height: auto;
-}
-
-.imagestemperature{
-  width:200px;
-  height: auto;
-}
-
-div.Elements{
-
-  top: 15%;
-  
-  position: absolute;
-  width: 100%;
-  height: 88%;
-}
-/*permet de s'adapter a la taille de la fenêtre*/
-#Client {
-
-
-  /*Ajoute la barre de scroll pour trop d'elements*/
-  overflow-y: hidden;
-  overflow-x: visible;
-
-  left: 0px;
-
-  position: absolute;
-  width: 100%;
-  height: 88%;
-  top: 15%;
-}
-
-/* Le bouton bleu selon la piece */
-p.piece {
-    background-color: rgba(100,135,240,0.9); /*rgba(100,135,240,0.9) pour bleu*/
-    color: white;
-    cursor: pointer;
-
-    text-align: center;
-    line-height: 150px;
-
-    border: none;
-    outline: none;
-    transition: 0.1s;
-    margin-left: 20px;
-    float: left;
-    margin-right:20px;
-    width: 150px; /*was 100%*/
-    height: 150px; /*was auto*/
-    border-radius: 50%; /*was 10px*/
-}
-
-/* quand cliqué ou survolé */
-p.piece.active, p.piece:hover {
-    background-color: #0066aa;
-}
-
-/* ajoute la fleche */
-p.piece:after {
-    content: '\25b7';
-    color: white;
-    float: left;
-}
-
-p.piece.active:after {
-    content: '\25bd'; 
-}
-
-/* panneau avec fonctions */
-div.panel {
-    background-color: rgba(220,220,220,0.7);
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.5s ease-in-out;
-    opacity: 0;
-    margin-bottom:10px;
-
-    position: absolute;
-    top:210px; /*was 150px*/
-
-    height: 100%;
-    width: 98%;
-    border: solid #666 1px;
-    border-radius: 10px;
-}
-
-div.panel.show {
-    opacity: 1;
-    max-height: 300px; /* doit être sup à la hauteur des éléments */
-}
-
-/*Menu d'aide*/
-p.help {
-  z-index: 2;
-  cursor: pointer;
-
-  position: fixed;   /*permet de le fixer sur l'écran*/
-  bottom: 0;
-  right: 0px;
-
-  transition: 0.1s;
-}
-p.help.active {}
-
-img.imageHelpMenu {
-  width: 75px;
-  height: 75px;
-}
-
-/* panneau avec fonctions d'aide */
-div.helpPanel {
-  background-color: rgba(220,220,220,0.7);
-  max-height: 0;
-  margin-top:500px; /*doit être = a heigth*/
-  overflow: hidden;
-  transition: 0.5s ease-in-out;
-  opacity: 0;
-
-  position: fixed;
-  bottom:20px;
-  right: 75px;
-
-  height: 45%;
-  width: 10%;
-  min-width: 75px;
-  border: solid #666 1px;
-  border-radius: 10px;
-}
-
-div.helpPanel.show {
-  opacity: 1;
-  max-height: 500px; /* doit être sup à la hauteur des éléments */
-  margin-top:0; /*pour commencer la transition du bas*/ 
-}
-
-
-.imageshelp{
-  width: 60%;
-  height: auto;
-  min-width: 50px;
-  display: block;
-  margin: 30% auto;
-}
-
-
-
-
-/*pour tel*/
-@media screen and (max-width: 570px) {
-html{
-  margin:0;
-}
-#menu {
-   height: 14%;
-   margin-top: 0px;
-}
-
-#onglets{ /* conteneur des listes */
-  font : bold 20px Georgia, arial, serif;
-  position: -20px; /*aligne avec le bas du menu*/
-  height: auto;
-  padding: 0px 0 0 0px;
-
-
-  background-color: rgba(220, 160 , 0, 0.7);
-  width: 100%;
-  
-}
-/*ajoute le slider blanc*/
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 4px;
-  bottom: 1px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-form.dossier{
-  margin-top: 50px;
-}
-div.Elements {
-  top: 12%;
-}
-
-  /* Le bouton bleu selon la piece */
-p.piece {
-  line-height: 100px;
-  overflow: hidden;
-
-  width: 100px; /*was 100%*/
-  height: 100px; /*was auto*/
-
-  display: inline-block;
-}
-
-p.piece:after {
-content: '';
-}
-
-p.piece.active:after {
-content: '';
-}
-
-div.panel {
-    top:170px; /*was 150px*/
-    
-    height: 100%;
-    width: 98%;
-    border: solid #fff 1px;
-    border-radius: 10px;
-}
-
-img.imageHelpMenu {
-  width: 50px;
-  height: 50px;
-}
-
-.imageshelp{
-  width:60%;
-  min-width: 35px;
-}
-
-}
-div.bloc{
-  margin-left: 10px;
-  position: static;
-  display: inline-block;
-  text-align: center;
-  list-style-type : none;
-}
-#masque{
-  display:none;
-  position:fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
-  background-color: rgba(0,0,0,0.2);
-  z-index:1000;
-}
-
-#masque:target{
-  display :block;
-}
-
-.fenetre-modale{
-  background:#fff;
-  padding:20px;
-  border 10px solid #bbb;
-  position: relative;
-  margin: 10% auto;
-  width:40%;
-  box-shadow: 0px 0px 20px #000;
-  border-radius: 5px;
-}
-img.bombe {
-	float: right;
-	margin: 0 0 0 20px;
-}
-img.btn-fermer {
-    float: right;
-    width: 45px;
-    height: auto;
-    margin: -20px -20px 0 0;
-    
-}
-a:link { 
-text-decoration:none;
-color:black;
-}
-p.sstitre{
-   color: black;
-}
-
-form.dossier{
-  margin-top: 15px;
-  margin-left: 20px;
-  font : 20px Georgia, arial, serif;
-  color:white;
-}
-
-input[type="button"]{
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  border-radius: 50%;
-  color: #fff!important;
-  background-color: #f44336;
-
-}
-
-input[type="button"]:hover{
-
-  background-color: rgba(150, 150 , 150, 1);
-
-}
-input[type="text1"]{
-  width: 20px;
-  text
-  text-align: center;
-  border:transparent;
-  color: black;
+html {background:linear-gradient(to right,rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images/bgall3.jpg") no-repeat center center fixed;background-size:cover;height:100%;overflow:hidden;margin:0;}
+*{box-sizing:border-box;}
+#menu{background:rgba(250,250,250,0.8);height:15%;left:0;position:absolute;top:0;width:100%;}
+#onglets{background:rgba(220,160,0,0.7);bottom:-20px;font:bold 20px Georgia, arial, serif;list-style-type:none;margin-left:0;position:absolute;width:100%;}
+#onglets :focus{background:#fff;border-radius:5px 5px 0 0;}
+#onglet li:focus{border:1px solid #fff;}
+#onglets li{background:rgba(150,150,150,1);border:1px solid #000;border-radius:5px 5px 0 0;float:left;height:30px;margin:2px 2px 0;}
+#onglets a{color:#666;display:block;padding:4px;text-decoration:none;}
+#onglets a:hover{background:#fff;border-radius:5px 5px 0 0;}
+#logo{height:12%;left:0;position:absolute;top:-10px;width:auto;z-index:2;}
+img.avatar{cursor:pointer;font-size:30px;height:10%;max-height:50px;max-width:100px;position:absolute;right:0;top:0;width:auto;z-index:4;}
+.sidenav{background:#111;height:100%;overflow-x:hidden;padding-top:60px;position:fixed;right:0;top:0;transition:.5s;width:0;z-index:3;}
+.sidenav a{color:#666;display:block;font-size:25px;padding:8px 8px 8px 32px;text-decoration:none;transition:.3s;}
+.sidenav a:hover{color:#FFF;}
+.sidenav .closebtn{color:#666;font-size:36px;left:0;position:absolute;top:0;}
+div.avatarPanel.show{max-height:500px;opacity:1;}
+div.Elements{height:88%;position:absolute;top:15%;width:100%;}
+#Client{height:88%;left:0;overflow-x:visible;overflow-y:hidden;position:absolute;top:15%;width:100%;}
+p.piece{background:rgba(100,135,240,0.9);border:none;border-radius:50%;color:#FFF;cursor:pointer;float:left;height:150px;line-height:150px;margin-left:20px;margin-right:20px;outline:none;text-align:center;transition:.1s;width:150px;}
+p.piece.active,p.piece:hover{background:#06a;}
+p.piece:after{color:#FFF;content:'\25b7';float:left;}
+p.piece.active:after{content:'\25bd';}
+div.panel{background:rgba(220,220,220,0.7);border:solid #666 1px;border-radius:10px;height:100%;margin-bottom:10px;max-height:0;opacity:0;overflow:hidden;position:absolute;top:210px;transition:.5s ease-in-out;width:98%;}
+div.panel.show{max-height:300px;opacity:1;}
+p.help{bottom:0;cursor:pointer;position:fixed;right:0;transition:.1s;z-index:2;}
+img.imageHelpMenu{height:75px;width:75px;}
+div.helpPanel{background:rgba(220,220,220,0.7);border:solid #666 1px;border-radius:10px;bottom:20px;height:45%;margin-top:500px;max-height:0;min-width:75px;opacity:0;overflow:hidden;position:fixed;right:75px;transition:.5s ease-in-out;width:10%;}
+div.helpPanel.show{margin-top:0;max-height:500px;opacity:1;}
+.imageshelp{display:block;height:auto;margin:30% auto;min-width:50px;width:60%;}
+div.bloc{display:inline-block;list-style-type:none;margin-left:10px;position:static;text-align:center;}
+#masque{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
+#masque:target{display:block;}
+.fenetre-modale{background:#fff;border-radius:5px;box-shadow:0 0 20px #000;margin:10% auto;padding:20px;position:relative;width:40%;}
+img.bombe{float:right;margin:0 0 0 20px;}
+img.btn-fermer{float:right;height:auto;margin:-20px -20px 0 0;width:45px;}
+a:link{color:#000;text-decoration:none;}
+p.sstitre{color:#000;}
+form.dossier{color:#FFF;font:20px Georgia, arial, serif;margin-left:20px;margin-top:15px;}
+input[type="button"]{background:#f44336;border-radius:50%;color:#fff!important;height:30px;text-align:center;width:30px;}
+input[type="button"]:hover{background:rgba(150,150,150,1);}
+input[type="text1"]{border:transparent;color:#000;texttext-align:center;width:20px;}
+.imagesbutton,.imagestemperature{height:auto;width:200px;}
+@media screen and max-width 570px {
+html{margin:0;}
+#menu{height:14%;margin-top:0;}
+#onglets{background:rgba(220,160,0,0.7);font:bold 20px Georgia, arial, serif;height:auto;padding:0;position:-20px;width:100%;}
+.slider:before{-webkit-transition:.4s;background:#FFF;bottom:1px;content:"";height:18px;left:4px;position:absolute;transition:.4s;width:18px;}
+form.dossier{margin-top:50px;}
+div.Elements{top:12%;}
+p.piece{display:inline-block;height:100px;line-height:100px;overflow:hidden;width:100px;}
+div.panel{border:solid #fff 1px;border-radius:10px;height:100%;top:170px;width:98%;}
+img.imageHelpMenu{height:50px;width:50px;}
+.imageshelp{min-width:35px;width:60%;}
+p.piece:after,p.piece.active:after{content:'';}
 }
