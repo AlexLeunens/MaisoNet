@@ -10,7 +10,7 @@ html
     $email = "";
     $genre = "";
     $commentaire = "";
-    $website = "";
+    $site = "";
 
     $nomErreur = "";
     $adresseErreur = "";
@@ -20,7 +20,7 @@ html
     $codepostalErreur = "";
     $emailErreur = "" ;
     $genreErreur = "";
-    $websiteErreur = "";
+    $siteErreur = "";
 
   
   if ($_SERVER["REQUEST_METHOD"] == "POST") {                                     
@@ -60,6 +60,11 @@ html
       $datenaissance = "";
         } else {
       $datenaissance = test_input($_POST[ "datenaissance" ]);
+     }
+    if (empty($_POST[ "site" ])) {
+      $site = "";
+        } else {
+      $datenaissance = test_input($_POST[ "site" ]);
      }
      
     if (empty($_POST[ "pays" ])) {
@@ -121,7 +126,7 @@ html
   echo $pays ; 
   echo $codepostal ;
   echo $email ;
-  echo $website ;
+  echo $site ;
   echo $commentaire ; 
   echo $genre ; 
   
@@ -132,7 +137,7 @@ html
   echo $paysErreur ; 
   echo $codepostalErreur ;
   echo $emailErreur ;
-  echo $websiteErreur ;
+  echo $siteErreur ;
   echo $commentaireErreur ; 
   echo $genreErreur ; 
 
