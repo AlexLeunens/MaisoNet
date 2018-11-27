@@ -108,13 +108,16 @@ html
     return $data;
   }
   
-  if (isset($genre) && $genre == "femme" ) echo "femme cochée" ;
-  if (isset($genre) && $genre == "homme" ) echo "homme coché" ;
-  if (isset($genre) && $genre == "autre" ) echo "autre coché" ;
+  if (isset($genre) && $genre == "femme" ) {echo "femme cochée" ;}
+  if (isset($genre) && $genre == "homme" ) {echo "homme coché" ;}
+  if (isset($genre) && $genre == "autre" ) {echo "autre coché" ;}
   
+    //Vérification
+
   echo $nom ;
   echo $adresse ;
   echo $datenaissance ; 
+  echo $numerotelephone ;
   echo $pays ; 
   echo $codepostal ;
   echo $email ;
@@ -124,7 +127,8 @@ html
   
   echo $nomErreur ;
   echo $adresseErreur ;
-  echo $datenaissanceErreur ; 
+  echo $datenaissanceErreur ;
+  echo $numerotelephoneErreur ;
   echo $paysErreur ; 
   echo $codepostalErreur ;
   echo $emailErreur ;
