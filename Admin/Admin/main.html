@@ -118,58 +118,54 @@
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
 	<script>
-		var piece = document.getElementsByClassName("piece");
-		var panel = document.getElementsByClassName('panel'); //selec piece et panel
-		for (var i = 0; i < piece.length; i++) { //pour tout bouton
-	    	piece[i].onclick = function() {
-		        var setClasses = !this.classList.contains('active'); //selec classes actives qui ne sont pas celle sur laquelle on a cliqué
-		        setClass(piece, 'active', 'remove'); //les rend inactives
-		        setClass(panel, 'show', 'remove'); // cache le contenu
-		        if (setClasses) {
-		            this.classList.toggle("active"); //rend celle cliquée active (piece)
-		            this.nextElementSibling.classList.toggle("show"); //affiche le contenu (panel)
-		        }
-	    	}
-		}
-		
-		var help = document.getElementsByClassName("help")
-		var helpPanel = document.getElementsByClassName("helpPanel")		
-		help[0].onclick = function() {
-			var setClasses = !this.classList.contains('active'); // vérifie si help actif
-			setClass(help, 'active', 'remove'); //les rend inactives
-			setClass(helpPanel, 'show', 'remove'); // cache le contenu
-			if (setClasses) { //si help pas deja actif
-				this.classList.toggle("active");
-				this.nextElementSibling.classList.toggle("show");
-			}
-		}
-		function setClass(els, className, fnName) {
-		    for (var i = 0; i < els.length; i++) { //chaque piece selec avec !this.classList.contains('active')
-		        els[i].classList[fnName](className); //les prend une par une, puis désactive une propriété
-		    }
-		}
-		function openNav() {
-		    document.getElementById("mySidenav").style.width = "250px";
-		}
-		function closeNav() {
-		    document.getElementById("mySidenav").style.width = "0";
-		}
-		function popupHelp() {
-    		var myWindow = window.open("FAQ.html", "", "width=1200, height=1000");
-		}
-		function popupContact() {
-    		var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
-		}
-		function openPage(pageName,elmnt) {
-			var i, elements;
-			elements = document.getElementsByClassName("Elements");
-			for (i = 0; i < elements.length; i++) {
-				elements[i].style.display = "none";
-			}
-			document.getElementById(pageName).style.display = "block";
-			elmnt.classList.toggle("focus");
-		}
-// Get the element with id="defaultOpen" and click on it
+for (var piece = document.getElementsByClassName("piece"), panel = document.getElementsByClassName("panel"), i = 0; i < piece.length; i++) {
+	piece[i].onclick = function () {
+		var a = !this.classList.contains("active");
+		setClass(piece, "active", "remove");
+		setClass(panel, "show", "remove");
+		a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
+	};
+}
+var help = document.getElementsByClassName("help"),
+	helpPanel = document.getElementsByClassName("helpPanel");
+help[0].onclick = function () {
+	var a = !this.classList.contains("active");
+	setClass(help, "active", "remove");
+	setClass(helpPanel, "show", "remove");
+	a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
+};
+
+function setClass(a, d, b) {
+	for (var c = 0; c < a.length; c++) {
+		a[c].classList[b](d);
+	}
+}
+
+function openNav() {
+	document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+	document.getElementById("mySidenav").style.width = "0";
+}
+
+function popupHelp() {
+	window.open("FAQ.html", "", "width=1200, height=1000");
+}
+
+function popupContact() {
+	window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
+}
+
+function openPage(a, d) {
+	var b;
+	var c = document.getElementsByClassName("Elements");
+	for (b = 0; b < c.length; b++) {
+		c[b].style.display = "none";
+	}
+	document.getElementById(a).style.display = "block";
+	d.classList.toggle("focus");
+}
 document.getElementById("defaultOpen").click();
 	</script>
 	 
