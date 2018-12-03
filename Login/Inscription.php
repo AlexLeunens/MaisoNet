@@ -120,25 +120,45 @@ html
     //Vérification
 
   echo $nom ;
+  echo <br>;
   echo $adresse ;
+  echo <br>;
   echo $datenaissance ; 
+  echo <br>;
   echo $numerotelephone ;
-  echo $pays ; 
+  echo <br>;
+  echo $pays ;
+  echo <br>;
   echo $codepostal ;
+  echo <br>;
   echo $email ;
+  echo <br>;
   echo $site ;
+  echo <br>;
   echo $commentaire ; 
+  echo <br>;
   echo $genre ; 
+  echo <br>;
+  echo <br>;
   
   echo $nomErreur ;
+  echo <br>;
   echo $adresseErreur ;
+  echo <br>;
   echo $datenaissanceErreur ;
+  echo <br>;
   echo $numerotelephoneErreur ;
+  echo <br>;
   echo $paysErreur ; 
+  echo <br>;
   echo $codepostalErreur ;
+  echo <br>;
   echo $emailErreur ;
+  echo <br>;
   echo $siteErreur ;
+  echo <br>;
   echo $commentaireErreur ; 
+  echo <br>;
   echo $genreErreur ; 
 
   ?>
