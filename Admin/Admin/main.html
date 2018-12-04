@@ -168,8 +168,16 @@ function openPage(a, d) {
 }
 document.getElementById("defaultOpen").click();
 	</script>
-	 
-</body>
+
+<?php
+	$contact = mysql_connect('172.16.236.25','root','root');
+	mysql_select_db ('formation_mysql', $contact) ;
+	$sql = 'SELECT Nom,Prénom FROM utilisateurs';
+	$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+	$data = mysql_fetch_array($req);
+	echo '.$data['Nom']';
+}
+?>
 </body>
 
 </html>
