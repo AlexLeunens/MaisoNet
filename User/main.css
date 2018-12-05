@@ -173,7 +173,7 @@ img.imagesbutton{
   margin-left: 10px;
 }
 
-/*permet de s'adapter a la taille de la fenêtre*/
+/*permet de s'adapter à la taille de la fenêtre*/
 div.fonctions {
   display: grid;
   grid-auto-flow: column; /*oblige à se mettre en colonne*/
@@ -212,7 +212,7 @@ p.piece.active, p.piece:hover {
     background-color: #0066aa;
 }
 
-/* ajoute la fleche */
+/* ajoute la flèche */
 p.piece:after {
     content: '\25b7';
     color: white;
