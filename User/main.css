@@ -1,25 +1,25 @@
 html {
-	background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images/bgall3.jpg") no-repeat center center fixed;
-	background-size: cover;
-	height: 100%;
-	overflow: hidden;
-	margin: 0;
-	padding: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images/bgall3.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 * {
-	box-sizing: border-box; /*utile pour le responsive*/
+  box-sizing: border-box; /*utile pour le responsive*/
 }
 
 
 #menu {
-	background-color: rgba(250, 250, 250, 0.8); /*rgba(255, 195, 77, 0.5)*/
-	
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 15%;
+  background-color: rgba(250, 250, 250, 0.8); /*rgba(255, 195, 77, 0.5)*/
+  
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 15%;
 }
 
 #onglets{ /* conteneur des listes */
@@ -36,7 +36,6 @@ html {
   float : left;
   height : 30px; /* Hauteur onglet */
   background-color: rgba(150, 150 , 150, 1); /* explicite */
-
   margin-right: 5px;
 }
 #onglets li.active{
@@ -168,15 +167,10 @@ div.avatarPanel.show {
   max-height: 500px; /* doit être sup à la hauteur des éléments */
 }
 
-
-.imagesbutton{
+img.imagesbutton{
   width: 200px;
   height: auto;
-}
-
-.imagestemperature{
-  width:200px;
-  height: auto;
+  margin-left: 10px;
 }
 
 /*permet de s'adapter a la taille de la fenêtre*/
@@ -244,19 +238,13 @@ div.panel {
     height: 100%;
     width: 98%;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 div.panel.show {
     opacity: 1;
     max-height: 500px; /* doit être sup à la hauteur des éléments */
-}
-
-div.block{
-  margin-left: 20px;
-  position : static;
-  display: inline-block;
-  text-align: center;
-  
 }
 
 /*Menu d'aide*/
@@ -313,11 +301,19 @@ div.helpPanel.show {
   margin: 30% auto;
 }
 
+div.block{
+  position: static;
+  display: inline-block;
+  text-align: center; 
+  justify-content: space-around;
+  list-style-type : none;
+}
+
 
 
 
 /*pour tel*/
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 504px) {
 
 #menu {
    height: 12%;
@@ -370,7 +366,6 @@ div.fonctions {
 p.piece {
   line-height: 100px;
   overflow: hidden;
-
   width: 100px;
   height: 100px;
 }
@@ -391,11 +386,25 @@ div.panel {
 
 p.help {
   line-height: 45px;
-  font-size: 40px;
+  font-size: 40px; 
 
   width: 45px;
   height: 45px;
 }
 
+img.imagesbutton {
+  width : auto;
+  height: 50%
+  max-height : 50px ;
+  max-width : 100px;
 }
 
+div.block {
+  width: auto;
+  height: 50%;
+  max-height: 50px;
+  max-width: 100px;
+}
+
+
+}
