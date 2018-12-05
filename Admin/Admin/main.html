@@ -6,7 +6,8 @@
   	<title>User Interface</title>
 
   	<link rel="stylesheet" href="main.css"> <!--feuille css-->
- 	 <link rel="icon" href="Images/logo_provisoire_mini.png"> <!--icone-->
+ 	<link rel="icon" href="Images/logo_provisoire_mini.png"> <!--icone-->
+	<script type="text/javascript" src="main.js"></script>
   
 </head>
 
@@ -83,8 +84,32 @@
 
 
 	<div id= "Contact" class="Elements" style="display:none;">
-		<p>bonjour</p>
-		</div>
+			<?php
+			$mysqli = new mysqli('172.24.2.185', 'root', '', 'formation_mysql');
+		
+
+			if ($mysqli->connect_errno) {
+				die('<p>Connexion impossible : '.$mysqli->connect_error.'</p>');
+			}
+
+			$result = $mysqli->query('SELECT nom, prenom FROM utilisateurs;') ;
+
+			if (!$result) {
+				die('<p>ERREUR Requête invalide : '.$mysqli->error.'</p>');
+			}
+
+			while ($row = $result->fetch_assoc()) {
+				$nom = $row['nom'] ;
+				$prenom = $row['prenom'] ;
+			echo '<p>'.$prenom.' '.$nom.'</p>'."\r\n" ;
+			}
+
+			$result->free() ;
+
+			$mysqli->close() ;
+			?>
+	
+	</div>
 	<div id= "Notification" class="Elements" style="display:none;">
 		
 		</div>
@@ -117,67 +142,10 @@
 			</form>
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
-	<script>
-for (var piece = document.getElementsByClassName("piece"), panel = document.getElementsByClassName("panel"), i = 0; i < piece.length; i++) {
-	piece[i].onclick = function () {
-		var a = !this.classList.contains("active");
-		setClass(piece, "active", "remove");
-		setClass(panel, "show", "remove");
-		a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
-	};
-}
-var help = document.getElementsByClassName("help"),
-	helpPanel = document.getElementsByClassName("helpPanel");
-help[0].onclick = function () {
-	var a = !this.classList.contains("active");
-	setClass(help, "active", "remove");
-	setClass(helpPanel, "show", "remove");
-	a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
-};
+	
 
-function setClass(a, d, b) {
-	for (var c = 0; c < a.length; c++) {
-		a[c].classList[b](d);
-	}
-}
 
-function openNav() {
-	document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-	document.getElementById("mySidenav").style.width = "0";
-}
-
-function popupHelp() {
-	window.open("FAQ.html", "", "width=1200, height=1000");
-}
-
-function popupContact() {
-	window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
-}
-
-function openPage(a, d) {
-	var b;
-	var c = document.getElementsByClassName("Elements");
-	for (b = 0; b < c.length; b++) {
-		c[b].style.display = "none";
-	}
-	document.getElementById(a).style.display = "block";
-	d.classList.toggle("focus");
-}
-document.getElementById("defaultOpen").click();
-	</script>
-
-<?php
-	$contact = mysql_connect('172.16.236.25','root','root');
-	mysql_select_db ('formation_mysql', $contact) ;
-	$sql = 'SELECT Nom,Prénom FROM utilisateurs';
-	$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
-	$data = mysql_fetch_array($req);
-	echo '.$data['Nom']';
-}
-?>
 </body>
 
 </html>
+	
