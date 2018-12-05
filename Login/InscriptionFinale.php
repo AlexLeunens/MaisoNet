@@ -3,8 +3,8 @@
 <head>
    <link rel="stylesheet" href= "Inscription.css" >    <!--Appel du code CSS-->
    <link rel="stylesheet" href= "Inscription.php" >    <!--Appel du code PHP-->
-   html 
-
+</head>
+<style>
     {   background:url("maison_connectee.jpg") no-repeat center;
         background-repeat: no-repeat;
         background-size: cover; 
@@ -84,7 +84,7 @@
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
 }
-</head>
+</style>
 <title>Dossier d'inscription MaisoNet</title>
 <body>
 
