@@ -173,7 +173,7 @@ img.imagesbutton{
   margin-left: 10px;
 }
 
-/*permet de s'adapter à la taille de la fenêtre*/
+/*permet de s'adapter a la taille de la fenêtre*/
 div.fonctions {
   display: grid;
   grid-auto-flow: column; /*oblige à se mettre en colonne*/
@@ -212,7 +212,7 @@ p.piece.active, p.piece:hover {
     background-color: #0066aa;
 }
 
-/* ajoute la flèche */
+/* ajoute la fleche */
 p.piece:after {
     content: '\25b7';
     color: white;
@@ -313,6 +313,15 @@ div.block{
 
 
 /*pour tel*/
+
+@media screen and (max-width: 960px){
+
+div.helpPanel{
+  height: 33%;
+}
+
+}
+
 @media screen and (max-width: 504px) {
 
 #menu {
@@ -387,7 +396,7 @@ div.panel {
 p.help {
   line-height: 45px;
   font-size: 40px; 
-
+  align-items: center;
   width: 45px;
   height: 45px;
 }
@@ -406,5 +415,9 @@ div.block {
   max-width: 100px;
 }
 
+div.helpPanel {
+  height: 30%;
+}
 
 }
+
