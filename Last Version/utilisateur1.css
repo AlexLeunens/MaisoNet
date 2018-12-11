@@ -294,7 +294,7 @@ div.helpPanel.show {
 
 
 .imageshelp{
-  width: 50%;
+  width: 70%;
   height: auto;
   min-width: 30px;
   display: block;
@@ -416,7 +416,7 @@ div.block {
 }
 
 div.helpPanel {
-  height: 30%;
+  height: 25%;
 }
 
 }
