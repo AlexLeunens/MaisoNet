@@ -116,8 +116,6 @@
 
 		<a href="" onclick= "popupContact()"><img class="imageshelp" src="Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
 
-		<img class="imageshelp" src="Images-utilisateur/helpadministrator.png" alt="Contact Admin"></img>
-
 	</div>
 
 	<p><a href="#masque"></a></p>
