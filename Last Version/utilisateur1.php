@@ -15,7 +15,6 @@
   <img class="avatar" src="Images-utilisateur/avatar.png" onclick="openNav()"> </img>
   <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
-    <a href="#">Profil</a>
     <a href="#">Services</a>
     <a href="#">Contact</a>
     <a href="index.php">Déconnexion</a>
@@ -112,8 +111,6 @@
     <a href="" onclick= "tabFAQ()"><img class="imageshelp" src="Images-utilisateur/helpquestionmark.png" alt="FAQ"></img></a>
 
     <a href="" onclick= "popupContact()"><img class="imageshelp" src="Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
-
-    <img class="imageshelp" src="Images-utilisateur/helpadministrator.png" alt="Contact Admin"></img>
 
   </div>
 
