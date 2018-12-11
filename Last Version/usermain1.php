@@ -109,14 +109,6 @@
 		
 		</div>
 
-	<p class="help"> <img class="imageHelpMenu" src="Images-utilisateur/helpmenu.png" alt="Help"></img> </p>
-	<div class="helpPanel">
-
-		<a href="" onclick= "popupHelp()"><img class="imageshelp" src="Images-utilisateur/helpquestionmark.png" alt="FAQ"></img></a>
-
-		<a href="" onclick= "popupContact()"><img class="imageshelp" src="Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
-
-	</div>
 
 	<p><a href="#masque"></a></p>
 		<div id="masque">
