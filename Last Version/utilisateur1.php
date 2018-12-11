@@ -16,7 +16,7 @@
   <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="#">Services</a>
-    <a href="#">Contact</a>
+    <a href="" onclick= "popupContact()" >Contact</a>
     <a href="index.php">Déconnexion</a>
   </div>
 
