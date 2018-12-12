@@ -11,7 +11,7 @@
 		<div id="page-wrapper">
 
 				<section id="header" >
-				        <a href="Accueil.php"><img id="logo" src="Images/logo_provisoire2.png"> </img></a>
+				        <a href="Accueil.php"><img id="logo" src="Images_services/logo_provisoire2.png"> </img></a>
 
 						<h1><a href="index.html">Nos services</a></h1>
 
@@ -31,7 +31,7 @@
 										<div class="row">
 											<div class="col-4 col-6-medium col-12-small">
 												<section class="box">
-													<a href="#" class="image featured"><img src="Images/appart.jpg" alt="" /></a>
+													<a href="#" class="image featured"><img src="Images_services/appart.jpg" alt="" /></a>
 													<header>
 														<h3>Appartement</h3>
 													</header
@@ -44,7 +44,7 @@
 											</div>
 											<div class="col-4 col-6-medium col-12-small">
 												<section class="box">
-													<a href="#" class="image featured"><img src="Images/maison.jpg" alt="" /></a>
+													<a href="#" class="image featured"><img src="Images_services/maison.jpg" alt="" /></a>
 													<header>
 														<h3>Maison</h3>
 													</header
