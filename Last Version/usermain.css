@@ -45,7 +45,7 @@ input[type="button"]:hover{background:rgba(150,150,150,1);}
 input[type="text1"]{border:transparent;color:#000;texttext-align:center;width:20px;}
 .imagesbutton,.imagestemperature{height:auto;width:200px;}
 .imagesbuttonplus{height:75px;width:75px;margin-left: auto;margin-right: auto;margin-bottom: 25px;}
-@media screen and max-width 570px {
+@media screen and (max-width : 570px) {
 html{margin:0;}
 #menu{height:14%;margin-top:0;}
 #onglets{background:rgba(220,160,0,0.7);font:bold 20px Georgia, arial, serif;height:auto;padding:0;position:-20px;width:100%;}
