@@ -47,7 +47,7 @@
           <p> Valeur température</p>
         </div>
         <div class="block">
-          <img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
+          <img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
           <p> Etat des volets</p>
         </div>
       </div>
@@ -59,7 +59,7 @@
         	<p> Valeur température</p>
         </div>
         <div class="block">
-        	<img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
+        	<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
         	<p> Etat des volets</p>
      	</div>
      </div>
@@ -71,7 +71,7 @@
        		<p> Valeur température</p>
        	</div>
        	<div class="block">
-       		<img class="imagesbutton" src="Images/volets2.png" alt="volets"></img>
+       		<img class="imagesbutton" src="Images/volet.png" alt="volets"></img>
        		<p> Etat des volets</p>
       	</div>
       </div>
@@ -86,7 +86,7 @@
         	<p>Valeur température</p>
         </div>
         <div class="block">
-        	<img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
+        	<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
         	<p> Etat des volets</p>
         </div>
       </div>
@@ -98,7 +98,7 @@
         	<p>Valeur température</p>
         </div>
         <div class="block">
-        	<img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
+        	<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
         	<p> Etat des volets</p>
         </div>
       </div>
