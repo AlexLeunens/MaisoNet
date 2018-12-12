@@ -301,13 +301,7 @@ div.helpPanel.show {
   margin: 30% auto;
 }
 
-div.block{
-  position: static;
-  display: inline-block;
-  text-align: center; 
-  justify-content: space-around;
-  list-style-type : none;
-}
+div.block{display:inline-block;list-style-type:none;margin-left:10px;position:static;text-align:center;}
 
 
 
