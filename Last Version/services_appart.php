@@ -24,7 +24,6 @@
 
 						<!-- Content -->
 							<article class="box post">
-								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
 								<header>
 									<h2>Notre formule appartement:</h2>
 								</header>
