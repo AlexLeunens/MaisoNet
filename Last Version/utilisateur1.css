@@ -420,4 +420,7 @@ div.helpPanel {
 }
 
 }
-
+#masquetemp{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
+#masquetemp:target{display:block;}
+#masquevolet{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
+#masquevolet:target{display:block;}
