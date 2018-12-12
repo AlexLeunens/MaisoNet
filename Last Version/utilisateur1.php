@@ -42,65 +42,72 @@
   <div id= "Present" class="fonctions">
     <p class="piece">Salon</p>
       <div class="panel">
-        <div class="block">
-          <img class="imagesbutton" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-          <p> Valeur température</p>
-        </div>
-        <div class="block">
-          <img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-          <p> Etat des volets</p>
-        </div>
+        <div class=bloc>
+            <a href="#masquetemp">
+				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<p class=sstitre>Votre Temperature</p></a>
+		</div>
+		<div class=bloc>
+            <a href="#masquevolet">
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+		</div>
       </div>
 
     <p class="piece">Chambre 1</p>
       <div class="panel">
-      	<div class="block">
-        	<img class="imagesbutton" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-        	<p> Valeur température</p>
-        </div>
-        <div class="block">
-        	<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-        	<p> Etat des volets</p>
-     	</div>
+      	<div class=bloc>
+            <a href="#masquetemp">
+				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<p class=sstitre>Votre Temperature</p></a>
+		</div>
+		<div class=bloc>
+            <a href="#masquevolet">
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+		</div>
      </div>
 
     <p class="piece">Salle A Manger</p>
-      <div class="panel">
-      	<div class="block">
-       		<img class="imagesbutton" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-       		<p> Valeur température</p>
-       	</div>
-       	<div class="block">
-       		<img class="imagesbutton" src="Images/volet.png" alt="volets"></img>
-       		<p> Etat des volets</p>
-      	</div>
-      </div>
+      <div class=bloc>
+          <a href="#masquetemp">
+				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<p class=sstitre>Votre Temperature</p></a>
+		</div>
+		<div class=bloc>
+            <a href="#masquevolet">
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+		</div>
   </div>
 
 
   <div id= "Absent" class="fonctions" style="display:none;">
     <p class="piece">Economies</p>
-      <div class="panel">
-      	<div class="block">
-        	<img class="imagesbutton" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-        	<p>Valeur température</p>
-        </div>
-        <div class="block">
-        	<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-        	<p> Etat des volets</p>
-        </div>
+      <div class=bloc>
+          <a href="#masquetemp">
+				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<p class=sstitre>Votre Temperature</p></a>
+		</div>
+		<div class=bloc>
+            <a href="#masquevolet">
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+		</div>
       </div>
 
     <p class="piece">Sécurité</p>
       <div class="panel">
-      	<div class="block">
-        	<img class="imagesbutton" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-        	<p>Valeur température</p>
-        </div>
-        <div class="block">
-        	<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-        	<p> Etat des volets</p>
-        </div>
+      	<div class=bloc>
+            <a href="#masquetemp">
+				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<p class=sstitre>Votre Temperature</p></a>
+		</div>
+		<div class=bloc>
+            <a href="#masquevolet">
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+		</div>
       </div>
    </div>
 
@@ -113,7 +120,30 @@
     <a href="" onclick= "popupContact()"><img class="imageshelp" src="Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
 
   </div>
-
+<p><a href="#masquetemp"></a></p>
+		<div id="masquetemp">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
+			<h2>Votre température:</h2>
+			<form>
+				<input type="button" value=" - " onClick="javascript:this.form.champ.value--;">
+				<input type="text1" name="champ" value="0">°C
+				<input type="button" value=" + " onClick="javascript:this.form.champ.value++;">
+			</form>
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
+  <p><a href="#masquevolet"></a></p>
+		<div id="masquevolet">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
+			<h2>Etat des volets:</h2>
+			<!-- ICI Ajouter l'a liste des capteurs l'état ouvert ou fermé du volet -->
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
 
   <script>
     var piece = document.getElementsByClassName("piece");
