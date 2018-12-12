@@ -13,7 +13,7 @@
 				<section id="header">
 
 					<!-- Logo -->
-						<a href="Accueil.php"><img id="logo" src="Images/logo_provisoire2.png"> </img></a>
+						<a href="Accueil.php"><img id="logo" src="Images_services/logo_provisoire2.png"> </img></a>
 						<h1><a href="index.html">Maison</a></h1>
 
 				</section>
@@ -23,8 +23,7 @@
 					<div class="container">
 
 						<!-- Content -->
-							<article class="box post">
-								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+							<article class="box post">							
 								<header>
 									<h2>Notre formule maison:</h2>
 								</header>
