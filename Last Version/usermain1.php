@@ -45,36 +45,48 @@
 		</form>
 		<p class="piece">Salon</p>
 			<div class="panel">
-				<div class=bloc><a href="#masque">
+				<div class=bloc><a href="#masquetemp">
 				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
-				<div class=bloc><a href="#masque">
+				<div class=bloc><a href="#masquevolet">
 				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+				</div>
+				<div class=bloc><a href="#masqueplus">
+				<img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
 				<p class=sstitre>Etat volet</p></a>
 				</div>
 			</div>
 
 		<p class="piece">Chambre 1</p>
 			<div class="panel">
-				<div class=bloc><a href="#masque">
+				<div class=bloc><a href="#masquetemp">
 				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
-				<div class=bloc><a href="#masque">
+				<div class=bloc><a href="#masquevolet">
 				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+				</div>
+				<div class=bloc><a href="#masqueplus">
+				<img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
 				<p class=sstitre>Etat volet</p></a>
 				</div>
 			</div>
 
 		<p class="piece">Salle A Manger</p>
 			<div class="panel">
-				<div class=bloc><a href="#masque">
+				<div class=bloc><a href="#masquetemp">
 				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
-				<div class=bloc><a href="#masque">
+				<div class=bloc><a href="#masquevolet">
 				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+				</div>
+				<div class=bloc><a href="#masqueplus">
+				<img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
 				<p class=sstitre>Etat volet</p></a>
 				</div>
 			</div>
@@ -109,18 +121,38 @@
 		</div>
 
 
-	<p><a href="#masque"></a></p>
-		<div id="masque">
+	<p><a href="#masquetemp"></a></p>
+		<div id="masquetemp">
 		  <div class="fenetre-modale">
 			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
 			  title="Fermer la fenêtre" class="btn-fermer" 
 			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
-			<h2>Bonjour</h2>
+			<h2>Votre température:</h2>
 			<form>
 				<input type="button" value=" - " onClick="javascript:this.form.champ.value--;">
 				<input type="text1" name="champ" value="0">°C
 				<input type="button" value=" + " onClick="javascript:this.form.champ.value++;">
 			</form>
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
+ 	 <p><a href="#masquevolet"></a></p>
+		<div id="masquevolet">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
+			<h2>Etat des volets:</h2>
+			<!-- ICI Ajouter l'a liste des capteurs l'état ouvert ou fermé du volet -->
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
+ 	 <p><a href="#masqueplus"></a></p>
+		<div id="masqueplus">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
+			<h2>Quel capteur voulez vous ajouter:</h2>
+			<!-- ICI Ajouter la liste des capteurs -->
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
 	<script>
