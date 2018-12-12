@@ -48,6 +48,7 @@ input[type="text1"]{border:transparent;color:#000;texttext-align:center;width:20
 @media screen and (max-width : 570px) {
 html{margin:0;}
 #menu{height:14%;margin-top:0;}
+#logo{height:10%;}
 #onglets{background:rgba(220,160,0,0.7);font:bold 20px Georgia, arial, serif;height:auto;padding:0;position:-20px;width:100%;}
 .slider:before{-webkit-transition:.4s;background:#FFF;bottom:1px;content:"";height:18px;left:4px;position:absolute;transition:.4s;width:18px;}
 form.dossier{margin-top:50px;}
@@ -57,4 +58,5 @@ div.panel{border:solid #fff 1px;border-radius:10px;height:100%;top:170px;width:9
 img.imageHelpMenu{height:50px;width:50px;}
 .imageshelp{min-width:35px;width:60%;}
 p.piece:after,p.piece.active:after{content:'';}
+form.dossier{marigin-top:0px;}
 }
