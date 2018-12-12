@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
     <title>User Interface</title>
 
-    <link rel="stylesheet" href="utilisateur1.css"> <!--feuille css-->
+    <link rel="stylesheet" href="usermain.css"> <!--feuille css-->
    <link rel="icon" href="Images-utilisateur/logo_provisoire_mini.png"> <!--icone-->
   
 </head>
@@ -40,75 +40,53 @@
   
 
   <div id= "Present" class="fonctions">
-    <p class="piece">Salon</p>
-      <div class="panel">
-        <div class=bloc>
-            <a href="#masquetemp">
+      <p class="piece">Salon</p>
+			<div class="panel">
+				<div class="bloc"><a href="#masquetemp">
 				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
-		</div>
-		<div class=bloc>
-            <a href="#masquevolet">
+				</div>
+				<div class="bloc"><a href="#masquevolet">
 				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
 				<p class=sstitre>Etat volet</p></a>
-		</div>
+				</div>
+			</div>
+
+		<p class="piece">Chambre 1</p>
+			<div class="panel">
+				<div class="bloc"><a href="#masquetemp">
+				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<p class=sstitre>Votre Temperature</p></a>
+				</div>
+				<div class="bloc"><a href="#masquevolet">
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+				</div>
+			</div>
+
+		<p class="piece">Salle A Manger</p>
+			<div class="panel">
+				<div class="bloc"><a href="#masquetemp">
+				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<p class=sstitre>Votre Temperature</p></a>
+				</div>
+				<div class="bloc"><a href="#masquevolet">
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
+				<p class=sstitre>Etat volet</p></a>
+				</div>
+			</div>
       </div>
-
-    <p class="piece">Chambre 1</p>
-      <div class="panel">
-      	<div class=bloc>
-            <a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-				<p class=sstitre>Votre Temperature</p></a>
-		</div>
-		<div class=bloc>
-            <a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
-		</div>
-     </div>
-
-    <p class="piece">Salle A Manger</p>
-      <div class=bloc>
-          <a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-				<p class=sstitre>Votre Temperature</p></a>
-		</div>
-		<div class=bloc>
-            <a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
-		</div>
-  </div>
 
 
   <div id= "Absent" class="fonctions" style="display:none;">
     <p class="piece">Economies</p>
-      <div class=bloc>
-          <a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-				<p class=sstitre>Votre Temperature</p></a>
-		</div>
-		<div class=bloc>
-            <a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
-		</div>
-      </div>
+    <div class="panel">
+    </div>
+
 
     <p class="piece">Sécurité</p>
-      <div class="panel">
-      	<div class=bloc>
-            <a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-				<p class=sstitre>Votre Temperature</p></a>
-		</div>
-		<div class=bloc>
-            <a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
-		</div>
-      </div>
+     <div class="panel">
+    </div>
    </div>
 
 
