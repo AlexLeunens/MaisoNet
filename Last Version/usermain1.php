@@ -50,7 +50,7 @@
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
 				<div class=bloc><a href="#masque">
-				<img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
 				<p class=sstitre>Etat volet</p></a>
 				</div>
 			</div>
@@ -62,7 +62,7 @@
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
 				<div class=bloc><a href="#masque">
-				<img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
 				<p class=sstitre>Etat volet</p></a>
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
 				<div class=bloc><a href="#masque">
-				<img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
+				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
 				<p class=sstitre>Etat volet</p></a>
 				</div>
 			</div>
