@@ -301,14 +301,16 @@ div.helpPanel.show {
   margin: 30% auto;
 }
 
-div.block{
+div.bloc{
   position: static;
   display: inline-block;
   text-align: center; 
   justify-content: space-around;
   list-style-type : none;
 }
-
+	a {
+	text-decoration:none;
+	color:black;}
 
 
 
@@ -408,7 +410,7 @@ img.imagesbutton {
   max-width : 100px;
 }
 
-div.block {
+div.bloc {
   width: auto;
   height: 50%;
   max-height: 50px;
