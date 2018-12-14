@@ -212,7 +212,6 @@ div.panel {
     width: 98%;
     border-radius: 10px;
     display: flex;
-    justify-content: center;
 }
 
 div.panel.show {
@@ -274,7 +273,7 @@ div.helpPanel.show {
   margin: 30% auto;
 }
 
-div.block{display:inline-block;list-style-type:none;margin-left:10px;position:static;text-align:center;}
+div.bloc{display:inline-block;list-style-type:none;margin-left:10px;position:static;text-align:center;}
 
 
 
@@ -375,7 +374,7 @@ img.imagesbutton {
   max-width : 100px;
 }
 
-div.bloc{display:inline-block;list-style-type:none;margin-left:10px;position:static;text-align:center;}
+
 
 div.helpPanel {
   height: 25%;
