@@ -33,6 +33,7 @@
 			<li><a href="javascript:openPage('Contact', this)"> Contact </a></li>
 			<li><a href="javascript:openPage('Notification', this)"> Notification </a></li>
 			<li><a href="javascript:openPage('GestClient', this)"> Gestion Client </a></li>
+			<li><a href="javascript:openPage('GestAdmin',this)"> Gestion Admin </a></li>
 	
   		</ul>
 	</div>
@@ -118,6 +119,14 @@
 	<div id= "GestClient" class="Elments" style="display:none;">
 		
 		</div>
+	<div id=GestAdmin class="Elements"  style="display:none;">
+		<p class="piece">Modifier Accueil</p>
+				<div class="panel">
+					<div class=bloc><a href="#masque1">
+					<p class="sstitre">Presentation</p></a>
+					
+				</div>
+		</div>
 
 
 	<p><a href="#masquetemp"></a></p>
@@ -128,9 +137,9 @@
 			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
 			<h2>Votre température:</h2>
 			<form>
-				<input type="button" value=" - " onClick="javascript:this.form.champ.value--;">
+				<input type="button1" value=" - " onClick="javascript:this.form.champ.value--;">
 				<input type="text1" name="champ" value="0">°C
-				<input type="button" value=" + " onClick="javascript:this.form.champ.value++;">
+				<input type="button1" value=" + " onClick="javascript:this.form.champ.value++;">
 			</form>
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
@@ -152,6 +161,22 @@
 			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
 			<h2>Quel capteur voulez vous ajouter:</h2>
 			<!-- ICI Ajouter la liste des capteurs -->
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
+	<p><a href="#masque1"></a></p>
+		<div id="masque1">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
+			<h2>Entrez le texte</h2>
+			<form>
+					<input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');"/>
+					<input type="button" value="I" style="font-style: italic;" onclick="commande('italic');"/>
+					<input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');"/>
+					<div class="editeur" contenteditable></div>
+					<input type="button" value="Enter"/>
+			</form>
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
 	<script>
