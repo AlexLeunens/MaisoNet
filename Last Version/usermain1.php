@@ -5,8 +5,9 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
   	<title>User Interface</title>
 
-  	<link rel="stylesheet" href="usermain.css"> <!--feuille css-->
- 	 <link rel="icon" href="Images-utilisateur/logo_provisoire_mini.png"> <!--icone-->
+  	<link rel="stylesheet" href="usermain.css"/> <!--feuille css-->
+	<link rel="icon" href="Images-utilisateur/logo_provisoire_mini.png"/> <!--icone-->
+	<script src="testediteur.js"></script>
   
 </head>
 
@@ -19,8 +20,9 @@
 	<img class="avatar" src="Images-utilisateur/avatar.png" onclick="openNav()"> </img>
 	<div id="mySidenav" class="sidenav">
 	  <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
-	  <a href="Nos_services.php">Services</a>
-	  <a href="" onclick= "popupContact()" >Contact</a>
+	  <a href="#">Profil</a>
+	  <a href="#">Services</a>
+	  <a href="#">Contact</a>
 	  <a href="index.php">Se Déconnecter</a>
 	</div>
 
@@ -33,6 +35,8 @@
 			<li><a href="javascript:openPage('Contact', this)"> Contact </a></li>
 			<li><a href="javascript:openPage('Notification', this)"> Notification </a></li>
 			<li><a href="javascript:openPage('GestClient', this)"> Gestion Client </a></li>
+			<li><a href="javascript:openPage('GestAdmin',this)"> Gestion Admin </a></li>
+			
 	
   		</ul>
 	</div>
@@ -45,48 +49,36 @@
 		</form>
 		<p class="piece">Salon</p>
 			<div class="panel">
-				<div class=bloc><a href="#masquetemp">
+				<div class=bloc><a href="#masque">
 				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
-				<div class=bloc><a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
-				</div>
-				<div class=bloc><a href="#masqueplus">
-				<img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
+				<div class=bloc><a href="#masque">
+				<img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
 				<p class=sstitre>Etat volet</p></a>
 				</div>
 			</div>
 
 		<p class="piece">Chambre 1</p>
 			<div class="panel">
-				<div class=bloc><a href="#masquetemp">
+				<div class=bloc><a href="#masque">
 				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
-				<div class=bloc><a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
-				</div>
-				<div class=bloc><a href="#masqueplus">
-				<img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
+				<div class=bloc><a href="#masque">
+				<img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
 				<p class=sstitre>Etat volet</p></a>
 				</div>
 			</div>
 
 		<p class="piece">Salle A Manger</p>
 			<div class="panel">
-				<div class=bloc><a href="#masquetemp">
+				<div class=bloc><a href="#masque">
 				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
-				<div class=bloc><a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
-				</div>
-				<div class=bloc><a href="#masqueplus">
-				<img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
+				<div class=bloc><a href="#masque">
+				<img class="imagesbutton" src="Images-utilisateur/volets2.png" alt="volets"></img>
 				<p class=sstitre>Etat volet</p></a>
 				</div>
 			</div>
@@ -119,40 +111,59 @@
 	<div id= "GestClient" class="Elments" style="display:none;">
 		
 		</div>
+		
+		<div id=GestAdmin class="Elements"  style="display:none;">
+		<p class="piece">Modifier Accueil</p>
+				<div class="panel">
+					<div class=bloc><a href="#masque1">
+					<p class="sstitre">Presentation</p></a>
+					
+				</div>
+			</div>
+	<p class="help"> <img class="imageHelpMenu" src="Images-utilisateur/helpmenu.png" alt="Help"></img> </p>
+	<div class="helpPanel">
 
+		<a href="" onclick= "popupHelp()"><img class="imageshelp" src="Images-utilisateur/helpquestionmark.png" alt="FAQ"></img></a>
 
-	<p><a href="#masquetemp"></a></p>
-		<div id="masquetemp">
+		<a href="" onclick= "popupContact()"><img class="imageshelp" src="Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
+
+		<img class="imageshelp" src="Images-utilisateur/helpadministrator.png" alt="Contact Admin"></img>
+
+	</div>
+	
+			
+		
+		
+	</div>
+
+	<p><a href="#masque"></a></p>
+		<div id="masque">
 		  <div class="fenetre-modale">
 			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
 			  title="Fermer la fenêtre" class="btn-fermer" 
 			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
-			<h2>Votre température:</h2>
+			<h2>Bonjour</h2>
 			<form>
-				<input type="button" value=" - " onClick="javascript:this.form.champ.value--;">
+				<input type="button1" value=" - " onClick="javascript:this.form.champ.value--;">
 				<input type="text1" name="champ" value="0">°C
-				<input type="button" value=" + " onClick="javascript:this.form.champ.value++;">
+				<input type="button1" value=" + " onClick="javascript:this.form.champ.value++;">
 			</form>
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
- 	 <p><a href="#masquevolet"></a></p>
-		<div id="masquevolet">
+	<p><a href="#masque1"></a></p>
+		<div id="masque1">
 		  <div class="fenetre-modale">
 			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
 			  title="Fermer la fenêtre" class="btn-fermer" 
 			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
-			<h2>Etat des volets:</h2>
-			<!-- ICI Ajouter l'a liste des capteurs l'état ouvert ou fermé du volet -->
-		  </div> <!-- .fenetre-modale -->
-		</div> <!-- #masque -->
- 	 <p><a href="#masqueplus"></a></p>
-		<div id="masqueplus">
-		  <div class="fenetre-modale">
-			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
-			  title="Fermer la fenêtre" class="btn-fermer" 
-			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
-			<h2>Quel capteur voulez vous ajouter:</h2>
-			<!-- ICI Ajouter la liste des capteurs -->
+			<h2>Entrez le texte</h2>
+			<form>
+					<input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');"/>
+					<input type="button" value="I" style="font-style: italic;" onclick="commande('italic');"/>
+					<input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');"/>
+					<div class="editeur" contenteditable></div>
+					<input type="button" value="Enter"/>
+			</form>
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
 	<script>
@@ -212,3 +223,4 @@ document.getElementById("defaultOpen").click();
 </body>
 
 </html>
+
