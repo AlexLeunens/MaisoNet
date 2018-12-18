@@ -1,5 +1,5 @@
 html {
-  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images-utilisateur/bgall3.jpg") no-repeat center center fixed;
+  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images-utilisateur/FondEcran.jpg") no-repeat center center fixed;
   background-size: cover;
   height: 100%;
   overflow: hidden;
@@ -52,6 +52,10 @@ html {
 #logo{
   width: auto;
   height: 80%;
+}
+
+#switchText {
+ display: none; /*Utilisé pour mobile*/    
 }
 
 .switch {
@@ -113,13 +117,14 @@ input:checked + .slider:before {
 
 img.avatar {
   position : absolute;
-  top : 0;
-  right : 0;
+  top : 3%;
+  right : 1%;
   z-index: 4;
   width: auto;
-  height: 10%;
+  height: 20%;
   max-height: 50px;
   max-width: 100px;
+
   cursor:pointer;
 }
 
@@ -191,6 +196,7 @@ p.piece{background:rgba(100,135,240,0.9);border:none;border-radius:50%;color:#FF
 p.piece.active,p.piece:hover{background:#06a;}
 p.piece:after{color:#FFF;content:'\25b7';float:left;}
 p.piece.active:after{content:'\25bd';}
+
 /* panneau avec fonctions */
 div.panel {
     background-color: rgba(220,220,220,0.7);
@@ -207,6 +213,7 @@ div.panel {
     width: 98%;
     border-radius: 10px;
     display: flex;
+    justify-content: center;
 }
 
 div.panel.show {
@@ -261,14 +268,20 @@ div.helpPanel.show {
 
 
 .imageshelp{
-  width: 70%;
+  width: 50%;
   height: auto;
   min-width: 30px;
   display: block;
   margin: 30% auto;
 }
 
-div.bloc{display:inline-block;list-style-type:none;margin-left:10px;position:static;text-align:center;}
+div.block{
+  position: static;
+  display: inline-block;
+  text-align: center; 
+  justify-content: space-around;
+  list-style-type : none;
+}
 
 
 
@@ -286,8 +299,7 @@ div.helpPanel{
 @media screen and (max-width: 504px) {
 
 #menu {
-   height: 10%;
-   margin-top : 0px;
+   height: 12%;
 }
 
 img.avatar {
@@ -305,8 +317,16 @@ img.avatar {
 }
 
 #onglets li{ /* conteneur des listes */
-  float : left;
-  height : 20px;
+  display: none;
+}
+
+#switchText {
+  display: inline-block;
+  z-index: 2;
+
+  position: absolute;
+  left : 10px;
+  top: -20px;
 }
 
 .switch {
@@ -362,18 +382,38 @@ img.imagesbutton {
   max-width : 100px;
 }
 
-
+div.block {
+  width: auto;
+  height: 50%;
+  max-height: 50px;
+  max-width: 100px;
+}
 
 div.helpPanel {
-  height: 25%;
+  height: 30%;
 }
 
 }
 #masquetemp{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
 #masquetemp:target{display:block;}
+
+#masquehum{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
+#masquehum:target{display:block;}
+
+#masqueCO2{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
+#masqueCO2:target{display:block;}
+
+#masquefum{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
+#masquefum:target{display:block;}
+
 #masquevolet{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
 #masquevolet:target{display:block;}
+
+#masquecam{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
+#masquecam:target{display:block;}
+
 .fenetre-modale{background:#fff;border-radius:5px;box-shadow:0 0 20px #000;margin:10% auto;padding:20px;position:relative;width:40%;}
 img.btn-fermer{float:right;height:auto;margin:-20px -20px 0 0;width:45px;}
-.imagesbutton,.imagestemperature{height:auto;width:200px;}
+
+.imagesvolet,.imagestemperature,.imageshumidité,.imagesfumée,.imagesCO2,.imagescaméra{height:225px;width:200px;}
 .imagesbuttonplus{height:75px;width:75px;margin-left: auto;margin-right: auto;margin-bottom: 25px;}
