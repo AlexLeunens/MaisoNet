@@ -127,7 +127,7 @@
 					
 				</div>
 		</div>
-
+	</div>
 
 	<p><a href="#masquetemp"></a></p>
 		<div id="masquetemp">
