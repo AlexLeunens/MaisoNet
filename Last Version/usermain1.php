@@ -96,7 +96,7 @@
 
 	<div id= "Contact" class="Elements" style="display:none;">
         <?php
-            $mysqli = new mysqli('localhost', 'root', 'root', 'formation_mysql');
+            $mysqli = new mysqli('172.16.233.113', '', '', 'formation_mysql');
             if ($mysqli->connect_errno) {
                 die('<p>Connexion impossible : '.$mysqli->connect_error.'</p>');
             }
