@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
     <title>User Interface</title>
 
-    <link rel="stylesheet" href="utilisateur1.css"> <!--feuille css-->
+    <link rel="stylesheet" href="Utilisateur.css"> <!--feuille css-->
    <link rel="icon" href="Images-utilisateur/logo_provisoire_mini.png"> <!--icone-->
   
 </head>
 
 <body>
 
-  <img class="avatar" src="Images-utilisateur/avatar.png" onclick="openNav()"> </img>
+  <img class="avatar" src="Images-utilisateur/Utilisateur.png" onclick="openNav()"> </img>
   <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="Nos_services.php">Services</a>
@@ -24,7 +24,7 @@
 
 
   <div id="menu">  <!--conteneur-->
-    <img id="logo" src="Images-utilisateur/logo_provisoire2.png"> </img>
+    <img id="logo" src="Images-utilisateur/logo_provisoire.png"> </img>
 
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
       <li id="liPresent" class="active"><a href="javascript:switchClick()"> Mode Présence </a></li>
@@ -43,36 +43,72 @@
       <p class="piece">Salon</p>
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
+				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
+				<p class=sstitre>Etat Volet</p></a>
+				</div>
+                <div class="bloc"><a href="#masquehum">
+				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
+				<p class=sstitre>Votre Humidité</p></a>
+				</div>
+                <div class="bloc"><a href="#masquefum">
+				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
+				<p class=sstitre>Alerte Fumée : </p></a>
+				</div>
+                <div class="bloc"><a href="#masqueCO2">
+				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
+				<p class=sstitre>Alerte Gaz : </p></a>
 				</div>
 			</div>
 
 		<p class="piece">Chambre 1</p>
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
+				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
+				<p class=sstitre>Etat Volet</p></a>
+				</div>
+                <div class="bloc"><a href="#masquehum">
+				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
+				<p class=sstitre>Votre Humidité</p></a>
+				</div>
+                <div class="bloc"><a href="#masquefum">
+				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
+				<p class=sstitre>Alerte Fumée : </p></a>
+				</div>
+                <div class="bloc"><a href="#masqueCO2">
+				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
+				<p class=sstitre>Alerte Gaz : </p></a>
 				</div>
 			</div>
 
 		<p class="piece">Salle A Manger</p>
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
+				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
-				<img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-				<p class=sstitre>Etat volet</p></a>
+				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
+				<p class=sstitre>Etat Volet</p></a>
+				</div>
+                <div class="bloc"><a href="#masquehum">
+				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
+				<p class=sstitre>Votre Humidité</p></a>
+				</div>
+                <div class="bloc"><a href="#masquefum">
+				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
+				<p class=sstitre>Alerte Fumée : </p></a>
+				</div>
+                <div class="bloc"><a href="#masqueCO2">
+				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
+				<p class=sstitre>Alerte Gaz : </p></a>
 				</div>
 			</div>
       </div>
@@ -86,6 +122,18 @@
 
     <p class="piece">Sécurité</p>
      <div class="panel">
+        <div class="bloc"><a href="#masquefum">
+			<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
+			<p class=sstitre>Alerte Fumée : </p></a>
+		</div>
+        <div class="bloc"><a href="#masqueCO2">
+			<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
+			<p class=sstitre>Alerte Gaz : </p></a>
+		</div>
+        <div class="bloc"><a href="#masqueCO2">
+			<img class="imagescaméra" src="Images-utilisateur/Caméra.png" alt="Caméra"></img>
+			<p class=sstitre>Alerte Sécurité : </p></a>
+		</div>
     </div>
    </div>
 
@@ -98,18 +146,59 @@
     <a href="" onclick= "popupContact()"><img class="imageshelp" src="Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
 
   </div>
-<p><a href="#masquetemp"></a></p>
+    <p><a href="#masquetemp"></a></p>
 		<div id="masquetemp">
 		  <div class="fenetre-modale">
 			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
 			  title="Fermer la fenêtre" class="btn-fermer" 
-			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
+			  src="Images-utilisateur/CroixSortie.png" /></a>
 			<h2>Votre température:</h2>
 			<form>
 				<input type="button" value=" - " onClick="javascript:this.form.champ.value--;">
-				<input type="text1" name="champ" value="0">°C
+				<input type="text1" name="champ" value="0">%
 				<input type="button" value=" + " onClick="javascript:this.form.champ.value++;">
 			</form>
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
+    <p><a href="#masquehum"></a></p>
+		<div id="masquehum">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/CroixSortie.png" /></a>
+			<h2>Votre Humidité:</h2>
+			<form>
+				<input type="button" value=" - " onClick="javascript:this.form.champ.value--;">
+				<input type="text1" name="champ" value="0">%
+				<input type="button" value=" + " onClick="javascript:this.form.champ.value++;">
+			</form>
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
+    <p><a href="#masquefum"></a></p>
+		<div id="masquefum">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/CroixSortie.png" /></a>
+			<h2>Etat:</h2>
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
+    <p><a href="#masqueCO2"></a></p>
+		<div id="masqueCO2">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/CroixSortie.png" /></a>
+			<h2>Etat:</h2>
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
+    <p><a href="#masquecam"></a></p>
+		<div id="masquecam">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images/CroixSortie.png" /></a>
+			<h2>Etat:</h2>
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
   <p><a href="#masquevolet"></a></p>
@@ -117,7 +206,7 @@
 		  <div class="fenetre-modale">
 			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
 			  title="Fermer la fenêtre" class="btn-fermer" 
-			  src="Images-utilisateur/fmodale_fermer.jpg" /></a>
+			  src="Images-utilisateur/CroixSortie.png" /></a>
 			<h2>Etat des volets:</h2>
 			<!-- ICI Ajouter l'a liste des capteurs l'état ouvert ou fermé du volet -->
 		  </div> <!-- .fenetre-modale -->
