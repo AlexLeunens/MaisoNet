@@ -34,7 +34,7 @@
 													<a href="#" class="image featured"><img src="Images_services/appart.jpg" alt="" /></a>
 													<header>
 														<h3>Appartement</h3>
-													</header
+													</header>
 													<footer>
 														<ul class="actions">
 															<li><a href="services_appart.php" class="button alt">En savoir plus</a></li>
@@ -47,7 +47,7 @@
 													<a href="#" class="image featured"><img src="Images_services/maison.jpg" alt="" /></a>
 													<header>
 														<h3>Maison</h3>
-													</header
+													</header>
 													<footer>
 														<ul class="actions">
 															<li><a href="services_maison.php" class="button alt">En savoir plus</a></li>
