@@ -56,7 +56,7 @@
 				</div>
 				<div class=bloc><a href="#masqueplus">
 				<img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
-				<p class=sstitre>Etat volet</p></a>
+				<p class=sstitre>Ajouter un capteur</p></a>
 				</div>
 			</div>
 
@@ -72,7 +72,7 @@
 				</div>
 				<div class=bloc><a href="#masqueplus">
 				<img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
-				<p class=sstitre>Etat volet</p></a>
+				<p class=sstitre>Ajouter un capteur</p></a>
 				</div>
 			</div>
 
@@ -88,7 +88,7 @@
 				</div>
 				<div class=bloc><a href="#masqueplus">
 				<img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
-				<p class=sstitre>Etat volet</p></a>
+				<p class=sstitre>Ajouter un capteur</p></a>
 				</div>
 			</div>
 	</div>
