@@ -47,25 +47,29 @@ input[type="button1"]:hover{background:rgba(150,150,150,1);}
 input[type="text1"]{border:transparent;color:#000;texttext-align:center;width:20px;}
 .imagesbutton,.imagestemperature{height:auto;width:200px;}
 .imagesbuttonplus{height:75px;width:75px;margin-left: auto;margin-right: auto;margin-bottom: 25px;}
+@media screen and (max-width : 675px){
+#logo{height : 8%;}
+img.avatar{height : 6%; width : auto;}
+}
 @media screen and (max-width : 570px) {
 html{margin:0;}
 #menu{height:14%;margin-top:0;}
 #logo{height:10%;}
 #onglets{background:rgba(220,160,0,0.7);font:bold 20px Georgia, arial, serif;height:auto;padding:0;position:-20px;width:100%;}
 .slider:before{-webkit-transition:.4s;background:#FFF;bottom:1px;content:"";height:18px;left:4px;position:absolute;transition:.4s;width:18px;}
-form.dossier{margin-top:50px;}
+form.dossier{margin-top:10px;}
 div.Elements{top:12%;}
 p.piece{display:inline-block;height:100px;line-height:100px;overflow:hidden;width:100px;}
 div.panel{border:solid #fff 1px;border-radius:10px;height:100%;top:170px;width:98%;}
 img.imageHelpMenu{height:50px;width:50px;}
 .imageshelp{min-width:35px;width:60%;}
 p.piece:after,p.piece.active:after{content:'';}
-form.dossier{marigin-top:0px;}
+img.avatar{height : 5%; width : auto;}
 }
 div.editeur{
     background-color: #FFF;
-    width: 500px; 
-    height: 200px; 
+    width: auto; 
+    height: 50%; 
     border: 3px solid black; 
     padding: 5px; 
     overflow: auto; 
