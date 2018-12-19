@@ -11,7 +11,7 @@
 	$_SESSION['success'] = "";
 
 	
-	$db = mysqli_connect('localhost', 'root', 'root', 'formation_mysql');
+	$db = mysqli_connect('localhost', 'root', 'root', 'maison');
 
 	// Inscription
 	if (isset($_POST['reg_user'])) {
@@ -72,13 +72,24 @@
 		}
 
 		if (count($errors) == 0) {
-			$query = "SELECT * FROM utilisateurs WHERE nom='$name' AND mdp='$password'";
+			$query = "SELECT * FROM utilisateur WHERE nom='$name' AND mdp='$password'";
 			$results = mysqli_query($db, $query);
 
 			if (mysqli_num_rows($results) == 1) {
 				$_SESSION['username'] = $name;
 				$_SESSION['success'] = "Vous êtes connecté";
-				header('location: usermain1.php');
+				$type1="SELECT types FROM fonction INNER JOIN utilisateur ON fonction.utilisateur_idutilisateur=utilisateur.idutilisateur WHERE utilisateur.nom='$name'";
+				$result_type=mysqli_query($db,$type1) or die(mysqli_error());
+				$row=mysqli_fetch_assoc($result_type);
+
+				if ($row['types']=="Admin"){
+					header('location: usermain1.php');
+
+				}
+				else if ($row['types']=="Utilisateur"){
+					header('location: utilisateur1.php');
+				}
+				
 			}else {
 				array_push($errors, "Mauvais nom/mot de passe");
 			}
