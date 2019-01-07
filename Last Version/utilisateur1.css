@@ -54,10 +54,6 @@ html {
   height: 80%;
 }
 
-#switchText {
- display: none; /*Utilisé pour mobile*/    
-}
-
 .switch {
   position: absolute;
   right : 0px;
@@ -117,14 +113,13 @@ input:checked + .slider:before {
 
 img.avatar {
   position : absolute;
-  top : 3%;
-  right : 1%;
+  top : 0;
+  right : 0;
   z-index: 4;
   width: auto;
-  height: 20%;
+  height: 10%;
   max-height: 50px;
   max-width: 100px;
-
   cursor:pointer;
 }
 
@@ -192,10 +187,28 @@ div.fonctions {
 }
 
 /* Le bouton bleu selon la piece */
-p.piece{background:rgba(100,135,240,0.9);border:none;border-radius:50%;color:#FFF;cursor:pointer;float:left;height:150px;line-height:150px;margin-left:20px;margin-right:20px;outline:none;text-align:center;transition:.1s;width:150px;}
-p.piece.active,p.piece:hover{background:#06a;}
-p.piece:after{color:#FFF;content:'\25b7';float:left;}
-p.piece.active:after{content:'\25bd';}
+p.piece{
+  background:rgba(100,135,240,0.9);
+  border-radius:50%;
+  color:#FFF;
+  cursor:pointer;
+  height:150px;
+  line-height:150px;
+  text-align:center;
+  transition:.1s;
+  width:150px;
+}
+p.piece.active,p.piece:hover{
+  background:#0066aa;
+}
+p.piece:after{
+  color:#FFF;
+  content:'\25b7';
+  float:left;
+}
+p.piece.active:after{
+  content:'\25bd';
+}
 
 /* panneau avec fonctions */
 div.panel {
@@ -268,14 +281,14 @@ div.helpPanel.show {
 
 
 .imageshelp{
-  width: 50%;
+  width: 70%;
   height: auto;
   min-width: 30px;
   display: block;
   margin: 30% auto;
 }
 
-div.block{
+div.bloc{
   position: static;
   display: inline-block;
   text-align: center; 
@@ -299,7 +312,8 @@ div.helpPanel{
 @media screen and (max-width: 504px) {
 
 #menu {
-   height: 12%;
+   height: 10%;
+   margin-top : 0px;
 }
 
 img.avatar {
@@ -313,20 +327,16 @@ img.avatar {
 }
 
 #onglets{ /* conteneur des listes */
-  height: 20px;
+  font : bold 15px Georgia, arial, serif;
+  height: auto;
+  padding : 0;
+  position : -20px;
+  width : 100%;
 }
 
 #onglets li{ /* conteneur des listes */
-  display: none;
-}
-
-#switchText {
-  display: inline-block;
-  z-index: 2;
-
-  position: absolute;
-  left : 10px;
-  top: -20px;
+  float : left;
+  height : 20px;
 }
 
 .switch {
@@ -382,7 +392,7 @@ img.imagesbutton {
   max-width : 100px;
 }
 
-div.block {
+div.bloc {
   width: auto;
   height: 50%;
   max-height: 50px;
@@ -390,7 +400,7 @@ div.block {
 }
 
 div.helpPanel {
-  height: 30%;
+  height: 25%;
 }
 
 }
