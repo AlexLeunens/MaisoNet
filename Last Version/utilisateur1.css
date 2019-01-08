@@ -54,6 +54,10 @@ html {
   height: 80%;
 }
 
+#switchText {
+ display: none; /*Utilisé pour mobile*/    
+}
+
 .switch {
   position: absolute;
   right : 0px;
@@ -113,13 +117,14 @@ input:checked + .slider:before {
 
 img.avatar {
   position : absolute;
-  top : 0;
-  right : 0;
+  top : 3%;
+  right : 1%;
   z-index: 4;
   width: auto;
-  height: 10%;
+  height: 20%;
   max-height: 50px;
   max-width: 100px;
+
   cursor:pointer;
 }
 
@@ -186,29 +191,12 @@ div.fonctions {
   left: 0px;
 }
 
+
 /* Le bouton bleu selon la piece */
-p.piece{
-  background:rgba(100,135,240,0.9);
-  border-radius:50%;
-  color:#FFF;
-  cursor:pointer;
-  height:150px;
-  line-height:150px;
-  text-align:center;
-  transition:.1s;
-  width:150px;
-}
-p.piece.active,p.piece:hover{
-  background:#0066aa;
-}
-p.piece:after{
-  color:#FFF;
-  content:'\25b7';
-  float:left;
-}
-p.piece.active:after{
-  content:'\25bd';
-}
+p.piece{background:rgba(100,135,240,0.9);border:none;border-radius:50%;color:#FFF;cursor:pointer;float:left;height:150px;line-height:150px;margin-left:20px;margin-right:20px;outline:none;text-align:center;transition:.1s;width:150px;}
+p.piece.active,p.piece:hover{background:#06a;}
+p.piece:after{color:#FFF;content:'\25b7';float:left;}
+p.piece.active:after{content:'\25bd';}
 
 /* panneau avec fonctions */
 div.panel {
@@ -254,7 +242,6 @@ p.help {
 
   transition: 0.1s;
 }
-p.help.active {}
 
 /* panneau avec fonctions d'aide */
 div.helpPanel {
@@ -281,14 +268,14 @@ div.helpPanel.show {
 
 
 .imageshelp{
-  width: 70%;
+  width: 50%;
   height: auto;
   min-width: 30px;
   display: block;
   margin: 30% auto;
 }
 
-div.bloc{
+div.block{
   position: static;
   display: inline-block;
   text-align: center; 
@@ -304,7 +291,7 @@ div.bloc{
 @media screen and (max-width: 960px){
 
 div.helpPanel{
-  height: 25%;
+  height: 33%;
 }
 
 }
@@ -312,8 +299,7 @@ div.helpPanel{
 @media screen and (max-width: 504px) {
 
 #menu {
-   height: 10%;
-   margin-top : 0px;
+   height: 12%;
 }
 
 img.avatar {
@@ -327,16 +313,20 @@ img.avatar {
 }
 
 #onglets{ /* conteneur des listes */
-  font : bold 15px Georgia, arial, serif;
-  height: auto;
-  padding : 0;
-  position : -20px;
-  width : 100%;
+  height: 20px;
 }
 
 #onglets li{ /* conteneur des listes */
-  float : left;
-  height : 20px;
+  display: none;
+}
+
+#switchText {
+  display: inline-block;
+  z-index: 2;
+
+  position: absolute;
+  left : 10px;
+  top: -20px;
 }
 
 .switch {
@@ -392,7 +382,7 @@ img.imagesbutton {
   max-width : 100px;
 }
 
-div.bloc {
+div.block {
   width: auto;
   height: 50%;
   max-height: 50px;
@@ -400,7 +390,7 @@ div.bloc {
 }
 
 div.helpPanel {
-  height: 25%;
+  height: 30%;
 }
 
 }
@@ -422,8 +412,12 @@ div.helpPanel {
 #masquecam{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
 #masquecam:target{display:block;}
 
+#masqueajoutcapteur{background:rgba(0,0,0,0.2);bottom:0;display:none;left:0;position:fixed;right:0;top:0;z-index:1000;}
+#masqueajoutcapteur:target{display:block;}
+
 .fenetre-modale{background:#fff;border-radius:5px;box-shadow:0 0 20px #000;margin:10% auto;padding:20px;position:relative;width:40%;}
 img.btn-fermer{float:right;height:auto;margin:-20px -20px 0 0;width:45px;}
 
+.imagesajoutcapteur{height:75px;width:75px;position:absolute;top:25%;right:5%;}
 .imagesvolet,.imagestemperature,.imageshumidité,.imagesfumée,.imagesCO2,.imagescaméra{height:225px;width:200px;}
 .imagesbuttonplus{height:75px;width:75px;margin-left: auto;margin-right: auto;margin-bottom: 25px;}
