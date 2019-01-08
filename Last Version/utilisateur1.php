@@ -50,18 +50,22 @@
 				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
 				<p>Etat Volet</p></a>
 				</div>
-                <div class="bloc"><a href="#masquehum">
+        <div class="bloc"><a href="#masquehum">
 				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
 				<p>Votre Humidité</p></a>
 				</div>
-                <div class="bloc"><a href="#masquefum">
+        <div class="bloc"><a href="#masquefum">
 				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
 				<p>Alerte Fumée : </p></a>
 				</div>
-                <div class="bloc"><a href="#masqueCO2">
+        <div class="bloc"><a href="#masqueCO2">
 				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
 				<p>Alerte Gaz : </p></a>
-				</div>
+        </div>
+        <div class="bloc"><a href="#masqueajoutcapteur">
+        <img class="imagesajoutcapteur" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
+        </a></div>
+				
 			</div>
 
 		<p class="piece">Chambre 1</p>
@@ -74,43 +78,48 @@
 				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
 				<p>Etat Volet</p></a>
 				</div>
-                <div class="bloc"><a href="#masquehum">
+        <div class="bloc"><a href="#masquehum">
 				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
 				<p>Votre Humidité</p></a>
 				</div>
-                <div class="bloc"><a href="#masquefum">
+        <div class="bloc"><a href="#masquefum">
 				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
-				<p>Alerte Fumée : </p></a>
+				<p class=sstitre>Alerte Fumée : </p></a>
 				</div>
-                <div class="bloc"><a href="#masqueCO2">
+        <div class="bloc"><a href="#masqueCO2">
 				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
 				<p>Alerte Gaz : </p></a>
-				</div>
+        </div>
+        <div class="bloc"><a href="#masqueajoutcapteur">
+        <img class="imagesajoutcapteur" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
+        </a></div>
 			</div>
 
 		<p class="piece">Salle A Manger</p>
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
 				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
-				<p>Votre Temperature</p></a>
+				<p class=sstitre>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
 				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
-				<p>Etat Volet</p></a>
+				<p class=sstitre>Etat Volet</p></a>
 				</div>
-                <div class="bloc"><a href="#masquehum">
+        <div class="bloc"><a href="#masquehum">
 				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
-				<p>Votre Humidité</p></a>
+				<p class=sstitre>Votre Humidité</p></a>
 				</div>
-                <div class="bloc"><a href="#masquefum">
+        <div class="bloc"><a href="#masquefum">
 				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
-				<p>Alerte Fumée : </p></a>
+				<p class=sstitre>Alerte Fumée : </p></a>
 				</div>
-                <div class="bloc"><a href="#masqueCO2">
+        <div class="bloc"><a href="#masqueCO2">
 				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
-				<p>Alerte Gaz : </p></a>
+				<p class=sstitre>Alerte Gaz : </p></a>
 				</div>
-			</div>
+      <div class="bloc"><a href="#masqueajoutcapteur">
+        <img class="imagesajoutcapteur" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
+      </a></div>
       </div>
 
 
@@ -124,15 +133,15 @@
      <div class="panel">
         <div class="bloc"><a href="#masquefum">
 			<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
-			<p>Alerte Fumée : </p></a>
+			<p class=sstitre>Alerte Fumée : </p></a>
 		</div>
         <div class="bloc"><a href="#masqueCO2">
 			<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
-			<p>Alerte Gaz : </p></a>
+			<p class=sstitre>Alerte Gaz : </p></a>
 		</div>
         <div class="bloc"><a href="#masqueCO2">
 			<img class="imagescaméra" src="Images-utilisateur/Caméra.png" alt="Caméra"></img>
-			<p>Alerte Sécurité : </p></a>
+			<p class=sstitre>Alerte Sécurité : </p></a>
 		</div>
     </div>
    </div>
@@ -183,6 +192,15 @@
 			  src="Images-utilisateur/CroixSortie.png" /></a>
 			<h2>Etat:</h2>
 		  </div> <!-- .fenetre-modale -->
+    </div> <!-- #masque -->
+    <p><a href="#masqueajoutcapteur"></a></p>
+		<div id="masqueajoutcapteur">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/CroixSortie.png" /></a>
+			<h2>Liste des capteurs disponibles:</h2>
+		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
     <p><a href="#masqueCO2"></a></p>
 		<div id="masqueCO2">
@@ -212,7 +230,6 @@
 			<!-- ICI Ajouter l'a liste des capteurs l'état ouvert ou fermé du volet -->
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
-
   <script>
     var piece = document.getElementsByClassName("piece");
     var panel = document.getElementsByClassName('panel'); //selec piece et panel
