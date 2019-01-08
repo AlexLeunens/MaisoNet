@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
     <title>User Interface</title>
 
-    <link rel="stylesheet" href="Utilisateur.css"> <!--feuille css-->
+    <link rel="stylesheet" href="utilisateur1.css"> <!--feuille css-->
     <link rel="icon" href="Images-utilisateur/logo_provisoire_mini.png"> <!--icone-->
   
 </head>
@@ -43,27 +43,27 @@
   <div id= "Present" class="fonctions">
     <p class="piece">Salon</p>
       <div class="panel">
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Volets.png" alt="volets"></img>
           <p> Etat des Volets</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Température1.png" alt="temperature"></img>
           <p> Valeur Température</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Humidité.png" alt="temperature"></img>
           <p> Valeur Humidité</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/CO2.png" alt="temperature"></img>
           <p> Alerte:Fuite de Gaz</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Fumée.png" alt="temperature"></img>
           <p> Alerte:Fumée (Incendie)</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
           <p>Echo</p>
         </div>
@@ -71,23 +71,23 @@
     
     <p class="piece">Chambre 1</p>
       <div class="panel">
-      <div class="block">
+      <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Volets.png" alt="volets"></img>
           <p> Etat des Volets</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Température1.png" alt="temperature"></img>
           <p> Valeur Température</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Humidité.png" alt="temperature"></img>
           <p> Valeur Humidité</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/CO2.png" alt="temperature"></img>
           <p> Alerte:Fuite de Gaz</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Fumée.png" alt="temperature"></img>
           <p> Alerte:Fumée (Incendie)</p>
         </div>
@@ -95,23 +95,23 @@
 
     <p class="piece">Salle A Manger</p>
       <div class="panel">
-      <div class="block">
+      <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Volets.png" alt="volets"></img>
           <p> Etat des Volets</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Température1.png" alt="temperature"></img>
           <p> Valeur Température</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Humidité.png" alt="temperature"></img>
           <p> Valeur Humidité</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/CO2.png" alt="temperature"></img>
           <p> Alerte:Fuite de Gaz</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Fumée.png" alt="temperature"></img>
           <p> Alerte:Fumée (Incendie)</p>
         </div>
@@ -122,23 +122,23 @@
   <div id= "Absent" class="fonctions" style="display:none;">
     <p class="piece">Economies</p>
       <div class="panel">
-      <div class="block">
+      <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Volets.png" alt="volets"></img>
           <p> Etat des Volets</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Température1.png" alt="temperature"></img>
           <p> Valeur Température</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Humidité.png" alt="temperature"></img>
           <p> Valeur Humidité</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/CO2.png" alt="temperature"></img>
           <p> Alerte:Fuite de Gaz</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Fumée.png" alt="temperature"></img>
           <p> Alerte:Fumée (Incendie)</p>
         </div>
@@ -146,27 +146,27 @@
 
     <p class="piece">Sécurité</p>
       <div class="panel">
-      <div class="block">
+      <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Volets.png" alt="volets"></img>
           <p> Etat des Volets</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Température1.png" alt="temperature"></img>
           <p> Valeur Température</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Humidité.png" alt="temperature"></img>
           <p> Valeur Humidité</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/CO2.png" alt="temperature"></img>
           <p> Alerte:Fuite de Gaz</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Fumée.png" alt="temperature"></img>
           <p> Alerte:Fumée (Incendie)</p>
         </div>
-        <div class="block">
+        <div class="bloc">
           <img class="imagesbutton" src="Images-utilisateur/Caméra.png" alt="volets"></img>
           <p> Système de Sécurité</p>
           </div>
