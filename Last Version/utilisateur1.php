@@ -44,23 +44,23 @@
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
 				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
-				<p class=sstitre>Votre Temperature</p></a>
+				<p>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
 				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
-				<p class=sstitre>Etat Volet</p></a>
+				<p>Etat Volet</p></a>
 				</div>
                 <div class="bloc"><a href="#masquehum">
 				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
-				<p class=sstitre>Votre Humidité</p></a>
+				<p>Votre Humidité</p></a>
 				</div>
                 <div class="bloc"><a href="#masquefum">
 				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
-				<p class=sstitre>Alerte Fumée : </p></a>
+				<p>Alerte Fumée : </p></a>
 				</div>
                 <div class="bloc"><a href="#masqueCO2">
 				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
-				<p class=sstitre>Alerte Gaz : </p></a>
+				<p>Alerte Gaz : </p></a>
 				</div>
 			</div>
 
@@ -68,23 +68,23 @@
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
 				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
-				<p class=sstitre>Votre Temperature</p></a>
+				<p>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
 				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
-				<p class=sstitre>Etat Volet</p></a>
+				<p>Etat Volet</p></a>
 				</div>
                 <div class="bloc"><a href="#masquehum">
 				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
-				<p class=sstitre>Votre Humidité</p></a>
+				<p>Votre Humidité</p></a>
 				</div>
                 <div class="bloc"><a href="#masquefum">
 				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
-				<p class=sstitre>Alerte Fumée : </p></a>
+				<p>Alerte Fumée : </p></a>
 				</div>
                 <div class="bloc"><a href="#masqueCO2">
 				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
-				<p class=sstitre>Alerte Gaz : </p></a>
+				<p>Alerte Gaz : </p></a>
 				</div>
 			</div>
 
@@ -92,23 +92,23 @@
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
 				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
-				<p class=sstitre>Votre Temperature</p></a>
+				<p>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
 				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
-				<p class=sstitre>Etat Volet</p></a>
+				<p>Etat Volet</p></a>
 				</div>
                 <div class="bloc"><a href="#masquehum">
 				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
-				<p class=sstitre>Votre Humidité</p></a>
+				<p>Votre Humidité</p></a>
 				</div>
                 <div class="bloc"><a href="#masquefum">
 				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
-				<p class=sstitre>Alerte Fumée : </p></a>
+				<p>Alerte Fumée : </p></a>
 				</div>
                 <div class="bloc"><a href="#masqueCO2">
 				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
-				<p class=sstitre>Alerte Gaz : </p></a>
+				<p>Alerte Gaz : </p></a>
 				</div>
 			</div>
       </div>
@@ -124,15 +124,15 @@
      <div class="panel">
         <div class="bloc"><a href="#masquefum">
 			<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
-			<p class=sstitre>Alerte Fumée : </p></a>
+			<p>Alerte Fumée : </p></a>
 		</div>
         <div class="bloc"><a href="#masqueCO2">
 			<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
-			<p class=sstitre>Alerte Gaz : </p></a>
+			<p>Alerte Gaz : </p></a>
 		</div>
         <div class="bloc"><a href="#masqueCO2">
 			<img class="imagescaméra" src="Images-utilisateur/Caméra.png" alt="Caméra"></img>
-			<p class=sstitre>Alerte Sécurité : </p></a>
+			<p>Alerte Sécurité : </p></a>
 		</div>
     </div>
    </div>
