@@ -535,6 +535,21 @@ div.editeur {
     flex-direction: column;
     overflow-y: auto;
     height: 95%;
+    margin-left : 10px;
+    margin-right : 10px;
+}
+
+#Messages p {
+    display: inline-block;
+
+    border-radius: 20px;
+
+    margin-bottom: 2px;
+    margin-top: 2px;
+    padding: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+
 }
 
 #chatbox{
@@ -547,7 +562,20 @@ div.editeur {
     width: 90%;
 }
 
-#submitmsg{
-    background-color: cornflowerblue;
+#submitmsg {
     width: 8%;
+
+    background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+    background-color:#7892c2;
+    border-radius:6px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    padding:6px 24px;
+    text-decoration:none;
+}
+
+#submitmsg:hover {
+    background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+    background-color:#476e9e;
 }
