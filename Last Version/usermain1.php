@@ -92,24 +92,21 @@ include 'headerMainUser.php';
             <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
 
             <?php
-            /*
-             *
-             $mysqli = new mysqli('172.16.233.113', '', '', 'formation_mysql');
-            if ($mysqli->connect_errno) {
-                die('<p>Connexion impossible : '.$mysqli->connect_error.'</p>');
-            }*/
 
             $sql = "SELECT idUtilisateur, nom, prenom FROM utilisateur;"; //utilisateurs in 172.16.223.113
-            $result = $conn->query($sql); //$mysqli
+            $result = $conn->query($sql);
 
             if (!$result) {
                 die('<p>ERREUR Requête invalide : ' . $mysqli->error . '</p>');
             }
 
+            $nom = "Jack"; // TODO needs to be changed when the login gives them
+            $prenom = "Louis";
+            
             while ($row = $result->fetch_assoc()) {
                 // en minuscule dans l'autre
                 echo "<li>";
-                echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . ">";
+                echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $nom . "&prenom=" . $prenom . ">";
                 echo $row["nom"] . "" . $row['prenom'];
                 echo "</a>";
                 echo "</li>";
@@ -125,7 +122,7 @@ include 'headerMainUser.php';
             </div>
             <div id="chatbox">
                 <form method="post" name="message">
-                    <input name="user_message" type="text" id="usermsg"/>
+                    <input name="user_message" type="text" id="usermsg" required/>
                     <input name="submitmsg" type="submit" id="submitmsg" value="Send"/>
                 </form>
             </div>
@@ -137,7 +134,7 @@ include 'headerMainUser.php';
             var auto_refresh = setInterval(
                 function() {
                     <?php
-                    echo "$('#Messages').load('messages.php?idContact=".$_GET['idContact']."').fadeIn('slow');";
+                    echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
                     ?>
                 }, 1000); // refresh toutes les secondes
         </script>
@@ -147,39 +144,35 @@ include 'headerMainUser.php';
 </div>
 </div>
 
-<script>
-    $('#submitmsg').click(function() {
-        $.ajax({
-            url: 'postmessage.php',
-            type: 'POST',
-            data: {
-                idUtilisateur: '$("input#usermsg").val()',
-                message: '$("input#usermsg").val()'
-            }
-        });
-    });
-</script>
-
-
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
     $query = "BEGIN WORK;";
     $result = $conn->query($query);
     if (!$result) {
-        //Damn! the query failed, quit
-        echo 'An error occurred while creating your topic. Please try again later.';
+        echo "Erreur lors de l'envoi du message";
     }
-    //TODO : requete avec senderID (doit être ajouté a la table)
+
+    // gets the id of the current user
+    $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . mysqli_real_escape_string($conn, $_GET['nom']) . "'
+        AND utilisateur.prenom = '" . mysqli_real_escape_string($conn, $_GET['prenom']) . "'";
+    $result = $conn->query($sql);
+
+    while ($row = $result->fetch_assoc()) {
+        $reciever = $row["idUtilisateur"];
+    }
+
     $sql = "INSERT INTO 
                     contact(idUtilisateur,
+                            idReciever,
                           message) 
-                VALUES (1,
-                        '" . $_POST['user_message'] . "')";
+                VALUES (" . $_GET['idContact'] . ",
+                        " . $reciever . ",
+                        '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
 
     $result = $conn->query($sql);
     if (!$result) {
-        //something went wrong, display the error
-        echo 'An error occured while inserting your data. Please try again later.';
+        echo "Erreur lors de l'insertion du message dans la base de données";
         echo mysqli_error($conn);
         $sql = "ROLLBACK;";
         $result = $conn->query($query);
@@ -187,11 +180,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = "COMMIT;";
         $result = $conn->query($sql);
 
-        //after a lot of work, the query succeeded!
         unset($_POST);
 
         echo "<script>";
-        echo "$('#Messages').load('messages.php?idContact=".$_GET['idContact']."').fadeIn('slow');";
+        echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
         echo "</script>";
     }
 }
