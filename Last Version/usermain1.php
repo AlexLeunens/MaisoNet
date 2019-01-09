@@ -207,8 +207,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p class="piece">Modifier Accueil</p>
     <div class="panel">
         <div class=bloc><a href="#masque1">
-                <p class="sstitre">Presentation</p></a>
+                <p class="sstitre">Qui sommes nous?</p></a>
 
+        </div>
+        <div class=bloc><a href="#masque1">
+            <p class="sstitre">Que faisons nous?</p></a>
+        </div>
+        <div class=bloc><a href="#masque1">
+            <p class="sstitre">Quels sont nos tarifs</p></a>
         </div>
     </div>
 </div>
