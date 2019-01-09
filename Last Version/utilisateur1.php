@@ -6,13 +6,13 @@
     <title>User Interface</title>
 
     <link rel="stylesheet" href="Utilisateur.css"> <!--feuille css-->
-    <link rel="icon" href="Images-utilisateur/logo_provisoire_mini.png"> <!--icone-->
+    <link rel="icon" href="Images-utilisateur/maison.png"> <!--icone-->
   
 </head>
 
 <body>
 
-  <img class="avatar" src="Images-utilisateur/Utilisateur.png" onclick="openNav()"> </img>
+  <img class="avatar" src="Images-utilisateur/avatar.png" onclick="openNav()"> </img>
   <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="Services.html">Services</a>
@@ -24,12 +24,11 @@
 
 
   <div id="menu">  <!--conteneur-->
-    <img id="logo" src="Images-utilisateur/logo_provisoire.png"> </img>
+    <img id="logo" src="Images-utilisateur/maison+txt.png"> </img>
 
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
       <li id="liPresent" class="active"><a href="javascript:switchClick()"> Mode Présence </a></li>
       <li id="liAbsent"><a href="javascript:switchClick()"> Mode Absence </a></li>
-      <p id="switchText"> Mode Présence </p>
 
       <label class="switch" onclick="openPage(this)">
         <input type="checkbox" id="switchPresence" unchecked>
@@ -43,84 +42,75 @@
       <p class="piece">Salon</p>
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
+				<img class="imagesbutton" src="Images-utilisateur/temperature.png" alt="temperature"></img>
 				<p>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
-				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
+				<img class="imagesbutton" src="Images-utilisateur/volets.png" alt="volets"></img>
 				<p>Etat Volet</p></a>
 				</div>
         <div class="bloc"><a href="#masquehum">
-				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
+				<img class="imagesbutton" src="Images-utilisateur/humidity.png" alt="humidité"></img>
 				<p>Votre Humidité</p></a>
 				</div>
         <div class="bloc"><a href="#masquefum">
-				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
+				<img class="imagesbutton" src="Images-utilisateur/fire_alarm.png" alt="fumée"></img>
 				<p>Alerte Fumée : </p></a>
 				</div>
         <div class="bloc"><a href="#masqueCO2">
-				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
+				<img class="imagesbutton" src="Images-utilisateur/pollution.png" alt="CO2"></img>
 				<p>Alerte Gaz : </p></a>
         </div>
-        <div class="bloc"><a href="#masqueajoutcapteur">
-        <img class="imagesajoutcapteur" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
-        </a></div>
 				
 			</div>
 
 		<p class="piece">Chambre 1</p>
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
+				<img class="imagesbutton" src="Images-utilisateur/temperature.png" alt="temperature"></img>
 				<p>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
-				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
+				<img class="imagesbutton" src="Images-utilisateur/volets.png" alt="volets"></img>
 				<p>Etat Volet</p></a>
 				</div>
         <div class="bloc"><a href="#masquehum">
-				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
+				<img class="imagesbutton" src="Images-utilisateur/humidity.png" alt="humidité"></img>
 				<p>Votre Humidité</p></a>
 				</div>
         <div class="bloc"><a href="#masquefum">
-				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
+				<img class="imagesbutton" src="Images-utilisateur/fire_alarm.png" alt="fumée"></img>
 				<p class=sstitre>Alerte Fumée : </p></a>
 				</div>
         <div class="bloc"><a href="#masqueCO2">
-				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
+				<img class="imagesbutton" src="Images-utilisateur/pollution.png" alt="CO2"></img>
 				<p>Alerte Gaz : </p></a>
         </div>
-        <div class="bloc"><a href="#masqueajoutcapteur">
-        <img class="imagesajoutcapteur" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
-        </a></div>
 			</div>
 
 		<p class="piece">Salle A Manger</p>
 			<div class="panel">
 				<div class="bloc"><a href="#masquetemp">
-				<img class="imagestemperature" src="Images-utilisateur/Température1.png" alt="temperature"></img>
+				<img class="imagesbutton" src="Images-utilisateur/temperature.png" alt="temperature"></img>
 				<p class=sstitre>Votre Temperature</p></a>
 				</div>
 				<div class="bloc"><a href="#masquevolet">
-				<img class="imagesvolet" src="Images-utilisateur/Volets.png" alt="volets"></img>
+				<img class="imagesbutton" src="Images-utilisateur/volets.png" alt="volets"></img>
 				<p class=sstitre>Etat Volet</p></a>
 				</div>
         <div class="bloc"><a href="#masquehum">
-				<img class="imageshumidité" src="Images-utilisateur/Humidité.png" alt="humidité"></img>
+				<img class="imagesbutton" src="Images-utilisateur/humidity.png" alt="humidité"></img>
 				<p class=sstitre>Votre Humidité</p></a>
 				</div>
         <div class="bloc"><a href="#masquefum">
-				<img class="imagesfumée" src="Images-utilisateur/Fumée.png" alt="fumée"></img>
+				<img class="imagesbutton" src="Images-utilisateur/fire_alarm.png" alt="fumée"></img>
 				<p class=sstitre>Alerte Fumée : </p></a>
 				</div>
         <div class="bloc"><a href="#masqueCO2">
-				<img class="imagesCO2" src="Images-utilisateur/CO2.png" alt="CO2"></img>
+				<img class="imagesbutton" src="Images-utilisateur/pollution.png" alt="CO2"></img>
 				<p class=sstitre>Alerte Gaz : </p></a>
 				</div>
-      <div class="bloc"><a href="#masqueajoutcapteur">
-        <img class="imagesajoutcapteur" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
-      </a></div>
-      </div>
+</div>
 
 
   <div id= "Absent" class="fonctions" style="display:none;">
