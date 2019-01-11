@@ -1,16 +1,121 @@
 <!doctype html>
 <html lang="fr">
 
-
 <?php
 include 'connect.php';
-include 'header.php';
+include 'headerForums.php';
+?>
+
+
+<?php //this tries to create a new topic in the database
+// check if something has been posted
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $query = "BEGIN WORK;";
+    $result = $conn->query($query);
+    if (!$result) {
+        //Damn! the query failed, quit
+        echo 'An error occurred while preparing the operation. Please try again later.';
+    }
+
+    // checks which form has been submited
+    if(isset($_POST["newSubject"])){
+        $sql = "INSERT INTO
+                        discussion(Sujet,
+                               Texte,
+                               Categorie_idCategorie,
+                               Utilisateur_idUtilisateur)
+                   VALUES('" . mysqli_real_escape_string($conn, $_POST['topic_subject']) . "',
+                   '" . mysqli_real_escape_string($conn, $_POST['topic_description']) . "',
+                               " . mysqli_real_escape_string($conn, $_POST['cat_id']) . ",
+                               1)";
+
+    } else if(isset($_POST["newCat"])){
+        $sql = "INSERT INTO
+                        categorie(Nom)
+                   VALUES('" . mysqli_real_escape_string($conn, $_POST['cat_name']) . "')";
+    }
+
+    //TODO update utilisateur
+    $result = $conn->query($sql);
+    if (!$result) {
+        //something went wrong, display the error
+        echo 'An error occured while inserting your data. Please try again later.';
+        echo mysqli_error($conn);
+        echo $sql;
+        $sql = "ROLLBACK;";
+        $result = $conn->query($query);
+    } else {
+        $sql = "COMMIT;";
+        $result = $conn->query($sql);
+
+        //after a lot of work, the query succeeded!
+        header("location: {$_SERVER['PHP_SELF']}");
+    }
+
+}
+?>
+
+<?php
+
+global $isAdmin;
+$isAdmin = false;
+
+$sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".mysqli_real_escape_string($conn, $_GET['nom'])."'
+                                            AND prenom = '".mysqli_real_escape_string($conn, $_GET['prenom'])."' ";
+$result = $conn->query($sql);
+
+while ($row = $result->fetch_assoc()) {
+    $idUser = $row["idUtilisateur"];
+}
+
+$sql = "SELECT type from fonction WHERE Utilisateur_idUtilisateur = ".$idUser." ";
+$result = $conn->query($sql);
+
+while ($row = $result->fetch_assoc()) {
+    echo $row["type"];
+    if($row["type"] === "Administrateur" ) {
+        $isAdmin = true;
+    }
+}
+
+if ($isAdmin == true){
+    echo "Admin";
+} else {
+    echo "Not admnin";
+}
+echo $isAdmin;
+$GLOBALS['isAdmin'] = $isAdmin;
+
 ?>
 
 <div id="menu">
     <div id="onglets">
 
         <h2>Forums</h2>
+
+        <?php
+        if ($isAdmin == true){
+         echo " <button class=\"newCatBtn\" onclick=\"openFormCat() \">Ajouter Catégorie</button> " ;
+        }
+        ?>
+
+        <div class="form-popup" id="newCat">
+            <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>" class="form-container">
+                <h1>Création de Catégorie</h1>
+
+                <label for="text"><b>Nom de la catégorie</b></label>
+                <input type="text" placeholder="Nom" name="cat_name" required>
+
+                <div class="btnWrapper">
+                    <button type="submit" class="btn" name="newCat">Créer une nouvelle Catégorie</button>
+                    <button type="button" class="btn cancel" onclick="closeFormCat()">Annuler</button>
+                </div>
+
+            </form>
+        </div>
+
         <ul id="myMenu">
             <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
             <li><a id="defaultOpen" href="javascript:openPage('Accueil', this)">Accueil</a></li>
@@ -32,6 +137,9 @@ include 'header.php';
     </div>
     <!-- INSIDE CATEGORIES -->
     <?php
+    //TODO : if pour les admins
+    //TODO : bouton pour ajouter une catégorie
+
     $sql = "SELECT * FROM categorie";
     $result = $conn->query($sql);
 
@@ -53,8 +161,7 @@ include 'header.php';
     </div>
 
     <?php
-    function displayTopics($incrementTopics, $conn, $rowCat)
-    {
+    function displayTopics($incrementTopics, $conn, $rowCat) {
         echo "<h2>" . $rowCat["Nom"] . "</h2>";
         $sql = "SELECT * FROM discussion WHERE Categorie_idCategorie = ' " . $incrementTopics . " ' ";
         $result = $conn->query($sql);
@@ -66,7 +173,18 @@ include 'header.php';
             echo "<div class=\"divTableRow\">\n";
 
             echo "<div class=\"divTableHead\">";
-            echo "<a href=topic.php?id=" . $row["idDiscussion"].">";
+
+            //TODO create deleteTopic.php to delete a topic
+
+            $isAdmin = $GLOBALS['isAdmin'];
+            if ($isAdmin == true){
+                echo "<form method='post' action=' deleteTopic.php?topicID=" . $row["idDiscussion"] . " '>";
+            }
+
+            echo "<button type='submit' name='delTopic' id='delTopic'> x </button>\n";
+            echo "</form>";
+
+            echo "<a href=topic.php?id=" . $row["idDiscussion"] . ">";
             echo $row["Sujet"];
             echo "</a>";
 
@@ -86,7 +204,7 @@ include 'header.php';
     ?>
 
     <div class="form-popup" id="myForm">
-        <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>" class="form-container">
+        <form method="post" action="<?=$_SERVER['PHP_SELF']?>" class="form-container">
             <h1>Création de Sujet</h1>
 
             <label for="text"><b>Sujet</b></label>
@@ -109,55 +227,12 @@ include 'header.php';
             echo "</select>";
             ?>
             <div class="btnWrapper">
-                <button type="submit" class="btn">Créer un Sujet</button>
+                <button type="submit" class="btn" name="newSubject">Créer un Sujet</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Annuler</button>
             </div>
 
         </form>
     </div>
-
-    <?php //this tries to create a new topic in the database
-    // check if something has been posted
-    //if(isset($_POST['submit']))
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $query = "BEGIN WORK;";
-        $result = $conn->query($query);
-        if (!$result) {
-            //Damn! the query failed, quit
-            echo 'An error occurred while creating your topic. Please try again later.';
-        }
-
-        $sql = "INSERT INTO
-                        discussion(Sujet,
-                               Texte,
-                               Categorie_idCategorie,
-                               Utilisateur_idUtilisateur)
-                   VALUES('" . mysqli_real_escape_string($conn, $_POST['topic_subject']) . "',
-                   '" . mysqli_real_escape_string($conn, $_POST['topic_description']) . "',
-                               " . mysqli_real_escape_string($conn, $_POST['cat_id']) . ",
-                               1)";
-//TODO update utilisateur
-        $result = $conn->query($sql);
-        if (!$result) {
-            //something went wrong, display the error
-            echo 'An error occured while inserting your data. Please try again later.';
-            echo mysqli_error($conn);
-            echo $sql;
-            $sql = "ROLLBACK;";
-            $result = $conn->query($query);
-        } else {
-            $sql = "COMMIT;";
-            $result = $conn->query($sql);
-
-            //after a lot of work, the query succeeded!
-            echo 'You have successfully created your new topic.';
-            header("location: {$_SERVER['PHP_SELF']}");
-        }
-
-    }
-
-
-    ?>
 
 </div>
 
@@ -171,6 +246,14 @@ include 'header.php';
 
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
+    }
+
+    function openFormCat() {
+        document.getElementById("newCat").style.display = "block";
+    }
+
+    function closeFormCat() {
+        document.getElementById("newCat").style.display = "none";
     }
 
 </script>
