@@ -116,6 +116,26 @@
   <div id= "Absent" class="fonctions" style="display:none;">
     <p class="piece">Economies</p>
     <div class="panel">
+	<div class="bloc">
+		<img class="imagesbutton" src="Images-utilisateur/volets.png" alt="volets"></img>
+          	<p> Etat des Volets</p>
+        </div>
+        <div class="bloc">
+          <img class="imagesbutton" src="Images-utilisateur/temperature.png" alt="temperature"></img>
+          <p> Valeur Température</p>
+        </div>
+        <div class="bloc">
+          <img class="imagesbutton" src="Images-utilisateur/humidity.png" alt="temperature"></img>
+          <p> Valeur Humidité</p>
+        </div>
+        <div class="bloc">
+          <img class="imagesbutton" src="Images-utilisateur/pollution.png" alt="temperature"></img>
+          <p> Alerte : Fuite de Gaz</p>
+        </div>
+        <div class="bloc">
+          <img class="imagesbutton" src="Images-utilisateur/fire_alarm.png" alt="temperature"></img>
+          <p> Alerte : Fumée (Incendie)</p>
+        </div>
     </div>
 
 
@@ -140,10 +160,10 @@
   <p class="help"> ? </p>
   <div class="helpPanel">
 
-    <a href="" onclick= "tabFAQ()"><img class="imageshelp" src="Images-utilisateur/FAQ.png" alt="FAQ"></img></a>
+    <a href="" onclick= "tabFAQ()"><img class="imageshelp" src="Images-utilisateur/helpquestionmark.png" alt="FAQ"></img></a>
     
 
-    <a href="" onclick= "popupContact()"><img class="imageshelp" src="Images-utilisateur/Technicien.png" alt="Contact Tech"></img> </a>
+    <a href="" onclick= "popupContact()"><img class="imageshelp" src="Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
 
   </div>
     <p><a href="#masquetemp"></a></p>
