@@ -6,7 +6,7 @@
     <title>User Interface</title>
 
     <link rel="stylesheet" href="Utilisateur.css"> <!--feuille css-->
-    <link rel="icon" href="Images-utilisateur/maison.png"> <!--icone-->
+    <link rel="icon" href="Images-utilisateur/maisonetlogo.png"> <!--icone-->
   
 </head>
 
@@ -24,7 +24,7 @@
 
 
   <div id="menu">  <!--conteneur-->
-    <img id="logo" src="Images-utilisateur/maison+txt.png"> </img>
+    <img id="logo" src="Images-utilisateur/maisonlogolong.png"> </img>
 
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
       <li id="liPresent" class="active"><a href="javascript:switchClick()"> Mode Présence </a></li>
