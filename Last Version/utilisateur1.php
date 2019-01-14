@@ -49,19 +49,21 @@
 				<img class="imagesbutton" src="Images-utilisateur/volets.png" alt="volets"></img>
 				<p>Etat Volet</p></a>
 				</div>
-        <div class="bloc"><a href="#masquehum">
+        			<div class="bloc"><a href="#masquehum">
 				<img class="imagesbutton" src="Images-utilisateur/humidity.png" alt="humidité"></img>
 				<p>Votre Humidité</p></a>
 				</div>
-        <div class="bloc"><a href="#masquefum">
+        			<div class="bloc"><a href="#masquefum">
 				<img class="imagesbutton" src="Images-utilisateur/fire_alarm.png" alt="fumée"></img>
 				<p>Alerte Fumée : </p></a>
 				</div>
-        <div class="bloc"><a href="#masqueCO2">
+        			<div class="bloc"><a href="#masqueCO2">
 				<img class="imagesbutton" src="Images-utilisateur/pollution.png" alt="CO2"></img>
 				<p>Alerte Gaz : </p></a>
-        </div>
-				
+        			</div>
+				<div class="bloc"><a href="#masqueajoutcapteur">
+        			<img class="imagesajoutcapteur" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
+        			</a></div>
 			</div>
 
 		<p class="piece">Chambre 1</p>
@@ -74,18 +76,21 @@
 				<img class="imagesbutton" src="Images-utilisateur/volets.png" alt="volets"></img>
 				<p>Etat Volet</p></a>
 				</div>
-        <div class="bloc"><a href="#masquehum">
+        			<div class="bloc"><a href="#masquehum">
 				<img class="imagesbutton" src="Images-utilisateur/humidity.png" alt="humidité"></img>
 				<p>Votre Humidité</p></a>
 				</div>
-        <div class="bloc"><a href="#masquefum">
+				<div class="bloc"><a href="#masquefum">
 				<img class="imagesbutton" src="Images-utilisateur/fire_alarm.png" alt="fumée"></img>
 				<p class=sstitre>Alerte Fumée : </p></a>
 				</div>
-        <div class="bloc"><a href="#masqueCO2">
+        			<div class="bloc"><a href="#masqueCO2">
 				<img class="imagesbutton" src="Images-utilisateur/pollution.png" alt="CO2"></img>
 				<p>Alerte Gaz : </p></a>
-        </div>
+        			</div>
+				<div class="bloc"><a href="#masqueajoutcapteur">
+        			<img class="imagesajoutcapteur" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
+       				</a></div>
 			</div>
 
 		<p class="piece">Salle A Manger</p>
@@ -98,19 +103,22 @@
 				<img class="imagesbutton" src="Images-utilisateur/volets.png" alt="volets"></img>
 				<p class=sstitre>Etat Volet</p></a>
 				</div>
-        <div class="bloc"><a href="#masquehum">
+        			<div class="bloc"><a href="#masquehum">
 				<img class="imagesbutton" src="Images-utilisateur/humidity.png" alt="humidité"></img>
 				<p class=sstitre>Votre Humidité</p></a>
 				</div>
-        <div class="bloc"><a href="#masquefum">
+        			<div class="bloc"><a href="#masquefum">
 				<img class="imagesbutton" src="Images-utilisateur/fire_alarm.png" alt="fumée"></img>
 				<p class=sstitre>Alerte Fumée : </p></a>
 				</div>
-        <div class="bloc"><a href="#masqueCO2">
+        			<div class="bloc"><a href="#masqueCO2">
 				<img class="imagesbutton" src="Images-utilisateur/pollution.png" alt="CO2"></img>
 				<p class=sstitre>Alerte Gaz : </p></a>
 				</div>
-</div>
+				<div class="bloc"><a href="#masqueajoutcapteur">
+        			<img class="imagesajoutcapteur" src="Images-utilisateur/AjoutCapteur.png" alt="temperature"></img>
+        			</a></div>
+			</div>
 
 
   <div id= "Absent" class="fonctions" style="display:none;">
@@ -228,6 +236,15 @@
 			  title="Fermer la fenêtre" class="btn-fermer" 
 			  src="Images-utilisateur/CroixSortie.png" /></a>
 			<h2>Etat:</h2>
+		  </div> <!-- .fenetre-modale -->
+		</div> <!-- #masque -->
+	<p><a href="#masqueajoutcapteur"></a></p>
+		<div id="masqueajoutcapteur">
+		  <div class="fenetre-modale">
+			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
+			  title="Fermer la fenêtre" class="btn-fermer" 
+			  src="Images-utilisateur/CroixSortie.png" /></a>
+			<h2>Pour ajouter des capteurs , cliquer sur <a href="contact.html">ce lien</a> et préciser à l'administrateur le capteur demandé.</h2>
 		  </div> <!-- .fenetre-modale -->
 		</div> <!-- #masque -->
   <p><a href="#masquevolet"></a></p>
