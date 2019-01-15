@@ -242,6 +242,22 @@ div.bloc {
     text-align: center;
 }
 
+
+#masque {
+    background: rgba(0, 0, 0, 0.2);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#masque:target {
+    display: block;
+}
+
 #masquetemp {
     background: rgba(0, 0, 0, 0.2);
     bottom: 0;
@@ -461,11 +477,6 @@ div.editeur {
 }
 
 
-
-
-
-
-
 /*WARNING CHANGED Elements, added left: 0;*/
 #contactWrapper {
     display: flex;
@@ -507,6 +518,8 @@ div.editeur {
     display: flex;
     justify-content: center;
     flex-direction: column;
+
+    border-bottom: 1px solid dimgray;
 }
 
 #myMenu li a:hover {
@@ -552,13 +565,13 @@ div.editeur {
 
 }
 
-#chatbox{
-    padding:10px;
+#chatbox {
+    padding: 10px;
     margin-bottom: auto;
-    border-top:2px solid #ACD8F0;
+    border-top: 2px solid #ACD8F0;
 }
 
-#usermsg{
+#usermsg {
     width: 90%;
 }
 

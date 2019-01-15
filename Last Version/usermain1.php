@@ -3,7 +3,66 @@
 <?php
 include 'connect.php';
 include 'headerMainUser.php';
-include 'secure.php'
+include 'secure.php';
+?>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $name = Securite::bdd($conn, $_GET['nom']);
+    $firstname = Securite::bdd($conn, $_GET['prenom']);
+
+    //$name = $_SESSION["name"];
+    //$firstname = $_SESSION["firstname"];
+
+    if (isset($_POST['getMaison'])) {
+
+        $adresse = str_replace(" ", "", $_POST['adresse']);
+        header("Location: usermain1.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
+
+    } else if (isset($_POST['submitmsg'])) {
+
+        $query = "BEGIN WORK;";
+        $result = $conn->query($query);
+        if (!$result) {
+            echo "Erreur lors de l'envoi du message";
+        }
+
+        // gets the id of the current user
+        $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
+        $result = $conn->query($sql);
+
+        while ($row = $result->fetch_assoc()) {
+            $reciever = $row["idUtilisateur"];
+        }
+
+        $sql = "INSERT INTO 
+                    contact(idUtilisateur,
+                            idReciever,
+                          message) 
+                VALUES (" . $_GET['idContact'] . ",
+                        " . $reciever . ",
+                        '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
+
+        $result = $conn->query($sql);
+        if (!$result) {
+            echo "Erreur lors de l'insertion du message dans la base de données";
+            echo mysqli_error($conn);
+            $sql = "ROLLBACK;";
+            $result = $conn->query($query);
+        } else {
+            $sql = "COMMIT;";
+            $result = $conn->query($sql);
+
+            unset($_POST);
+
+            echo "<script>";
+            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
+            echo "</script>";
+        }
+    }
+
+}
 ?>
 
 
@@ -33,57 +92,12 @@ include 'secure.php'
 
 
 <div id="Client" class="Elements">
-    <form class="dossier" method="post" action="php/user_id.php">
-        No. client : <input type="text" name="username">
-        <input align="right" type="submit" value="Entrée">
+
+    <form class='dossier' method='post' action=''>
+        Adresse de la Maison : <input type="text" name="adresse">
+        <input align="right" type="submit" name="getMaison" value="Entrée">
     </form>
-    <p class="piece">Salon</p>
-    <div class="panel">
-        <div class=bloc><a href="#masquetemp">
-                <img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-                <p class=sstitre>Votre Temperature</p></a>
-        </div>
-        <div class=bloc><a href="#masquevolet">
-                <img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-                <p class=sstitre>Etat volet</p></a>
-        </div>
-        <div class=bloc><a href="#masqueplus">
-                <img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
-                <p class=sstitre>Etat volet</p></a>
-        </div>
-    </div>
 
-    <p class="piece">Chambre 1</p>
-    <div class="panel">
-        <div class=bloc><a href="#masquetemp">
-                <img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-                <p class=sstitre>Votre Temperature</p></a>
-        </div>
-        <div class=bloc><a href="#masquevolet">
-                <img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-                <p class=sstitre>Etat volet</p></a>
-        </div>
-        <div class=bloc><a href="#masqueplus">
-                <img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
-                <p class=sstitre>Etat volet</p></a>
-        </div>
-    </div>
-
-    <p class="piece">Salle A Manger</p>
-    <div class="panel">
-        <div class=bloc><a href="#masquetemp">
-                <img class="imagestemperature" src="Images-utilisateur/temperature+.png" alt="temperature"></img>
-                <p class=sstitre>Votre Temperature</p></a>
-        </div>
-        <div class=bloc><a href="#masquevolet">
-                <img class="imagesbutton" src="Images-utilisateur/volet.png" alt="volets"></img>
-                <p class=sstitre>Etat volet</p></a>
-        </div>
-        <div class=bloc><a href="#masqueplus">
-                <img class="imagesbuttonplus" src="Images-utilisateur/plus.png" alt="plus"></img>
-                <p class=sstitre>Etat volet</p></a>
-        </div>
-    </div>
 </div>
 
 
@@ -101,13 +115,10 @@ include 'secure.php'
                 die('<p>ERREUR Requête invalide : ' . $mysqli->error . '</p>');
             }
 
-            $nom = "Jack"; // TODO needs to be changed when the login gives them
-            $prenom = "Louis";
-            
             while ($row = $result->fetch_assoc()) {
                 // en minuscule dans l'autre
                 echo "<li>";
-                echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $nom . "&prenom=" . $prenom . ">";
+                echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . ">";
                 echo $row["nom"] . "" . $row['prenom'];
                 echo "</a>";
                 echo "</li>";
@@ -130,65 +141,11 @@ include 'secure.php'
 
         </div>
 
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
-        <script>
-            var auto_refresh = setInterval(
-                function() {
-                    <?php
-                    echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
-                    ?>
-                }, 1000); // refresh toutes les secondes
-        </script>
-
 
     </div>
 </div>
 </div>
 
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $query = "BEGIN WORK;";
-    $result = $conn->query($query);
-    if (!$result) {
-        echo "Erreur lors de l'envoi du message";
-    }
-
-    // gets the id of the current user
-    $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . mysqli_real_escape_string($conn, $_GET['nom']) . "'
-        AND utilisateur.prenom = '" . mysqli_real_escape_string($conn, $_GET['prenom']) . "'";
-    $result = $conn->query($sql);
-
-    while ($row = $result->fetch_assoc()) {
-        $reciever = $row["idUtilisateur"];
-    }
-
-    $sql = "INSERT INTO 
-                    contact(idUtilisateur,
-                            idReciever,
-                          message) 
-                VALUES (" . $_GET['idContact'] . ",
-                        " . $reciever . ",
-                        '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
-
-    $result = $conn->query($sql);
-    if (!$result) {
-        echo "Erreur lors de l'insertion du message dans la base de données";
-        echo mysqli_error($conn);
-        $sql = "ROLLBACK;";
-        $result = $conn->query($query);
-    } else {
-        $sql = "COMMIT;";
-        $result = $conn->query($sql);
-
-        unset($_POST);
-
-        echo "<script>";
-        echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
-        echo "</script>";
-    }
-}
-?>
 
 <div id="Notification" class="Elements" style="display:none;">
 
@@ -204,38 +161,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         </div>
         <div class=bloc><a href="#masque1">
-            <p class="sstitre">Que faisons nous?</p></a>
+                <p class="sstitre">Que faisons nous?</p></a>
         </div>
         <div class=bloc><a href="#masque1">
-            <p class="sstitre">Quels sont nos tarifs</p></a>
+                <p class="sstitre">Quels sont nos tarifs</p></a>
         </div>
     </div>
 </div>
 
-<p><a href="#masquetemp"></a></p>
-<div id="masquetemp">
-    <div class="fenetre-modale">
-        <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
-                                                 title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images-utilisateur/fmodale_fermer.jpg"/></a>
-        <h2>Votre température:</h2>
-        <form>
-            <input type="button1" value=" - " onClick="javascript:this.form.champ.value--;">
-            <input type="text1" name="champ" value="0">°C
-            <input type="button1" value=" + " onClick="javascript:this.form.champ.value++;">
-        </form>
-    </div> <!-- .fenetre-modale -->
-</div> <!-- #masque -->
-<p><a href="#masquevolet"></a></p>
-<div id="masquevolet">
-    <div class="fenetre-modale">
-        <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
-                                                 title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images-utilisateur/fmodale_fermer.jpg"/></a>
-        <h2>Etat des volets:</h2>
-        <!-- ICI Ajouter l'a liste des capteurs l'état ouvert ou fermé du volet -->
-    </div> <!-- .fenetre-modale -->
-</div> <!-- #masque -->
+
 <p><a href="#masqueplus"></a></p>
 <div id="masqueplus">
     <div class="fenetre-modale">
@@ -246,6 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <!-- ICI Ajouter la liste des capteurs -->
     </div> <!-- .fenetre-modale -->
 </div> <!-- #masque -->
+
 <p><a href="#masque1"></a></p>
 <div id="masque1">
     <div class="fenetre-modale">
@@ -262,82 +197,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
     </div> <!-- .fenetre-modale -->
 </div> <!-- #masque -->
+
+
+<div id="masque">
+    <div class="fenetre-modale">
+        <a class="fermer" href="#"><img alt="X" title="Fermer la fenêtre" class="btn-fermer"
+                                        src="Images-utilisateur/fmodale_fermer.jpg"/></a>
+        <h2>Votre Capteur:</h2>
+
+        <form>
+            <input type="button1" value=" - " onClick="javascript:this.form.champ.value--;">
+            <input type="text1" name="champ" value="0">
+            <input type="button1" value=" + " onClick="javascript:this.form.champ.value++;">
+        </form>
+
+    </div> <!-- .fenetre-modale -->
+</div> <!-- #masque -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="usermain1.js"></script>
 <script>
-    for (var piece = document.getElementsByClassName("piece"), panel = document.getElementsByClassName("panel"), i = 0; i < piece.length; i++) {
-        piece[i].onclick = function () {
-            var a = !this.classList.contains("active");
-            setClass(piece, "active", "remove");
-            setClass(panel, "show", "remove");
-            a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
-        };
-    }
-    var help = document.getElementsByClassName("help"),
-        helpPanel = document.getElementsByClassName("helpPanel");
-    help[0].onclick = function () {
-        var a = !this.classList.contains("active");
-        setClass(help, "active", "remove");
-        setClass(helpPanel, "show", "remove");
-        a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
-    };
+    var auto_refresh = setInterval(
+        function () {
+            <?php
+            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
+            ?>
+        }, 1000); // refresh toutes les secondes
 
-    function setClass(a, d, b) {
-        for (var c = 0; c < a.length; c++) {
-            a[c].classList[b](d);
-        }
-    }
-
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-
-    function popupHelp() {
-        window.open("FAQ.html", "", "width=1200, height=1000");
-    }
-
-    function popupContact() {
-        window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
-    }
-
-    function openPage(a, d) {
-        var b;
-        var c = document.getElementsByClassName("Elements");
-        for (b = 0; b < c.length; b++) {
-            c[b].style.display = "none";
-        }
-        document.getElementById(a).style.display = "block";
-        d.classList.toggle("focus");
-    }
-
-    document.getElementById("defaultOpen").click();
-
-
-    function myFunction() {
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("mySearch");
-        filter = input.value.toUpperCase();
-        ul = document.getElementById("myMenu");
-        li = ul.getElementsByTagName("li");
-        for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("a")[0];
-            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
-            } else {
-                li[i].style.display = "none";
-            }
-        }
-    }
+    <?php
+    echo "$('#Client').load('afficheMaison.php?nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . "').fadeIn('slow');";
+    ?>
 </script>
-<?php
-if (!empty($_GET)) {
-    echo "<script type='text/javascript'>";
-    echo "javascript:openPage('Contact', this);";
-    echo "</script>";
-}
-?>
 
 
 </html>
