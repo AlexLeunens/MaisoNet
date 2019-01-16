@@ -1,17 +1,18 @@
 <?php
 include 'connect.php';
+include 'secure.php';
 
 echo "<form class='dossier' method='post' action=''>";
 echo "Adresse client : <input type=\"text\" name=\"adresse\">";
 echo "<input align=\"right\" type=\"submit\" name=\"getMaison\" value=\"Entrée\">";
 echo "</form>";
 
-$name = mysqli_real_escape_string($conn, $_GET['nom']);
-$firstname = mysqli_real_escape_string($conn, $_GET['prenom']);
+$name = Securite::bdd($conn, $_GET['nom']);
+$firstname = Securite::bdd($conn, $_GET['prenom']);
 
 //$name = $_SESSION["name"];
 //$firstname = $_SESSION["firstname"];
-$adresse = mysqli_real_escape_string($conn, $_GET["Adresse"]);
+$adresse = Securite::bdd($conn, $_GET["Adresse"]);
 
 // Get user id
 $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
