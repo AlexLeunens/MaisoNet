@@ -20,7 +20,7 @@ p {
 
 #menu {
   background-color: rgba(103, 141, 255,1); /*rgba(255, 195, 77, 0.5)*/
-  
+
   position: absolute;
   top: 0px;
   left: 0px;
@@ -29,13 +29,14 @@ p {
 }
 
 #onglets{ /* conteneur des listes */
-  font : bold 50px;
   text-decoration-color: white;
   list-style-type : none;
-  position: absolute;
-  bottom: -20px; /*aligne avec le bas du menu*/
 
-  background-color: rgba(103, 141, 255,1); /*220,160,0 : orange   110, 180, 0 : vert*/
+  position: absolute;
+  top: 0px; /*aligne avec le bas du menu*/
+    left: 15%;
+
+
   width: 100%;
 }
 
@@ -197,9 +198,9 @@ div.fonctions {
 
 /* Le bouton bleu selon la piece */
 p.piece{
-  background:rgba(100,135,240,0.9);
+  background:rgba(250,250,250,0.9);
   border-radius:50%;
-  color:#FFF;
+  color: midnightblue;
   cursor:pointer;
   height:150px;
   line-height:150px;
@@ -208,10 +209,10 @@ p.piece{
   width:150px;
 }
 p.piece.active,p.piece:hover{
-  background:#0066aa;
+  background: white;
 }
 p.piece:after{
-  color:#FFF;
+  color: midnightblue;
   content:'\25b7';
   float:left;
 }
@@ -340,10 +341,8 @@ img.avatar {
 }
 
 #onglets{ /* conteneur des listes */
-  font : bold 15px;
   height: auto;
   padding : 0;
-  position : -20px;
   width : 100%;
 }
 
