@@ -4,6 +4,7 @@
 <?php
 include 'connect.php';
 include 'headerForums.php';
+include 'secure.php';
 ?>
 
 
@@ -26,15 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                Texte,
                                Categorie_idCategorie,
                                Utilisateur_idUtilisateur)
-                   VALUES('" . mysqli_real_escape_string($conn, $_POST['topic_subject']) . "',
-                   '" . mysqli_real_escape_string($conn, $_POST['topic_description']) . "',
-                               " . mysqli_real_escape_string($conn, $_POST['cat_id']) . ",
+                   VALUES('" . Securite::bdd($conn, $_POST['topic_subject']) . "',
+                   '" . Securite::bdd($conn, $_POST['topic_description']) . "',
+                               " . Securite::bdd($conn, $_POST['cat_id']) . ",
                                1)";
 
-    } else if(isset($_POST["newCat"])){
+    } else if(isset(Securite::html($_POST["newCat"]))){
         $sql = "INSERT INTO
                         categorie(Nom)
-                   VALUES('" . mysqli_real_escape_string($conn, $_POST['cat_name']) . "')";
+                   VALUES('" . Securite::bdd($conn, $_POST['cat_name']) . "')";
     }
 
     //TODO update utilisateur
@@ -62,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 global $isAdmin;
 $isAdmin = false;
 
-$sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".mysqli_real_escape_string($conn, $_GET['nom'])."'
-                                            AND prenom = '".mysqli_real_escape_string($conn, $_GET['prenom'])."' ";
+$sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".Securite::bdd($conn, $_GET['nom'])."'
+                                            AND prenom = '".Securite::bdd($conn, $_GET['prenom'])."' ";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
