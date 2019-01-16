@@ -6,20 +6,20 @@
     <title>Accueil - MaisoNET</title>
 
     <link rel="stylesheet" href="accueil.css"> <!--feuille css-->
-    <link rel="icon" href="Images-accueil/logo_provisoire_mini.png"> <!--icone-->
+    <link rel="icon" href="Images-accueil/maisonetlogo.png"> <!--icone-->
  </head>
 
   <body>
 
     <div class = "menu">
-  	 <img id="logo1" src="Images-accueil/logo_provisoire2.png" > </img>
+  	 <img id="logo1" src="Images-accueil/maisonlogolong.png" > </img>
   	 <a href="login.php" class="button">Se Connecter</a>
   	 <a href="register.php" class="button">S'inscrire</a>
     </div>
 
     <div class = "presentation">
       <div class="card">
-        <img class="imgCard" src="Images-accueil/logo_provisoire_mini.png" alt="Avatar">
+        <img class="imgCard" src="Images-accueil/maisonetlogo.png" alt="Avatar">
         <div class="container">
           <h4><b>Qui sommes nous ?</b></h4> 
           <p>MaisoNet est un service de maison connectée proposé par la société DomISEP.</p>
