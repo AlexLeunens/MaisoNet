@@ -178,13 +178,15 @@ img.imagesbutton{
 /*permet de s'adapter a la taille de la fenêtre*/
 div.fonctions {
   display: grid;
-  grid-auto-flow: column; /*oblige à se mettre en colonne*/
+    /* changed from column to row */
+  grid-auto-flow: row; /*oblige à se mettre en colonne*/
   justify-content: start; /*aligne sur la gauche*/
   grid-gap: 20px; /* marge */
 
   /*Ajoute la barre de scroll pour trop d'elements*/
-  overflow-y: hidden; 
-  overflow-x: visible;
+    /* swapped overflow x and y visibility*/
+  overflow-y: visible;
+  overflow-x: hidden;
 
   position: absolute;
   width: 100%;
@@ -220,16 +222,18 @@ p.piece.active:after{
 /* panneau avec fonctions */
 div.panel {
     background-color: rgba(220,220,220,0.7);
-    max-height: 0;
+    /*changed max-heigth to max-width*/
+    max-width: 0;
     overflow: hidden;
     transition: 0.5s ease-in-out;
     opacity: 0;
     margin-bottom:10px;
 
     position: absolute; /*was relative*/
-    top:175px; /*was 150px*/
+    top: 10%; /*was 175px*/
+    left: 10%;
 
-    height: 100%;
+    height: 85%;
     width: 98%;
     border-radius: 10px;
     display: flex;
@@ -238,7 +242,8 @@ div.panel {
 
 div.panel.show {
     opacity: 1;
-    max-height: 500px; /* doit être sup à la hauteur des éléments */
+    /*changed max-heigth to max-width*/
+    max-width: 88%; /* doit être sup à la hauteur des éléments */
 }
 
 /*Menu d'aide*/
