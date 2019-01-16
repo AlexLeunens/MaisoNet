@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
     <title>User Interface</title>
 
-    <link rel="stylesheet" href="utilisateur1.css"> <!--feuille css-->
     <link rel="icon" href="Images-utilisateur/maisonetlogo.png"> <!--icone-->
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/raleway" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="utilisateur1.css"> <!--feuille css-->
 
 </head>
 
@@ -15,7 +15,6 @@
 
 <?php
 include 'connect.php';
-include 'headerMainUser.php';
 include 'secure.php';
 ?>
 
