@@ -1,4 +1,7 @@
-<?php 
+<?php
+include 'secure.php';
+?>
+<?php
 	session_start();
 
 	// Déclaration des Variables
@@ -16,13 +19,13 @@
 	// Inscription
 	if (isset($_POST['reg_user'])) {
 		
-		$name = $_POST['nom'];
-		$prenom=$_POST['prenom'];
-		$email = $_POST['email'];
-		$datenaissance=$_POST['datenaissance'];
-		$password_1 =$_POST['password_1'];
-		$password_2 =$_POST['password_2'];
-		$numtel=$_POST['numtel'];
+		$name =  Securite::html($_POST['nom']);
+		$prenom= Securite::html$_POST(['prenom']);
+		$email = Securite::html$_POST(['email']);
+		$datenaissance= Securite::html$_POST(['datenaissance']);
+		$password_1 =Securite::html$_POST(['password_1']);
+		$password_2 =Securite::html$_POST(['password_2']);
+		$numtel=Securite::html($_POST['numtel']);
 
 		
 		if (empty($name)) { array_push($errors, "Le nom est obligatoire"); }
@@ -60,9 +63,9 @@
 
 	// LOGIN 
 	if (isset($_POST['login_user'])) {
-		$name = $_POST['nom'];
-		$prenom=$_POST['prenom'];
-		$password = $_POST['password'];
+		$name = Securite::bdd($db,$_POST['nom']);
+		$prenom= Securite::bdd($db,$_POST['prenom']);
+		$password = Securite::bdd($db,$_POST['password']);
 
 		if (empty($name)) {
 			array_push($errors, "Le Nom est requis");
