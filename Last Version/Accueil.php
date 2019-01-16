@@ -43,7 +43,7 @@
       </div>
     </div>
 	<div class="forum">
-		<h2>Pour plus d'informations,contactez nous ... ou venez sur notre <a href="forum.php">forum</a>!<h2> <!--lien hypertexte-->
+		<h2>Pour plus d'informations, contactez nous ... ou venez sur notre <a href="forum.php">forum</a>!<h2> <!--lien hypertexte-->
 	</div>
   </body>
 
