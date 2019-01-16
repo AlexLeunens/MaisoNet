@@ -3,13 +3,14 @@
 <?php
 include 'connect.php';
 include 'header.php';
+include 'secure.php';
 ?>
 
 
 <div id="menu">
     <div id="onglets">
         <?php
-        $sql = "SELECT * FROM discussion WHERE discussion.idDiscussion = " . mysqli_real_escape_string($conn, $_GET['id']);
+        $sql = "SELECT * FROM discussion WHERE discussion.idDiscussion = " . Securite::bdd($conn, $_GET['id']);
         $result = $conn->query($sql);
 
         while ($rowTopic = $result->fetch_assoc()) {
@@ -20,7 +21,7 @@ include 'header.php';
 
 
     <?php
-    $sql = "SELECT * FROM discussion WHERE discussion.idDiscussion = " . mysqli_real_escape_string($conn, $_GET['id']);
+    $sql = "SELECT * FROM discussion WHERE discussion.idDiscussion = " .  Securite::bdd($conn, $_GET['id']);
     $result = $conn->query($sql);
 
     while ($rowTopic = $result->fetch_assoc()) {
@@ -55,7 +56,7 @@ include 'header.php';
 
     function displayPosts($conn, $rowTopic)
     {
-        $sql = "SELECT * FROM message WHERE message.Discussion_idDiscussion = " . mysqli_real_escape_string($conn, $_GET['id']);
+        $sql = "SELECT * FROM message WHERE message.Discussion_idDiscussion = " . Securite::bdd($conn, $_GET['id']);
         $result = $conn->query($sql);
 
         // while there are still rows to be displayed
@@ -107,9 +108,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           Utilisateur,
                           Discussion_idDiscussion,
                           Utilisateur_idUtilisateur) 
-                VALUES ('" . $_POST['reply_content'] . "',
+                VALUES ('" .  Securite::html($_POST['reply_content']) . "',
                         'TestUser',
-                        " . mysqli_real_escape_string($conn, $_GET['id']) . ",
+                        " .  Securite::bdd($conn, $_GET['id']) . ",
                         1   )";
 
     $result = $conn->query($sql);
@@ -127,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'You have successfully created your new topic.';
         unset($_POST);
         //header("topic.php?id='" . $_GET['id'] . "' ");
-        header('Location: '. $_SERVER['PHP_SELF']."?id=" .$_GET['id']);
+        header('Location: '. $_SERVER['PHP_SELF']."?id=" . Securite::html($_GET['id']);
     }
 }
 ?>
