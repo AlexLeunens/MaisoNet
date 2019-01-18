@@ -65,9 +65,10 @@ p {
 
 .switch {
     position: absolute;
-    right: 0px;
+    left: 75%;
     width: 60px;
     height: 30px;
+
 }
 
 /*cache le rectangle de selection*/
