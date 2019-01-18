@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="accueil.css"> <!--feuille css-->
     <link rel="icon" href="Images-accueil/maisonetlogo.png"> <!--icone-->
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/raleway" type="text/css"/>
  </head>
 
   <body>
