@@ -55,7 +55,7 @@ if (mysqli_num_rows($result) == 0) {
 
             // TODO change image name
             echo "<img class='imagestemperature' src='Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
-            echo "<p class=sstitre>Votre " . $rowCapteur["Type"] . "</p></a>";
+            echo "<p class=sstitre>" . $rowCapteur["Type"] . "</p></a>";
 
             echo "</div>"; // div bloc
 
