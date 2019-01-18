@@ -1,5 +1,4 @@
   body {
-  background: url("Images/maison_connectee.jpg") no-repeat center center fixed;
   background-size: 100% 100%;
   margin: 0;
   }
@@ -10,6 +9,12 @@
     background-color: rgba(103,141,255, 1 );
     display: flex;
     align-items: center;
+  }
+
+  * {
+      font-family: 'RalewayLight';
+      font-weight: normal;
+      font-style: normal;
   }
 
   #logo1 {
