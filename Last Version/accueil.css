@@ -7,7 +7,7 @@
   
 
   .menu {
-    background-color: rgba(220,220,220, 0.7 );
+    background-color: rgba(103,141,255, 1 );
     display: flex;
     align-items: center;
   }
@@ -21,7 +21,7 @@
   }
 
 	.button {
- 		background-color: #006699;
+ 		background-color: #ffffff;
   	color: white;
     text-decoration: none;
 
@@ -49,11 +49,11 @@
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(103,141,255,1);
+  box-shadow: 0 4px 8px 0 rgb(255, 255, 255);
   transition: 0.3s;
   
   border-radius: 5px;
-  background-color: rgba(103,141,255,1);
+  background-color: rgb(255, 255, 255);
 
   margin-right: 3%;
   margin-left: 3%;
@@ -63,12 +63,12 @@
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(103,141,255,1);
+  box-shadow: 0 8px 16px 0 rgb(255, 255, 255);
 }
 
 .container {
   padding: 2px 16px;
-  background-color: rgba(103,141,255,1);
+  background-color: rgb(255, 255, 255);
   height : 100%;
 }
 
@@ -85,7 +85,7 @@
   	transition: 0.3s;
   
   	border-radius: 5px;
-  	background-color: rgba(103,141,255,1);
+  	background-color: rgb(255, 255, 255);
 
   	margin-right: auto;
   	margin-left: auto;
@@ -95,7 +95,7 @@
   	overflow: hidden;
 }
 .forum:hover {
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+	box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.8);
 }
 
 @media screen and (max-width: 480px) {
