@@ -17,6 +17,12 @@ body {
     font-style: normal;
 }
 
+.text{
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+
 #logo1 {
     margin-left: 0;
     margin-right: auto;

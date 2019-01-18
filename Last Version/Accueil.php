@@ -20,7 +20,7 @@
 
 <div class="presentation">
     <div class="card">
-        <img class="imgCard" src="Images-accueil/maisonetlogo.png" alt="Avatar">
+        <h1 class = "text"> MaisoNet </h1>
         <div class="container">
             <h4><b>Qui sommes nous ?</b></h4>
             <p>MaisoNet est un service de maison connectée proposé par la société DomISEP.</p>
