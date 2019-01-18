@@ -61,6 +61,7 @@ p {
 #logo {
     width: auto;
     height: 70%;
+    max-height: 70px;
 }
 
 .switch {
@@ -237,7 +238,7 @@ div.panel {
 
     position: absolute; /*was relative*/
     top: 10%; /*was 175px*/
-    left: 10%;
+    left: 200px;
 
     height: 85%;
     width: 98%;
