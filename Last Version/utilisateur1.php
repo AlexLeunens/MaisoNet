@@ -216,39 +216,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <!-- ICI Ajouter l'a liste des capteurs l'état ouvert ou fermé du volet -->
     </div> <!-- .fenetre-modale -->
 </div> <!-- #masque -->
-    <p><a href="#masqueajoutcapteur"></a></p>
-		<div id="masqueajoutcapteur">
-		  <div class="fenetre-modale">
-			<a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre" 
-			  title="Fermer la fenêtre" class="btn-fermer" 
-			  src="Images-utilisateur/CroixSortie.png" /></a>
-      <h2>Choisissez parmie cette liste de capteurs , puis cliquer <a href="contact.html">ici</a> </h2>
-      <!--Code PHP/SQL pour afficher une liste des capteurs-->
-      <?php
-        $db = new mysqli("localhost", "root", "", "maisonet");
-        $sql1 =  "SELECT type  FROM capteur";
-        $sql2 = " SELECT type FROM listecapteurs";
-
-        $result1 = $db->query($sql1);
-        $result2 = $db ->query($sql2);
-        $index = 0;
-
-        while ($row2 = $result2->fetch_assoc()) {
-          $type2 = $row2['type'] ;
-          while($row1 = $result1->fetch_assoc()){
-            $type1 = $row1['type'] ;
-            if ($type1 == $type2){
-              $index = 1;
-            }
-          }
-          if($index== 0){
-              echo '<p><input type="radio" name="ajoutcapteur" value="typecapteur">'.$type2;
-          }
-          $index = 0;
-        }
-      ?>
-		  </div> <!-- .fenetre-modale -->
-		</div> <!-- #masque -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="utilisateur1.js"></script>
