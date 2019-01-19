@@ -11,7 +11,7 @@
 		<div id="page-wrapper">
 
 				<section id="header" >
-				        <a href="Accueil.php"><img id="logo" src="Images_services/logo_provisoire2.png"> </img></a>
+				        <a href="index.php?action=see_home"><img id="logo" src="Images_services/logo_provisoire2.png"> </img></a>
 
 						<h1><a href="index.html">Nos services</a></h1>
 
@@ -37,7 +37,7 @@
 													</header>
 													<footer>
 														<ul class="actions">
-															<li><a href="services_appart.php" class="button alt">En savoir plus</a></li>
+															<li><a href="index.php?action=see_appartServices" class="button alt">En savoir plus</a></li>
 														</ul>
 													</footer>
 												</section>
@@ -50,7 +50,7 @@
 													</header>
 													<footer>
 														<ul class="actions">
-															<li><a href="services_maison.php" class="button alt">En savoir plus</a></li>
+															<li><a href="index.php?action=see_homeServices" class="button alt">En savoir plus</a></li>
 														</ul>
 													</footer>
 												</section>

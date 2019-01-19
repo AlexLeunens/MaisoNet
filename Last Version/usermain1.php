@@ -73,9 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <img class="avatar" src="Images-utilisateur/avatar.png" onclick="openNav()"> </img>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
-    <a href="Nos_services.php">Services</a>
+    <a href="index.php?action=see_ourServices">Services</a>
     <a href="" onclick="popupContact()">Contact</a>
-    <a href="index.php">Se Déconnecter</a>
+    <a href="index.php?action=logout">Se Déconnecter</a>
 </div>
 
 
@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="Notification" class="Elements" style="display:none;">
 
 </div>
-<div id="GestClient" class="Elments" style="display:none;">
+<div id="GestClient" class="Elements" style="display:none;">
 
 </div>
 <div id=GestAdmin class="Elements" style="display:none;">
@@ -168,6 +168,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </div>
+
+
 
 
 <p><a href="#masqueplus"></a></p>

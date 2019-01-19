@@ -6,6 +6,7 @@
  * Time: 15:19
  */
 
+// view pages
 
 require_once ROOT . "/models/model.php";
 
@@ -40,8 +41,20 @@ function seeAdminPage()
     require  ROOT."/views/admin/admin.php";
 }
 
+function seeOurServices(){
+    require ROOT . "/views/service/Nos_services.php";
+}
 
-// ces fonctions ne sont pas fini !!!
+function seeAppartServices(){
+    require  ROOT."/views/service/services_appart.php";
+}
+
+function seeHomeServices(){
+    require  ROOT."/views/service/services_maison.php";
+}
+
+
+// gestion des sessions
 function addUser()
 {
     $lastname = htmlspecialchars($_POST["lastname"]);

@@ -32,6 +32,17 @@ if (isset($_GET["action"])) {
         case "see_adminPage":
             seeAdminPage();
             break;
+        case "see_ourServices":
+            seeOurServices();
+            break;
+        case "see_appartServices":
+            seeAppartServices();
+            break;
+        case "see_homeServices":
+            seeHomeServices();
+            break;
+
+
 
         case "register_request":
             registerRequest();
