@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'You have successfully created your new topic.';
         unset($_POST);
         //header("topic.php?id='" . $_GET['id'] . "' ");
-        header('Location: '. $_SERVER['PHP_SELF']."?id=" . Securite::html($_GET['id']);
+        header('Location: '. $_SERVER['PHP_SELF']."?id=" . Securite::html($_GET['id']));
     }
 }
 ?>

@@ -3,12 +3,13 @@
 
 <?php
 include 'connect.php';
-include 'headerForums.php';
+include ROOT.'/views/template/headerForums.php';
 include 'secure.php';
 ?>
 
 
-<?php //this tries to create a new topic in the database
+<?php
+//this tries to create a new topic in the database
 // check if something has been posted
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -32,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                " . Securite::bdd($conn, $_POST['cat_id']) . ",
                                1)";
 
-    } else if(isset(Securite::html($_POST["newCat"]))){
+    } else if(isset($_POST["newCat"])){
         $sql = "INSERT INTO
                         categorie(Nom)
                    VALUES('" . Securite::bdd($conn, $_POST['cat_name']) . "')";
@@ -261,3 +262,4 @@ $GLOBALS['isAdmin'] = $isAdmin;
 
 
 </body>
+</html>

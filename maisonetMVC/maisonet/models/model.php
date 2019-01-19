@@ -32,9 +32,9 @@ function insertUser($lastname, $name, $password, $email, $tel, $birthday, $type)
     $db = dbConnect();
 
     $result = $db->query("SELECT * FROM utilisateur WHERE Email = '$email'");
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    if ($row != null) {
-        $count = count($row);
+    $results = $result->fetch(PDO::FETCH_ASSOC);
+    if ($results != null) {
+        $count = count($results);
     } else {
         $count = 0;
     }
