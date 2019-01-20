@@ -1,9 +1,12 @@
 <?php
 $title = "User Interface";
 $css = "/maisonet/views/admin/usermain.css";
-require ROOT . "/views/template/headerAccueil.php";
+require ROOT . "/views/template/headerAdmin.php";
 ?>
 <?php
+include_once ROOT."/models/connect.php";
+include_once  ROOT."/models/secure.php";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //$name = Securite::bdd($conn, $_GET['nom']);
