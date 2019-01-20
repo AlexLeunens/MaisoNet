@@ -1,3 +1,6 @@
+<?php
+$css = "/maisonetgit/maisonetMVC/maisonet/views/accueil.css";
+?>
 <!doctype html>
 <html lang="fr">
 <head>

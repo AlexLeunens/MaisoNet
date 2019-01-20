@@ -1,7 +1,7 @@
 <?php
 $title = "User Interface";
 $css = "/maisonet/views/admin/usermain.css";
-require ROOT."/views/template/header.php";
+require ROOT . "/views/template/headerAccueil.php";
 ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

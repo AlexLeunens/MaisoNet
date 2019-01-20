@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
 include 'connect.php';
-include 'header.php';
+include 'headerAccueil.php';
 include 'secure.php';
 ?>
 

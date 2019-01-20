@@ -2,9 +2,10 @@
 <html lang="fr">
 
 <?php
+
 include ROOT.'/models/connect.php';
-include ROOT.'/views/template/headerForums.php';
-include ROOT.'/models/secure.php';
+include_once ROOT.'/views/template/headerForums.php';
+include_once ROOT.'/models/secure.php';
 ?>
 
 

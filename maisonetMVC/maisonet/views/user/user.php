@@ -1,7 +1,7 @@
 <?php
 $title = "User Interface";
 $css = "/maisonet/views/user/utilisateur1.css";
-require ROOT."/views/template/header.php";
+require ROOT . "/views/template/headerAccueil.php";
 ?>
 
 
