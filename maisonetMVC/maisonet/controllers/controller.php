@@ -56,6 +56,11 @@ function seeHomeServices()
     require ROOT . "/views/service/services_maison.php";
 }
 
+function seeFAQ()
+{
+    require ROOT . "/views/FAQ/FAQ.php";
+}
+
 
 // gestion des utilisateurs
 function addUser()

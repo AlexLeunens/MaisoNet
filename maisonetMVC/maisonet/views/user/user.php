@@ -2,6 +2,9 @@
 $title = "User Interface";
 $css = "/maisonet/views/user/utilisateur1.css";
 require ROOT . "/views/template/headerMainUser.php";
+include_once ROOT."/models/connect.php";
+include_once ROOT."/models/secure.php";
+
 ?>
 
 
@@ -14,7 +17,8 @@ require ROOT . "/views/template/headerMainUser.php";
     <a href="#">Profil</a>
     <a href="#">Services</a>
     <a href="#">Contact</a>
-    <a href="index.php">Déconnexion</a>
+    <a href="#">Forum</a>
+    <a href="index.php?action=logout">Déconnexion</a>
 </div>
 
 

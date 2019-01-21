@@ -26,12 +26,14 @@ if (isset($_GET["action"])) {
         case "see_forum":
             seeForum();
             break;
-        case "see_userPage":
+
+        case "see_userPage": // à supprimer une fois le site fini
             seeUserPage();
             break;
-        case "see_adminPage":
+        case "see_adminPage": // à supprimer une fois le site fini
             seeAdminPage();
             break;
+
         case "see_ourServices":
             seeOurServices();
             break;
@@ -40,6 +42,9 @@ if (isset($_GET["action"])) {
             break;
         case "see_homeServices":
             seeHomeServices();
+            break;
+        case "see_FAQ":
+            seeFAQ();
             break;
 
 
