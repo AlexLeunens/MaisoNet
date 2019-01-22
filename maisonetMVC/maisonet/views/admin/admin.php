@@ -190,6 +190,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="submit" value="Ajouter">
         </form>
 
+        <form class="register" method="post" action="index.php?action=add_user">
+            <h3>Ajouter une nouvelle maison</h3>
+            <label for="inputUserId">Nom</label>
+            <br>
+            <input type="text" name="userId" id="inputUserId"  placeholder="id" required autofocus>
+            <br>
+            <label for="inputName">Prénom</label>
+            <br>
+            <input type="text" name="name" id="inputName"  placeholder="Prénom" required>
+            <br>
+            <label for="inputPassword">Mot de passe</label>
+            <br>
+            <input type="password" name="password" id="inputPassword"  placeholder="Mot de pass" required>
+
+            <?php displayPays() ?>
+            <br>
+            <br>
+            <input type="submit" value="Ajouter">
+        </form>
+
         <?php
 
         function displayType(){
@@ -206,9 +226,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             echo '</select>';
 
+        }
 
+        function displayPays(){
+            $db = dbConnect();
+
+            $sql = "SELECT nom FROM pays";
+            $result = $db->query($sql);
+            $i = 0;
+            echo '<label for="pay">Pay</label><br>';
+            echo '<select name="pay">';
+            while ($pays = $result->fetch(PDO::FETCH_ASSOC)) {
+                $i++;
+                echo '<option value=' . $i . '>' . $pays['Nom'] . '</option>';
+            }
+            echo '</select>';
 
         }
+
 
         ?>
 
