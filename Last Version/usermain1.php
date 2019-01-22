@@ -83,8 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
         <li><a id="defaultOpen" href="javascript:openPage('Client', this)"> Client </a></li>
         <li><a href="javascript:openPage('Contact', this)"> Contact </a></li>
-        <li><a href="javascript:openPage('Notification', this)"> Notification </a></li>
-        <li><a href="javascript:openPage('GestClient', this)"> Gestion Client </a></li>
         <li><a href="javascript:openPage('GestAdmin',this)"> Gestion Admin </a></li>
 
     </ul>
@@ -147,12 +145,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-<div id="Notification" class="Elements" style="display:none;">
-
-</div>
-<div id="GestClient" class="Elements" style="display:none;">
-
-</div>
 <div id=GestAdmin class="Elements" style="display:none;">
     <p class="piece">Modifier Accueil</p>
     <div class="panel">

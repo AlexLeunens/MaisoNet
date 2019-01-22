@@ -514,6 +514,24 @@ div.bloc {
     display: block;
 }
 
+
+
+
+#masque {
+    background: rgba(0, 0, 0, 0.2);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#masque:target {
+    display: block;
+}
+
 .fenetre-modale {
     background: #fff;
     border-radius: 5px;
