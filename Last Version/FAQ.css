@@ -1,5 +1,5 @@
 html {
-  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images/bgall3.jpg") no-repeat center center fixed;
+  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5));
   background-size: cover;
   overflow: hidden;
   margin: 0;
@@ -20,8 +20,8 @@ h1 {
 
 .logo{
   position : absolute;
-  top : -10px;
-  right : 0px;
+  top : 0px;
+  right : 20px;
   z-index: 2;
   height: 10%;
 }
