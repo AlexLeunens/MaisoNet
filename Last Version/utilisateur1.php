@@ -152,70 +152,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </div>
 
-<div id="masquetemp">
-    <div class="fenetre-modale" id="garbage">
-        <a class="fermer" href="javascript:closeShit()"><img alt="Bouton fermer la fenêtre"
-                                                             title="Fermer la fenêtre" class="btn-fermer"
-                                                             src="Images-utilisateur/Coix_sortie.png"/></a>
-        <h2>Votre température:</h2>
+<div id="masque">
+    <div class="fenetre-modale">
+        <a class="fermer" href="#">X</a>
+        <h2>Votre Capteur:</h2>
+
         <form>
-            <input type="button" value=" - " onClick="javascript:this.form.champ.value--;">
-            <input type="text1" name="champ" value="0">%
-            <input type="button" value=" + " onClick="javascript:this.form.champ.value++;">
+            <input type="button1" value=" - " onClick="javascript:this.form.champ.value--;">
+            <input type="text1" name="champ" value="0">
+            <input type="button1" value=" + " onClick="javascript:this.form.champ.value++;">
         </form>
+
     </div> <!-- .fenetre-modale -->
 </div> <!-- #masque -->
 
-<div id="masquehum">
-    <div class="fenetre-modale">
-        <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
-                                                 title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images-utilisateur/Croix_sortie.png"/></a>
-        <h2>Votre Humidité:</h2>
-        <form>
-            <input type="button" value=" - " onClick="javascript:this.form.champ.value--;">
-            <input type="text1" name="champ" value="0">%
-            <input type="button" value=" + " onClick="javascript:this.form.champ.value++;">
-        </form>
-    </div> <!-- .fenetre-modale -->
-</div> <!-- #masque -->
 
-<div id="masquefum">
-    <div class="fenetre-modale">
-        <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
-                                                 title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images-utilisateur/Croix_sortie.png"/></a>
-        <h2>Etat:</h2>
-    </div> <!-- .fenetre-modale -->
-</div> <!-- #masque -->
-
-<div id="masqueCO2">
-    <div class="fenetre-modale">
-        <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
-                                                 title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images-utilisateur/Croix_sortie.png"/></a>
-        <h2>Etat:</h2>
-    </div> <!-- .fenetre-modale -->
-</div> <!-- #masque -->
-
-<div id="masquecam">
-    <div class="fenetre-modale">
-        <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
-                                                 title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images-utilisateur/Croix_sortie.png"/></a>
-        <h2>Etat:</h2>
-    </div> <!-- .fenetre-modale -->
-</div> <!-- #masque -->
-
-<div id="masquevolet">
-    <div class="fenetre-modale">
-        <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
-                                                 title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images-utilisateur/Croix_sortie.png"/></a>
-        <h2>Etat des volets:</h2>
-        <!-- ICI Ajouter l'a liste des capteurs l'état ouvert ou fermé du volet -->
-    </div> <!-- .fenetre-modale -->
-</div> <!-- #masque -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="utilisateur1.js"></script>
