@@ -8,6 +8,7 @@ html {
 
 * {
     box-sizing: border-box;
+    font-family: 'RalewayLight';
 }
 
 #menu {
@@ -372,7 +373,7 @@ input[type="button1"]:hover {
 input[type="text1"] {
     border: transparent;
     color: #000;
-    texttext-align: center;
+    text-align: center;
     width: 20px;
 }
 
@@ -408,7 +409,6 @@ input[type="text1"] {
         font: bold 20px Georgia, arial, serif;
         height: auto;
         padding: 0;
-        position: -20px;
         width: 100%;
     }
 
