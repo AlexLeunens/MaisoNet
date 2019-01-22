@@ -5,13 +5,13 @@
 		<title>Nos Services</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="maisonetgit/maisonetMVC/maisonet/views/service/services.css" />
+		<link rel="stylesheet" href="views/service/services.css" />
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
 
 				<section id="header" >
-				        <a href="index.php?action=see_home"><img id="logo" src="Images_services/logo_provisoire2.png"> </img></a>
+				        <a href="index.php?action=see_home"><img id="logo" src="views/service/Images_services/logo_provisoire2.png"></a>
 
 						<h1><a href="index.php?action=see_ourServices">Nos services</a></h1>
 
