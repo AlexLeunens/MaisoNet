@@ -7,6 +7,9 @@ include 'secure.php';
 
 if (!empty($_GET)) {
 
+    session_start();
+    $_SESSION["idContact"] = $_GET['idContact'];
+
     $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . Securite::bdd($conn, $_GET['nom']) . "'
         AND utilisateur.prenom = '" . Securite::bdd($conn, $_GET['prenom']) . "'";
 
@@ -24,7 +27,7 @@ if (!empty($_GET)) {
     while ($rowMessage = $result->fetch_assoc()) {
 
         // if the current user did not sent the message
-        if ($rowMessage["idUtilisateur"] === Securite::html($_GET['idContact']) {
+        if ($rowMessage["idUtilisateur"] === Securite::html($_GET['idContact'])) {
             echo "<div id=messageContainer style='display: flex; justify-content: flex-end' >";
             echo "<p style='background-color: rgb(0, 132, 254); color: white'>" . $rowMessage["message"] . "</p>";
             echo "</div>";
@@ -37,4 +40,6 @@ if (!empty($_GET)) {
     }
 
 }
+
+
 ?>

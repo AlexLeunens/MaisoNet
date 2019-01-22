@@ -7,18 +7,40 @@ include 'secure.php';
 ?>
 
 <?php
+session_start();
+
+if (!isset($_SESSION["name"]) || !isset($_SESSION["firstname"])) {
+    $_SESSION["name"] = 'Anonym';
+    $_SESSION["firstname"] = 'Name';
+} else {
+    $name = $_SESSION["name"];
+    $firstname = $_SESSION["firstname"];
+}
+
+
+if (isset($_SESSION["idContact"])) {
+    $idContact = $_SESSION["idContact"];
+} else {
+    $idContact = 1; //permet de toujours avoir un contact
+}
+
+
+if (isset($_SESSION["adresse"])) {
+    $adresse = $_SESSION["adresse"];
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //$name = Securite::bdd($conn, $_GET['nom']);
     //$firstname = Securite::bdd($conn, $_GET['prenom']);
 
-    $name = $_SESSION["name"];
-    $firstname = $_SESSION["firstname"];
-
     if (isset($_POST['getMaison'])) {
 
         $adresse = str_replace(" ", "", $_POST['adresse']);
-        header("Location: usermain1.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
+        $_SESSION["adresse"] = $adresse;
+
+        header("Location: usermain1.php");
 
     } else if (isset($_POST['submitmsg'])) {
 
@@ -40,13 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     contact(idUtilisateur,
                             idReciever,
                           message) 
-                VALUES (" . $_GET['idContact'] . ",
+                VALUES (" . $idContact . ",
                         " . $reciever . ",
                         '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
 
         $result = $conn->query($sql);
         if (!$result) {
             echo "Erreur lors de l'insertion du message dans la base de données";
+            echo $sql;
             echo mysqli_error($conn);
             $sql = "ROLLBACK;";
             $result = $conn->query($query);
@@ -57,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             unset($_POST);
 
             echo "<script>";
-            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
+            echo "$('#Messages').load('messages.php?idContact=" . $idContact . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
             echo "</script>";
         }
     }
@@ -116,7 +139,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             while ($row = $result->fetch_assoc()) {
                 // en minuscule dans l'autre
                 echo "<li>";
-                echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . ">";
+                echo "<a href='' onclick=\" $('#Messages').load('messages.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');\">";
+
                 echo $row["nom"] . "" . $row['prenom'];
                 echo "</a>";
                 echo "</li>";
@@ -160,8 +184,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </div>
-
-
 
 
 <p><a href="#masqueplus"></a></p>
@@ -214,14 +236,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     var auto_refresh = setInterval(
         function () {
             <?php
-            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
+            echo "$('#Messages').load('messages.php?idContact=" . $idContact . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
             ?>
         }, 1000); // refresh toutes les secondes
 
+
     <?php
-    echo "$('#Client').load('afficheMaison.php?nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . "').fadeIn('slow');";
+    if (isset($adresse)) {
+        echo "$('#Client').load('afficheMaison.php?nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse . "').fadeIn('slow');";
+    }
     ?>
+
+
 </script>
 
 
 </html>
+
+
