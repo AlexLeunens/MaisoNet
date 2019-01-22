@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['getMaison'])) {
 
         $adresse = str_replace(" ", "", $_POST['adresse']);
+        $_SESSION["adresse"] = $adresse;
         header("Location: usermain1.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
 
     } else if (isset($_POST['submitmsg'])) {
@@ -122,7 +123,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             while ($row = $result->fetch_assoc()) {
                 // en minuscule dans l'autre
                 echo "<li>";
-                echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . ">";
+                if (isset($_SESSION["adresse"])) {
+                    echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_SESSION["adresse"] . ">";
+                } else {
+                    echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . ">";
+                }
+
                 echo $row["nom"] . "" . $row['prenom'];
                 echo "</a>";
                 echo "</li>";
@@ -284,12 +290,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     var auto_refresh = setInterval(
         function () {
             <?php
-            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
+            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
             ?>
         }, 1000); // refresh toutes les secondes
 
     <?php
-    echo "$('#Client').load('afficheMaison.php?nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . "').fadeIn('slow');";
+    echo "$('#Client').load('afficheMaison.php?nom=" . $name . "&prenom=" . $firstname . "&Adresse=" .  $_SESSION["adresse"] . "').fadeIn('slow');";
     ?>
 </script>
 

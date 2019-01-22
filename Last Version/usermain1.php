@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 
-<img id="logo" src="Images-utilisateur/logo_provisoire2.png"> </img>
+<img id="logo" src="Images-utilisateur/maisonlogolong.png"> </img>
 <!--<a href="absent.html" ><img id="switch" src="Images-utilisateur/switchOn.png"> </img> </a> -->
 
 
