@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                " . Securite::bdd($conn, $_POST['cat_id']) . ",
                                1)";
 
-    } else if(isset(Securite::html($_POST["newCat"]))){
+    } else if(isset( $_POST["newCat"] )){
         $sql = "INSERT INTO
                         categorie(Nom)
                    VALUES('" . Securite::bdd($conn, $_POST['cat_name']) . "')";
@@ -63,13 +63,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 global $isAdmin;
 $isAdmin = false;
 
-$sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".Securite::bdd($conn, $_GET['nom'])."'
+if(isset($_GET['nom']) && isset($_GET['prenom'])) {
+    $sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".Securite::bdd($conn, $_GET['nom'])."'
                                             AND prenom = '".Securite::bdd($conn, $_GET['prenom'])."' ";
-$result = $conn->query($sql);
+    $result = $conn->query($sql);
 
-while ($row = $result->fetch_assoc()) {
-    $idUser = $row["idUtilisateur"];
+    while ($row = $result->fetch_assoc()) {
+        $idUser = $row["idUtilisateur"];
+    }
+
+} else {
+    $idUser = 1;
 }
+
+
 
 $sql = "SELECT type from fonction WHERE Utilisateur_idUtilisateur = ".$idUser." ";
 $result = $conn->query($sql);
