@@ -196,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="masque">
     <div class="fenetre-modale">
         <a class="fermer" href="#"><img alt="X" title="Fermer la fenêtre" class="btn-fermer"
-                                        src="Images-utilisateur/fmodale_fermer.jpg"/></a>
+                                        src="Images-utilisateur/Croix_sortie.png"/></a>
         <h2>Votre Capteur:</h2>
 
         <form>
