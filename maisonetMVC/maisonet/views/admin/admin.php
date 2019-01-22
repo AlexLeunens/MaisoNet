@@ -4,21 +4,39 @@ $css = "/maisonet/views/admin/usermain.css";
 require ROOT . "/views/template/headerAdmin.php";
 ?>
 <?php
-include_once ROOT."/models/connect.php";
-include_once ROOT."/models/secure.php";
+include_once ROOT . "/models/connect.php";
+include_once ROOT . "/models/secure.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+session_start();
 
-    //$name = Securite::bdd($conn, $_GET['nom']);
-    //$firstname = Securite::bdd($conn, $_GET['prenom']);
-
+if (!isset($_SESSION["name"]) || !isset($_SESSION["firstname"])) {
+    $_SESSION["name"] = 'Anonym';
+    $_SESSION["firstname"] = 'Name';
+} else {
     $name = $_SESSION["name"];
     $firstname = $_SESSION["firstname"];
+}
+
+
+if (isset($_SESSION["idContact"])) {
+    $idContact = $_SESSION["idContact"];
+} else {
+    $idContact = 1; //permet de toujours avoir un contact
+}
+
+
+if (isset($_SESSION["adresse"])) {
+    $adresse = $_SESSION["adresse"];
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['getMaison'])) {
 
         $adresse = str_replace(" ", "", $_POST['adresse']);
-        header("Location: usermain1.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
+        $_SESSION["adresse"] = $adresse;
+
+        header("Location: usermain1.php");
 
     } else if (isset($_POST['submitmsg'])) {
 
@@ -40,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     contact(idUtilisateur,
                             idReciever,
                           message) 
-                VALUES (" . $_GET['idContact'] . ",
+                VALUES (" . $idContact . ",
                         " . $reciever . ",
                         '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
 
@@ -57,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             unset($_POST);
 
             echo "<script>";
-            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
+            echo "$('#Messages').load('messages.php?idContact=" . $idContact . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
             echo "</script>";
         }
     }
@@ -79,8 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a href="" onclick="popupContact()">Contact</a>
     <a href="index.php?action=logout">Se Déconnecter</a>
 </div>
-
-
 
 
 <div id="menu">  <!--conteneur-->
@@ -120,9 +136,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             while ($row = $result->fetch_assoc()) {
-                // en minuscule dans l'autre
                 echo "<li>";
-                echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . ">";
+                echo "<a href='' onclick=\" $('#Messages').load('messages.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');\">";
+
                 echo $row["nom"] . "" . $row['prenom'];
                 echo "</a>";
                 echo "</li>";
@@ -151,38 +167,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-<div id= "Notification" class="Elements" style="display:none;">
+<div id="Notification" class="Elements" style="display:none;">
 
 </div>
 
 
-<div id= "GestClient" class="Elements" style="display:none;">
-    <div class = "newClientRegister">
+<div id="GestClient" class="Elements" style="display:none;">
+    <div class="newClientRegister">
         <form class="register" method="post" action="index.php?action=add_user">
             <h3>Ajouter un nouveau utilisateur</h3>
             <label for="inputLastName">Nom</label>
             <br>
-            <input type="text" name="lastname" id="inputLastName"  placeholder="Nom" required autofocus>
+            <input type="text" name="lastname" id="inputLastName" placeholder="Nom" required autofocus>
             <br>
             <label for="inputName">Prénom</label>
             <br>
-            <input type="text" name="name" id="inputName"  placeholder="Prénom" required>
+            <input type="text" name="name" id="inputName" placeholder="Prénom" required>
             <br>
             <label for="inputPassword">Mot de passe</label>
             <br>
-            <input type="password" name="password" id="inputPassword"  placeholder="Mot de pass" required>
+            <input type="password" name="password" id="inputPassword" placeholder="Mot de pass" required>
             <br>
             <label for="inputEmail">Adress Mail</label>
             <br>
-            <input type="email" name="email" id="inputEmail"  placeholder="Add Mail" required>
+            <input type="email" name="email" id="inputEmail" placeholder="Add Mail" required>
             <br>
             <label for="inputBirthday">Date de naissance</label>
             <br>
-            <input type="date" name="birthday" id="inputBirthday"  placeholder="Date de naissance" required>
+            <input type="date" name="birthday" id="inputBirthday" placeholder="Date de naissance" required>
             <br>
             <label for="inputTel">Numéro de téléphone</label>
             <br>
-            <input type="tel" name="tel" id="inputTel"  placeholder="Numéro de téléphone" required>
+            <input type="tel" name="tel" id="inputTel" placeholder="Numéro de téléphone" required>
             <br>
             <?php displayType() ?>
             <br>
@@ -194,15 +210,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h3>Ajouter une nouvelle maison</h3>
             <label for="inputUserId">Nom</label>
             <br>
-            <input type="text" name="userId" id="inputUserId"  placeholder="id" required autofocus>
+            <input type="text" name="userId" id="inputUserId" placeholder="id" required autofocus>
             <br>
             <label for="inputName">Prénom</label>
             <br>
-            <input type="text" name="name" id="inputName"  placeholder="Prénom" required>
+            <input type="text" name="name" id="inputName" placeholder="Prénom" required>
             <br>
             <label for="inputPassword">Mot de passe</label>
             <br>
-            <input type="password" name="password" id="inputPassword"  placeholder="Mot de pass" required>
+            <input type="password" name="password" id="inputPassword" placeholder="Mot de pass" required>
 
             <?php displayPays() ?>
             <br>
@@ -212,7 +228,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <?php
 
-        function displayType(){
+        function displayType()
+        {
             $db = dbConnect();
 
             $sql = "SELECT Type FROM Fonction";
@@ -228,7 +245,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         }
 
-        function displayPays(){
+        function displayPays()
+        {
             $db = dbConnect();
 
             $sql = "SELECT nom FROM pays";
@@ -319,12 +337,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     var auto_refresh = setInterval(
         function () {
             <?php
-            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
+            echo "$('#Messages').load('messages.php?idContact=" . $idContact . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
             ?>
         }, 1000); // refresh toutes les secondes
 
     <?php
-    echo "$('#Client').load('afficheMaison.php?nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . "').fadeIn('slow');";
+    if (isset($adresse)) {
+        echo "$('#Client').load('afficheMaison.php?nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse . "').fadeIn('slow');";
+    }
     ?>
 </script>
 

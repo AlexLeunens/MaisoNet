@@ -32,9 +32,6 @@ if (isset($_SESSION["adresse"])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    //$name = Securite::bdd($conn, $_GET['nom']);
-    //$firstname = Securite::bdd($conn, $_GET['prenom']);
-
     if (isset($_POST['getMaison'])) {
 
         $adresse = str_replace(" ", "", $_POST['adresse']);
@@ -69,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = $conn->query($sql);
         if (!$result) {
             echo "Erreur lors de l'insertion du message dans la base de données";
-            echo $sql;
             echo mysqli_error($conn);
             $sql = "ROLLBACK;";
             $result = $conn->query($query);
@@ -137,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             while ($row = $result->fetch_assoc()) {
-                // en minuscule dans l'autre
+
                 echo "<li>";
                 echo "<a href='' onclick=\" $('#Messages').load('messages.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');\">";
 
