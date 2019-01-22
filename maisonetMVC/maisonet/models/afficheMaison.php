@@ -7,11 +7,11 @@ echo "Adresse client : <input type=\"text\" name=\"adresse\">";
 echo "<input align=\"right\" type=\"submit\" name=\"getMaison\" value=\"Entrée\">";
 echo "</form>";
 
-$name = Securite::bdd($conn, $_GET['nom']);
-$firstname = Securite::bdd($conn, $_GET['prenom']);
+//$name = Securite::bdd($conn, $_GET['nom']);
+//$firstname = Securite::bdd($conn, $_GET['prenom']);
 
-//$name = $_SESSION["name"];
-//$firstname = $_SESSION["firstname"];
+$name = $_SESSION["name"];
+$firstname = $_SESSION["firstname"];
 $adresse = Securite::bdd($conn, $_GET["Adresse"]);
 
 // Get user id

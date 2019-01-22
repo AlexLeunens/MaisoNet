@@ -65,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="index.php?action=see_ourServices">Services</a>
     <a href="" onclick="popupContact()">Contact</a>
+    <a href="index.php?action=see_forum">Services</a>
     <a href="index.php?action=logout">Se Déconnecter</a>
 </div>
 
@@ -78,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <li><a href="javascript:openPage('Notification', this)"> Notification </a></li>
         <li><a href="javascript:openPage('GestClient', this)"> Gestion Client </a></li>
         <li><a href="javascript:openPage('GestAdmin',this)"> Gestion Admin </a></li>
+
 
     </ul>
 </div>
@@ -93,57 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-<div id="Contact" class="Elements" style="display:none;">
-    <div id="contactWrapper">
-        <ul id="myMenu">
-            <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
 
-            <?php
-            $sql = "SELECT idUtilisateur, nom, prenom FROM utilisateur;"; //utilisateurs in 172.16.223.113
-            $result = $conn->query($sql);
-            if (!$result) {
-                die('<p>ERREUR Requête invalide : ' . $mysqli->error . '</p>');
-            }
-            while ($row = $result->fetch_assoc()) {
-                // en minuscule dans l'autre
-                echo "<li>";
-                if (isset($adresse)) {
-                    echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse . ">";
-                } else {
-                    echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $name . "&prenom=" . $firstname . ">";
-                }
-
-
-                echo $row["nom"] . "" . $row['prenom'];
-                echo "</a>";
-                echo "</li>";
-                echo "\n";
-            }
-            $result->free();
-            ?>
-        </ul>
-        <div id="discussion">
-            <div id="Messages">
-
-            </div>
-            <div id="chatbox">
-                <form method="post" name="message">
-                    <input name="user_message" type="text" id="usermsg" required/>
-                    <input name="submitmsg" type="submit" id="submitmsg" value="Send"/>
-                </form>
-            </div>
-
-        </div>
-
-
-    </div>
-</div>
-</div>
-
-
-<div id= "Notification" class="Elements" style="display:none;">
-
-</div>
 
 
 <div id= "GestClient" class="Elements" style="display:none;">
@@ -305,18 +257,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="usermain1.js"></script>
-<script>
+<!--<script>
     var auto_refresh = setInterval(
         function () {
             <?php
-            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
+            //echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
             ?>
         }, 1000); // refresh toutes les secondes
 
     <?php
-    echo "$('#Client').load('afficheMaison.php?nom=" . $name. "&prenom=" . $firstname . "&Adresse=" . $adresse . "').fadeIn('slow');";
+    //echo "$('#Client').load('afficheMaison.php?nom=" . $name. "&prenom=" . $firstname . "&Adresse=" . $adresse . "').fadeIn('slow');";
     ?>
-</script>
+</script>-->
 
 
 </html>

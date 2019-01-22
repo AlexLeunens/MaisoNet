@@ -8,7 +8,51 @@ include_once ROOT."/models/secure.php";
 ?>
 
 
-
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //$name = Securite::bdd($conn, $_GET['nom']);
+    //$firstname = Securite::bdd($conn, $_GET['prenom']);
+    $name = $_SESSION["name"];
+    $firstname = $_SESSION["firstname"];
+    if (isset($_POST['getMaison'])) {
+        $adresse = str_replace(" ", "", $_POST['adresse']);
+        header("Location: useur.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
+    } else if (isset($_POST['submitmsg'])) {
+        $query = "BEGIN WORK;";
+        $result = $conn->query($query);
+        if (!$result) {
+            echo "Erreur lors de l'envoi du message";
+        }
+        // gets the id of the current user
+        $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
+        $result = $conn->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $reciever = $row["idUtilisateur"];
+        }
+        $sql = "INSERT INTO 
+                    contact(idUtilisateur,
+                            idReciever,
+                          message) 
+                VALUES (" . $_GET['idContact'] . ",
+                        " . $reciever . ",
+                        '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
+        $result = $conn->query($sql);
+        if (!$result) {
+            echo "Erreur lors de l'insertion du message dans la base de données";
+            echo mysqli_error($conn);
+            $sql = "ROLLBACK;";
+            $result = $conn->query($query);
+        } else {
+            $sql = "COMMIT;";
+            $result = $conn->query($sql);
+            unset($_POST);
+            echo "<script>";
+            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
+            echo "</script>";
+        }
+    }
+}
+?>
 
 <body>
 
@@ -18,7 +62,7 @@ include_once ROOT."/models/secure.php";
     <a href="#">Profil</a>
     <a href="#">Services</a>
     <a href="#">Contact</a>
-    <a href="#">Forum</a>
+    <a href="index.php?action=see_forum">Forum</a>
     <a href="index.php?action=logout">Déconnexion</a>
 </div>
 

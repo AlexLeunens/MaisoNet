@@ -10,6 +10,11 @@ include_once ROOT.'/models/secure.php';
 
 
 <?php
+session_start();
+$name = $_SESSION["name"];
+$firstname = $_SESSION["firstname"];
+echo $name;
+echo $firstname;
 //this tries to create a new topic in the database
 // check if something has been posted
 
@@ -85,8 +90,8 @@ if($_SESSION['type'] == 1){
 }
 
 
-$sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".Securite::bdd($conn, $_GET['nom'])."'
-                                            AND prenom = '".Securite::bdd($conn, $_GET['prenom'])."' ";
+$sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".Securite::bdd($conn, $name)."'
+                                            AND prenom = '".Securite::bdd($conn, $firstname)."' ";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
