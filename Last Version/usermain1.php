@@ -9,11 +9,11 @@ include 'secure.php';
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $name = Securite::bdd($conn, $_GET['nom']);
-    $firstname = Securite::bdd($conn, $_GET['prenom']);
+    //$name = Securite::bdd($conn, $_GET['nom']);
+    //$firstname = Securite::bdd($conn, $_GET['prenom']);
 
-    //$name = $_SESSION["name"];
-    //$firstname = $_SESSION["firstname"];
+    $name = $_SESSION["name"];
+    $firstname = $_SESSION["firstname"];
 
     if (isset($_POST['getMaison'])) {
 

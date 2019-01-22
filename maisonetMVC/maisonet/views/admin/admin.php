@@ -7,35 +7,27 @@ require ROOT . "/views/template/headerAdmin.php";
 include_once ROOT."/models/connect.php";
 include_once ROOT."/models/secure.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //$name = Securite::bdd($conn, $_GET['nom']);
     //$firstname = Securite::bdd($conn, $_GET['prenom']);
-
     $name = $_SESSION["name"];
     $firstname = $_SESSION["firstname"];
-
     if (isset($_POST['getMaison'])) {
-
         $adresse = str_replace(" ", "", $_POST['adresse']);
         header("Location: usermain1.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
-
     } else if (isset($_POST['submitmsg'])) {
-
         $query = "BEGIN WORK;";
         $result = $conn->query($query);
         if (!$result) {
             echo "Erreur lors de l'envoi du message";
         }
-
         // gets the id of the current user
         $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
         $result = $conn->query($sql);
-
         while ($row = $result->fetch_assoc()) {
             $reciever = $row["idUtilisateur"];
         }
-
         $sql = "INSERT INTO 
                     contact(idUtilisateur,
                             idReciever,
@@ -43,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 VALUES (" . $_GET['idContact'] . ",
                         " . $reciever . ",
                         '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
-
         $result = $conn->query($sql);
         if (!$result) {
             echo "Erreur lors de l'insertion du message dans la base de données";
@@ -53,15 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $sql = "COMMIT;";
             $result = $conn->query($sql);
-
             unset($_POST);
-
             echo "<script>";
             echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
             echo "</script>";
         }
     }
-
 }
 ?>
 
@@ -111,24 +99,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
 
             <?php
-
             $sql = "SELECT idUtilisateur, nom, prenom FROM utilisateur;"; //utilisateurs in 172.16.223.113
             $result = $conn->query($sql);
-
             if (!$result) {
                 die('<p>ERREUR Requête invalide : ' . $mysqli->error . '</p>');
             }
-
             while ($row = $result->fetch_assoc()) {
                 // en minuscule dans l'autre
                 echo "<li>";
-                echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . ">";
+                if (isset($adresse)) {
+                    echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse . ">";
+                } else {
+                    echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $name . "&prenom=" . $firstname . ">";
+                }
+
+
                 echo $row["nom"] . "" . $row['prenom'];
                 echo "</a>";
                 echo "</li>";
                 echo "\n";
             }
-
             $result->free();
             ?>
         </ul>
@@ -206,12 +196,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             echo '</select>';
 
+        }
 
+        function displayPays(){
+             $db = dbConnect();
+
+            $sql = "SELECT Nom FROM pays";
+            $result = $db->query($sql);
+            $i = 0;
+            echo '<label for="pay">Pay</label><br>';
+            echo '<select name="pay">';
+            while ($pays = $result->fetch(PDO::FETCH_ASSOC)) {
+                $i++;
+                echo '<option value=' . $i . '>' . $pays['Nom'] . '</option>';
+            }
+            echo '</select>';
 
         }
 
         ?>
 
+    </div>
+    <div class = "addNewHouse">
+            <form class="addHouse" method="post" action="index.php?action=add_house">
+                <h3>Ajouter une maison</h3>
+                <label for="inputUserId">id Utilisateur</label>
+                <br>
+                <input type="text" name="userId" id="inputLastName"  placeholder="ID" required autofocus>
+                <br>
+                <label for="inputAdresse">Prénom</label>
+                <br>
+                <input type="text" name="adresse" id="inputAdresse"  placeholder="Adresse" required>
+                <br>
+                <label for="inputCodePostal">Mot de passe</label>
+                <br>
+                <input type="number" name="codePostal" id="inputCodePostal"  placeholder="CodePostal" required>
+                <br>
+                <?php displayPays() ?>
+                <br>
+                <br>
+                <input type="submit" value="Ajouter">
+            </form>
     </div>
 </div>
 
@@ -284,12 +309,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     var auto_refresh = setInterval(
         function () {
             <?php
-            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
+            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
             ?>
         }, 1000); // refresh toutes les secondes
 
     <?php
-    echo "$('#Client').load('afficheMaison.php?nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . "').fadeIn('slow');";
+    echo "$('#Client').load('afficheMaison.php?nom=" . $name. "&prenom=" . $firstname . "&Adresse=" . $adresse . "').fadeIn('slow');";
     ?>
 </script>
 

@@ -9,6 +9,7 @@ include_once ROOT."/models/secure.php";
 
 
 
+
 <body>
 
 <img class="avatar" src="/maisonet/views/user/Images-utilisateur/avatar.png" onclick="openNav()"> </img>

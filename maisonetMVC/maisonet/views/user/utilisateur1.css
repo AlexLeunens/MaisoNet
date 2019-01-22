@@ -1,131 +1,137 @@
 html {
-  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images-utilisateur/bgall3.jpg") no-repeat center center fixed;
-  background-size: cover;
-  height: 100%;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
+    background: linear-gradient(to right, rgba(103, 141, 255, 1), rgba(103, 141, 255, 1));
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 * {
-  box-sizing: border-box; /*utile pour le responsive*/
+    box-sizing: border-box; /*utile pour le responsive*/
+}
+
+p {
+    font-family: 'RalewayLight', "sans-serif";
+    font-weight: normal;
+    font-style: normal;
 }
 
 
 #menu {
-  background-color: rgba(250, 250, 250, 0.8); /*rgba(255, 195, 77, 0.5)*/
-  
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 15%;
+    background-color: rgba(103, 141, 255, 1); /*rgba(255, 195, 77, 0.5)*/
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 15%;
 }
 
-#onglets{ /* conteneur des listes */
-  font : bold 20px Georgia, arial, serif;
-  list-style-type : none;
-  position: absolute;
-  bottom: -20px; /*aligne avec le bas du menu*/
+#onglets { /* conteneur des listes */
+    text-decoration-color: white;
+    list-style-type: none;
 
-  background-color: rgba(220, 160 , 0, 0.7); /*220,160,0 : orange   110, 180, 0 : vert*/
-  width: 100%;
+    position: absolute;
+    top: 0px; /*aligne avec le bas du menu*/
+    left: 15%;
+
+
+    width: 100%;
 }
 
-#onglets li{ /*les éléments de liste */
-  float : left;
-  height : 30px; /* Hauteur onglet */
-  background-color: rgba(150, 150 , 150, 1); /* explicite */
-  margin-right: 5px;
-}
-#onglets li.active{
-  background-color: #fff; /* explicite */
+#onglets li { /*les éléments de liste */
+    float: left;
+    height: 30px; /* Hauteur onglet */
+    background-color: rgba(103, 141, 255, 1); /* explicite */
+    margin-right: 5px;
 }
 
-#onglets a{ /* Liens (texte) */
-  display : block;
-  color : #666;
-  text-decoration : none;
-  padding : 4px; /* marge */
+#onglets li.active {
+    background-color: #fff; /* explicite */
 }
 
-#logo{
-  width: auto;
-  height: 80%;
+#onglets a { /* Liens (texte) */
+    display: block;
+    color: #666;
+    text-decoration: none;
+    padding: 4px; /* marge */
 }
 
-#switchText {
- display: none; /*Utilisé pour mobile*/    
+#logo {
+    width: auto;
+    height: 70%;
+    max-height: 70px;
 }
 
 .switch {
-  position: absolute;
-  right : 0px;
-  width: 60px;
-  height: 30px;
+    position: absolute;
+    left: 75%;
+    width: 60px;
+    height: 30px;
+
 }
 
 /*cache le rectangle de selection*/
-.switch input { 
-  opacity: 0;
+.switch input {
+    opacity: 0;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
 }
 
 /*ajoute le slider blanc*/
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 25px;
-  width: 25px;
-  left: 4px;
-  bottom: 2px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 25px;
+    left: 4px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 /*vert quand checked*/
 input:checked + .slider {
-  background-color: lightgreen;
+    background-color: lightgreen;
 }
 
 /*transition*/
 input:checked + .slider:before {
-  transform: translateX(26px);
+    transform: translateX(26px);
 }
 
 /* arrondit le switch */
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
 
 /*arrondit le slider*/
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 
 img.avatar {
-  position : absolute;
-  top : 0;
-  right : 0;
-  z-index: 4;
-  width: auto;
-  height: 10%;
-  max-height: 50px;
-  max-width: 100px;
-
-  cursor:pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    width: auto;
+    height: 10%;
+    max-height: 50px;
+    max-width: 100px;
+    cursor: pointer;
 }
 
 /* panneau avec fonctions d'aide */
@@ -163,79 +169,78 @@ img.avatar {
 }
 
 div.avatarPanel.show {
-  opacity: 1;
-  max-height: 500px; /* doit être sup à la hauteur des éléments */
+    opacity: 1;
+    max-height: 500px; /* doit être sup à la hauteur des éléments */
 }
 
-img.imagesbutton{
-  width: 200px;
-  height: auto;
-  margin-left: 10px;
+img.imagesbutton {
+    width: 200px;
+    height: auto;
+    margin-left: 10px;
 }
 
 /*permet de s'adapter a la taille de la fenêtre*/
 div.fonctions {
-  display: grid;
-  grid-auto-flow: column; /*oblige à se mettre en colonne*/
-  justify-content: start; /*aligne sur la gauche*/
-  grid-gap: 20px; /* marge */
+    display: grid;
+    /* changed from column to row */
+    grid-auto-flow: row; /*oblige à se mettre en colonne*/
+    justify-content: start; /*aligne sur la gauche*/
+    grid-gap: 20px; /* marge */
 
-  /*Ajoute la barre de scroll pour trop d'elements*/
-  overflow-y: hidden; 
-  overflow-x: visible;
+    /*Ajoute la barre de scroll pour trop d'elements*/
+    /* swapped overflow x and y visibility*/
+    overflow-y: visible;
+    overflow-x: hidden;
 
-  position: absolute;
-  width: 100%;
-  height: 88%;
-  top: 15%;
-  left: 0px;
+    position: absolute;
+    width: 100%;
+    height: 88%;
+    top: 15%;
+    left: 0px;
 }
 
 /* Le bouton bleu selon la piece */
 p.piece {
-    background-color: rgba(100,135,240,0.9); /*rgba(100,135,240,0.9) pour bleu*/
-    color: white;
-    cursor: pointer;
-
-    text-align: center;
-    line-height: 150px;
-
-    transition: 0.1s;
-
-    width: 150px;
-    height: 150px;
+    background: rgba(250, 250, 250, 0.9);
     border-radius: 50%;
+    color: midnightblue;
+    cursor: pointer;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    transition: .1s;
+    width: 150px;
 }
 
-/* quand cliqué ou survolé */
 p.piece.active, p.piece:hover {
-    background-color: #0066aa;
+    background: white;
 }
 
-/* ajoute la fleche */
 p.piece:after {
+    color: midnightblue;
     content: '\25b7';
-    color: white;
     float: left;
 }
 
 p.piece.active:after {
-    content: '\25bd'; 
+    content: '\25bd';
 }
 
 /* panneau avec fonctions */
 div.panel {
-    background-color: rgba(220,220,220,0.7);
-    max-height: 0;
+    background-color: rgba(220, 220, 220, 0.7);
+    /*changed max-heigth to max-width*/
+    max-width: 0;
     overflow: hidden;
     transition: 0.5s ease-in-out;
     opacity: 0;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 
     position: absolute; /*was relative*/
-    top:175px; /*was 150px*/
+    top: 10%; /*was 175px*/
+    left: 200px;
 
-    height: 100%;
+    height: 85%;
     width: 98%;
     border-radius: 10px;
     display: flex;
@@ -244,180 +249,297 @@ div.panel {
 
 div.panel.show {
     opacity: 1;
-    max-height: 500px; /* doit être sup à la hauteur des éléments */
+    /*changed max-heigth to max-width*/
+    max-width: 88%; /* doit être sup à la hauteur des éléments */
 }
 
 /*Menu d'aide*/
 p.help {
-  background-color: rgba(220,160,0,0.9);
-  cursor: pointer;
-  
-  text-align: center;
-  line-height: 70px;
-  font-size: 50px;
+    background-color: rgba(220, 160, 0, 0.9);
+    cursor: pointer;
 
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+    text-align: center;
+    line-height: 70px;
+    font-size: 50px;
 
-  position: fixed;   /*permet de le fixer sur l'écran*/
-  right: 0;
-  bottom: 0;
-  margin-bottom: 5px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
 
-  transition: 0.1s;
+    position: fixed; /*permet de le fixer sur l'écran*/
+    right: 0;
+    bottom: 0;
+    margin-bottom: 5px;
+
+    transition: 0.1s;
 }
-p.help.active {}
+
+p.help.active {
+}
 
 /* panneau avec fonctions d'aide */
 div.helpPanel {
-  background-color: rgba(220,220,220,0.7);
-  max-height: 0;
-  overflow: hidden;
-  transition: 0.5s ease-in-out;
-  opacity: 0;
+    background-color: rgba(220, 220, 220, 0.7);
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+    opacity: 0;
 
-  position: fixed;
-  bottom:5px;
-  right: 70px;
+    position: fixed;
+    bottom: 5px;
+    right: 70px;
 
-  height: 45%;
-  width: 10%;
-  min-width: 75px;
-  border-radius: 10px;
+    height: 45%;
+    width: 10%;
+    min-width: 75px;
+    border-radius: 10px;
 }
 
 div.helpPanel.show {
-  opacity: 1;
-  max-height: 500px; /* doit être sup à la hauteur des éléments */
+    opacity: 1;
+    max-height: 500px; /* doit être sup à la hauteur des éléments */
 }
 
 
-.imageshelp{
-  width: 50%;
-  height: auto;
-  min-width: 30px;
-  display: block;
-  margin: 30% auto;
+.imageshelp {
+    width: 70%;
+    height: auto;
+    min-width: 30px;
+    display: block;
+    margin: 30% auto;
 }
 
-div.block{
-  position: static;
-  display: inline-block;
-  text-align: center; 
-  justify-content: space-around;
-  list-style-type : none;
+div.bloc {
+    position: static;
+    display: inline-block;
+    text-align: center;
+    justify-content: space-around;
+    list-style-type: none;
+    cursor: pointer;
 }
-
-
 
 
 /*pour tel*/
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 960px) {
 
-div.helpPanel{
-  height: 33%;
-}
+    div.helpPanel {
+        height: 25%;
+    }
 
 }
 
 @media screen and (max-width: 504px) {
 
-#menu {
-   height: 12%;
-}
+    #menu {
+        height: 10%;
+        margin-top: 0px;
+    }
 
-img.avatar {
-  width: auto;
-  height: 7%;
-  max-height: 50px;
-  max-width: 100px;
-}
-.sidenav {
-    max-width: 150px;
-}
+    img.avatar {
+        width: auto;
+        height: 7%;
+        max-height: 50px;
+        max-width: 100px;
+    }
 
-#onglets{ /* conteneur des listes */
-  height: 20px;
-}
+    .sidenav {
+        max-width: 150px;
+    }
 
-#onglets li{ /* conteneur des listes */
-  display: none;
-}
+    #onglets { /* conteneur des listes */
+        height: auto;
+        padding: 0;
+        width: 100%;
+    }
 
-#switchText {
-  display: inline-block;
-  z-index: 2;
+    #onglets li { /* conteneur des listes */
+        float: left;
+        height: 20px;
+    }
 
-  position: absolute;
-  left : 10px;
-  top: -20px;
-}
+    .switch {
+        width: 50px;
+        height: 20px;
+    }
 
-.switch {
-  width: 50px;
-  height: 20px;
-}
+    /*ajoute le slider blanc*/
+    .slider:before {
+        height: 18px;
+        width: 18px;
+        bottom: 1px;
+    }
 
-/*ajoute le slider blanc*/
-.slider:before {
-  height: 18px;
-  width: 18px;
-  bottom: 1px;
-}
+    div.fonctions {
+        top: 12%;
+    }
 
-div.fonctions {
-  top: 12%;
-}
+    /* Le bouton bleu selon la piece */
+    p.piece {
+        line-height: 100px;
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+    }
 
-  /* Le bouton bleu selon la piece */
-p.piece {
-  line-height: 100px;
-  overflow: hidden;
-  width: 100px;
-  height: 100px;
-}
+    p.piece:after {
+        content: '';
+    }
 
-p.piece:after {
-content: '';
-}
+    p.piece.active:after {
+        content: '';
+    }
 
-p.piece.active:after {
-content: '';
-}
+    div.panel {
+        top: 120px;
+        height: 100%;
+        width: 98%;
+    }
 
-div.panel {
-    top:120px;
-    height: 100%;
-    width: 98%;
-}
+    p.help {
+        line-height: 45px;
+        font-size: 40px;
+        align-items: center;
+        width: 45px;
+        height: 45px;
+    }
 
-p.help {
-  line-height: 45px;
-  font-size: 40px; 
-  align-items: center;
-  width: 45px;
-  height: 45px;
-}
+    img.imagesbutton {
+        width: auto;
+        height: 50%;
+        max-height: 50px;
+        max-width: 100px;
+    }
 
-img.imagesbutton {
-  width : auto;
-  height: 50%
-  max-height : 50px ;
-  max-width : 100px;
-}
+    div.bloc {
+        width: auto;
+        height: 50%;
+        max-height: 50px;
+        max-width: 100px;
+    }
 
-div.block {
-  width: auto;
-  height: 50%;
-  max-height: 50px;
-  max-width: 100px;
-}
-
-div.helpPanel {
-  height: 30%;
-}
+    div.helpPanel {
+        height: 25%;
+    }
 
 }
 
+#masquetemp {
+    background: rgba(0, 0, 0, 0.2);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#masquetemp:target {
+    display: block;
+}
+
+#masquehum {
+    background: rgba(0, 0, 0, 0.2);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#masquehum:target {
+    display: block;
+}
+
+#masqueCO2 {
+    background: rgba(0, 0, 0, 0.2);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#masqueCO2:target {
+    display: block;
+}
+
+#masquefum {
+    background: rgba(0, 0, 0, 0.2);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#masquefum:target {
+    display: block;
+}
+
+#masquevolet {
+    background: rgba(0, 0, 0, 0.2);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#masquevolet:target {
+    display: block;
+}
+
+#masquecam {
+    background: rgba(0, 0, 0, 0.2);
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+#masquecam:target {
+    display: block;
+}
+
+.fenetre-modale {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 20px #000;
+    margin: 10% auto;
+    padding: 20px;
+    position: relative;
+    width: 40%;
+}
+
+img.btn-fermer {
+    float: right;
+    height: auto;
+    margin: -20px -20px 0 0;
+    width: 45px;
+}
+
+.imagesvolet, .imagestemperature, .imageshumidité, .imagesfumée, .imagesCO2, .imagescaméra {
+    height: 225px;
+    width: 200px;
+}
+
+.imagesbuttonplus {
+    height: 75px;
+    width: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+}

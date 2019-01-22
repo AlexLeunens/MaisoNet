@@ -62,8 +62,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php
 
+
+if(isset($_SESSION['name']) && isset($_SESSION['firstname'])) {
+    $sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".Securite::bdd($conn, $_SESSION['name'])."'
+                                            AND prenom = '".Securite::bdd($conn, $_SESSION['firstname'])."' ";
+    $result = $conn->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $idUser = $row["idUtilisateur"];
+    }
+} else {
+    $idUser = 1;
+}
+
+
 global $isAdmin;
-$isAdmin = false;
+
+//$_SESSION['type']
+if($_SESSION['type'] == 1){
+    $isAdmin = true;
+}else{
+    $isAdmin = false;
+}
+
 
 $sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".Securite::bdd($conn, $_GET['nom'])."'
                                             AND prenom = '".Securite::bdd($conn, $_GET['prenom'])."' ";
@@ -73,7 +93,7 @@ while ($row = $result->fetch_assoc()) {
     $idUser = $row["idUtilisateur"];
 }
 
-$sql = "SELECT type from fonction WHERE Utilisateur_idUtilisateur = ".$idUser." ";
+/*$sql = "SELECT type from fonction WHERE Utilisateur_idUtilisateur = ".$idUser." ";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
@@ -81,7 +101,7 @@ while ($row = $result->fetch_assoc()) {
     if($row["type"] === "Administrateur" ) {
         $isAdmin = true;
     }
-}
+}*/
 
 if ($isAdmin == true){
     echo "Admin";

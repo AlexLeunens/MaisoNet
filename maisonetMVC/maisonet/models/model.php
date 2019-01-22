@@ -129,6 +129,38 @@ function userRegisterRequest($lastname, $name, $email, $birthday, $tel)
 
 }
 
+
+function insertHouse($userId, $adresse, $codePostal, $pay)
+{
+
+
+    $db = dbConnect();
+
+
+    $req = $db->prepare("INSERT INTO maison (Adresse, CodePostal, Pays_idPays, Utilisateur_idUtilisateur) VALUES( :adress, :codePostal, :pay, :userId)");
+
+    $req->bindParam("adress", $adresse);
+    $req->bindParam("codePostal", $codePostal);
+    $req->bindParam("pay", $pay);
+    $req->bindParam("userId", $userId);
+
+    $req->execute();
+
+
+    if ($req) {
+        echo '<script>alert("Maison ajouté :)")</script>';
+        seeAdminPage();
+    } else {
+        echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
+        seeAdminPage();
+    }
+
+    $req->closeCursor();
+
+
+}
+
+
 //infomaisonet@gmail.com
 
 //　　　　　　　　　　　　　　　　　　 　 _, ._　　　　　　　　　　　　　 '　　' , 　w

@@ -77,6 +77,15 @@ function addUser()
 
 }
 
+function addHouse(){
+    $userId = htmlspecialchars($_POST["userId"]);
+    $adress = htmlspecialchars($_POST["adresse"]);
+    $codePostal = htmlspecialchars($_POST["codePostal"]);
+    $pay = htmlspecialchars($_POST["pay"]);
+
+    insertHouse();
+}
+
 function registerRequest()
 {
 
