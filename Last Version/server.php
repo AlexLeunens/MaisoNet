@@ -1,5 +1,6 @@
 <?php
 include 'secure.php';
+include 'connect.php';
 ?>
 <?php
 session_start();
@@ -13,8 +14,6 @@ $email = "";
 $errors = array();
 $_SESSION['success'] = "";
 
-
-$db = mysqli_connect('localhost', 'root', 'root', 'maison');
 
 // Inscription
 if (isset($_POST['reg_user'])) {
@@ -55,7 +54,7 @@ if (isset($_POST['reg_user'])) {
     if (count($errors) == 0) {
         $password = ($password_1);
         $query = "INSERT INTO `utilisateurs` (`id`, `Nom`, `Prenom`, `Date_de_naissance`, `E-mail`, `mdp`, `N°_Téléphone`) VALUES ('', $name, $prenom, $datenaissance, $email, $password, $numtel)";
-        $results = mysqli_query($db, $query);
+        $results = mysqli_query($conn, $query);
         if (mysqli_num_rows($results == 1)) {
             $_SESSION['name'] = $name;
             $_SESSION['sucess'] = "Vous êtes connecté.";
@@ -74,9 +73,9 @@ if (isset($_POST['reg_user'])) {
 
 // LOGIN
 if (isset($_POST['login_user'])) {
-    $name = Securite::bdd($db, $_POST['nom']);
-    $prenom = Securite::bdd($db, $_POST['prenom']);
-    $password = Securite::bdd($db, $_POST['password']);
+    $name = Securite::bdd($conn, $_POST['nom']);
+    $prenom = Securite::bdd($conn, $_POST['prenom']);
+    $password = Securite::bdd($conn, $_POST['password']);
 
     if (empty($name)) {
         array_push($errors, "Le Nom est requis");
@@ -87,13 +86,13 @@ if (isset($_POST['login_user'])) {
 
     if (count($errors) == 0) {
         $query = "SELECT * FROM utilisateur WHERE nom='$name' AND mdp='$password'";
-        $results = mysqli_query($db, $query);
+        $results = mysqli_query($conn, $query);
 
         if (mysqli_num_rows($results) == 1) {
             $_SESSION['username'] = $name;
             $_SESSION['success'] = "Vous êtes connecté";
             $type1 = "SELECT types FROM fonction INNER JOIN utilisateur ON fonction.utilisateur_idutilisateur=utilisateur.idutilisateur WHERE utilisateur.nom='$name'";
-            $result_type = mysqli_query($db, $type1) or die(mysqli_error());
+            $result_type = mysqli_query($conn, $type1) or die(mysqli_error());
             $row = mysqli_fetch_assoc($result_type);
 
             if ($row['types'] == "Admin") {

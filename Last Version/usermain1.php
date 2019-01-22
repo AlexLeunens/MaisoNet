@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 
-<img id="logo" src="Images-utilisateur/logo_provisoire2.png"> </img>
+<img id="logo" src="Images-utilisateur/maisonlogolong.png"> </img>
 <!--<a href="absent.html" ><img id="switch" src="Images-utilisateur/switchOn.png"> </img> </a> -->
 
 
@@ -196,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="masque">
     <div class="fenetre-modale">
         <a class="fermer" href="#"><img alt="X" title="Fermer la fenêtre" class="btn-fermer"
-                                        src="Images-utilisateur/fmodale_fermer.jpg"/></a>
+                                        src="Images-utilisateur/Croix_sortie.png"/></a>
         <h2>Votre Capteur:</h2>
 
         <form>
