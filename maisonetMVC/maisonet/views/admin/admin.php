@@ -1,7 +1,68 @@
 <?php
 $title = "User Interface";
 $css = "/maisonet/views/admin/usermain.css";
-require ROOT."/views/template/header.php";
+require ROOT . "/views/template/headerAdmin.php";
+?>
+<?php
+include_once ROOT."/models/connect.php";
+include_once ROOT."/models/secure.php";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    //$name = Securite::bdd($conn, $_GET['nom']);
+    //$firstname = Securite::bdd($conn, $_GET['prenom']);
+
+    $name = $_SESSION["name"];
+    $firstname = $_SESSION["firstname"];
+
+    if (isset($_POST['getMaison'])) {
+
+        $adresse = str_replace(" ", "", $_POST['adresse']);
+        header("Location: usermain1.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
+
+    } else if (isset($_POST['submitmsg'])) {
+
+        $query = "BEGIN WORK;";
+        $result = $conn->query($query);
+        if (!$result) {
+            echo "Erreur lors de l'envoi du message";
+        }
+
+        // gets the id of the current user
+        $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
+        $result = $conn->query($sql);
+
+        while ($row = $result->fetch_assoc()) {
+            $reciever = $row["idUtilisateur"];
+        }
+
+        $sql = "INSERT INTO 
+                    contact(idUtilisateur,
+                            idReciever,
+                          message) 
+                VALUES (" . $_GET['idContact'] . ",
+                        " . $reciever . ",
+                        '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
+
+        $result = $conn->query($sql);
+        if (!$result) {
+            echo "Erreur lors de l'insertion du message dans la base de données";
+            echo mysqli_error($conn);
+            $sql = "ROLLBACK;";
+            $result = $conn->query($query);
+        } else {
+            $sql = "COMMIT;";
+            $result = $conn->query($sql);
+
+            unset($_POST);
+
+            echo "<script>";
+            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
+            echo "</script>";
+        }
+    }
+
+}
 ?>
 
 
@@ -11,12 +72,11 @@ require ROOT."/views/template/header.php";
 <!--<a href="absent.html" ><img id="switch" src="Images-utilisateur/switchOn.png"> </img> </a> -->
 
 
-<img class="avatar" src="/maisonet/views/admin/Images/avatar.png" onclick="openNav()"> </img>
+<img class="avatar" src="Images-utilisateur/avatar.png" onclick="openNav()"> </img>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
-    <a href="#">Profil</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
+    <a href="index.php?action=see_ourServices">Services</a>
+    <a href="" onclick="popupContact()">Contact</a>
     <a href="index.php?action=logout">Se Déconnecter</a>
 </div>
 
@@ -29,77 +89,73 @@ require ROOT."/views/template/header.php";
         <li><a href="javascript:openPage('Contact', this)"> Contact </a></li>
         <li><a href="javascript:openPage('Notification', this)"> Notification </a></li>
         <li><a href="javascript:openPage('GestClient', this)"> Gestion Client </a></li>
+        <li><a href="javascript:openPage('GestAdmin',this)"> Gestion Admin </a></li>
 
     </ul>
 </div>
 
 
-<div id= "Client" class="Elements">
-    <form class="dossier" method="post" action="php/user_id.php">
-        No. client : <input type="text" name="username" >
-        <input  align="right" type="submit" value="Entrée" >
+<div id="Client" class="Elements">
+
+    <form class='dossier' method='post' action=''>
+        Adresse de la Maison : <input type="text" name="adresse">
+        <input align="right" type="submit" name="getMaison" value="Entrée">
     </form>
-    <p class="piece">Salon</p>
-    <div class="panel">
-        <div class=bloc><a href="#masque">
-                <img class="imagestemperature" src="/maisonet/views/admin/Images/temperature+.png" alt="temperature"></img>
-                <p class=sstitre>Votre Temperature</p></a>
-        </div>
-        <div class=bloc><a href="#masque">
-                <img class="imagesbutton" src="/maisonet/views/admin/Images/volets2.png" alt="volets"></img>
-                <p class=sstitre>Etat volet</p></a>
-        </div>
-    </div>
 
-    <p class="piece">Chambre 1</p>
-    <div class="panel">
-        <div class=bloc><a href="#masque">
-                <img class="imagestemperature" src="/maisonet/views/admin/Images/temperature+.png" alt="temperature"></img>
-                <p class=sstitre>Votre Temperature</p></a>
-        </div>
-        <div class=bloc><a href="#masque">
-                <img class="imagesbutton" src="/maisonet/views/admin/Images/volets2.png" alt="volets"></img>
-                <p class=sstitre>Etat volet</p></a>
-        </div>
-    </div>
-
-    <p class="piece">Salle A Manger</p>
-    <div class="panel">
-        <div class=bloc><a href="#masque">
-                <img class="imagestemperature" src="/maisonet/views/admin/Images/temperature+.png" alt="temperature"></img>
-                <p class=sstitre>Votre Temperature</p></a>
-        </div>
-        <div class=bloc><a href="#masque">
-                <img class="imagesbutton" src="/maisonet/views/admin/Images/volets2.png" alt="volets"></img>
-                <p class=sstitre>Etat volet</p></a>
-        </div>
-    </div>
 </div>
 
 
-<div id= "Contact" class="Elements" style="display:none;">
-    <?php
-    $mysqli = new mysqli('localhost', 'root', '', 'dbmaisonet');
+<div id="Contact" class="Elements" style="display:none;">
+    <div id="contactWrapper">
+        <ul id="myMenu">
+            <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
 
-    if ($mysqli->connect_errno) {
-        die('<p>Connexion impossible : '.$mysqli->connect_error.'</p>');
-    }
-    $result = $mysqli->query('SELECT nom, prenom FROM utilisateur;') ;
-    if (!$result) {
-        die('<p>ERREUR Requête invalide : '.$mysqli->error.'</p>');
-    }
-    while ($row = $result->fetch_assoc()) {
-        $nom = $row['nom'] ;
-        $prenom = $row['prenom'] ;
-        echo '<p>'.$prenom.' '.$nom.'</p>'."\r\n" ;
-    }
-    $result->free() ;
-    $mysqli->close() ;
-    ?>
+            <?php
+
+            $sql = "SELECT idUtilisateur, nom, prenom FROM utilisateur;"; //utilisateurs in 172.16.223.113
+            $result = $conn->query($sql);
+
+            if (!$result) {
+                die('<p>ERREUR Requête invalide : ' . $mysqli->error . '</p>');
+            }
+
+            while ($row = $result->fetch_assoc()) {
+                // en minuscule dans l'autre
+                echo "<li>";
+                echo "<a href=usermain1.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . ">";
+                echo $row["nom"] . "" . $row['prenom'];
+                echo "</a>";
+                echo "</li>";
+                echo "\n";
+            }
+
+            $result->free();
+            ?>
+        </ul>
+        <div id="discussion">
+            <div id="Messages">
+
+            </div>
+            <div id="chatbox">
+                <form method="post" name="message">
+                    <input name="user_message" type="text" id="usermsg" required/>
+                    <input name="submitmsg" type="submit" id="submitmsg" value="Send"/>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
 </div>
+</div>
+
+
 <div id= "Notification" class="Elements" style="display:none;">
 
 </div>
+
+
 <div id= "GestClient" class="Elements" style="display:none;">
     <div class = "newClientRegister">
         <form class="register" method="post" action="index.php?action=add_user">
@@ -159,83 +215,83 @@ require ROOT."/views/template/header.php";
     </div>
 </div>
 
-<p class="help"> <img class="imageHelpMenu" src="/maisonet/views/admin/Images/helpmenu.png" alt="Help"></img> </p>
-<div class="helpPanel">
+</div>
+<div id=GestAdmin class="Elements" style="display:none;">
+    <p class="piece">Modifier Accueil</p>
+    <div class="panel">
+        <div class=bloc><a href="#masque1">
+                <p class="sstitre">Qui sommes nous?</p></a>
 
-    <a href="" onclick= "popupHelp()"><img class="imageshelp" src="/maisonet/views/admin/Images/helpquestionmark.png" alt="FAQ"></img></a>
-
-    <a href="" onclick= "popupContact()"><img class="imageshelp" src="/maisonet/views/admin/Images/helptechnician.png" alt="Contact Tech"></img> </a>
-
+        </div>
+        <div class=bloc><a href="#masque1">
+                <p class="sstitre">Que faisons nous?</p></a>
+        </div>
+        <div class=bloc><a href="#masque1">
+                <p class="sstitre">Quels sont nos tarifs</p></a>
+        </div>
+    </div>
 </div>
 
-<p><a href="#masque"></a></p>
-<div id="masque">
+<p><a href="#masqueplus"></a></p>
+<div id="masqueplus">
     <div class="fenetre-modale">
         <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
                                                  title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images/fmodale_fermer.jpg" /></a>
-        <h2>Bonjour</h2>
+                                                 src="Images-utilisateur/fmodale_fermer.jpg"/></a>
+        <h2>Quel capteur voulez vous ajouter:</h2>
+        <!-- ICI Ajouter la liste des capteurs -->
+    </div> <!-- .fenetre-modale -->
+</div> <!-- #masque -->
+
+<p><a href="#masque1"></a></p>
+<div id="masque1">
+    <div class="fenetre-modale">
+        <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
+                                                 title="Fermer la fenêtre" class="btn-fermer"
+                                                 src="Images-utilisateur/fmodale_fermer.jpg"/></a>
+        <h2>Entrez le texte</h2>
         <form>
-            <input type="button" value=" - " onClick="javascript:this.form.champ.value--;">
-            <input type="text1" name="champ" value="0">°C
-            <input type="button" value=" + " onClick="javascript:this.form.champ.value++;">
+            <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');"/>
+            <input type="button" value="I" style="font-style: italic;" onclick="commande('italic');"/>
+            <input type="button" value="S" style="text-decoration: underline;" onclick="commande('underline');"/>
+            <div class="editeur" contenteditable></div>
+            <input type="button" value="Enter"/>
         </form>
     </div> <!-- .fenetre-modale -->
 </div> <!-- #masque -->
+
+
+<div id="masque">
+    <div class="fenetre-modale">
+        <a class="fermer" href="#"><img alt="X" title="Fermer la fenêtre" class="btn-fermer"
+                                        src="Images-utilisateur/fmodale_fermer.jpg"/></a>
+        <h2>Votre Capteur:</h2>
+
+        <form>
+            <input type="button1" value=" - " onClick="javascript:this.form.champ.value--;">
+            <input type="text1" name="champ" value="0">
+            <input type="button1" value=" + " onClick="javascript:this.form.champ.value++;">
+        </form>
+
+    </div> <!-- .fenetre-modale -->
+</div> <!-- #masque -->
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="usermain1.js"></script>
 <script>
-    for (var piece = document.getElementsByClassName("piece"), panel = document.getElementsByClassName("panel"), i = 0; i < piece.length; i++) {
-        piece[i].onclick = function () {
-            var a = !this.classList.contains("active");
-            setClass(piece, "active", "remove");
-            setClass(panel, "show", "remove");
-            a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
-        };
-    }
-    var help = document.getElementsByClassName("help"),
-        helpPanel = document.getElementsByClassName("helpPanel");
-    help[0].onclick = function () {
-        var a = !this.classList.contains("active");
-        setClass(help, "active", "remove");
-        setClass(helpPanel, "show", "remove");
-        a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
-    };
+    var auto_refresh = setInterval(
+        function () {
+            <?php
+            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "').fadeIn('slow');";
+            ?>
+        }, 1000); // refresh toutes les secondes
 
-    function setClass(a, d, b) {
-        for (var c = 0; c < a.length; c++) {
-            a[c].classList[b](d);
-        }
-    }
-
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-
-    function popupHelp() {
-        window.open("FAQ.html", "", "width=1200, height=1000");
-    }
-
-    function popupContact() {
-        window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
-    }
-
-    function openPage(a, d) {
-        var b;
-        var c = document.getElementsByClassName("Elements");
-        for (b = 0; b < c.length; b++) {
-            c[b].style.display = "none";
-        }
-        document.getElementById(a).style.display = "block";
-        d.classList.toggle("focus");
-    }
-    document.getElementById("defaultOpen").click();
+    <?php
+    echo "$('#Client').load('afficheMaison.php?nom=" . $_GET['nom'] . "&prenom=" . $_GET['prenom'] . "&Adresse=" . $_GET['Adresse'] . "').fadeIn('slow');";
+    ?>
 </script>
 
-
-</body>
-</body>
 
 </html>

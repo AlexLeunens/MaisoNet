@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 	<head>
-		<title>Maison</title>
+		<title>Appart</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="services.css" />
@@ -13,8 +13,8 @@
 				<section id="header">
 
 					<!-- Logo -->
-						<a href="Accueil.php"><img id="logo" src="Images_services/logo_provisoire2.png"> </img></a>
-						<h1><a href="index.html">Maison</a></h1>
+						<a href="index.php?action=see_home"><img id="logo" src="Images_services/logo_provisoire2.png"> </img></a>
+						<h1><a href="index.php?action=see_ourServices">Appartement</a></h1>
 
 				</section>
 
@@ -23,9 +23,9 @@
 					<div class="container">
 
 						<!-- Content -->
-							<article class="box post">							
+							<article class="box post">
 								<header>
-									<h2>Notre formule maison:</h2>
+									<h2>Notre formule appartement:</h2>
 								</header>
 								<p> Image de la formule
 								</p>

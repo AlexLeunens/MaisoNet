@@ -1,180 +1,376 @@
 html {
-background:linear-gradient(to right,rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Images-forum/bgall3.jpg") no-repeat center center fixed;
-height:100%;
-margin:0;
-overflow:hidden;
-padding:0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("Images-forum/bgall3.jpg") no-repeat center center fixed;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
 }
 
 * {
-box-sizing:border-box;
+    box-sizing: border-box;
 }
 
 img.avatar {
-cursor:pointer;
-height:10%;
-max-height:50px;
-max-width:100px;
-position:absolute;
-right:0;
-top:0;
-width:auto;
-z-index:4;
+    cursor: pointer;
+    height: 10%;
+    max-height: 50px;
+    max-width: 100px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    z-index: 4;
 }
 
 .sidenav {
-background:#111;
-height:100%;
-overflow-x:hidden;
-padding-top:5%;
-position:fixed;
-right:0;
-top:0;
-transition:.5s;
-width:0;
-z-index:3;
+    background: #111;
+    height: 100%;
+    overflow-x: hidden;
+    padding-top: 5%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: .5s;
+    width: 0;
+    z-index: 3;
 }
 
 .sidenav a {
-color:#818181;
-display:block;
-font-size:25px;
-padding:8px 8px 8px 32px;
-text-decoration:none;
-transition:.3s;
+    color: #818181;
+    display: block;
+    font-size: 25px;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    transition: .3s;
 }
 
 .sidenav a:hover {
-color:#f1f1f1;
+    color: #f1f1f1;
 }
 
 .sidenav .closebtn {
-font-size:36px;
-left:0;
-position:absolute;
-top:0;
+    font-size: 36px;
+    left: 0;
+    position: absolute;
+    top: 0;
 }
-
 
 
 /* Create a column layout with Flexbox */
 #menu {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  position: fixed;
+    position: fixed;
 
-  left: 0;
-  right:0;
-  top:0;
-  bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    overflow-x: auto;
+    background-color: rgba(250, 250, 250, 0.8);
 }
 
-.logo{
-  position : absolute;
-  top : -10px;
-  left : 0px;
-  z-index: 2;
-  height: 10%;
+.logo {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    z-index: 2;
+    height: 10%;
 }
-.logo img{
-  width: auto;
-  height: 100%;
+
+.logo img {
+    width: auto;
+    height: 100%;
 }
 
 /* Left column (menu) */
 #onglets {
-  flex: 0;
-  background-color: lightsteelblue; /*#4CAF50 beau vert*/
-  text-align: center;
+    flex: 0;
+    background-color: lightsteelblue; /*#4CAF50 beau vert*/
+    text-align: center;
 }
 
 h2 {
-  font-family: "Verdana","serif";
-  font-weight: bold;
+    font-family: "Verdana", "serif";
+    font-weight: bold;
 }
 
 #onglets li.active {
-background:#fff;
+    background: #fff;
 }
 
 /* Style the navigation menu inside the left column */
 #myMenu {
-  list-style-type: none;
-  display: flex;
-  justify-content: flex-start;
-  overflow-y: auto;
-  margin-left: 0.5%;
-  padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    overflow-y: auto;
+    margin-left: 0.5%;
+    padding: 0;
 
 
 }
 
 /* Style the search box */
 #mySearch {
-  font-size: 18px;
-  padding: 9px;
-  border:1px solid #ddd;
-  float: left;
+    font-size: 18px;
+    padding: 9px;
+    border: 1px solid #ddd;
+    float: left;
 }
 
 #myMenu li a {
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
 
-  background:rgba(150,150,150,1);
-  margin-left: 1px;
+    background: rgba(150, 150, 150, 1);
+    margin-left: 1px;
 }
 
 #myMenu li a:hover {
-  background-color: #eee;
-}
-#myMenu li a:focus {
-  background-color: #4CAF50;
-}
-#myMenu li a:active {
-  background-color: #4CAF50;
+    background-color: #eee;
 }
 
+#myMenu li a:focus {
+    background-color: #4CAF50;
+}
+
+#myMenu li a:active {
+    background-color: #4CAF50;
+}
 
 
 /* Right column (page content) */
 .Elements {
-  padding: 15px;
-  background-color: rgba(250, 250, 250, 0.8);
-  flex: 1;
-  overflow-x: auto;
+    padding: 15px;
+    background-color: rgba(250, 250, 250, 0.8);
+    flex: 1;
+    overflow-x: auto;
 }
 
 
 div.post {
-  border: 1px solid #7B9DCB;
-  width: 98%;
-  height: 100px;
-  text-align: left;
-  margin-bottom: 5px;
-}
-.divTable.post .divTableCell, .divTableHead {
-  border: 1px solid #FFFFFF;
-  padding: 3px 2px;
-}
-.divTable.post .divTableHeading {
-  background: #006699;
-}
-.divTable.post .divTableHeading .divTableHead {
-  font-size: 18px;
-  font-weight: bold;
-  color: #FFFFFF;
-  text-align: center;
+    border: 1px solid #7B9DCB;
+    width: 99%;
+    height: 100px;
+    text-align: left;
+    margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.divTable{ display: table; }
-.divTableRow { display: table-row; }
-.divTableHeading { display: table-header-group;}
-.divTableCell, .divTableHead { display: table-cell;}
-.divTableHeading { display: table-header-group;}
-.divTableFoot { display: table-footer-group;}
-.divTableBody { display: table-row-group;}
+.divTable.post .divTableCell, .divTableHead {
+    border: 1px solid #FFFFFF;
+    padding: 3px 2px;
+}
+
+.divTable.post .divTableHeading {
+    background: #006699;
+}
+
+.divTableCell {
+    background-color: white;
+}
+
+.divTable.post .divTableHeading .divTableHead {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.divTable {
+    display: table;
+}
+
+.divTableRow {
+    display: table-row;
+}
+
+.divTableHeading {
+    display: table-header-group;
+}
+
+.divTableCell, .divTableHead {
+    display: table-cell;
+}
+
+.divTableHeading {
+    display: table-header-group;
+}
+
+.divTableFoot {
+    display: table-footer-group;
+}
+
+.divTableBody {
+    display: table-row-group;
+}
+
+#delTopic{
+    float: right;
+
+    background-color: #d13827;
+    border:0;
+    border-radius: 8px;
+    cursor:pointer;
+    color:#ffffff;
+    font-weight:bold;
+    padding: 5px 8px;
+    text-decoration:none;
+}
+
+#delTopic:hover {
+    background-color: #dc523d;
+}
+
+
+.newSujetBtn {
+    border-radius: 30px;
+    font-family: 'RalewayLight' , 'sans-serif';
+    color: #ffffff;
+    font-size: 20px;
+    background: #2099dd;
+    padding: 10px 40px 10px 40px;
+    text-decoration: none;
+    border: none;
+
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.newSujetBtn:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+}
+
+.newCatBtn{
+    border-radius: 30px;
+    font-family: 'RalewayLight' , 'sans-serif';
+    color: #ffffff;
+    font-size: 20px;
+    background: #2099dd;
+    padding: 10px 10px;
+    text-decoration: none;
+    border: none;
+
+    position: fixed;
+    top: 10%;
+    right: 10px;
+}
+
+.newCatBtn:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+}
+
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+    width: 100%;
+    height: 100%;
+    background-color: papayawhip;
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width input fields */
+.form-container input[type=text] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus {
+    background-color: #ddd;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    margin-right: 20px;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+    background-color: red;
+}
+
+.btnWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.divTableHead a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    color: white;
+}
+
+/* The topic form */
+.form-topic {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+    background-color: lightsteelblue;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    border: 2px solid #cccccc;
+    padding: 5px;
+    font-family: Tahoma, sans-serif;
+}
+
+.goBack {
+    background: #3cb0fd;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-family: 'RalewayLight' , 'sans-serif';
+    font-size: 20px;
+    width: 250px;
+    height: 45px;
+    border-radius: 30px;
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    padding: 10px 40px 10px 40px;
+}
+
+
+.goBack:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+}

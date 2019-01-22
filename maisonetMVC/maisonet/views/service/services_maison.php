@@ -13,8 +13,8 @@
 				<section id="header">
 
 					<!-- Logo -->
-						<a href="Accueil.php"><img id="logo" src="Images_services/logo_provisoire2.png"> </img></a>
-						<h1><a href="index.html">Maison</a></h1>
+						<a href="index.php?action=see_home"><img id="logo" src="Images_services/logo_provisoire2.png"> </img></a>
+						<h1><a href="index.php?action=see_ourServices">Maison</a></h1>
 
 				</section>
 

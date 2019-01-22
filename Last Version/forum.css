@@ -1,5 +1,5 @@
 html {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("Images/bgall3.jpg") no-repeat center center fixed;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("Images-forum/bgall3.jpg") no-repeat center center fixed;
     height: 100%;
     margin: 0;
     overflow: hidden;
@@ -357,7 +357,6 @@ textarea {
     background: #3cb0fd;
     text-decoration: none;
     color: white;
-    background-color: #2099dd;
     text-align: center;
     font-family: Arial;
     font-size: 20px;

@@ -33,3 +33,16 @@ function openPage(pageName,elmnt) {
     elmnt.classList.toggle("active");
 
 }
+
+
+
+function openTopic(topicName,elmnt) {
+    var i, elements;
+    elements = document.getElementsByClassName("divTable");
+    for (i = 0; i < elements.length; i++) {
+        elements[i].style.display = "none";
+    }
+    document.getElementById(topicName).style.display = "table";
+    elmnt.classList.toggle("active");
+
+}

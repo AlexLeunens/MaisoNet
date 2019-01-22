@@ -6,6 +6,7 @@
  * Time: 15:19
  */
 
+// view pages
 
 require_once ROOT . "/models/model.php";
 
@@ -27,21 +28,41 @@ function seeRegister()
 
 function seeForum()
 {
-    require ROOT."/views/forum/forum.php";
+    require ROOT . "/views/forum/forum.php";
 }
 
 function seeUserPage()
 {
-    require ROOT."/views/user/user.php";
+    require ROOT . "/views/user/user.php";
 }
 
 function seeAdminPage()
 {
-    require  ROOT."/views/admin/admin.php";
+    require ROOT . "/views/admin/admin.php";
+}
+
+function seeOurServices()
+{
+    require ROOT . "/views/service/Nos_services.php";
+}
+
+function seeAppartServices()
+{
+    require ROOT . "/views/service/services_appart.php";
+}
+
+function seeHomeServices()
+{
+    require ROOT . "/views/service/services_maison.php";
+}
+
+function seeFAQ()
+{
+    require ROOT . "/views/FAQ/FAQ.php";
 }
 
 
-// ces fonctions ne sont pas fini !!!
+// gestion des utilisateurs
 function addUser()
 {
     $lastname = htmlspecialchars($_POST["lastname"]);
@@ -53,10 +74,11 @@ function addUser()
     $type = htmlspecialchars($_POST["type"]);
 
     insertUser($lastname, $name, $password, $email, $tel, $birthday, $type);
-    
+
 }
 
-function registerRequest(){
+function registerRequest()
+{
 
     $lastname = $_POST['nom'];
     $name = $_POST['prenom'];
@@ -66,11 +88,12 @@ function registerRequest(){
     //$password_2 = $_POST['password_2'];
     $tel = $_POST['numtel'];
 
-    userRegisterRequest($lastname,$name,$email,$birthday,$tel);
-
+    userRegisterRequest($lastname, $name, $email, $birthday, $tel);
 
 
 }
+
+// gestion des sessions
 
 function login()
 {
@@ -79,8 +102,8 @@ function login()
         $password = $_POST['password']; //htmlspecialchars($_POST['password']);
 
         userConnect($email, $password);
-        
-    }else{
+
+    } else {
         echo 'les cases ne sont pas tous remplient';
     }
 
@@ -94,8 +117,8 @@ function logout()
     session_start();
 
     $_SESSION = array(); // clear session values
-    if(isset($_COOKIE[session_name()])){  // set cookies outdated if exist
-        setcookie(session_name(),'',time()-1,'/');
+    if (isset($_COOKIE[session_name()])) {  // set cookies outdated if exist
+        setcookie(session_name(), '', time() - 1, '/');
     }
     session_destroy();  // destroy session
 

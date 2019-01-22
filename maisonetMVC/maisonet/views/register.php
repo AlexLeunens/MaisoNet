@@ -3,8 +3,8 @@
 //include_once(ROOT.'/models/server.php');
 
 $title ="Inscription";
-$css = "/maisonet/views/style1.css";
-require ROOT."/views/template/header.php";
+$css = "/maisonetgit/maisonetMVC/maisonet/views/accueil.css";
+require ROOT . "/views/template/headerAccueil.php";
 ?>
 
 
@@ -19,24 +19,24 @@ require ROOT."/views/template/header.php";
 
         <div class="aligner">
             <label>Nom</label>
-            <input type="text" name="nom" value="<?php echo $name; ?>" required>
+            <input type="text" name="nom"  required>
         </div>
         <div class="aligner">
             <label>Prénom</label>
-            <input type="text" name="prenom" value="<?php echo $prenom; ?>" required>
+            <input type="text" name="prenom"  required>
         </div>
         <div class="aligner">
             <label>Email</label>
-            <input type="email" name="email" value="<?php echo $email; ?>" required>
+            <input type="email" name="email"  required>
         </div>
         <div class="aligner">
             <label>Date de naissance</label>
-            <input type="date" name="datenaissance" valueb="<?php echo $datenaissance;?>" required>
+            <input type="date" name="datenaissance"  required>
         </div>
 
         <div class="aligner">
             <label>N°de Telephone</label>
-            <input type="tel" name="numtel" value="<?php echo $numtel;?>" required>
+            <input type="tel" name="numtel"  required>
         </div>
 
         <!--<div class="aligner">

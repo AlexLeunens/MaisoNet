@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
 include_once ROOT.'/models/connect.php';
-include_once ROOT.'/views/template/header.php';
+include_once ROOT . '/views/template/headerAccueil.php';
 include_once ROOT.'/models/secure.php';
 ?>
 

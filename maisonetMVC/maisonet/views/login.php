@@ -2,8 +2,8 @@
 //include_once(ROOT.'/models/server.php');
 
 $title ="Registration system PHP and MySQL";
-$css = "/maisonet/views/style1.css";
-require ROOT."/views/template/header.php";
+
+require ROOT . "/views/template/headerAccueil.php";
 ?>
 
 <body>
