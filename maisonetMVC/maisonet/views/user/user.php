@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="#">Profil</a>
-    <a href="#">Services</a>
+    <a href="index.php?action=see_ourServices">Services</a>
     <a href="#">Contact</a>
     <a href="index.php?action=see_forum">Forum</a>
     <a href="index.php?action=logout">Déconnexion</a>
