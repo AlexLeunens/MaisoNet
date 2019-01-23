@@ -197,7 +197,7 @@ $GLOBALS['isAdmin'] = $isAdmin;
     ?>
 
     <div class="form-popup" id="myForm">
-        <form method="post"  class="form-container">
+        <form method="post" action="index.php?action=new_discussion"  class="form-container">
             <h1>Création de Sujet</h1>
 
             <label for="text"><b>Sujet</b></label>

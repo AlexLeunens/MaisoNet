@@ -14,6 +14,7 @@ if (isset($_GET["action"])) {
     $action = htmlspecialchars($_GET["action"]);
 
     switch ($action) {
+
         case "see_home":
             seeHome();
             break;
@@ -47,14 +48,19 @@ if (isset($_GET["action"])) {
             seeFAQ();
             break;
 
+// forum
         case "new_cat":
             newCat($conn);
+            break;
+
+        case "new_discussion":
+            newDiscussion($conn);
             break;
 
 
 
 
-
+// gestion utilisateur
         case "register_request":
             registerRequest();
             break;
@@ -67,6 +73,7 @@ if (isset($_GET["action"])) {
             addHouse();
             break;
 
+// connexion
         case "login":
             login();
             break;

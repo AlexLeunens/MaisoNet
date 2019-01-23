@@ -194,8 +194,42 @@ function insertNewCat($conn,$catName){
 
 }
 
-function insertNewSubject(){
+function insertNewSubject($conn,$topicSubject,$topicDescription,$catId,$userId){
 
+    $query = "BEGIN WORK;";
+    $result = $conn->query($query);
+    if (!$result) {
+
+        echo 'An error occurred while preparing the operation. Please try again later.';
+    }
+
+    $sql = "INSERT INTO
+                        discussion(Sujet,
+                               Texte,
+                               Categorie_idCategorie,
+                               Utilisateur_idUtilisateur)
+                   VALUES('" . Securite::bdd($conn, $topicSubject) . "',
+                   '" . Securite::bdd($conn, $topicDescription) . "',
+                               " . Securite::bdd($conn, $catId) . ",
+                               ".Securite::bdd($conn, $userId).")";
+
+    $result = $conn->query($sql);
+    if (!$result) {
+        //something went wrong, display the error
+        echo 'An error occured while inserting your data. Please try again later.';
+        echo mysqli_error($conn);
+        echo $sql;
+        $sql = "ROLLBACK;";
+
+        $result = $conn->query($query);
+    } else {
+        $sql = "COMMIT;";
+        $result = $conn->query($sql);
+
+        //after a lot of work, the query succeeded!
+        //header("location: {$_SERVER['PHP_SELF']}");
+        seeForum();
+    }
 }
 
 function displayTopics($incrementTopics, $conn, $rowCat) {

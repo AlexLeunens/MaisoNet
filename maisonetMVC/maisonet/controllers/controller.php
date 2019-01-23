@@ -84,7 +84,7 @@ function addHouse()
     $codePostal = htmlspecialchars($_POST["codePostal"]);
     $pay = htmlspecialchars($_POST["pay"]);
 
-    insertHouse();
+    insertHouse($userId,$adress,$codePostal,$pay);
 }
 
 function registerRequest()
@@ -144,6 +144,16 @@ function newCat($conn){
     $catName = $_POST['cat_name'];
 
     insertNewCat($conn,$catName);
+}
+
+function newDiscussion($conn){
+
+    $topicSubject = $_POST['topic_subject'];
+    $topicDescription = $_POST['topic_description'];
+    $catId = $_POST['cat_id'];
+    $userId = $_SESSION['id'];
+
+    insertNewSubject($conn,$topicSubject,$topicDescription,$catId,$userId);
 }
 
 
