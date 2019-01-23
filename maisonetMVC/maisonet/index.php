@@ -28,10 +28,10 @@ if (isset($_GET["action"])) {
             seeForum();
             break;
 
-        case "see_userPage": // à supprimer une fois le site fini
+        case "see_userPage":
             seeUserPage();
             break;
-        case "see_adminPage": // à supprimer une fois le site fini
+        case "see_adminPage":
             seeAdminPage();
             break;
 
