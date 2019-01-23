@@ -7,7 +7,17 @@ require ROOT . "/views/template/headerAdmin.php";
 include ROOT . "/models/connect.php";
 include_once ROOT . "/models/secure.php";
 
-//session_start();
+if(session_status() !== PHP_SESSION_ACTIVE){
+    session_start();
+
+}else{
+
+if($_SESSION['type']==3){
+    echo "<script>alert('vous êtes un utilisateur')</script>";
+    header('Location: index.php?action=see_userPage');
+
+}
+}
 
 if (!isset($_SESSION["name"]) || !isset($_SESSION["firstname"])) {
     $_SESSION["name"] = 'Anonym';

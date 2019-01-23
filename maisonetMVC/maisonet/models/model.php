@@ -98,14 +98,16 @@ function userConnect($email, $password)
             $_SESSION['type'] = $result['Fonction_idType'];
 
             if ($_SESSION['type'] == 3) {
-                seeUserPage();
+                //seeUserPage();
+                header('Location: index.php?action=see_userPage');
             } else {
-                seeAdminPage();
+                //seeAdminPage();
+                header('Location: index.php?action=see_adminPage');
             }
 
         } else {
             echo "<script>alert('utilisateur introuvable')</script>";
-            seeLogin();
+            header('Location: index.php?action=see_login');
         }
 
 

@@ -5,6 +5,11 @@ require ROOT . "/views/template/headerMainUser.php";
 include ROOT."/models/connect.php";
 include_once ROOT."/models/secure.php";
 
+if(session_status() !== PHP_SESSION_ACTIVE){
+    session_start();
+
+}
+
 ?>
 
 
