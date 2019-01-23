@@ -3,22 +3,29 @@
 
 <?php
 
-include ROOT.'/models/connect.php';
-include_once ROOT.'/views/template/headerForums.php';
-include_once ROOT.'/models/secure.php';
-include_once ROOT."/models/model.php";
+include ROOT . '/models/connect.php';
+include_once ROOT . '/views/template/headerForums.php';
+include_once ROOT . '/models/secure.php';
+include_once ROOT . "/models/model.php";
 
 ?>
 
 
 <?php
-if(session_status() !== PHP_SESSION_ACTIVE){
+if (session_status() !== PHP_SESSION_ACTIVE) {
 
     session_start();
 
 }
-$name = $_SESSION["name"];
-$firstname = $_SESSION["firstname"];
+if (isset($_SESSION['name'])) {
+    $name = $_SESSION["name"];
+    $firstname = $_SESSION["firstname"];
+}else{
+    $name = "anonyme";
+    $firstname = "";
+    $_SESSION['type'] = 3;
+
+}
 echo $name;
 echo $firstname;
 //this tries to create a new topic in the database
@@ -34,40 +41,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // checks which form has been submited
-   /* if(isset($_POST["newSubject"])){
-        $sql = "INSERT INTO
-                        discussion(Sujet,
-                               Texte,
-                               Categorie_idCategorie,
-                               Utilisateur_idUtilisateur)
-                   VALUES('" . Securite::bdd($conn, $_POST['topic_subject']) . "',
-                   '" . Securite::bdd($conn, $_POST['topic_description']) . "',
-                               " . Securite::bdd($conn, $_POST['cat_id']) . ",
-                               1)";
+    /* if(isset($_POST["newSubject"])){
+         $sql = "INSERT INTO
+                         discussion(Sujet,
+                                Texte,
+                                Categorie_idCategorie,
+                                Utilisateur_idUtilisateur)
+                    VALUES('" . Securite::bdd($conn, $_POST['topic_subject']) . "',
+                    '" . Securite::bdd($conn, $_POST['topic_description']) . "',
+                                " . Securite::bdd($conn, $_POST['cat_id']) . ",
+                                1)";
 
-    } else if(isset($_POST["newCat"])){
-        $sql = "INSERT INTO
-                        categorie(Nom)
-                   VALUES('" . Securite::bdd($conn, $_POST['cat_name']) . "')";
-    }
+     } else if(isset($_POST["newCat"])){
+         $sql = "INSERT INTO
+                         categorie(Nom)
+                    VALUES('" . Securite::bdd($conn, $_POST['cat_name']) . "')";
+     }
 
-    //TODO update utilisateur
-    $result = $conn->query($sql);
-    if (!$result) {
-        //something went wrong, display the error
-        echo 'An error occured while inserting your data. Please try again later.';
-        echo mysqli_error($conn);
-        echo $sql;
-        $sql = "ROLLBACK;";
-        $result = $conn->query($query);
-    } else {
-        $sql = "COMMIT;";
-        $result = $conn->query($sql);
+     //TODO update utilisateur
+     $result = $conn->query($sql);
+     if (!$result) {
+         //something went wrong, display the error
+         echo 'An error occured while inserting your data. Please try again later.';
+         echo mysqli_error($conn);
+         echo $sql;
+         $sql = "ROLLBACK;";
+         $result = $conn->query($query);
+     } else {
+         $sql = "COMMIT;";
+         $result = $conn->query($sql);
 
-        //after a lot of work, the query succeeded!
-        //header("location: {$_SERVER['PHP_SELF']}");
-        seeForum();
-    }*/
+         //after a lot of work, the query succeeded!
+         //header("location: {$_SERVER['PHP_SELF']}");
+         seeForum();
+     }*/
 
 }
 ?>
@@ -75,9 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php
 
 
-if(isset($_SESSION['name']) && isset($_SESSION['firstname'])) {
-    $sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".Securite::bdd($conn, $_SESSION['name'])."'
-                                            AND prenom = '".Securite::bdd($conn, $_SESSION['firstname'])."' ";
+if (isset($_SESSION['name']) && isset($_SESSION['firstname'])) {
+    $sql = "SELECT idUtilisateur from utilisateur WHERE nom = '" . Securite::bdd($conn, $_SESSION['name']) . "'
+                                            AND prenom = '" . Securite::bdd($conn, $_SESSION['firstname']) . "' ";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         $idUser = $row["idUtilisateur"];
@@ -90,15 +97,15 @@ if(isset($_SESSION['name']) && isset($_SESSION['firstname'])) {
 global $isAdmin;
 
 //$_SESSION['type']
-if($_SESSION['type'] == 1){
+if ($_SESSION['type'] == 1) {
     $isAdmin = true;
-}else{
+} else {
     $isAdmin = false;
 }
 
 
-$sql = "SELECT idUtilisateur from utilisateur WHERE nom = '".Securite::bdd($conn, $name)."'
-                                            AND prenom = '".Securite::bdd($conn, $firstname)."' ";
+$sql = "SELECT idUtilisateur from utilisateur WHERE nom = '" . Securite::bdd($conn, $name) . "'
+                                            AND prenom = '" . Securite::bdd($conn, $firstname) . "' ";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
@@ -115,7 +122,7 @@ while ($row = $result->fetch_assoc()) {
     }
 }*/
 
-if ($isAdmin == true){
+if ($isAdmin == true) {
     echo "Admin";
 } else {
     echo "Not admnin";
@@ -131,13 +138,14 @@ $GLOBALS['isAdmin'] = $isAdmin;
         <h2>Forums</h2>
 
         <?php
-        if ($isAdmin == true){
-         echo " <button class=\"newCatBtn\" onclick=\"openFormCat() \">Ajouter Catégorie</button> " ;
+        if ($isAdmin == true) {
+            echo " <button class=\"newCatBtn\" onclick=\"openFormCat() \">Ajouter Catégorie</button> ";
         }
         ?>
 
         <div class="form-popup" id="newCat">
-            <form method="post" action="index.php?action=new_cat" class="form-container">  <!--action="index.php?action=see_forum"-->
+            <form method="post" action="index.php?action=new_cat" class="form-container">
+                <!--action="index.php?action=see_forum"-->
                 <h1>Création de Catégorie</h1>
 
                 <label for="text"><b>Nom de la catégorie</b></label>
@@ -201,7 +209,7 @@ $GLOBALS['isAdmin'] = $isAdmin;
     ?>
 
     <div class="form-popup" id="myForm">
-        <form method="post" action="index.php?action=new_discussion"  class="form-container">
+        <form method="post" action="index.php?action=new_discussion" class="form-container">
             <h1>Création de Sujet</h1>
 
             <label for="text"><b>Sujet</b></label>
