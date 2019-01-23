@@ -21,7 +21,7 @@ if(session_status() !== PHP_SESSION_ACTIVE){
 $name = $_SESSION["name"];
 $firstname = $_SESSION["firstname"];
 
-$adresse = Securite::bdd($conn, $_GET["Adresse"]);
+$adresse = Securite::bdd($conn, $_SESSION['adresse']);
 
 // Get user id
 $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
