@@ -12,10 +12,10 @@ session_start();
 if (!isset($_SESSION["name"]) || !isset($_SESSION["firstname"])) {
     $_SESSION["name"] = 'Anonym';
     $_SESSION["firstname"] = 'Name';
-} else {
-    $name = $_SESSION["name"];
-    $firstname = $_SESSION["firstname"];
 }
+
+$name = $_SESSION["name"];
+$firstname = $_SESSION["firstname"];
 
 
 if (isset($_SESSION["idContact"])) {
@@ -256,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '<select name="pay">';
             while ($pays = $result->fetch(PDO::FETCH_ASSOC)) {
                 $i++;
-                echo '<option value=' . $i . '>' . $pays['Nom'] . '</option>';
+                echo '<option value=' . $i . '>' . $pays['nom'] . '</option>';
             }
             echo '</select>';
 
@@ -332,7 +332,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="usermain1.js"></script>
+<script src="views/admin/usermain1.js"></script>
 <script>
     var auto_refresh = setInterval(
         function () {
