@@ -80,7 +80,7 @@ function addUser()
 function addHouse()
 {
     $userId = htmlspecialchars($_POST["userId"]);
-    $adress = htmlspecialchars($_POST["adresse"]);
+    $adress = str_replace(" ", "", $_POST['adresse']); //htmlspecialchars($_POST["adresse"]);
     $codePostal = htmlspecialchars($_POST["codePostal"]);
     $pay = htmlspecialchars($_POST["pay"]);
 
@@ -88,7 +88,7 @@ function addHouse()
 }
 
 function addRoom(){
-    $adress = htmlspecialchars($_POST["adresse"]);
+    $adress = str_replace(" ", "", $_POST['adresse']);//htmlspecialchars($_POST["adresse"]);
     $roomName = htmlspecialchars($_POST["roomName"]);
 
     inserRoom($adress,$roomName);

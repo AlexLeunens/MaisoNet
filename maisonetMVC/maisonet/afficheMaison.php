@@ -1,27 +1,23 @@
 <?php
 define("ROOT", __DIR__);
-
-include ROOT.'/models/connect.php';
-include ROOT.'/models/secure.php';
+include ROOT . '/models/connect.php';
+include ROOT . '/models/secure.php';
 
 echo "<form class='dossier' method='post' action=''>";
 echo "Adresse client : <input type=\"text\" name=\"adresse\">";
 echo "<input align=\"right\" type=\"submit\" name=\"getMaison\" value=\"Entrée\">";
 echo "</form>";
 
-
 //$name = Securite::bdd($conn, $_GET['nom']);
 //$firstname = Securite::bdd($conn, $_GET['prenom']);
-
-if(session_status() !== PHP_SESSION_ACTIVE){
+if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 
 }
-
 $name = $_SESSION["name"];
 $firstname = $_SESSION["firstname"];
-
-$adresse = Securite::bdd($conn, $_SESSION['adresse']);
+$adresse = $_SESSION["adresse"];
+$userType = $_SESSION['type'];
 
 // Get user id
 $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
@@ -31,9 +27,16 @@ while ($row = $result->fetch_assoc()) {
     $idUser = $row["idUtilisateur"];
 }
 
+
 // Get maison id
-$sql = "SELECT idMaison FROM maison WHERE Utilisateur_idUtilisateur = " . $idUser . " AND Adresse = '" . $adresse . "' ";
+if ($userType == 3) {
+
+    $sql = "SELECT idMaison FROM maison WHERE Utilisateur_idUtilisateur = " . $idUser . " AND Adresse = '" . $adresse . "' ";
+} else {
+    $sql = "SELECT idMaison FROM maison WHERE Adresse = '" . $adresse . "' ";
+}
 $result = $conn->query($sql);
+echo $sql;
 
 if (mysqli_num_rows($result) == 0) {
     echo " <h2> Vous n'avez pas saisi une bonne adresse </h2>";
@@ -41,6 +44,7 @@ if (mysqli_num_rows($result) == 0) {
 
     while ($row = $result->fetch_assoc()) {
         $maison = $row["idMaison"];
+        echo $maison;
     }
 
     // Get pieces
