@@ -345,7 +345,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="fenetre-modale">
         <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
                                                  title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images-utilisateur/fmodale_fermer.jpg"/></a>
+                                                 src="views/admin/Images-utilisateur/fmodale_fermer.png"/></a>
         <h2>Quel capteur voulez vous ajouter:</h2>
         <!-- ICI Ajouter la liste des capteurs -->
     </div> <!-- .fenetre-modale -->
@@ -356,7 +356,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="fenetre-modale">
         <a class="fermer" href="#nullepart"><img alt="Bouton fermer la fenêtre"
                                                  title="Fermer la fenêtre" class="btn-fermer"
-                                                 src="Images-utilisateur/fmodale_fermer.jpg"/></a>
+                                                 src="views/admin/Images-utilisateur/fmodale_fermer.png"/></a>
         <h2>Entrez le texte</h2>
         <form>
             <input type="button" value="G" style="font-weight: bold;" onclick="commande('bold');"/>
@@ -372,7 +372,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="masque">
     <div class="fenetre-modale">
         <a class="fermer" href="#"><img alt="X" title="Fermer la fenêtre" class="btn-fermer"
-                                        src="Images-utilisateur/fmodale_fermer.jpg"/></a>
+                                        src="views/admin/Images-utilisateur/fmodale_fermer.png"/></a>
         <h2>Votre Capteur:</h2>
 
         <form>
