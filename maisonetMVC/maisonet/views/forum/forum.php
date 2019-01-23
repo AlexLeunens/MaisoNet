@@ -23,6 +23,7 @@ if (isset($_SESSION['name'])) {
 }else{
     $name = "anonyme";
     $firstname = "";
+    $_SESSION['id'] = 1;
     $_SESSION['type'] = 3;
 
 }
