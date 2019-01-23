@@ -58,8 +58,6 @@ if (isset($_GET["action"])) {
             break;
 
 
-
-
 // gestion utilisateur
         case "register_request":
             registerRequest();
@@ -74,7 +72,7 @@ if (isset($_GET["action"])) {
             break;
 
         case  "add_room":
-
+            addRoom();
             break;
 // connexion
         case "login":

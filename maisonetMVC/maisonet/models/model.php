@@ -168,10 +168,11 @@ function inserRoom($adress, $roomName){
 
     $db = dbConnect();
 
-    $sql = "SELECT idMaison FROM maison WHERE Adresse = '" . $adress . "' ";
-    $result = $db->query($sql);
-    //"SELECT idMaison FROM maison WHERE Adresse = '" . $adresse . "' ";
+
+    $result = $db->query("SELECT * FROM maison WHERE Adresse = '$adress'");
+    $result = $result->fetch(PDO::FETCH_ASSOC);
     $idMaison = $result['idMaison'];
+
 
     $req = $db->prepare("INSERT INTO piece (Nom, Maison_idMaison) VALUES( :Nom, :idMaison)");
 
@@ -179,6 +180,7 @@ function inserRoom($adress, $roomName){
     $req->bindParam("idMaison", $idMaison);
 
     $req->execute();
+
     if ($req) {
         echo '<script>alert("Pièce ajouté :)")</script>';
         header('Location: index.php?action=see_adminPage');

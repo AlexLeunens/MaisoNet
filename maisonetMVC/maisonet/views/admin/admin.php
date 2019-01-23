@@ -248,7 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <br>
             <label for="inputRoomName">Nom de la pièce</label>
             <br>
-            <input type="number" name="roomName" id="inputRoomName" placeholder="Nom de la pièce" required>
+            <input type="text" name="roomName" id="inputRoomName" placeholder="Nom de la pièce" required>
             <br>
             <br>
             <input type="submit" value="Ajouter">

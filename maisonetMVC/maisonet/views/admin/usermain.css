@@ -127,6 +127,7 @@ div.Elements {
     top: 15%;
     width: 100%;
     left: 0;
+    overflow: auto;
 }
 
 #Client {
@@ -430,7 +431,7 @@ input[type="text1"] {
 
     div.Elements {
         top: 12%;
-        overflow-y: auto;
+        overflow: auto;
     }
 
     p.piece {
