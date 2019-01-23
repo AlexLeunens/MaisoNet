@@ -147,6 +147,11 @@ function newCat($conn){
 }
 
 function newDiscussion($conn){
+    if(session_status() !== PHP_SESSION_ACTIVE){
+
+        session_start();
+
+    }
 
     $topicSubject = $_POST['topic_subject'];
     $topicDescription = $_POST['topic_description'];

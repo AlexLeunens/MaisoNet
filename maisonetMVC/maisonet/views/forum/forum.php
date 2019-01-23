@@ -12,7 +12,11 @@ include_once ROOT."/models/model.php";
 
 
 <?php
-session_start();
+if(session_status() !== PHP_SESSION_ACTIVE){
+
+    session_start();
+
+}
 $name = $_SESSION["name"];
 $firstname = $_SESSION["firstname"];
 echo $name;
