@@ -192,9 +192,32 @@ function inserRoom($adress, $roomName){
     $req->closeCursor();
 
 
+}
+
+function inserCapteur($roomId,$type){
+
+    $db = dbConnect();
+
+    $defaultStat = "normal";
+    $display = "0";
 
 
+    $req = $db->prepare("INSERT INTO capteur (Type, Etat, Affichage, Piece_idPiece) VALUES( :type, :etat, :affichage, :roomId)");
 
+    $req->bindParam("type", $type);
+    $req->bindParam("etat", $defaultStat);
+    $req->bindParam("affichage", $display);
+    $req->bindParam("roomId", $roomId);
+
+    $req->execute();
+
+    if ($req) {
+        echo '<script>alert("Capteur ajouté :)")</script>';
+        header('Location: index.php?action=see_adminPage');
+    } else {
+        echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
+        header('Location: index.php?action=see_adminPage');
+    }
 }
 
 

@@ -221,7 +221,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h3>Ajouter une nouvelle maison</h3>
             <label for="inputUserId">ID utilisateur</label>
             <br>
-            <input type="text" name="userId" id="inputUserId" placeholder="id" required autofocus>
+            <input type="number" name="userId" id="inputUserId" placeholder="id" required autofocus>
             <br>
             <label for="inputAdress">Adresse</label>
             <br>
@@ -246,6 +246,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="inputRoomName">Nom de la pièce</label>
             <br>
             <input type="text" name="roomName" id="inputRoomName" placeholder="Nom de la pièce" required>
+            <br>
+            <br>
+            <input type="submit" value="Ajouter">
+        </form>
+
+        <form class="addRoom" method="post" action="index.php?action=add_capteur">
+            <h3>Ajouter une nouvelle capteur</h3>
+            <label for="inputRoomId">ID pièce</label>
+            <br>
+            <input type="number" name="roomId" id="inputRoomId" placeholder="id" required>
+            <br>
+            <?php displayTypeCapteur() ?>
             <br>
             <br>
             <input type="submit" value="Ajouter">
@@ -285,6 +297,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo '<option value=' . $i . '>' . $pays['nom'] . '</option>';
             }
             echo '</select>';
+
+        }
+
+        function displayTypeCapteur(){
+
+            $db = dbConnect();
+            $sql = "SELECT typecapteur FROM typecapteur";
+            $result = $db->query($sql);
+
+            echo '<label for="capteurType">Type capteur</label><br>';
+            echo '<select name="capteurType">';
+            while ($capteur = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                echo '<option value=' . $capteur['typecapteur'] . '>' . $capteur['typecapteur'] . '</option>';
+            }
+            echo '</select>';
+
 
         }
 

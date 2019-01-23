@@ -32,19 +32,23 @@ while ($row = $result->fetch_assoc()) {
 if ($userType == 3) {
 
     $sql = "SELECT idMaison FROM maison WHERE Utilisateur_idUtilisateur = " . $idUser . " AND Adresse = '" . $adresse . "' ";
+
 } else {
+
     $sql = "SELECT idMaison FROM maison WHERE Adresse = '" . $adresse . "' ";
 }
 $result = $conn->query($sql);
-echo $sql;
+//echo $sql;
 
 if (mysqli_num_rows($result) == 0) {
+
     echo " <h2> Vous n'avez pas saisi une bonne adresse </h2>";
+
 } else {
 
     while ($row = $result->fetch_assoc()) {
         $maison = $row["idMaison"];
-        echo $maison;
+        //echo $maison;
     }
 
     // Get pieces
@@ -67,7 +71,7 @@ if (mysqli_num_rows($result) == 0) {
             echo "<div class=bloc><a href='#masque'>";
 
             // TODO change image name
-            echo "<img class='imagestemperature' src='Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
+            echo "<img class='imagestemperature' src='views/Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
             echo "<p class=sstitre>Votre " . $rowCapteur["Type"] . "</p></a>";
 
             echo "</div>"; // div bloc

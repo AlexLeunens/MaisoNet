@@ -74,6 +74,10 @@ if (isset($_GET["action"])) {
         case  "add_room":
             addRoom();
             break;
+
+        case "add_capteur":
+            addCapteur();
+            break;
 // connexion
         case "login":
             login();

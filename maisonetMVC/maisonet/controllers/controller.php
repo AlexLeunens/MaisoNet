@@ -94,6 +94,14 @@ function addRoom(){
     inserRoom($adress,$roomName);
 }
 
+function addCapteur(){
+    $roomId = htmlspecialchars($_POST["roomId"]);
+    $type =  htmlspecialchars($_POST["capteurType"]);
+
+    inserCapteur($roomId,$type);
+
+}
+
 function registerRequest()
 {
 
@@ -109,6 +117,8 @@ function registerRequest()
 
 
 }
+
+
 
 // gestion des sessions
 
