@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/maisonetgit/maisonetMVC/maisonet/views/forum/forum.css"<!--feuille css-->
     <link rel="icon" href="Images-forum/favicon.png"> <!--icone-->
 
-    <script type="text/javascript" src="forumScripts.js"></script>
+    <script type="text/javascript" src="views/forum/forumScripts.js"></script>
 
 </head>
 

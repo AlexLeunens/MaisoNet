@@ -1,4 +1,6 @@
 <?php
+define("ROOT", __DIR__);
+
 include ROOT.'/models/connect.php';
 include ROOT.'/models/secure.php';
 
@@ -7,11 +9,18 @@ echo "Adresse client : <input type=\"text\" name=\"adresse\">";
 echo "<input align=\"right\" type=\"submit\" name=\"getMaison\" value=\"Entrée\">";
 echo "</form>";
 
-$name = Securite::bdd($conn, $_GET['nom']);
-$firstname = Securite::bdd($conn, $_GET['prenom']);
 
-//$name = $_SESSION["name"];
-//$firstname = $_SESSION["firstname"];
+//$name = Securite::bdd($conn, $_GET['nom']);
+//$firstname = Securite::bdd($conn, $_GET['prenom']);
+
+if(session_status() !== PHP_SESSION_ACTIVE){
+    session_start();
+
+}
+
+$name = $_SESSION["name"];
+$firstname = $_SESSION["firstname"];
+
 $adresse = Securite::bdd($conn, $_GET["Adresse"]);
 
 // Get user id

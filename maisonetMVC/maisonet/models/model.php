@@ -44,7 +44,7 @@ function insertUser($lastname, $name, $password, $email, $tel, $birthday, $type)
 
     if ($count > 0) {
         echo '<script>alert("Cette address mail est déja utilisé, choisissez un autre")</script>';
-        seeAdminPage();
+        header('Location: index.php?action=see_adminPage');
 
     } else {
         $req = $db->prepare("INSERT INTO utilisateur (Nom, Prenom, MotPasse, NumeroTelephone, Email, DateNaissance, Fonction_idType) VALUES(:nom, :prenom, :mdp, :tel, :email, :birthday, :type)");
@@ -63,10 +63,10 @@ function insertUser($lastname, $name, $password, $email, $tel, $birthday, $type)
         if ($req) {
             echo '<script>alert("Utilisateur ajouté :)")</script>';
             sendConfirmMailAfterResgist($lastname, $name, $email, $password, $birthday, $tel, 3);
-            seeAdminPage();
+            header('Location: index.php?action=see_adminPage');
         } else {
             echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
-            seeAdminPage();
+            header('Location: index.php?action=see_adminPage');
         }
 
         $req->closeCursor();
@@ -113,7 +113,7 @@ function userConnect($email, $password)
 
     } else {
         echo "<script>alert('utilisateur introuvable')</script>";
-        seeLogin();
+        header('Location: index.php?action=see_login');
     }
 
 
@@ -129,7 +129,7 @@ function userRegisterRequest($lastname, $name, $email, $birthday, $tel)
     sendConfirmMail($lastname, $name, $email, $birthday, $tel, 3);
 
     echo "<script>alert('Votre demande a été envoyé. Si vous ne recevez pas de email de confirmation, veuillez nous contacter')</script>";
-    seeRegister();
+    header('Location: index.php?action=see_register');
 
 }
 
@@ -153,10 +153,10 @@ function insertHouse($userId, $adresse, $codePostal, $pay)
 
     if ($req) {
         echo '<script>alert("Maison ajouté :)")</script>';
-        seeAdminPage();
+        header('Location: index.php?action=see_adminPage');
     } else {
         echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
-        seeAdminPage();
+        header('Location: index.php?action=see_adminPage');
     }
 
     $req->closeCursor();
@@ -191,7 +191,7 @@ function insertNewCat($conn,$catName){
 
         //after a lot of work, the query succeeded!
         //header("location: {$_SERVER['PHP_SELF']}");
-        seeForum();
+        header('Location: index.php?action=see_forum');
     }
 
 }
@@ -230,7 +230,7 @@ function insertNewSubject($conn,$topicSubject,$topicDescription,$catId,$userId){
 
         //after a lot of work, the query succeeded!
         //header("location: {$_SERVER['PHP_SELF']}");
-        seeForum();
+        header('Location: index.php?action=see_forum');
     }
 }
 
@@ -272,6 +272,66 @@ function displayTopics($incrementTopics, $conn, $rowCat) {
         echo "</div>\n";
         echo "</div>\n";
     }
+}
+
+function afficheMaison($conn,$name,$firstname,$adresse){
+
+
+// Get user id
+    $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
+    $result = $conn->query($sql);
+
+
+    while ($row = $result->fetch_assoc()) {
+        $idUser = $row["idUtilisateur"];
+    }
+
+// Get maison id
+    $sql = "SELECT idMaison FROM maison WHERE Utilisateur_idUtilisateur = " . $idUser . " AND Adresse = '" . $adresse . "' ";
+    $result = $conn->query($sql);
+    echo $sql;
+
+    if (mysqli_num_rows($result) == 0) {
+        echo " <h2> Vous n'avez pas saisi une bonne adresse </h2>";
+    } else {
+
+        while ($row = $result->fetch_assoc()) {
+            $maison = $row["idMaison"];
+        }
+
+        // Get pieces
+        $sql = " SELECT * FROM piece WHERE Maison_idMaison = " . $maison . " ";
+        $result = $conn->query($sql);
+
+        // Goes through each piece
+        while ($rowPiece = $result->fetch_assoc()) { // piece
+
+            echo "<p class='piece'> " . $rowPiece["Nom"] . " </p>";
+            echo "<div class='panel'>";
+
+            $sqlCapteur = " SELECT * FROM capteur WHERE Piece_idPiece = " . $rowPiece["idPiece"] . " ";
+            $resultCapteur = $conn->query($sqlCapteur);
+
+            // Goes through each capteur
+            while ($rowCapteur = $resultCapteur->fetch_assoc()) {
+
+
+                echo "<div class=bloc><a href='#masque'>";
+
+                // TODO change image name
+                echo "<img class='imagestemperature' src='Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
+                echo "<p class=sstitre>Votre " . $rowCapteur["Type"] . "</p></a>";
+
+                echo "</div>"; // div bloc
+
+            }
+
+            echo "</div> \n"; // div panel
+
+        }
+
+    }
+
 }
 
 //infomaisonet@gmail.com

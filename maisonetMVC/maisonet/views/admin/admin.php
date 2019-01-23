@@ -6,6 +6,7 @@ require ROOT . "/views/template/headerAdmin.php";
 <?php
 include ROOT . "/models/connect.php";
 include_once ROOT . "/models/secure.php";
+//include_once ROOT."/models/model.php";
 
 if(session_status() !== PHP_SESSION_ACTIVE){
     session_start();
@@ -46,7 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $adresse = str_replace(" ", "", $_POST['adresse']);
         $_SESSION["adresse"] = $adresse;
 
-        header("Location: usermain1.php");
+        //header("Location: views\admin\admin.php");
+
+        //afficheMaison($conn,$name,$firstname,$adresse);
 
     } else if (isset($_POST['submitmsg'])) {
 
@@ -217,20 +220,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="submit" value="Ajouter">
         </form>
 
-        <form class="register" method="post" action="index.php?action=add_user">
+        <form class="register" method="post" action="index.php?action=add_house">
             <h3>Ajouter une nouvelle maison</h3>
-            <label for="inputUserId">Nom</label>
+            <label for="inputUserId">ID utilisateur</label>
             <br>
             <input type="text" name="userId" id="inputUserId" placeholder="id" required autofocus>
             <br>
-            <label for="inputName">Prénom</label>
+            <label for="inputAdress">Adresse</label>
             <br>
-            <input type="text" name="name" id="inputName" placeholder="Prénom" required>
+            <input type="text" name="adresse" id="inputAdress" placeholder="Adresse" required>
             <br>
-            <label for="inputPassword">Mot de passe</label>
+            <label for="inputPassword">Code postal</label>
             <br>
-            <input type="password" name="password" id="inputPassword" placeholder="Mot de pass" required>
-
+            <input type="number" name="codePostal" id="inputCodePostal" placeholder="Code postal" required>
+            <br>
             <?php displayPays() ?>
             <br>
             <br>
