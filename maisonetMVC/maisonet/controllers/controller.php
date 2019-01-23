@@ -153,7 +153,7 @@ function logout()
     }
     session_destroy();  // destroy session
 
-    require ROOT . "/views/home.php"; // return to home page
+    header('Location: index.php?action=see_home'); // return to home page
 
 }
 
