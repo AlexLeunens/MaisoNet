@@ -2,7 +2,7 @@
 $title = "User Interface";
 $css = "/maisonet/views/user/utilisateur1.css";
 require ROOT . "/views/template/headerMainUser.php";
-include_once ROOT."/models/connect.php";
+include ROOT."/models/connect.php";
 include_once ROOT."/models/secure.php";
 
 ?>

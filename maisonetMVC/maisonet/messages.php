@@ -1,9 +1,14 @@
 <?php
+define("ROOT", __DIR__);
+
 include ROOT.'/models/connect.php';
 include ROOT.'/models/secure.php';
 
 // idUtilisateur = sent to
 // sender = sent by
+//session_start();
+
+
 
 if (!empty($_GET)) {
 

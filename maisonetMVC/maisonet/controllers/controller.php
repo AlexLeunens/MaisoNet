@@ -77,7 +77,8 @@ function addUser()
 
 }
 
-function addHouse(){
+function addHouse()
+{
     $userId = htmlspecialchars($_POST["userId"]);
     $adress = htmlspecialchars($_POST["adresse"]);
     $codePostal = htmlspecialchars($_POST["codePostal"]);
@@ -106,7 +107,11 @@ function registerRequest()
 
 function login()
 {
-    if ($_POST['email'] && $_POST['password']) {
+
+    if (isset($_SESSION['name'])) {
+        echo 'vous êtes déja connceté';
+
+    } else if ($_POST['email'] && $_POST['password']) {
         $email = htmlspecialchars($_POST['email']);
         $password = $_POST['password']; //htmlspecialchars($_POST['password']);
 
@@ -133,6 +138,12 @@ function logout()
 
     require ROOT . "/views/home.php"; // return to home page
 
+}
+
+function newCat($conn){
+    $catName = $_POST['cat_name'];
+
+    insertNewCat($conn,$catName);
 }
 
 

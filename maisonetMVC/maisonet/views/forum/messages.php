@@ -1,6 +1,6 @@
 <?php
-include 'connect.php';
-include 'secure.php';
+include ROOT.'/models/connect.php';
+include ROOT.'/models/secure.php';
 
 // idUtilisateur = sent to
 // sender = sent by

@@ -2,7 +2,8 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-//$dbname = "forumtest";
+
+global $conn;
 $dbname = "dbmaisonet";
 
 // Create connection

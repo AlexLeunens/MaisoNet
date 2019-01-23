@@ -47,6 +47,12 @@ if (isset($_GET["action"])) {
             seeFAQ();
             break;
 
+        case "new_cat":
+            newCat($conn);
+            break;
+
+
+
 
 
         case "register_request":
@@ -55,6 +61,10 @@ if (isset($_GET["action"])) {
 
         case "add_user":
             addUser();
+            break;
+
+        case "add_house":
+            addHouse();
             break;
 
         case "login":

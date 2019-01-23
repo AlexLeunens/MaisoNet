@@ -9,6 +9,8 @@
 include_once ROOT . "/models/mailSendingPhpMailer.php";
 require_once ROOT . "\controllers\controller.php";
 include_once ROOT . "/models/secure.php";
+include ROOT."/models/connect.php";
+include_once  ROOT."/models/secure.php";
 
 // Securite::bdd or html
 
@@ -160,6 +162,81 @@ function insertHouse($userId, $adresse, $codePostal, $pay)
 
 }
 
+
+function insertNewCat($conn,$catName){
+
+    $query = "BEGIN WORK;";
+    $result = $conn->query($query);
+    if (!$result) {
+        //Damn! the query failed, quit
+        echo 'An error occurred while preparing the operation. Please try again later.';
+    }
+
+    $sql = "INSERT INTO categorie(Nom) VALUES('" . Securite::bdd($conn, $catName). "')";
+
+    $result = $conn->query($sql);
+    if (!$result) {
+        //something went wrong, display the error
+        echo 'An error occured while inserting your data. Please try again later.';
+        echo mysqli_error($conn);
+        echo $sql;
+        $sql = "ROLLBACK;";
+
+        $result = $conn->query($query);
+    } else {
+        $sql = "COMMIT;";
+        $result = $conn->query($sql);
+
+        //after a lot of work, the query succeeded!
+        //header("location: {$_SERVER['PHP_SELF']}");
+        seeForum();
+    }
+
+}
+
+function insertNewSubject(){
+
+}
+
+function displayTopics($incrementTopics, $conn, $rowCat) {
+    echo "<h2>" . $rowCat["Nom"] . "</h2>";
+    $sql = "SELECT * FROM discussion WHERE Categorie_idCategorie = ' " . $incrementTopics . " ' ";
+    $result = $conn->query($sql);
+    // while there are still rows to be displayed
+    while ($row = $result->fetch_assoc()) {
+        echo "\n";
+        echo "<div id=\"" . $row["Sujet"] . "\" class=\"divTable post\">\n";
+        echo "<div class=\"divTableHeading\">\n";
+        echo "<div class=\"divTableRow\">\n";
+
+        echo "<div class=\"divTableHead\">";
+
+        //TODO create deleteTopic.php to delete a topic
+
+        $isAdmin = $GLOBALS['isAdmin'];
+        if ($isAdmin == true){
+            echo "<form method='post' action=' deleteTopic.php?topicID=" . $row["idDiscussion"] . " '>";
+        }
+
+        echo "<button type='submit' name='delTopic' id='delTopic'> x </button>\n";
+        echo "</form>";
+
+        echo "<a href=topic.php?id=" . $row["idDiscussion"] . ">";
+        echo $row["Sujet"];
+        echo "</a>";
+
+        echo "</div>\n";
+
+        echo "</div>\n";
+        echo "</div>\n";
+        echo " <div class=\"divTableBody\">\n";
+        echo "<div class=\"divTableRow\">\n";
+        echo "<div class=\"divTableCell\">" . $row["Texte"] . "</div>\n";
+        echo "</div>\n";
+        echo "</div>\n";
+        echo "</div>\n";
+    }
+}
 
 //infomaisonet@gmail.com
 

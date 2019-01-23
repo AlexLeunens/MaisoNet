@@ -6,6 +6,8 @@
 include ROOT.'/models/connect.php';
 include_once ROOT.'/views/template/headerForums.php';
 include_once ROOT.'/models/secure.php';
+include_once ROOT."/models/model.php";
+
 ?>
 
 
@@ -28,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // checks which form has been submited
-    if(isset($_POST["newSubject"])){
+   /* if(isset($_POST["newSubject"])){
         $sql = "INSERT INTO
                         discussion(Sujet,
                                Texte,
@@ -59,8 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = $conn->query($sql);
 
         //after a lot of work, the query succeeded!
-        header("location: {$_SERVER['PHP_SELF']}");
-    }
+        //header("location: {$_SERVER['PHP_SELF']}");
+        seeForum();
+    }*/
 
 }
 ?>
@@ -130,7 +133,7 @@ $GLOBALS['isAdmin'] = $isAdmin;
         ?>
 
         <div class="form-popup" id="newCat">
-            <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>" class="form-container">
+            <form method="post" action="index.php?action=new_cat" class="form-container">  <!--action="index.php?action=see_forum"-->
                 <h1>Création de Catégorie</h1>
 
                 <label for="text"><b>Nom de la catégorie</b></label>
@@ -189,50 +192,12 @@ $GLOBALS['isAdmin'] = $isAdmin;
     </div>
 
     <?php
-    function displayTopics($incrementTopics, $conn, $rowCat) {
-        echo "<h2>" . $rowCat["Nom"] . "</h2>";
-        $sql = "SELECT * FROM discussion WHERE Categorie_idCategorie = ' " . $incrementTopics . " ' ";
-        $result = $conn->query($sql);
-        // while there are still rows to be displayed
-        while ($row = $result->fetch_assoc()) {
-            echo "\n";
-            echo "<div id=\"" . $row["Sujet"] . "\" class=\"divTable post\">\n";
-            echo "<div class=\"divTableHeading\">\n";
-            echo "<div class=\"divTableRow\">\n";
 
-            echo "<div class=\"divTableHead\">";
-
-            //TODO create deleteTopic.php to delete a topic
-
-            $isAdmin = $GLOBALS['isAdmin'];
-            if ($isAdmin == true){
-                echo "<form method='post' action=' deleteTopic.php?topicID=" . $row["idDiscussion"] . " '>";
-            }
-
-            echo "<button type='submit' name='delTopic' id='delTopic'> x </button>\n";
-            echo "</form>";
-
-            echo "<a href=topic.php?id=" . $row["idDiscussion"] . ">";
-            echo $row["Sujet"];
-            echo "</a>";
-
-            echo "</div>\n";
-
-            echo "</div>\n";
-            echo "</div>\n";
-            echo " <div class=\"divTableBody\">\n";
-            echo "<div class=\"divTableRow\">\n";
-            echo "<div class=\"divTableCell\">" . $row["Texte"] . "</div>\n";
-            echo "</div>\n";
-            echo "</div>\n";
-            echo "</div>\n";
-        }
-    }
 
     ?>
 
     <div class="form-popup" id="myForm">
-        <form method="post" action="<?=$_SERVER['PHP_SELF']?>" class="form-container">
+        <form method="post"  class="form-container">
             <h1>Création de Sujet</h1>
 
             <label for="text"><b>Sujet</b></label>

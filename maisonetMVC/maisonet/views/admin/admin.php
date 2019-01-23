@@ -4,10 +4,10 @@ $css = "/maisonet/views/admin/usermain.css";
 require ROOT . "/views/template/headerAdmin.php";
 ?>
 <?php
-include_once ROOT . "/models/connect.php";
+include ROOT . "/models/connect.php";
 include_once ROOT . "/models/secure.php";
 
-session_start();
+//session_start();
 
 if (!isset($_SESSION["name"]) || !isset($_SESSION["firstname"])) {
     $_SESSION["name"] = 'Anonym';
@@ -94,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="index.php?action=see_ourServices">Services</a>
+    <a href="index.php?action=see_forum">Forum</a>
     <a href="" onclick="popupContact()">Contact</a>
     <a href="index.php?action=logout">Se Déconnecter</a>
 </div>
