@@ -164,6 +164,37 @@ function insertHouse($userId, $adresse, $codePostal, $pay)
 
 }
 
+function inserRoom($adress, $roomName){
+
+    $db = dbConnect();
+
+    $sql = "SELECT idMaison FROM maison WHERE Adresse = '" . $adress . "' ";
+    $result = $db->query($sql);
+    //"SELECT idMaison FROM maison WHERE Adresse = '" . $adresse . "' ";
+    $idMaison = $result['idMaison'];
+
+    $req = $db->prepare("INSERT INTO piece (Nom, Maison_idMaison) VALUES( :Nom, :idMaison)");
+
+    $req->bindParam("Nom", $roomName);
+    $req->bindParam("idMaison", $idMaison);
+
+    $req->execute();
+    if ($req) {
+        echo '<script>alert("Pièce ajouté :)")</script>';
+        header('Location: index.php?action=see_adminPage');
+    } else {
+        echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
+        header('Location: index.php?action=see_adminPage');
+    }
+
+    $req->closeCursor();
+
+
+
+
+
+}
+
 
 function insertNewCat($conn,$catName){
 
@@ -274,65 +305,7 @@ function displayTopics($incrementTopics, $conn, $rowCat) {
     }
 }
 
-function afficheMaison($conn,$name,$firstname,$adresse){
 
-
-// Get user id
-    $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
-    $result = $conn->query($sql);
-
-
-    while ($row = $result->fetch_assoc()) {
-        $idUser = $row["idUtilisateur"];
-    }
-
-// Get maison id
-    $sql = "SELECT idMaison FROM maison WHERE Utilisateur_idUtilisateur = " . $idUser . " AND Adresse = '" . $adresse . "' ";
-    $result = $conn->query($sql);
-    echo $sql;
-
-    if (mysqli_num_rows($result) == 0) {
-        echo " <h2> Vous n'avez pas saisi une bonne adresse </h2>";
-    } else {
-
-        while ($row = $result->fetch_assoc()) {
-            $maison = $row["idMaison"];
-        }
-
-        // Get pieces
-        $sql = " SELECT * FROM piece WHERE Maison_idMaison = " . $maison . " ";
-        $result = $conn->query($sql);
-
-        // Goes through each piece
-        while ($rowPiece = $result->fetch_assoc()) { // piece
-
-            echo "<p class='piece'> " . $rowPiece["Nom"] . " </p>";
-            echo "<div class='panel'>";
-
-            $sqlCapteur = " SELECT * FROM capteur WHERE Piece_idPiece = " . $rowPiece["idPiece"] . " ";
-            $resultCapteur = $conn->query($sqlCapteur);
-
-            // Goes through each capteur
-            while ($rowCapteur = $resultCapteur->fetch_assoc()) {
-
-
-                echo "<div class=bloc><a href='#masque'>";
-
-                // TODO change image name
-                echo "<img class='imagestemperature' src='Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
-                echo "<p class=sstitre>Votre " . $rowCapteur["Type"] . "</p></a>";
-
-                echo "</div>"; // div bloc
-
-            }
-
-            echo "</div> \n"; // div panel
-
-        }
-
-    }
-
-}
 
 //infomaisonet@gmail.com
 

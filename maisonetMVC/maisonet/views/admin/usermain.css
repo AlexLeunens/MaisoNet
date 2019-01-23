@@ -430,6 +430,7 @@ input[type="text1"] {
 
     div.Elements {
         top: 12%;
+        overflow-y: auto;
     }
 
     p.piece {

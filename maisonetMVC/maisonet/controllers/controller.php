@@ -80,11 +80,18 @@ function addUser()
 function addHouse()
 {
     $userId = htmlspecialchars($_POST["userId"]);
-    $adress = str_replace(" ", "", $_POST['adresse']);
+    $adress = htmlspecialchars($_POST["adresse"]);
     $codePostal = htmlspecialchars($_POST["codePostal"]);
     $pay = htmlspecialchars($_POST["pay"]);
 
     insertHouse($userId,$adress,$codePostal,$pay);
+}
+
+function addRoom(){
+    $adress = htmlspecialchars($_POST["adresse"]);
+    $roomName = htmlspecialchars($_POST["roomName"]);
+
+    inserRoom($adress,$roomName);
 }
 
 function registerRequest()

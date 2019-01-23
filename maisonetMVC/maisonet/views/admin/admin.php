@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['getMaison'])) {
 
-        $adresse = str_replace(" ", "", $_POST['adresse']);
+        $adresse = htmlspecialchars($_POST['adresse']);  //str_replace(" ", "", $_POST['adresse']);
         $_SESSION["adresse"] = $adresse;
 
         //header("Location: views\admin\admin.php");
@@ -220,7 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="submit" value="Ajouter">
         </form>
 
-        <form class="register" method="post" action="index.php?action=add_house">
+        <form class="addHouse" method="post" action="index.php?action=add_house">
             <h3>Ajouter une nouvelle maison</h3>
             <label for="inputUserId">ID utilisateur</label>
             <br>
@@ -230,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <br>
             <input type="text" name="adresse" id="inputAdress" placeholder="Adresse" required>
             <br>
-            <label for="inputPassword">Code postal</label>
+            <label for="inputCodePostal">Code postal</label>
             <br>
             <input type="number" name="codePostal" id="inputCodePostal" placeholder="Code postal" required>
             <br>
@@ -239,6 +239,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <br>
             <input type="submit" value="Ajouter">
         </form>
+
+        <form class="addRoom" method="post" action="index.php?action=add_room">
+            <h3>Ajouter une nouvelle pièce</h3>
+            <label for="inputAdress">Adresse</label>
+            <br>
+            <input type="text" name="adresse" id="inputAdress" placeholder="Adresse" required>
+            <br>
+            <label for="inputRoomName">Nom de la pièce</label>
+            <br>
+            <input type="number" name="roomName" id="inputRoomName" placeholder="Nom de la pièce" required>
+            <br>
+            <br>
+            <input type="submit" value="Ajouter">
+        </form>
+
 
         <?php
 
