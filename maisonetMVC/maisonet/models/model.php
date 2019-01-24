@@ -220,6 +220,46 @@ function inserCapteur($roomId,$type){
     }
 }
 
+function insertPay($nomPay){
+    $db = dbConnect();
+
+    $req = $db->prepare("INSERT INTO pays (Nom) VALUES( :Nom )");
+
+    $req->bindParam("Nom", $nomPay);
+
+    $req->execute();
+
+    if ($req) {
+        echo '<script>alert("Ajouté :)")</script>';
+        header('Location: index.php?action=see_adminPage');
+    } else {
+        echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
+        header('Location: index.php?action=see_adminPage');
+    }
+
+    $req->closeCursor();
+}
+
+function insertCapteurType($type){
+    $db = dbConnect();
+
+    $req = $db->prepare("INSERT INTO typecapteur (TypeCapteur) VALUES( :type )");
+
+    $req->bindParam("type", $type);
+
+    $req->execute();
+
+    if ($req) {
+        echo '<script>alert("Ajouté :)")</script>';
+        header('Location: index.php?action=see_adminPage');
+    } else {
+        echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
+        header('Location: index.php?action=see_adminPage');
+    }
+
+    $req->closeCursor();
+}
+
 
 function insertNewCat($conn,$catName){
 

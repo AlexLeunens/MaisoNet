@@ -78,6 +78,14 @@ if (isset($_GET["action"])) {
         case "add_capteur":
             addCapteur();
             break;
+
+        case "add_pay":
+            addPay();
+            break;
+
+        case "add_capteurType":
+            addTypeCpteur();
+            break;
 // connexion
         case "login":
             login();

@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!--<a href="absent.html" ><img id="switch" src="Images-utilisateur/switchOn.png"> </img> </a> -->
 
 
-<img class="avatar" src="Images-utilisateur/avatar.png" onclick="openNav()"> </img>
+<img class="avatar" src="views/admin/Images-utilisateur/avatar.png" onclick="openNav()"> </img>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="index.php?action=see_ourServices">Services</a>
@@ -325,6 +325,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </div>
 <div id=GestAdmin class="Elements" style="display:none;">
+
+    <form class="addPay" method="post" action="index.php?action=add_pay">
+        <h3>Ajouter un nouveau pay</h3>
+        <label for="inputPayName">Nom du pay</label>
+        <br>
+        <input type="text" name="nomPay" id="inputPayName" placeholder="nom" required>
+        <br>
+        <br>
+        <input type="submit" value="Ajouter">
+
+    </form>
+
+    <form class="addCapteurType" method="post" action="index.php?action=add_capteurType">
+        <h3>Ajouter une nouvelle type de capteur</h3>
+        <label for="inputCapteurType">Type</label>
+        <br>
+        <input type="text" name="capteurType" id="inputCapteurType" placeholder="type" required>
+        <br>
+        <br>
+        <input type="submit" value="Ajouter">
+
+    </form>
+
     <p class="piece">Modifier Accueil</p>
     <div class="panel">
         <div class=bloc><a href="#masque1">

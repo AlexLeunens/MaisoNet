@@ -10,6 +10,10 @@ if(session_status() !== PHP_SESSION_ACTIVE){
 
 }
 
+if (isset($_SESSION["adresse"])) {
+    $adresse = $_SESSION["adresse"];
+}
+
 ?>
 
 
@@ -19,9 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //$firstname = Securite::bdd($conn, $_GET['prenom']);
     $name = $_SESSION["name"];
     $firstname = $_SESSION["firstname"];
+
     if (isset($_POST['getMaison'])) {
+
         $adresse = str_replace(" ", "", $_POST['adresse']);
-        header("Location: useur.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
+        $_SESSION["adresse"] = $adresse;
+        //header("Location: useur.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
+
     } else if (isset($_POST['submitmsg'])) {
         $query = "BEGIN WORK;";
         $result = $conn->query($query);
@@ -91,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div id= "Present" class="fonctions">
-    <p class="piece">Salon</p>
+   <!-- <p class="piece">Salon</p>
     <div class="panel">
         <div class="block">
             <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/temperature+.png" alt="temperature"></img>
@@ -125,7 +133,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/volets2.png" alt="volets"></img>
             <p> Etat des volets</p>
         </div>
-    </div>
+    </div>-->
+    <form class='dossier' method='post' action=''>
+        Adresse de la Maison : <input type="text" name="adresse">
+        <input align="right" type="submit" name="getMaison" value="Entrée">
+    </form>
 </div>
 
 
@@ -168,7 +180,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
+
+<div id="masque">
+    <div class="fenetre-modale">
+        <a class="fermer" href="#"><img alt="X" title="Fermer la fenêtre" class="btn-fermer"
+                                        src="views/admin/Images-utilisateur/fmodale_fermer.png"/></a>
+        <h2>Votre Capteur:</h2>
+
+        <form>
+            <input type="button1" value=" - " onClick="javascript:this.form.champ.value--;">
+            <input type="text1" name="champ" value="0">
+            <input type="button1" value=" + " onClick="javascript:this.form.champ.value++;">
+        </form>
+
+    </div> <!-- .fenetre-modale -->
+</div> <!-- #masque -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
+
+    <?php
+    if (isset($adresse)) {
+        echo "$('#Present').load('afficheMaison.php?nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse . "').fadeIn('slow');";
+    }
+    ?>
+
     var piece = document.getElementsByClassName("piece");
     var panel = document.getElementsByClassName('panel'); //selec piece et panel
     for (var i = 0; i < piece.length; i++) { //pour tout bouton

@@ -102,6 +102,19 @@ function addCapteur(){
 
 }
 
+function addPay(){
+    $pay =  htmlspecialchars($_POST["nomPay"]);
+
+    insertPay($pay);
+
+}
+
+function addTypeCpteur(){
+    $type =  htmlspecialchars($_POST["capteurType"]);
+
+    insertCapteurType($type);
+}
+
 function registerRequest()
 {
 
