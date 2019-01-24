@@ -525,17 +525,19 @@ div.bloc {
     display: block;
 }
 
-<<<<<<< HEAD
+
 #masquecam:target {
     display: block;
-=======
-img.imagesbutton {
-  width : auto;
-  height: 50%;
-  max-height : 50px ;
-  max-width : 100px;
->>>>>>> origin/master
 }
+
+img.imagesbutton .imagestemperature {
+    width: auto;
+    height: 50%;
+    max-height: 50px;
+    max-width: 100px;
+>>> >>> > origin / master
+}
+
 
 .fenetre-modale {
     background: #fff;

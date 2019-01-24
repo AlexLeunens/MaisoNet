@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 
-<img class="avatar" src="/maisonet/views/user/Images-utilisateur/avatar.png" onclick="openNav()"> </img>
+<img class="avatar" src="views/user/Images-utilisateur/avatar.png" onclick="openNav()"> </img>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="#">Profil</a>
@@ -88,7 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
         <li id="liPresent" class="active"><a href="javascript:switchClick()"> Mode Présence </a></li>
         <li id="liAbsent"><a href="javascript:switchClick()"> Mode Absence </a></li>
-        <p id="switchText"> Mode Présence </p>
 
         <label class="switch" onclick="openPage(this)">
             <input type="checkbox" id="switchPresence" unchecked>
@@ -145,11 +144,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p class="piece">Economies</p>
     <div class="panel">
         <div class="block">
-            <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/temperature+.png" alt="temperature"></img>
+            <img class="imagesbutton" src="views/user/Images-utilisateur/temperature.png" alt="temperature"></img>
             <p>Valeur température</p>
         </div>
         <div class="block">
-            <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/volets2.png" alt="volets"></img>
+            <img class="imagesbutton" src="views/user/Images-utilisateur/volet.png" alt="volets"></img>
             <p> Etat des volets</p>
         </div>
     </div>
@@ -199,11 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
 
-    <?php
-    if (isset($adresse)) {
-        echo "$('#Present').load('afficheMaison.php?nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse . "').fadeIn('slow');";
-    }
-    ?>
+
 
     var piece = document.getElementsByClassName("piece");
     var panel = document.getElementsByClassName('panel'); //selec piece et panel
@@ -218,6 +213,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
+
+    $(document).on("click", "p.piece", function () {
+        var a = !this.classList.contains("active");
+        setClass(piece, "active", "remove");
+        setClass(panel, "show", "remove");
+        a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
+    });
+
 
     var help = document.getElementsByClassName("help")
     var helpPanel = document.getElementsByClassName("helpPanel")
@@ -242,14 +245,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         document.getElementById("mySidenav").style.width = "0";
     }
     function popupHelp() {
-        var myWindow = window.open("FAQ.html", "", "width=1200, height=1000");
+        var myWindow = window.open("views/FAQ/FAQ.php", "", "width=1200, height=1000");
     }
     function popupContact() {
         var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
     }
 
     function tabFAQ() {
-        var win = window.open("FAQ.html", '_blank');
+        var win = window.open("views/FAQ/FAQ.php", '_blank');
         win.focus();
     }
     function switchClick(){
@@ -279,6 +282,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (document.getElementById("switchPresence").checked == false) {
         document.getElementById("switchPresence").click(); /*Permet d'update le switch lors d'un rafraichissement*/
     }
+
+    <?php
+    if (isset($adresse)) {
+        echo "$('#Present').load('afficheMaison.php?nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse . "').fadeIn('slow');";
+    }
+    ?>
+
 </script>
 
 

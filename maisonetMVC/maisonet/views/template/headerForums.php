@@ -18,7 +18,7 @@
     <a href="#">Profil</a>
     <a href="#">Services</a>
     <a href="#">Contact</a>
-    <a href="#">Déconnexion</a>
+    <a href="index.php?action=logout">Déconnexion</a>
 </div>
 
 <picture class="logo">
