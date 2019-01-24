@@ -338,7 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
 
     <form class="addCapteurType" method="post" action="index.php?action=add_capteurType">
-        <h3>Ajouter une nouvelle type de capteur</h3>
+        <h3>Ajouter un noouveau type de capteur</h3>
         <label for="inputCapteurType">Type</label>
         <br>
         <input type="text" name="capteurType" id="inputCapteurType" placeholder="type" required>
