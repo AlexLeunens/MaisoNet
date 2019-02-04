@@ -124,11 +124,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div> <!-- .fenetre-modale -->
 </div> <!-- #masque -->
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
 
