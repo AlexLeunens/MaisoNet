@@ -2,10 +2,10 @@
 $title = "User Interface";
 $css = "/maisonet/views/user/utilisateur1.css";
 require ROOT . "/views/template/headerMainUser.php";
-include ROOT."/models/connect.php";
-include_once ROOT."/models/secure.php";
+include ROOT . "/models/connect.php";
+include_once ROOT . "/models/secure.php";
 
-if(session_status() !== PHP_SESSION_ACTIVE){
+if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 
 }
@@ -28,41 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $adresse = str_replace(" ", "", $_POST['adresse']);
         $_SESSION["adresse"] = $adresse;
-        //header("Location: useur.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse);
 
-    } else if (isset($_POST['submitmsg'])) {
-        $query = "BEGIN WORK;";
-        $result = $conn->query($query);
-        if (!$result) {
-            echo "Erreur lors de l'envoi du message";
-        }
-        // gets the id of the current user
-        $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
-        $result = $conn->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            $reciever = $row["idUtilisateur"];
-        }
-        $sql = "INSERT INTO 
-                    contact(idUtilisateur,
-                            idReciever,
-                          message) 
-                VALUES (" . $_GET['idContact'] . ",
-                        " . $reciever . ",
-                        '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
-        $result = $conn->query($sql);
-        if (!$result) {
-            echo "Erreur lors de l'insertion du message dans la base de données";
-            echo mysqli_error($conn);
-            $sql = "ROLLBACK;";
-            $result = $conn->query($query);
-        } else {
-            $sql = "COMMIT;";
-            $result = $conn->query($sql);
-            unset($_POST);
-            echo "<script>";
-            echo "$('#Messages').load('messages.php?idContact=" . $_GET['idContact'] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
-            echo "</script>";
-        }
     }
 }
 ?>
@@ -80,8 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-
-
 <div id="menu">  <!--conteneur-->
     <img id="logo" src="/maisonet/views/user/Images-utilisateur/logo_provisoire2.png"> </img>
 
@@ -97,42 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-<div id= "Present" class="fonctions">
-   <!-- <p class="piece">Salon</p>
-    <div class="panel">
-        <div class="block">
-            <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/temperature+.png" alt="temperature"></img>
-            <p> Valeur température</p>
-        </div>
-        <div class="block">
-            <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/volets2.png" alt="volets"></img>
-            <p> Etat des volets</p>
-        </div>
-    </div>
+<div id="Present" class="fonctions">
 
-    <p class="piece">Chambre 1</p>
-    <div class="panel">
-        <div class="block">
-            <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/temperature+.png" alt="temperature"></img>
-            <p> Valeur température</p>
-        </div>
-        <div class="block">
-            <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/volets2.png" alt="volets"></img>
-            <p> Etat des volets</p>
-        </div>
-    </div>
-
-    <p class="piece">Salle A Manger</p>
-    <div class="panel">
-        <div class="block">
-            <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/temperature+.png" alt="temperature"></img>
-            <p> Valeur température</p>
-        </div>
-        <div class="block">
-            <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/volets2.png" alt="volets"></img>
-            <p> Etat des volets</p>
-        </div>
-    </div>-->
     <form class='dossier' method='post' action=''>
         Adresse de la Maison : <input type="text" name="adresse">
         <input align="right" type="submit" name="getMaison" value="Entrée">
@@ -140,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-<div id= "Absent" class="fonctions" style="display:none;">
+<div id="Absent" class="fonctions" style="display:none;">
     <p class="piece">Economies</p>
     <div class="panel">
         <div class="block">
@@ -170,14 +100,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <p class="help"> ? </p>
 <div class="helpPanel">
 
-    <a href="" onclick= "tabFAQ()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helpquestionmark.png" alt="FAQ"></img></a>
+    <a href="" onclick="tabFAQ()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helpquestionmark.png" alt="FAQ"></img></a>
 
-    <a href="" onclick= "popupContact()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
+    <a href="" onclick="popupContact()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
 
     <img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helpadministrator.png" alt="Contact Admin"></img>
 
 </div>
-
 
 
 <div id="masque">
@@ -195,16 +124,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div> <!-- .fenetre-modale -->
 </div> <!-- #masque -->
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
-
 
 
     var piece = document.getElementsByClassName("piece");
     var panel = document.getElementsByClassName('panel'); //selec piece et panel
     for (var i = 0; i < piece.length; i++) { //pour tout bouton
-        piece[i].onclick = function() {
-            var setClasses = !this.classList.contains('active'); //selec classes actives qui ne sont pas celle sur laquelle on a cliqué
+        piece[i].onclick = function () {
+            var setClasses = !this.classList.contains('active'); //selec classes actives qui ne sont pas celle sur laquelle on clique
             setClass(piece, 'active', 'remove'); //les rend inactives
             setClass(panel, 'show', 'remove'); // cache le contenu
             if (setClasses) {
@@ -224,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     var help = document.getElementsByClassName("help")
     var helpPanel = document.getElementsByClassName("helpPanel")
-    help[0].onclick = function() {
+    help[0].onclick = function () {
         var setClasses = !this.classList.contains('active'); // vérifie si help actif
         setClass(help, 'active', 'remove'); //les rend inactives
         setClass(helpPanel, 'show', 'remove'); // cache le contenu
@@ -233,20 +166,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             this.nextElementSibling.classList.toggle("show");
         }
     }
+
     function setClass(els, className, fnName) {
         for (var i = 0; i < els.length; i++) { //chaque piece selec avec !this.classList.contains('active')
             els[i].classList[fnName](className); //les prend une par une, puis désactive une propriété
         }
     }
+
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
     }
+
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
+
     function popupHelp() {
         var myWindow = window.open("views/FAQ/FAQ.php", "", "width=1200, height=1000");
     }
+
     function popupContact() {
         var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
     }
@@ -255,9 +193,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         var win = window.open("views/FAQ/FAQ.php", '_blank');
         win.focus();
     }
-    function switchClick(){
+
+    function switchClick() {
         document.getElementById("switchPresence").click();
     }
+
     function openPage(elmnt) {
         var i, tabcontent, pageName, ongletActif;
         var checkBox = document.getElementById("switchPresence");
@@ -265,11 +205,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         var ongletAbsent = document.getElementById("liAbsent");
         tabcontent = document.getElementsByClassName("fonctions");
 
-        if (checkBox.checked == true){
+        if (checkBox.checked == true) {
             pageName = "Present";
             ongletAbsent.classList.remove("active"); /*update les onglets*/
             ongletPresent.classList.add("active");
-        }else{
+        } else {
             pageName = "Absent";
             ongletPresent.classList.remove("active");
             ongletAbsent.classList.add("active");
@@ -279,13 +219,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         document.getElementById(pageName).style.display = "grid"; //disp selected
     }
+
     if (document.getElementById("switchPresence").checked == false) {
-        document.getElementById("switchPresence").click(); /*Permet d'update le switch lors d'un rafraichissement*/
+        document.getElementById("switchPresence").click(); // Update le switch lors d'un rafraichissement
     }
 
     <?php
     if (isset($adresse)) {
-        echo "$('#Present').load('afficheMaison.php?nom=" . $name . "&prenom=" . $firstname . "&Adresse=" . $adresse . "').fadeIn('slow');";
+        echo "$('#Present').load('afficheMaison.php').fadeIn('slow');";
     }
     ?>
 
