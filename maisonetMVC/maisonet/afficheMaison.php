@@ -8,12 +8,17 @@ echo "Adresse client : <input type=\"text\" name=\"adresse\">";
 echo "<input align=\"right\" type=\"submit\" name=\"getMaison\" value=\"Entrée\">";
 echo "</form>";
 
-//$name = Securite::bdd($conn, $_GET['nom']);
-//$firstname = Securite::bdd($conn, $_GET['prenom']);
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 
 }
+
+//DEBUG
+$_SESSION["name"] = "Anonym";
+$_SESSION["firstname"] = "Name";
+$_SESSION['type'] = 2;
+
+
 $name = $_SESSION["name"];
 $firstname = $_SESSION["firstname"];
 $adresse = $_SESSION["adresse"];
@@ -78,8 +83,9 @@ if (mysqli_num_rows($result) == 0) {
 
         }
 
-        echo "</div> \n"; // div panel
+        echo "<a href='views/graphTemperature/grapheTemperature.php' target='_blank' >Ouvrir le graphe de la température dans une nouvelle fenêtre</a>";
 
+        echo "</div> \n"; // div panel
     }
 
 }

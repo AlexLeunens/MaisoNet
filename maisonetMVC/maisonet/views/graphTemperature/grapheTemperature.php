@@ -1,3 +1,19 @@
+<?php
+include '..\..\models\connect.php';
+?>
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title>Graphe Temperature</title>
+
+    <link rel="stylesheet" href="views/user/utilisateur1.css"> <!--feuille css-->
+    <link rel="icon" href="Images-utilisateur/logo_provisoire_mini.png"> <!--icone-->
+
+</head>
+
+<body>
+
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -7,68 +23,79 @@
 
 <script>
     Highcharts.chart('container', {
-
+        chart: {
+            type: 'spline'
+        },
         title: {
-            text: 'Solar Employment Growth by Sector, 2010-2016'
+            text: 'Température de vos pieces'
         },
-
         subtitle: {
-            text: 'Source: thesolarfoundation.com'
+            text: "Depuis le début de l'acquisition"
         },
-
-        yAxis: {
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                month: '%e. %b',
+                year: '%b'
+            },
             title: {
-                text: 'Number of Employees'
+                text: 'Date'
             }
         },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
+        yAxis: {
+            title: {
+                text: 'Température (°C)'
+            },
+            min: 0
+        },
+        tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
         },
 
         plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 2010
+            spline: {
+                marker: {
+                    enabled: true
+                }
             }
         },
 
+
         series: [{
-            name: 'Installation',
-            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-        }, {
-            name: 'Manufacturing',
-            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-        }, {
-            name: 'Sales & Distribution',
-            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-        }, {
-            name: 'Project Development',
-            data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-        }, {
-            name: 'Other',
-            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-        }],
+            name: 'Température',
+            data: [<?php
+                $numcapteur = 1;
+                $sql = "SELECT * FROM valeurcapteur WHERE valeurcapteur.Capteur_idCapteur = " . $numcapteur . " ";
+                $result = $conn->query($sql);
 
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
+                $row = $result->fetch_assoc();
+                $valeur = $row["Valeur"];
+                $date = $row["Date"];
+
+                $year = date('Y', strtotime($date));
+                $month = date('m', strtotime($date));
+                $day = date('d', strtotime($date));
+
+                echo "[Date.UTC(" . "$year" . "," . "$month" . "," . "$day" . "), " . $valeur . "]";
+
+                while ($row = $result->fetch_assoc()) {
+                    $valeur = $row["Valeur"];
+                    $date = $row["Date"];
+
+                    $year = date('Y', strtotime($date));
+                    $month = date('m', strtotime($date));
+                    $day = date('d', strtotime($date));
+
+                    echo ",\n [Date.UTC(" . "$year" . "," . "$month" . "," . "$day" . "), " . $valeur . "]";
                 }
-            }]
-        }
+                echo "\n";
 
+                ?>]
+
+        }]
     });
-
-
 </script>
+
+
+</body>
