@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $adresse = str_replace(" ", "", $_POST['adresse']);
         $_SESSION["adresse"] = $adresse;
 
-        header("Location: usermain1.php");
+
 
     } else if (isset($_POST['submitmsg'])) {
 

@@ -1,6 +1,6 @@
 <?php
-include ROOT.'/models/connect.php';
-include ROOT.'/models/secure.php';
+include 'C:\wamp64\www\AppMaisoNet\maisonetMVC\maisonet\models\connect.php';
+include 'C:\wamp64\www\AppMaisoNet\maisonetMVC\maisonet\models\secure.php';
 
 echo "<form class='dossier' method='post' action=''>";
 echo "Adresse client : <input type=\"text\" name=\"adresse\">";
