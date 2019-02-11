@@ -9,6 +9,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 
 }
+// DEBUG
+$_SESSION["name"] = "Anonym";
+$_SESSION["firstname"] = "Name";
+$_SESSION['type'] = 2;
 
 if (isset($_SESSION["adresse"])) {
     $adresse = $_SESSION["adresse"];
@@ -19,10 +23,6 @@ if (isset($_SESSION["adresse"])) {
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //$name = Securite::bdd($conn, $_GET['nom']);
-    //$firstname = Securite::bdd($conn, $_GET['prenom']);
-    $name = $_SESSION["name"];
-    $firstname = $_SESSION["firstname"];
 
     if (isset($_POST['getMaison'])) {
 
@@ -67,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         Adresse de la Maison : <input type="text" name="adresse">
         <input align="right" type="submit" name="getMaison" value="Entrée">
     </form>
+
 </div>
 
 
@@ -103,8 +104,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a href="" onclick="tabFAQ()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helpquestionmark.png" alt="FAQ"></img></a>
 
     <a href="" onclick="popupContact()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
-
-    <img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helpadministrator.png" alt="Contact Admin"></img>
 
 </div>
 
@@ -148,6 +147,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         setClass(panel, "show", "remove");
         a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
     });
+
+
+
+    function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        if(e.style.display == 'block')
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+    }
+
+
+
 
 
     var help = document.getElementsByClassName("help")

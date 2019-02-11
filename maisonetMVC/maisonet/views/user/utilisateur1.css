@@ -1,6 +1,5 @@
 html {
-    background: linear-gradient(to right, rgba(103, 141, 255, 1), rgba(103, 141, 255, 1));
-    background-size: cover;
+    background: rgba(103, 141, 255, 1);
     height: 100%;
     overflow: hidden;
     margin: 0;
@@ -9,9 +8,6 @@ html {
 
 * {
     box-sizing: border-box; /*utile pour le responsive*/
-}
-
-p {
     font-family: 'RalewayLight', "sans-serif";
     font-weight: normal;
     font-style: normal;
@@ -19,8 +15,6 @@ p {
 
 
 #menu {
-    background-color: rgba(103, 141, 255, 1); /*rgba(255, 195, 77, 0.5)*/
-
     position: absolute;
     top: 0px;
     left: 0px;
@@ -29,21 +23,15 @@ p {
 }
 
 #onglets { /* conteneur des listes */
-    text-decoration-color: white;
     list-style-type: none;
-
     position: absolute;
     top: 0px; /*aligne avec le bas du menu*/
     left: 15%;
-
-
     width: 100%;
 }
 
 #onglets li { /*les éléments de liste */
     float: left;
-    height: 30px; /* Hauteur onglet */
-    background-color: rgba(103, 141, 255, 1); /* explicite */
     margin-right: 5px;
 }
 
@@ -182,13 +170,7 @@ img.imagesbutton {
 /*permet de s'adapter a la taille de la fenêtre*/
 div.fonctions {
     display: grid;
-    /* changed from column to row */
-    grid-auto-flow: row; /*oblige à se mettre en colonne*/
-    justify-content: start; /*aligne sur la gauche*/
-    grid-gap: 20px; /* marge */
 
-    /*Ajoute la barre de scroll pour trop d'elements*/
-    /* swapped overflow x and y visibility*/
     overflow-y: visible;
     overflow-x: hidden;
 
@@ -196,7 +178,6 @@ div.fonctions {
     width: 100%;
     height: 88%;
     top: 15%;
-    left: 0px;
 }
 
 /* Le bouton bleu selon la piece */
@@ -208,7 +189,6 @@ p.piece {
     height: 150px;
     line-height: 150px;
     text-align: center;
-    transition: .1s;
     width: 150px;
 }
 
@@ -424,98 +404,13 @@ div.bloc {
 
 }
 
-#masquetemp {
-    background: rgba(0, 0, 0, 0.2);
-    bottom: 0;
-    display: none;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1000;
-}
-
-#masquetemp:target {
-    display: block;
-}
-
-#masquehum {
-    background: rgba(0, 0, 0, 0.2);
-    bottom: 0;
-    display: none;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1000;
-}
-
-#masquehum:target {
-    display: block;
-}
-
-#masqueCO2 {
-    background: rgba(0, 0, 0, 0.2);
-    bottom: 0;
-    display: none;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1000;
-}
-
-#masqueCO2:target {
-    display: block;
-}
-
-#masquefum {
-    background: rgba(0, 0, 0, 0.2);
-    bottom: 0;
-    display: none;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1000;
-}
-
-#masquefum:target {
-    display: block;
-}
-
-#masquevolet {
-    background: rgba(0, 0, 0, 0.2);
-    bottom: 0;
-    display: none;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1000;
-}
-
-#masquevolet:target {
-    display: block;
-}
-
-#masquecam {
-    background: rgba(0, 0, 0, 0.2);
-    bottom: 0;
-    display: none;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1000;
-}
 
 #masque {
     background: rgba(0, 0, 0, 0.2);
     bottom: 0;
     display: none;
     left: 0;
-    position: fixed;
+
     right: 0;
     top: 0;
     z-index: 1000;
@@ -525,9 +420,8 @@ div.bloc {
     display: block;
 }
 
-
-#masquecam:target {
-    display: block;
+affichageCapteurs {
+    position: fixed;
 }
 
 img.imagesbutton .imagestemperature {
@@ -535,7 +429,6 @@ img.imagesbutton .imagestemperature {
     height: 50%;
     max-height: 50px;
     max-width: 100px;
->>> >>> > origin / master
 }
 
 
@@ -567,4 +460,9 @@ img.btn-fermer {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
+}
+
+.displayGraph {
+    position: inherit;
+    bottom: 5px;
 }

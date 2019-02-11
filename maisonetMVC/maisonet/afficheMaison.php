@@ -64,6 +64,7 @@ if (mysqli_num_rows($result) == 0) {
     while ($rowPiece = $result->fetch_assoc()) { // piece
 
         echo "<p class='piece'> " . $rowPiece["Nom"] . " </p>";
+
         echo "<div class='panel'>";
 
         $sqlCapteur = " SELECT * FROM capteur WHERE Piece_idPiece = " . $rowPiece["idPiece"] . " ";
@@ -72,20 +73,39 @@ if (mysqli_num_rows($result) == 0) {
         // Goes through each capteur
         while ($rowCapteur = $resultCapteur->fetch_assoc()) {
 
+            // TODO fix this masque mess
+            echo "<div class=bloc>";
+            // echo "<a href='#masque'>";
 
-            echo "<div class=bloc><a href='#masque'>";
 
-            // TODO change image name
-            echo "<img class='imagestemperature' src='views/admin/Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
-            echo "<p class=sstitre>Votre " . $rowCapteur["Type"] . "</p></a>";
+
+            echo "<div class='affichageCapteurs' id='capteur" . $rowCapteur["idCapteur"] . "' style='display:none'>";
+            echo "<h2>Votre Capteur:</h2>";
+
+            echo "<form>";
+            echo "<input type='button1' value=' - ' onClick='javascript:this.form.champ.value--;'>";
+            echo "<input type='text1' name='champ' value='0'>";
+            echo "<input type='button1' value=' + ' onClick='javascript:this.form.champ.value++;'>";
+            echo "</form>";
+
+            echo "</div>";
+
+
+
+
+            echo "<img onclick=\"toggle_visibility('capteur" . $rowCapteur["idCapteur"] . "');\" class='imagestemperature' src='views/admin/Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
+            echo "<p class=sstitre>Votre " . $rowCapteur["Type"] . "</p>";
+            // echo "</a>";
 
             echo "</div>"; // div bloc
 
         }
 
-        echo "<a href='views/graphTemperature/grapheTemperature.php' target='_blank' >Ouvrir le graphe de la température dans une nouvelle fenêtre</a>";
+        echo "<a class='displayGraph'  href='views/graphTemperature/grapheTemperature.php' target='_blank' >Ouvrir le graphe de la température dans une nouvelle fenêtre</a>";
 
         echo "</div> \n"; // div panel
+
+
     }
 
 }
