@@ -1,7 +1,7 @@
 <?php
 //include_once(ROOT.'/models/server.php');
 
-$title ="Registration system PHP and MySQL";
+$title = "Registration system PHP and MySQL";
 
 require ROOT . "/views/template/headerAccueil.php";
 ?>

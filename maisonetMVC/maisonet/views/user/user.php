@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div id="menu">  <!--conteneur-->
-    <img id="logo" src="/maisonet/views/user/Images-utilisateur/logo_provisoire2.png"> </img>
+    <img id="logo" src="views/user/Images-utilisateur/logo_provisoire2.png"> </img>
 
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
         <li id="liPresent" class="active"><a href="javascript:switchClick()"> Mode Présence </a></li>

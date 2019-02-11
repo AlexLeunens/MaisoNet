@@ -78,19 +78,15 @@ if (mysqli_num_rows($result) == 0) {
             // echo "<a href='#masque'>";
 
 
-
             echo "<div class='affichageCapteurs' id='capteur" . $rowCapteur["idCapteur"] . "' style='display:none'>";
-            echo "<h2>Votre Capteur:</h2>";
+            echo "<h2>Votre Capteur " . $rowCapteur["Type"] . ":</h2>";
 
             echo "<form>";
-            echo "<input type='button1' value=' - ' onClick='javascript:this.form.champ.value--;'>";
-            echo "<input type='text1' name='champ' value='0'>";
-            echo "<input type='button1' value=' + ' onClick='javascript:this.form.champ.value++;'>";
+            echo "<input type='text' name='valeur' value='0'>";
+            echo "<input type='button' value='Actionner Le Moteur' onClick='javascript:this.form.valeur.value++;'>";
             echo "</form>";
 
             echo "</div>";
-
-
 
 
             echo "<img onclick=\"toggle_visibility('capteur" . $rowCapteur["idCapteur"] . "');\" class='imagestemperature' src='views/admin/Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";

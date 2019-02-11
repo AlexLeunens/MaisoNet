@@ -87,7 +87,7 @@ function userConnect($email, $password)
     if ($req) {
         $result = $req->fetch(PDO::FETCH_ASSOC);
         if (password_verify($password, $result['MotPasse'])) {   //$password == $result['password']) {
-            echo "<script>alert('connexion réussi !')</script>";
+            echo "<script>alert('connexion réussie !')</script>";
 
             $_SESSION['id'] = $result['idUtilisateur'];
             $_SESSION['name'] = $result['Nom'];
