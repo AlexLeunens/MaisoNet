@@ -1,4 +1,8 @@
 <?php
+
+//TODO implementer l'ajout de maison, de pièces et de capteurs
+
+
 $title = "User Interface";
 $css = "/maisonet/views/user/utilisateur1.css";
 require ROOT . "/views/template/headerMainUser.php";
@@ -9,9 +13,22 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 
 }
+// DEBUG
+$_SESSION["name"] = "Anonym";
+$_SESSION["firstname"] = "Name";
+$_SESSION['type'] = 2;
 
 if (isset($_SESSION["adresse"])) {
     $adresse = $_SESSION["adresse"];
+}
+
+
+// Get user id
+$sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $_SESSION["name"] . "' AND utilisateur.prenom = '" . $_SESSION["firstname"] . "'";
+$result = $conn->query($sql);
+
+while ($row = $result->fetch_assoc()) {
+    $_SESSION['idUser'] = $row["idUtilisateur"];
 }
 
 ?>
@@ -19,10 +36,6 @@ if (isset($_SESSION["adresse"])) {
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //$name = Securite::bdd($conn, $_GET['nom']);
-    //$firstname = Securite::bdd($conn, $_GET['prenom']);
-    $name = $_SESSION["name"];
-    $firstname = $_SESSION["firstname"];
 
     if (isset($_POST['getMaison'])) {
 
@@ -47,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div id="menu">  <!--conteneur-->
-    <img id="logo" src="/maisonet/views/user/Images-utilisateur/logo_provisoire2.png"> </img>
+    <img id="logo" src="views/user/Images-utilisateur/logo_provisoire2.png"> </img>
 
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
         <li id="liPresent" class="active"><a href="javascript:switchClick()"> Mode Présence </a></li>
@@ -64,9 +77,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="Present" class="fonctions">
 
     <form class='dossier' method='post' action=''>
-        Adresse de la Maison : <input type="text" name="adresse">
+        <label for="text">Choississez votre maison :</label>
+        <?php
+        $sql = "SELECT * FROM maison WHERE Utilisateur_idUtilisateur =" . $_SESSION['idUser'] . "";
+        $result = $conn->query($sql);
+        $incrementDropdown = 0;
+
+        echo "<select name='adresse'>";
+        while ($maisonsUser = $result->fetch_assoc()) {
+            $incrementDropdown++;
+            echo "<option value='" . $maisonsUser["Adresse"] . "'>" . $maisonsUser["Adresse"] . "</option>";
+        }
+        echo "</select>";
+        ?>
         <input align="right" type="submit" name="getMaison" value="Entrée">
     </form>
+
+    <div id="maisonAffiche"></div>
+
 </div>
 
 
@@ -104,25 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <a href="" onclick="popupContact()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
 
-    <img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helpadministrator.png" alt="Contact Admin"></img>
-
 </div>
-
-
-<div id="masque">
-    <div class="fenetre-modale">
-        <a class="fermer" href="#"><img alt="X" title="Fermer la fenêtre" class="btn-fermer"
-                                        src="views/admin/Images-utilisateur/fmodale_fermer.png"/></a>
-        <h2>Votre Capteur:</h2>
-
-        <form>
-            <input type="button1" value=" - " onClick="javascript:this.form.champ.value--;">
-            <input type="text1" name="champ" value="0">
-            <input type="button1" value=" + " onClick="javascript:this.form.champ.value++;">
-        </form>
-
-    </div> <!-- .fenetre-modale -->
-</div> <!-- #masque -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
@@ -148,6 +158,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         setClass(panel, "show", "remove");
         a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
     });
+
+
+    function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        if (e.style.display == 'block')
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+    }
 
 
     var help = document.getElementsByClassName("help")
@@ -221,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <?php
     if (isset($adresse)) {
-        echo "$('#Present').load('afficheMaison.php').fadeIn('slow');";
+        echo "$('#maisonAffiche').load('afficheMaison.php').fadeIn('slow');";
     }
     ?>
 
