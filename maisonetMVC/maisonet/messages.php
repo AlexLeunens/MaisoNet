@@ -1,18 +1,24 @@
 <?php
 define("ROOT", __DIR__);
 
-include ROOT.'/models/connect.php';
-include ROOT.'/models/secure.php';
+include ROOT . '/models/connect.php';
+include ROOT . '/models/secure.php';
 
 // idUtilisateur = sent to
 // sender = sent by
-//session_start();
+session_start();
+
+$_SESSION["name"] = "Anonym";
+$_SESSION["firstname"] = "Name";
 
 
+$name = $_SESSION["name"];
+$firstname = $_SESSION["firstname"];
 
 if (!empty($_GET)) {
 
-    session_start();
+    echo "<div id='Messages'>";
+
     $_SESSION["idContact"] = $_GET['idContact'];
 
     $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . Securite::bdd($conn, $_GET['nom']) . "'
@@ -44,5 +50,51 @@ if (!empty($_GET)) {
 
     }
 
+    echo "</div>";
 }
+
+
 ?>
+
+<div id="chatbox">
+    <form method='post' id='message' name="message" ;>
+        <input name="user_message" type="text" id="usermsg" required/>
+        <input name="submitmsg" id="submitmsg" type="submit" value="Send"/>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+    $(document).on("click", "#submitmsg", function () {
+        alert("FUCK");
+
+        var postData = $(this).serializeArray();
+        $.ajax(
+            {
+                url: "sendMessage.php?idContact=1",
+                type: "POST",
+                data: postData,
+                success: function (data, textStatus, jqXHR) {
+                    //data: return data from server
+                    alert("yes");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    //if fails
+                    alert("fail");
+                }
+            });
+        e.preventDefault(); //STOP default action
+        e.unbind(); //unbind. to stop multiple form submit.
+    });
+
+    clearTimeout(timeout);
+    var timeout = setTimeout(function () {
+        <?php
+        echo "$('#Messages').load('messages.php?idContact=" . Securite::bdd($conn, $_GET['idContact']) . "&nom=" . Securite::bdd($conn, $_GET['nom']) . "&prenom=" . Securite::bdd($conn, $_GET['prenom']) . "').fadeIn('slow');";
+        ?>
+    }, 5000);
+</script>
+
+
+
