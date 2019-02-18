@@ -217,55 +217,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="submit" value="Ajouter">
         </form>
 
-        <form class="addHouse" method="post" action="index.php?action=add_house">
-            <h3>Ajouter une nouvelle maison</h3>
-            <label for="inputUserId">ID utilisateur</label>
-            <br>
-            <input type="number" name="userId" id="inputUserId" placeholder="id" required autofocus>
-            <br>
-            <label for="inputAdress">Adresse</label>
-            <br>
-            <input type="text" name="adresse" id="inputAdress" placeholder="Adresse" required>
-            <br>
-            <label for="inputCodePostal">Code postal</label>
-            <br>
-            <input type="number" name="codePostal" id="inputCodePostal" placeholder="Code postal" required>
-            <br>
-            <?php displayPays() ?>
-            <br>
-            <br>
-            <input type="submit" value="Ajouter">
-        </form>
 
-        <form class="addRoom" method="post" action="index.php?action=add_room">
-            <h3>Ajouter une nouvelle pièce</h3>
-            <label for="inputAdress">Adresse</label>
-            <br>
-            <input type="text" name="adresse" id="inputAdress" placeholder="Adresse" required>
-            <br>
-            <label for="inputRoomName">Nom de la pièce</label>
-            <br>
-            <input type="text" name="roomName" id="inputRoomName" placeholder="Nom de la pièce" required>
-            <br>
-            <br>
-            <input type="submit" value="Ajouter">
-        </form>
-
-        <form class="addRoom" method="post" action="index.php?action=add_capteur">
-            <h3>Ajouter une nouvelle capteur</h3>
-            <label for="inputRoomId">ID pièce</label>
-            <br>
-            <input type="number" name="roomId" id="inputRoomId" placeholder="id" required>
-            <br>
-            <?php displayTypeCapteur() ?>
-            <br>
-            <br>
-            <input type="submit" value="Ajouter">
-        </form>
 
 
         <?php
-
         function displayType()
         {
             $db = dbConnect();
@@ -282,42 +237,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo '</select>';
 
         }
-
-        function displayPays()
-        {
-            $db = dbConnect();
-
-            $sql = "SELECT nom FROM pays";
-            $result = $db->query($sql);
-            $i = 0;
-            echo '<label for="pay">Pay</label><br>';
-            echo '<select name="pay">';
-            while ($pays = $result->fetch(PDO::FETCH_ASSOC)) {
-                $i++;
-                echo '<option value=' . $i . '>' . $pays['nom'] . '</option>';
-            }
-            echo '</select>';
-
-        }
-
-        function displayTypeCapteur(){
-
-            $db = dbConnect();
-            $sql = "SELECT typecapteur FROM typecapteur";
-            $result = $db->query($sql);
-
-            echo '<label for="capteurType">Type capteur</label><br>';
-            echo '<select name="capteurType">';
-            while ($capteur = $result->fetch(PDO::FETCH_ASSOC)) {
-
-                echo '<option value=' . $capteur['typecapteur'] . '>' . $capteur['typecapteur'] . '</option>';
-            }
-            echo '</select>';
-
-
-        }
-
-
         ?>
 
     </div>
