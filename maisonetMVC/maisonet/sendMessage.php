@@ -30,7 +30,7 @@ $sql = "INSERT INTO
                     contact(idUtilisateur,
                             idReciever,
                           message) 
-                VALUES (" . $_GET['idContact'] . ",
+                VALUES (" . $_POST['idContact'] . ",
                         " . $reciever . ",
                         '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
 

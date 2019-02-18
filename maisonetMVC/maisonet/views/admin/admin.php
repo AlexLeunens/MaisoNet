@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $name = $row["nom"];
                 $firstname = $row['prenom'];
 
-                echo "<a onclick=\" $('#discussion').load('messages.php?idContact=" . $idContact . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');\">";
+                echo "<a onclick=\" $('#Messages').load('messages.php?idContact=" . $idContact . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');\">";
 
                 echo $row["nom"] . "" . $row['prenom'];
                 echo "</a>";
@@ -145,6 +145,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div id="discussion">
             <div id="Messages">
             </div>
+
+
+            <div id="chatbox">
+                <form method='post' id='message' name="message" ;>
+                    <input name="user_message" type="text" id="usermsg" required/>
+                    <input name="submitmsg" id="submitmsg" type="button" onclick="sendChat()" value="Send"/>
+                </form>
+            </div>
+
+
         </div>
 
 
@@ -268,6 +278,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             e.style.display = 'none';
         else
             e.style.display = 'block';
+    }
+
+
+    function sendChat() {
+
+        var formData = {
+            'idContact': 1,
+            'user_message':  $('#usermsg').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "sendMessage.php",
+            data: formData,
+            dataType: "text", //was json but hey
+
+            success: function (data) {
+                $('#usermsg').val("");
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " + textStatus); alert("Error: " + errorThrown); alert($('#usermsg').val());
+            }
+        });
+
+
     }
 
 </script>

@@ -56,37 +56,10 @@ if (!empty($_GET)) {
 
 ?>
 
-<div id="chatbox">
-    <form method='post' id='message' name="message" ;>
-        <input name="user_message" type="text" id="usermsg" required/>
-        <input name="submitmsg" id="submitmsg" type="submit" value="Send"/>
-    </form>
-</div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
 
-    $(document).on("click", "#submitmsg", function () {
-        alert("FUCK");
-
-        var postData = $(this).serializeArray();
-        $.ajax(
-            {
-                url: "sendMessage.php?idContact=1",
-                type: "POST",
-                data: postData,
-                success: function (data, textStatus, jqXHR) {
-                    //data: return data from server
-                    alert("yes");
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    //if fails
-                    alert("fail");
-                }
-            });
-        e.preventDefault(); //STOP default action
-        e.unbind(); //unbind. to stop multiple form submit.
-    });
 
     clearTimeout(timeout);
     var timeout = setTimeout(function () {

@@ -17,7 +17,7 @@ include_once  ROOT."/models/secure.php";
 function dbConnect()
 {
     try {
-        $db = new PDO("mysql:host=localhost;dbname=maisonettest;charset=utf8", 'root', '');
+        $db = new PDO("mysql:host=localhost;dbname=dbmaisonet;charset=utf8", 'root', '');
         return $db;
     } catch (Exception $e) {
         die('Error : ' . $e->getMessage());
