@@ -23,15 +23,15 @@ $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
-    $reciever = $row["idUtilisateur"];
+    $sender = $row["idUtilisateur"];
 }
 
 $sql = "INSERT INTO 
                     contact(idUtilisateur,
                             idReciever,
                           message) 
-                VALUES (" . $_POST['idContact'] . ",
-                        " . $reciever . ",
+                VALUES (" . $sender . ",
+                        " . $_SESSION["reciever"] . ",
                         '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
 
 $result = $conn->query($sql);
