@@ -3,15 +3,11 @@ define("ROOT", __DIR__);
 include ROOT . '/models/connect.php';
 include ROOT . '/models/secure.php';
 
-echo "<form class='dossier' method='post' action=''>";
-echo "Adresse client : <input type=\"text\" name=\"adresse\">";
-echo "<input align=\"right\" type=\"submit\" name=\"getMaison\" value=\"Entrée\">";
-echo "</form>";
-
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 
 }
+
 
 //DEBUG
 $_SESSION["name"] = "Anonym";

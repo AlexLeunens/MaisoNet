@@ -54,9 +54,9 @@ function seeFAQ() {
 
 // gestion des utilisateurs
 function addUser() {
-    $lastname = htmlspecialchars($_POST["nom"]);
-    $name = htmlspecialchars($_POST["prenom"]);
-    $password = htmlspecialchars($_POST["password_1"]);
+    $lastname = htmlspecialchars($_POST["lastname"]);
+    $name = htmlspecialchars($_POST["name"]);
+    $password = htmlspecialchars($_POST["password"]);
     $email = htmlspecialchars($_POST["email"]);
     $tel = htmlspecialchars($_POST["numtel"]);
     $birthday = htmlspecialchars($_POST["datenaissance"]);

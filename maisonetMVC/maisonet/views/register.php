@@ -13,7 +13,7 @@ require ROOT . "/views/template/headerAccueil.php";
     <h2 class="titre-inscription">Inscription</h2>
 
 
-    <form method="post" action="index.php?action=add_user">
+    <form method="post" action="index.php?action=register_request">
 
         <?php //include_once(ROOT.'/models/errors.php'); ?>
 

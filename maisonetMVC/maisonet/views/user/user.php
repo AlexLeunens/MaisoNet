@@ -18,6 +18,15 @@ if (isset($_SESSION["adresse"])) {
     $adresse = $_SESSION["adresse"];
 }
 
+
+// Get user id
+$sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $_SESSION["name"] . "' AND utilisateur.prenom = '" . $_SESSION["firstname"] . "'";
+$result = $conn->query($sql);
+
+while ($row = $result->fetch_assoc()) {
+    $_SESSION['idUser'] = $row["idUtilisateur"];
+}
+
 ?>
 
 
@@ -64,9 +73,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div id="Present" class="fonctions">
 
     <form class='dossier' method='post' action=''>
-        Adresse de la Maison : <input type="text" name="adresse">
+        <label for="text">Choississez votre maison :</label>
+        <?php
+        $sql = "SELECT * FROM maison WHERE Utilisateur_idUtilisateur =" . $_SESSION['idUser'] . "";
+        $result = $conn->query($sql);
+        $incrementDropdown = 0;
+
+        echo "<select name='adresse'>";
+        while ($maisonsUser = $result->fetch_assoc()) {
+            $incrementDropdown++;
+            echo "<option value='" . $maisonsUser["Adresse"] . "'>" . $maisonsUser["Adresse"] . "</option>";
+        }
+        echo "</select>";
+        ?>
         <input align="right" type="submit" name="getMaison" value="Entrée">
     </form>
+
+
+    <div id="maisonAffiche">
+
+    </div>
 
 </div>
 
@@ -149,17 +175,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     });
 
 
-
     function toggle_visibility(id) {
         var e = document.getElementById(id);
-        if(e.style.display == 'block')
+        if (e.style.display == 'block')
             e.style.display = 'none';
         else
             e.style.display = 'block';
     }
-
-
-
 
 
     var help = document.getElementsByClassName("help")
@@ -233,7 +255,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <?php
     if (isset($adresse)) {
-        echo "$('#Present').load('afficheMaison.php').fadeIn('slow');";
+        echo "$('#maisonAffiche').load('afficheMaison.php').fadeIn('slow');";
     }
     ?>
 
