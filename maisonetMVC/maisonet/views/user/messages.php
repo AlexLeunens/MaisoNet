@@ -2,12 +2,22 @@
 include ROOT.'/models/connect.php';
 include ROOT.'/models/secure.php';
 
+session_start();
+
+//DEBUG
+$_SESSION["name"] = "Anonym";
+$_SESSION["firstname"] = "Name";
+
+
+$name = $_SESSION["name"];
+$firstname = $_SESSION["firstname"];
+
+
+
 // idUtilisateur = sent to
 // sender = sent by
 
 if (!empty($_GET)) {
-
-    session_start();
     $_SESSION["idContact"] = $_GET['idContact'];
 
     $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . Securite::bdd($conn, $_GET['nom']) . "'
