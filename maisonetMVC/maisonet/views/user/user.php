@@ -89,10 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input align="right" type="submit" name="getMaison" value="Entrée">
     </form>
 
-
-    <div id="maisonAffiche">
-
-    </div>
+    <div id="maisonAffiche"></div>
 
 </div>
 
@@ -132,22 +129,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a href="" onclick="popupContact()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
 
 </div>
-
-
-<div id="masque">
-    <div class="fenetre-modale">
-        <a class="fermer" href="#"><img alt="X" title="Fermer la fenêtre" class="btn-fermer"
-                                        src="views/admin/Images-utilisateur/fmodale_fermer.png"/></a>
-        <h2>Votre Capteur:</h2>
-
-        <form>
-            <input type="button1" value=" - " onClick="javascript:this.form.champ.value--;">
-            <input type="text1" name="champ" value="0">
-            <input type="button1" value=" + " onClick="javascript:this.form.champ.value++;">
-        </form>
-
-    </div> <!-- .fenetre-modale -->
-</div> <!-- #masque -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
