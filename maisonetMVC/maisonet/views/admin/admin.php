@@ -47,46 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION["adresse"] = $adresse;
 
 
-    } else if (isset($_POST['submitmsg'])) {
-
-        $query = "BEGIN WORK;";
-        $result = $conn->query($query);
-        if (!$result) {
-            echo "Erreur lors de l'envoi du message";
-        }
-
-        // gets the id of the current user
-        $sql = "SELECT idUtilisateur FROM utilisateur WHERE utilisateur.Nom = '" . $name . "' AND utilisateur.prenom = '" . $firstname . "'";
-        $result = $conn->query($sql);
-
-        while ($row = $result->fetch_assoc()) {
-            $reciever = $row["idUtilisateur"];
-        }
-
-        $sql = "INSERT INTO 
-                    contact(idUtilisateur,
-                            idReciever,
-                          message) 
-                VALUES (" . $idContact . ",
-                        " . $reciever . ",
-                        '" . mysqli_real_escape_string($conn, $_POST['user_message']) . "')";
-
-        $result = $conn->query($sql);
-        if (!$result) {
-            echo "Erreur lors de l'insertion du message dans la base de données";
-            echo mysqli_error($conn);
-            $sql = "ROLLBACK;";
-            $result = $conn->query($query);
-        } else {
-            $sql = "COMMIT;";
-            $result = $conn->query($sql);
-
-            unset($_POST);
-
-            echo "<script>";
-            echo "$('#Messages').load('messages.php?idContact=" . $idContact . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
-            echo "</script>";
-        }
     }
 
 }
@@ -156,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <?php
 
-            $sql = "SELECT idUtilisateur, nom, prenom FROM utilisateur;"; //utilisateurs in 172.16.223.113
+            $sql = "SELECT idUtilisateur, nom, prenom FROM utilisateur;";
             $result = $conn->query($sql);
 
             if (!$result) {
@@ -165,7 +125,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             while ($row = $result->fetch_assoc()) {
                 echo "<li>";
-                echo "<a href='' onclick=\" $('#Messages').load('messages.php?idContact=" . $row["idUtilisateur"] . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');\">";
+
+                $idContact = $row['idUtilisateur'];
+                $name = $row["nom"];
+                $firstname = $row['prenom'];
+
+                echo "<a onclick=\" $('#discussion').load('messages.php?idContact=" . $idContact . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');\">";
 
                 echo $row["nom"] . "" . $row['prenom'];
                 echo "</a>";
@@ -176,18 +141,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $result->free();
             ?>
         </ul>
-        <div id="discussion">
 
+        <div id="discussion">
             <div id="Messages">
             </div>
-
-            <div id="chatbox">
-                <form method="post" name="message">
-                    <input name="user_message" type="text" id="usermsg" required/>
-                    <input name="submitmsg" type="submit" id="submitmsg" value="Send"/>
-                </form>
-            </div>
-
         </div>
 
 
@@ -224,8 +181,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <input type="submit" value="Ajouter">
         </form>
-
-
 
 
         <?php
@@ -300,12 +255,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="views/admin/usermain1.js"></script>
 <script>
-    var auto_refresh = setInterval(
-        function () {
-            <?php
-            echo "$('#Messages').load('messages.php?idContact=" . $idContact . "&nom=" . $name . "&prenom=" . $firstname . "').fadeIn('slow');";
-            ?>
-        }, 1000); // refresh toutes les secondes
 
     <?php
     if (isset($adresse)) {
@@ -320,6 +269,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         else
             e.style.display = 'block';
     }
+
 </script>
 
 
