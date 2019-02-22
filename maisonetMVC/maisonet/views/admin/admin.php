@@ -14,7 +14,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     if ($_SESSION['type'] == 3) {
         echo "<script>alert('vous êtes un utilisateur')</script>";
         header('Location: index.php?action=see_userPage');
-
     }
 }
 
@@ -56,10 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 
 
-<!--<a href="absent.html" ><img id="switch" src="Images-utilisateur/switchOn.png"> </img> </a> -->
-
-
-<img class="avatar" src="views/admin/Images-utilisateur/avatar.png" onclick="openNav()"> </img>
+<img class="avatar" src="views/admin/Images/avatar.png" onclick="openNav()"> </img>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="index.php?action=see_ourServices">Services</a>
@@ -70,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div id="menu">  <!--conteneur-->
-    <img id="logo" src="views/admin/Images/logo_provisoire2.png"> </img>
+    <img id="logo" src="views/admin/Images/maisonlogolong.png"> </img>
 
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
         <li><a id="defaultOpen" href="javascript:openPage('Client', this)"> Client </a></li>
@@ -252,11 +248,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </div>
-
-<?php
-//TODO modifier l'accueil.
-// a true dumpster fire this page, never should have left it
-?>
 
 </body>
 

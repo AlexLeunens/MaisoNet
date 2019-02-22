@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div id="menu">  <!--conteneur-->
-    <img id="logo" src="views/user/Images-utilisateur/logo_provisoire2.png"> </img>
+    <img id="logo" src="views/user/Images-utilisateur/maisonlogolong.png"> </img>
 
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
         <li id="liPresent" class="active"><a href="javascript:switchClick()"> Mode Présence </a></li>
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <p class="help"> ? </p>
 <div class="helpPanel">
 
-    <a href="" onclick="tabFAQ()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helpquestionmark.png" alt="FAQ"></img></a>
+    <a href="" onclick="tabFAQ()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/help.png" alt="FAQ"></img></a>
 
     <a href="" onclick="popupContact()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
 
