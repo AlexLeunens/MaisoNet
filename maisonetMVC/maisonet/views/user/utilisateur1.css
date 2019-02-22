@@ -234,7 +234,7 @@ div.panel.show {
 }
 
 /*Menu d'aide*/
-p.help {
+p.addHome {
     background-color: rgba(220, 160, 0, 0.9);
     cursor: pointer;
 
@@ -254,11 +254,11 @@ p.help {
     transition: 0.1s;
 }
 
-p.help.active {
+p.addHome.active {
 }
 
 /* panneau avec fonctions d'aide */
-div.helpPanel {
+div.addHomePanel {
     background-color: rgba(220, 220, 220, 0.7);
     max-height: 0;
     overflow: hidden;
@@ -275,7 +275,7 @@ div.helpPanel {
     border-radius: 10px;
 }
 
-div.helpPanel.show {
+div.addHomePanel.show {
     opacity: 1;
     max-height: 500px; /* doit être sup à la hauteur des éléments */
 }

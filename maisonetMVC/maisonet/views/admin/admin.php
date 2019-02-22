@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 
 
-<img class="avatar" src="views/admin/Images/avatar.png" onclick="openNav()"> </img>
+<img class="avatar" src="views/admin/Images/avatar.png" onclick="openNav()" alt="avatar"> </img>
 <div id="mySidenav" class="sidenav">
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="index.php?action=see_ourServices">Services</a>
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 <div id="menu">  <!--conteneur-->
-    <img id="logo" src="views/admin/Images/maisonlogolong.png"> </img>
+    <img id="logo" src="views/admin/Images/maisonlogolong.png" alt="logo"> </img>
 
     <ul id="onglets">  <!--commence la liste et lui donne l'id onglet-->
         <li><a id="defaultOpen" href="javascript:openPage('Client', this)"> Client </a></li>
@@ -152,7 +152,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     </div>
 </div>
-</div>
 
 
 <div id="GestClient" class="Elements" style="display:none;">
@@ -207,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 
-</div>
+
 <div id=GestAdmin class="Elements" style="display:none;">
 
     <form class="addPay" method="post" action="index.php?action=add_pay">
@@ -233,18 +232,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
 
     <p class="piece">Modifier Accueil</p>
-    <div class="panel">
-        <div class=bloc><a href="#masque1">
-                <p class="sstitre">Qui sommes nous?</p></a>
 
-        </div>
-        <div class=bloc><a href="#masque1">
-                <p class="sstitre">Que faisons nous?</p></a>
-        </div>
-        <div class=bloc><a href="#masque1">
-                <p class="sstitre">Quels sont nos tarifs</p></a>
-        </div>
-    </div>
 </div>
 
 </body>
@@ -261,7 +249,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     function toggle_visibility(id) {
         var e = document.getElementById(id);
-        if (e.style.display == 'block')
+        if (e.style.display === 'block')
             e.style.display = 'none';
         else
             e.style.display = 'block';
@@ -303,6 +291,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 </script>
-
-
-</html>

@@ -125,8 +125,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-<p class="help"> ? </p>
-<div class="helpPanel">
+<p class="addHome"> + </p>
+<div class="addHomePanel">
 
     <a href="" onclick="tabFAQ()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/help.png" alt="FAQ"></img></a>
 
@@ -169,12 +169,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
-    var help = document.getElementsByClassName("help")
-    var helpPanel = document.getElementsByClassName("helpPanel")
-    help[0].onclick = function () {
+    var addHome = document.getElementsByClassName("addHome")
+    var addHomePanel = document.getElementsByClassName("addHomePanel")
+    addHome[0].onclick = function () {
         var setClasses = !this.classList.contains('active'); // vérifie si help actif
-        setClass(help, 'active', 'remove'); //les rend inactives
-        setClass(helpPanel, 'show', 'remove'); // cache le contenu
+        setClass(addHome, 'active', 'remove'); //les rend inactives
+        setClass(addHomePanel, 'show', 'remove'); // cache le contenu
         if (setClasses) { //si help pas deja actif
             this.classList.toggle("active");
             this.nextElementSibling.classList.toggle("show");
