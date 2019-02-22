@@ -119,9 +119,9 @@ div.avatarPanel.show {
 }
 
 div.Elements {
-    height: 88%;
+    height: 90%;
     position: absolute;
-    top: 15%;
+    top: 10%;
     width: 100%;
     left: 0;
     overflow: auto;

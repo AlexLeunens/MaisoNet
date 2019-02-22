@@ -143,10 +143,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <div id="chatbox">
-                <form method='post' id='message' name="message" ;>
-                    <input name="user_message" type="text" id="usermsg" required/>
-                    <input name="submitmsg" id="submitmsg" type="button" onclick="sendChat()" value="Send"/>
-                </form>
+                <input name="user_message" type="text" id="usermsg" required/>
+                <input name="submitmsg" id="submitmsg" type="button" onclick="sendChat()" value="Send"/>
             </div>
 
         </div>
@@ -270,10 +268,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
+    const input = document.querySelector('#usermsg');
+    input.addEventListener('keyup', logKey);
+
+    function logKey(e) {
+        if (e.code === "Enter") {
+            sendChat();
+        }
+    }
+
     function sendChat() {
 
         var formData = {
-            'user_message':  $('#usermsg').val()
+            'user_message': $('#usermsg').val()
         };
 
         $.ajax({
@@ -285,8 +292,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             success: function (data) {
                 $('#usermsg').val("");
             },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert("Status: " + textStatus); alert("Error: " + errorThrown); alert($('#usermsg').val());
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " + textStatus);
+                alert("Error: " + errorThrown);
+                alert($('#usermsg').val());
             }
         });
 

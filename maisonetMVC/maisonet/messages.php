@@ -74,7 +74,7 @@ if (!empty($_GET)) {
         <?php
         echo "$('#Messages').load('messages.php?nom=" . Securite::bdd($conn, $_GET['nom']) . "&prenom=" . Securite::bdd($conn, $_GET['prenom']) . "').fadeIn('slow');";
         ?>
-    }, 5000);
+    }, 1000);
 </script>
 
 
