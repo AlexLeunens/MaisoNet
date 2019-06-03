@@ -109,11 +109,11 @@ function registerRequest() {
     $name = $_POST['prenom'];
     $email = $_POST['email'];
     $birthday = $_POST['datenaissance'];
-    //$password_1 = $_POST['password_1'];
-    //$password_2 = $_POST['password_2'];
+    $password_1 = $_POST['password_1'];
+    // $password_2 = $_POST['password_2'];
     $tel = $_POST['numtel'];
 
-    userRegisterRequest($lastname, $name, $email, $birthday, $tel);
+    userRegisterRequest($lastname, $name, $email, $birthday, $tel, $password_1);
 
 
 }

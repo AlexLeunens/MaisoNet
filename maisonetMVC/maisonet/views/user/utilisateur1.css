@@ -235,7 +235,7 @@ div.panel.show {
 
 /*Menu d'aide*/
 p.addHome {
-    background-color: rgba(220, 160, 0, 0.9);
+    background-color: rgba(220, 220, 220, 0.7);
     cursor: pointer;
 
     text-align: center;
@@ -247,9 +247,9 @@ p.addHome {
     border-radius: 50%;
 
     position: fixed; /*permet de le fixer sur l'écran*/
-    right: 0;
-    bottom: 0;
-    margin-bottom: 5px;
+    right: 5px;
+    bottom: 5px;
+    margin:0;
 
     transition: 0.1s;
 }

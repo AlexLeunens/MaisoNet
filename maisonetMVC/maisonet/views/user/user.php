@@ -125,17 +125,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-<p class="addHome"> + </p>
+<p class="addHome" id="addHome"> + </p>
 <div class="addHomePanel">
 
-    <a href="" onclick="tabFAQ()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/help.png" alt="FAQ"></img></a>
+    <button onclick="showDialog(this.nextElementSibling)">Ajouter une Maison</button>
+    <div class="dialog" id="dialog" style="display: none">
+        <h1>Hello</h1>
+    </div>
 
-    <a href="" onclick="popupContact()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
+
+    <button>Ajouter une Piece</button>
+    <button>Ajouter un Capteur</button>
 
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
+
+    /*
+    var addHome = document.getElementsByClassName("addHome")
+    var addHomePanel = document.getElementsByClassName("addHomePanel")
+    addHome[0].onclick = function () {
+        var setClasses = !this.classList.contains('active'); // vérifie si help actif
+        setClass(addHome, 'active', 'remove'); //les rend inactives
+        setClass(addHomePanel, 'show', 'remove'); // cache le contenu
+        if (setClasses) { //si help pas deja actif
+            this.classList.toggle("active");
+            this.nextElementSibling.classList.toggle("show");
+        }
+    }
+    */
+
+    $("#addHome").addEventListener('click', function() {
+        this.nextElementSibling.classList.toggle("show");
+    }, false);
+
+    function showDialog(dialog) {
+        dialog.style.display="block";
+    }
 
 
     var piece = document.getElementsByClassName("piece");
@@ -168,19 +195,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             e.style.display = 'block';
     }
 
-
-    var addHome = document.getElementsByClassName("addHome")
-    var addHomePanel = document.getElementsByClassName("addHomePanel")
-    addHome[0].onclick = function () {
-        var setClasses = !this.classList.contains('active'); // vérifie si help actif
-        setClass(addHome, 'active', 'remove'); //les rend inactives
-        setClass(addHomePanel, 'show', 'remove'); // cache le contenu
-        if (setClasses) { //si help pas deja actif
-            this.classList.toggle("active");
-            this.nextElementSibling.classList.toggle("show");
-        }
-    }
-
     function setClass(els, className, fnName) {
         for (var i = 0; i < els.length; i++) { //chaque piece selec avec !this.classList.contains('active')
             els[i].classList[fnName](className); //les prend une par une, puis désactive une propriété
@@ -193,19 +207,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
-    }
-
-    function popupHelp() {
-        var myWindow = window.open("views/FAQ/FAQ.php", "", "width=1200, height=1000");
-    }
-
-    function popupContact() {
-        var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
-    }
-
-    function tabFAQ() {
-        var win = window.open("views/FAQ/FAQ.php", '_blank');
-        win.focus();
     }
 
     function switchClick() {

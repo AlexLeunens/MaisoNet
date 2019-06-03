@@ -75,9 +75,8 @@ function sendConfirmMail($name,$prenom,$email,$datenaissance,$numtel,$try)
     $mail->addAddress($email, $name." ".$prenom);          // To
     //$mail->AddReplyTo("ceshiyouxiang000001@gmail.com","Ceshi Mail");    // Not necessary
 
-    $mail->Subject = 'Bienvennue sur MaisonNet !';                                                                    // Subject
-    $mail->Body = "Merci d'avoir choisi MaisoNet, voici les informations saisi lors de l'inscription :\r\nInscription sur MaisoNet :\r\n"."Nom : ".$name."\r\n"."Prénom : ".$prenom."\r\n"."Add. Mail : ".$email."\r\n"."Date de naissance : ".$datenaissance."\r\nNuméro de tel : ".$numtel;                                            //  Mail content
-    //$mail->addAttachment('C:\Users\chenw\Desktop\e\kao.jpg', 'kao.jpg');       // Attachment
+    $mail->Subject = 'Bienvenue sur MaisonNet !';                                                                    // Subject
+    $mail->Body = "Merci d'avoir choisi MaisoNet, voici les informations saisies lors de l'inscription :\r\nInscription sur MaisoNet :\r\n"."Nom : ".$name."\r\n"."Prénom : ".$prenom."\r\n"."Add. Mail : ".$email."\r\n"."Date de naissance : ".$datenaissance."\r\nNuméro de tel : ".$numtel;                                            //  Mail content
 
     if (!$mail->send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
