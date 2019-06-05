@@ -26,9 +26,37 @@ while ($row = $result->fetch_assoc()) {
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['getMaison'])) {
+    if (!empty($_POST["adresse"])) {
         $adresse = str_replace(" ", "", $_POST['adresse']);
         $_SESSION["adresse"] = $adresse;
+        unset($_POST);
+        header("Location: ".$_SERVER['REQUEST_URL']);
+    }
+
+    if (!empty($_POST["pieces"])) {
+        $sql = "INSERT INTO 
+                    capteur(Type,
+                            Etat,
+                          Affichage,
+                            Piece_idPiece) 
+                VALUES ('" . $_POST["type"] . "',
+                        'actif',
+                        'actif',
+                        " . $_POST["pieces"] . ")";
+
+        $result = $conn->query($sql);
+        if (!$result) {
+            echo "Erreur lors de l'insertion du capteur dans la base de données";
+            echo mysqli_error($conn);
+            $sql = "ROLLBACK;";
+            $result = $conn->query($query);
+        } else {
+            $sql = "COMMIT;";
+            $result = $conn->query($sql);
+        }
+
+        unset($_POST);
+        header("Location: ".$_SERVER['REQUEST_URL']);
     }
 }
 ?>
@@ -40,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a href="javascript:closeNav()" class="closebtn">&times;</a> <!-- la croix pour fermer -->
     <a href="#">Profil</a>
     <a href="index.php?action=see_ourServices">Services</a>
-    <a href="#">Contact</a>
+    <a href="" onclick="tabFAQ()">FAQ</a>
     <a href="index.php?action=see_forum">Forum</a>
     <a href="index.php?action=logout">Déconnexion</a>
 </div>
@@ -58,15 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <span class="slider round"></span>
         </label>
     </ul>
-</div>
 
-
-<div id="Present" class="fonctions">
-
-    <form class='dossier' method='post' action=''>
+    <form method='post' action=''>
         <label for="text">Choississez votre maison :</label>
         <?php
-        $sql = "SELECT Nom FROM piece WHERE Maison_idMaison =" . $_SESSION['idUser'] . "";
+        $sql = "SELECT Adresse FROM maison WHERE Utilisateur_idUtilisateur =" . $_SESSION['idUser'] . " ";
         $result = $conn->query($sql);
         $incrementDropdown = 0;
         echo "<select name='adresse'>";
@@ -78,7 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ?>
         <input align="right" type="submit" name="submitCapteur" value="Entrée">
     </form>
-    // TODO action pour insérer le nouveau capteur dans la base de donnée
+</div>
+
+
+<div id="Present" class="fonctions">
+
     <div id="maisonAffiche"></div>
 
 </div>
@@ -103,53 +131,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-<p class="addHome"> + </p>
-<div class="addHomePanel">
 
-    <a href="" onclick="tabFAQ()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/help.png" alt="FAQ"></img></a>
-
-    <a href="" onclick="popupContact()"><img class="imageshelp" src="/maisonet/views/user/Images-utilisateur/helptechnician.png" alt="Contact Tech"></img> </a>
-
-    <button onclick="ajouterCapteur()" id="addCapteur"> Ajouter un Capteur</button>
-
-</div>
-
+<li id="addCapteur"><p class="addCapteur">+</p></li>
 <div id="ajoutCapteur" class="modal">
 
     <div class="modal-content">
         <span class="close">&times;</span>
 
-        <form class="addCapteurType" method="post" action="">
+        <form class="addCapteurType" method="post" action=''>
             <h3>Ajouter un Nouveau Capteur</h3>
 
-            <label for="inputCapteurType">Type</label>
+            <label for="inputCapteurType" name="type">Type</label>
+            <input name="type" type="text" list="capteursExistant" />
+            <datalist id="capteursExistant">
             <?php
             $sql = "SELECT DISTINCT Type FROM capteur ";
             $result = $conn->query($sql);
-            $incrementDropdown = 0;
-            echo "<select name='type' class='editableBox'>";
-            echo "<option value=''></option>";
             while ($capteurs = $result->fetch_assoc()) {
-                $incrementDropdown++;
                 echo "<option value='" . $capteurs["Type"] . "'>" . $capteurs["Type"] . "</option>";
             }
             echo "</select>";
             ?>
-            <input class="timeTextBox" name="timebox" maxlength="20"/>
+            </datalist>
+
             <br>
 
-            <label for="inputCapteurPiece">Pièce</label>
+            <label for="inputCapteurPiece" name="piece">Pièce</label>
             <?php
-            $sql = "SELECT nom FROM piece WHERE Maison_idMaison = ( SELECT idMaison FROM maison WHERE maison.Adresse = '".$_SESSION['adresse']."')";
-            $result = $conn->query($sql);
-            $incrementDropdown = 0;
-            echo "<select name='piece'>";
+            if(!empty($_SESSION['adresse'])){
+                $sql = "SELECT * FROM piece WHERE Maison_idMaison = ( SELECT idMaison FROM maison WHERE maison.Adresse = '" . $_SESSION['adresse'] . "')";
+                $result = $conn->query($sql);
+                $incrementDropdown = 0;
+                echo "<select name='pieces'>";
 
-            while ($pieces = $result->fetch_assoc()) {
-                $incrementDropdown++;
-                echo "<option value='" . $pieces["nom"] . "'>" . $pieces["nom"] . "</option>";
+                while ($pieces = $result->fetch_assoc()) {
+                    $incrementDropdown++;
+                    echo "<option value='" . $pieces["idPiece"] . "'>" . $pieces["Nom"] . "</option>";
+                }
+                echo "</select>";
+            } else {
+                echo "Vous devez choisir une maison";
             }
-            echo "</select>";
             ?>
 
             <br>
@@ -162,6 +184,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
 </div>
+<?php
+//TODO ajouter une pièce dans la maison
+?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
@@ -221,18 +246,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             e.style.display = 'block';
     }
 
-    var addHome = document.getElementsByClassName("addHome")
-    var addHomePanel = document.getElementsByClassName("addHomePanel")
-    addHome[0].onclick = function () {
-        var setClasses = !this.classList.contains('active'); // vérifie si help actif
-        setClass(addHome, 'active', 'remove'); //les rend inactives
-        setClass(addHomePanel, 'show', 'remove'); // cache le contenu
-        if (setClasses) { //si help pas deja actif
-            this.classList.toggle("active");
-            this.nextElementSibling.classList.toggle("show");
-        }
-    }
-
     function setClass(els, className, fnName) {
         for (var i = 0; i < els.length; i++) { //chaque piece selec avec !this.classList.contains('active')
             els[i].classList[fnName](className); //les prend une par une, puis désactive une propriété
@@ -245,14 +258,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
-    }
-
-    function popupHelp() {
-        var myWindow = window.open("views/FAQ/FAQ.php", "", "width=1200, height=1000");
-    }
-
-    function popupContact() {
-        var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
     }
 
     function tabFAQ() {
@@ -294,12 +299,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     ?>
 
-    $(document).ready(function(){
-
-        $(".editableBox").change(function(){
-            $(".timeTextBox").val($(".editableBox option:selected").html());
-        });
-    });
 </script>
 
 

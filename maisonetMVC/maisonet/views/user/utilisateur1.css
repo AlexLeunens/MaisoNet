@@ -20,6 +20,7 @@ html {
     left: 0px;
     width: 100%;
     height: 15%;
+    background-color: silver;
 }
 
 #onglets { /* conteneur des listes */
@@ -233,54 +234,6 @@ div.panel.show {
     max-width: 88%; /* doit être sup à la hauteur des éléments */
 }
 
-/*Menu d'aide*/
-p.addHome {
-    background-color: rgba(220, 160, 0, 0.9);
-    cursor: pointer;
-
-    text-align: center;
-    line-height: 70px;
-    font-size: 50px;
-
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-
-    position: fixed; /*permet de le fixer sur l'écran*/
-    right: 0;
-    bottom: 0;
-    margin-bottom: 5px;
-
-    transition: 0.1s;
-}
-
-p.addHome.active {
-}
-
-/* panneau avec fonctions d'aide */
-div.addHomePanel {
-    background-color: rgba(220, 220, 220, 0.7);
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.5s ease-in-out;
-    opacity: 0;
-
-    position: fixed;
-    bottom: 5px;
-    right: 70px;
-
-    height: 45%;
-    width: 10%;
-    min-width: 75px;
-    border-radius: 10px;
-}
-
-div.addHomePanel.show {
-    opacity: 1;
-    max-height: 500px; /* doit être sup à la hauteur des éléments */
-}
-
-
 .imageshelp {
     width: 70%;
     height: auto;
@@ -301,8 +254,35 @@ div.bloc {
 
 
 
+/*Boutton d'ajout de capteur*/
 
+p.addCapteur {
+    display: block;
+    position: fixed;
+    text-align: center;
+    right: 0;
+    bottom: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
 
+    transition: all .25s ease-in-out;
+    border-width: 4px;
+    border-style: solid;
+    background-color: silver;
+    border-color: rgba(0,63,71,.2);
+    cursor: pointer;
+
+    line-height: 65px;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+p.addCapteur:hover {
+    transform: rotate(-180deg);
+    line-height: 60px;
+    font-size: 50px;
+}
 
 
 
