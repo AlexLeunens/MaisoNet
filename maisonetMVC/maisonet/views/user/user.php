@@ -29,8 +29,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST["adresse"])) {
         $adresse = str_replace(" ", "", $_POST['adresse']);
         $_SESSION["adresse"] = $adresse;
+
+        unset($_POST); // unsets the data sent to avoid re-sending it
+        header("Location: " . $_SERVER['REQUEST_URL']); // refresh page to clear cache
+    }
+
+    if (!empty($_POST["newPiece"])) {
+
+        $sql = "SELECT idMaison FROM maison WHERE maison.Adresse = '" . $_SESSION['adresse'] . "'";
+        $result = $conn->query($sql);
+        $maison = $result->fetch_assoc();
+        $idMaison = $maison["idMaison"];
+
+        $sql = "INSERT INTO 
+                    piece(Nom, Maison_idMaison) 
+                VALUES ('" . $_POST["newPiece"] . "',
+                        " . $idMaison . ")";
+        $result = $conn->query($sql);
+
         unset($_POST);
-        header("Location: ".$_SERVER['REQUEST_URL']);
+        header("Location: " . $_SERVER['REQUEST_URL']);
     }
 
     if (!empty($_POST["pieces"])) {
@@ -56,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         unset($_POST);
-        header("Location: ".$_SERVER['REQUEST_URL']);
+        header("Location: " . $_SERVER['REQUEST_URL']);
     }
 }
 ?>
@@ -131,34 +149,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-
 <li id="addCapteur"><p class="addCapteur">+</p></li>
 <div id="ajoutCapteur" class="modal">
 
     <div class="modal-content">
         <span class="close">&times;</span>
 
+        <form class="addPiece" method="post" action=''>
+            <h3>Ajouter une Nouveau Pièce</h3>
+
+            <label for="addPiece" name="piece">Nom de votre pièce</label>
+            <input name="newPiece" type="text"/>
+            <?php
+            if (empty($_SESSION['adresse'])) {
+                echo "Vous devez choisir une maison";
+            }
+            ?>
+            <br>
+            <input type="submit" value="Ajouter">
+
+        </form>
+
+
         <form class="addCapteurType" method="post" action=''>
             <h3>Ajouter un Nouveau Capteur</h3>
 
             <label for="inputCapteurType" name="type">Type</label>
-            <input name="type" type="text" list="capteursExistant" />
+            <input name="type" type="text" list="capteursExistant"/>
             <datalist id="capteursExistant">
-            <?php
-            $sql = "SELECT DISTINCT Type FROM capteur ";
-            $result = $conn->query($sql);
-            while ($capteurs = $result->fetch_assoc()) {
-                echo "<option value='" . $capteurs["Type"] . "'>" . $capteurs["Type"] . "</option>";
-            }
-            echo "</select>";
-            ?>
+                <?php
+                $sql = "SELECT DISTINCT Type FROM capteur ";
+                $result = $conn->query($sql);
+                while ($capteurs = $result->fetch_assoc()) {
+                    echo "<option value='" . $capteurs["Type"] . "'>" . $capteurs["Type"] . "</option>";
+                }
+                echo "</select>";
+                ?>
             </datalist>
 
             <br>
 
             <label for="inputCapteurPiece" name="piece">Pièce</label>
             <?php
-            if(!empty($_SESSION['adresse'])){
+            if (!empty($_SESSION['adresse'])) {
                 $sql = "SELECT * FROM piece WHERE Maison_idMaison = ( SELECT idMaison FROM maison WHERE maison.Adresse = '" . $_SESSION['adresse'] . "')";
                 $result = $conn->query($sql);
                 $incrementDropdown = 0;
@@ -176,7 +209,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <br>
 
-
             <input type="submit" value="Ajouter">
 
         </form>
@@ -184,9 +216,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
 </div>
-<?php
-//TODO ajouter une pièce dans la maison
-?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>
