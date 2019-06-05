@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <span class="close">&times;</span>
 
         <form class="addPiece" method="post" action=''>
-            <h3>Ajouter une Nouveau Pièce</h3>
+            <h3>Ajouter une Nouvelle Pièce</h3>
 
             <label for="addPiece" name="piece">Nom de votre pièce</label>
             <input name="newPiece" type="text"/>
@@ -171,6 +171,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         </form>
 
+        <form method="post" action=''>
+            <?php
+            if (!empty($_SESSION['adresse'])) {
+                $sql = "SELECT * FROM piece WHERE Maison_idMaison = ( SELECT idMaison FROM maison WHERE maison.Adresse = '" . $_SESSION['adresse'] . "')";
+                $result = $conn->query($sql);
+                $incrementDropdown = 0;
+                echo "<select name='removePiece'>";
+
+                while ($pieces = $result->fetch_assoc()) {
+                    $incrementDropdown++;
+                    echo "<option value='" . $pieces["idPiece"] . "'>" . $pieces["Nom"] . "</option>";
+                }
+                echo "</select>";
+            } else {
+                echo "Vous devez choisir une maison";
+            }
+            ?>
+        </form>
 
         <form class="addCapteurType" method="post" action=''>
             <h3>Ajouter un Nouveau Capteur</h3>
@@ -212,6 +230,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <input type="submit" value="Ajouter">
 
+        </form>
+
+        <form method="post" action=''>
+            <?php
+            if (!empty($_SESSION['adresse'])) {
+
+                $sql = "SELECT * FROM capteur";
+                $result = $conn->query($sql);
+                echo "<select name='removeCapteurPiece'>";
+
+                while ($capteurs = $result->fetch_assoc()) {
+
+                    $sqlPiece = "SELECT * FROM piece WHERE piece.idPiece = " . $capteurs["Piece_idPiece"] . " ";
+                    $piece = $conn->query($sqlPiece);
+                    $row = $piece->fetch_assoc();
+                    $nom = $row["Nom"];
+
+                    echo "<option value='" . $capteurs["idCapteur"] . "'>" . $capteurs["Type"] . " dans " . $nom . " </option>";
+                }
+                echo "</select>";
+            } else {
+                echo "Vous devez choisir une maison";
+            }
+            ?>
         </form>
 
     </div>
