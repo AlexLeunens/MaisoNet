@@ -83,9 +83,6 @@ if (isset($_GET["action"])) {
             addPay();
             break;
 
-        case "add_capteurType":
-            addTypeCpteur();
-            break;
 // connexion
         case "login":
             login();

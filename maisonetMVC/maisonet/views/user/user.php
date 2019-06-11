@@ -77,6 +77,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         unset($_POST);
         header("Location: " . $_SERVER['REQUEST_URL']);
     }
+
+    if (!empty($_POST["removeCapteurPiece"])) {
+        $sql = "DELETE FROM `capteur` WHERE `capteur`.`idCapteur` = " . $_POST["removeCapteurPiece"] . " ";
+
+        $result = $conn->query($sql);
+        if (!$result) {
+            echo "Erreur lors de la suppression du capteur dans la base de données";
+            echo mysqli_error($conn);
+            $sql = "ROLLBACK;";
+            $result = $conn->query($query);
+        } else {
+            $sql = "COMMIT;";
+            $result = $conn->query($sql);
+        }
+
+        unset($_POST);
+        header("Location: " . $_SERVER['REQUEST_URL']);
+    }
+
+    if (!empty($_POST["removePiece"])) {
+        $sql = "DELETE FROM `piece` WHERE `piece`.`idPiece` = " . $_POST["removePiece"] . " ";
+
+        $result = $conn->query($sql);
+        if (!$result) {
+            echo "Erreur lors de la suppression de la piece dans la base de données";
+            echo mysqli_error($conn);
+            $sql = "ROLLBACK;";
+            $result = $conn->query($query);
+        } else {
+            $sql = "COMMIT;";
+            $result = $conn->query($sql);
+        }
+
+        unset($_POST);
+        header("Location: " . $_SERVER['REQUEST_URL']);
+    }
 }
 ?>
 
@@ -172,6 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
 
         <form method="post" action=''>
+            <h3>Retirer une Piece</h3>
             <?php
             if (!empty($_SESSION['adresse'])) {
                 $sql = "SELECT * FROM piece WHERE Maison_idMaison = ( SELECT idMaison FROM maison WHERE maison.Adresse = '" . $_SESSION['adresse'] . "')";
@@ -188,6 +225,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "Vous devez choisir une maison";
             }
             ?>
+
+            <input type="submit" value="Retirer">
         </form>
 
         <form class="addCapteurType" method="post" action=''>
@@ -214,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $sql = "SELECT * FROM piece WHERE Maison_idMaison = ( SELECT idMaison FROM maison WHERE maison.Adresse = '" . $_SESSION['adresse'] . "')";
                 $result = $conn->query($sql);
                 $incrementDropdown = 0;
-                echo "<select name='pieces'>";
+                echo "<select name='Pieces'>";
 
                 while ($pieces = $result->fetch_assoc()) {
                     $incrementDropdown++;
@@ -233,6 +272,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
 
         <form method="post" action=''>
+            <h3>Retirer un Capteur</h3>
             <?php
             if (!empty($_SESSION['adresse'])) {
 
@@ -254,7 +294,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "Vous devez choisir une maison";
             }
             ?>
+
+            <input type="submit" value="Retirer">
         </form>
+
+
 
     </div>
 

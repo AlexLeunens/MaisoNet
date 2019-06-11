@@ -97,12 +97,6 @@ function addPay() {
 
 }
 
-function addTypeCpteur() {
-    $type = htmlspecialchars($_POST["capteurType"]);
-
-    insertCapteurType($type);
-}
-
 function registerRequest() {
 
     $lastname = $_POST['nom'];
