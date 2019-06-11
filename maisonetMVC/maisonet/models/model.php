@@ -72,53 +72,6 @@ function insertUser($lastname, $name, $password, $email, $tel, $birthday, $type)
     }
 }
 
-function userConnect($email, $password) {
-    $db = dbConnect();
-
-    session_start();
-
-    $req = $db->prepare("SELECT * FROM utilisateur WHERE Email = :email");
-    $req->bindParam("email", $email);
-    $req->execute();
-
-    if ($req) {
-        $result = $req->fetch(PDO::FETCH_ASSOC);
-        if (password_verify($password, $result['MotPasse'])) {   //$password == $result['password']) {
-            echo "<script>alert('connexion réussie !')</script>";
-
-            $_SESSION['id'] = $result['idUtilisateur'];
-            $_SESSION['name'] = $result['Nom'];
-            $_SESSION['firstname'] = $result['Prenom'];
-            $_SESSION['email'] = $result['Email'];
-            $_SESSION['tel'] = $result['NumeroTelephone'];
-            $_SESSION['birthday'] = $result['DateNaissance'];
-            $_SESSION['type'] = $result['Fonction_idType'];
-
-            if ($_SESSION['type'] == 3) {
-                //seeUserPage();
-                header('Location: index.php?action=see_userPage');
-            } else {
-                //seeAdminPage();
-                header('Location: index.php?action=see_adminPage');
-            }
-
-        } else {
-            echo "<script>alert('utilisateur introuvable')</script>";
-            header('Location: index.php?action=see_login');
-        }
-
-
-    } else {
-        echo "<script>alert('utilisateur introuvable')</script>";
-        header('Location: index.php?action=see_login');
-    }
-
-
-    $req->closeCursor();
-
-
-}
-
 function userRegisterRequest($lastname, $name, $email, $birthday, $tel, $password) {
 
     // sendConfimMailToAdmin($lastname, $name, $email, $birthday, $tel, 3);
@@ -159,62 +112,6 @@ function insertHouse($userId, $adresse, $codePostal, $pay) {
     $req->closeCursor();
 
 
-}
-
-function inserRoom($adress, $roomName) {
-
-    $db = dbConnect();
-
-
-    $result = $db->query("SELECT * FROM maison WHERE Adresse = '$adress'");
-    $result = $result->fetch(PDO::FETCH_ASSOC);
-    $idMaison = $result['idMaison'];
-
-
-    $req = $db->prepare("INSERT INTO piece (Nom, Maison_idMaison) VALUES( :Nom, :idMaison)");
-
-    $req->bindParam("Nom", $roomName);
-    $req->bindParam("idMaison", $idMaison);
-
-    $req->execute();
-
-    if ($req) {
-        echo '<script>alert("Pièce ajouté :)")</script>';
-        header('Location: index.php?action=see_adminPage');
-    } else {
-        echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
-        header('Location: index.php?action=see_adminPage');
-    }
-
-    $req->closeCursor();
-
-
-}
-
-function inserCapteur($roomId, $type) {
-
-    $db = dbConnect();
-
-    $defaultStat = "normal";
-    $display = "0";
-
-
-    $req = $db->prepare("INSERT INTO capteur (Type, Etat, Affichage, Piece_idPiece) VALUES( :type, :etat, :affichage, :roomId)");
-
-    $req->bindParam("type", $type);
-    $req->bindParam("etat", $defaultStat);
-    $req->bindParam("affichage", $display);
-    $req->bindParam("roomId", $roomId);
-
-    $req->execute();
-
-    if ($req) {
-        echo '<script>alert("Capteur ajouté :)")</script>';
-        header('Location: index.php?action=see_adminPage');
-    } else {
-        echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
-        header('Location: index.php?action=see_adminPage');
-    }
 }
 
 function insertPay($nomPay) {

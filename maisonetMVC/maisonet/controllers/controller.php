@@ -75,21 +75,6 @@ function addHouse() {
     insertHouse($userId, $adress, $codePostal, $pay);
 }
 
-function addRoom() {
-    $adress = str_replace(" ", "", $_POST['adresse']);//htmlspecialchars($_POST["adresse"]);
-    $roomName = htmlspecialchars($_POST["roomName"]);
-
-    inserRoom($adress, $roomName);
-}
-
-function addCapteur() {
-    $roomId = htmlspecialchars($_POST["roomId"]);
-    $type = htmlspecialchars($_POST["capteurType"]);
-
-    inserCapteur($roomId, $type);
-
-}
-
 function addPay() {
     $pay = htmlspecialchars($_POST["nomPay"]);
 
@@ -97,39 +82,8 @@ function addPay() {
 
 }
 
-function registerRequest() {
-
-    $lastname = $_POST['nom'];
-    $name = $_POST['prenom'];
-    $email = $_POST['email'];
-    $birthday = $_POST['datenaissance'];
-    $password_1 = $_POST['password_1'];
-    // $password_2 = $_POST['password_2'];
-    $tel = $_POST['numtel'];
-
-    userRegisterRequest($lastname, $name, $email, $birthday, $tel, $password_1);
-
-
-}
-
 
 // gestion des sessions
-
-function login() {
-    if (isset($_SESSION['name'])) {
-        echo 'vous êtes déjà connecté';
-
-    } else if ($_POST['email'] && $_POST['password']) {
-        $email = htmlspecialchars($_POST['email']);
-        $password = $_POST['password']; //htmlspecialchars($_POST['password']);
-
-        userConnect($email, $password);
-
-    } else {
-        echo 'les cases ne sont pas toutes remplies';
-    }
-
-}
 
 function logout() {
     //session_unset();
