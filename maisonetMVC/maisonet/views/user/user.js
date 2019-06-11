@@ -1,8 +1,42 @@
+/* import jQuery */
+var script = document.createElement('script');
+
+script.src = '//code.jquery.com/jquery-1.11.0.min.js';
+document.getElementsByTagName('head')[0].appendChild(script);
+
+
+var modal = document.getElementById("ajoutCapteur");
+
+// Get the button that opens the modal
+var btn = document.getElementById("addCapteur");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on the button, open the modal
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
 var piece = document.getElementsByClassName("piece");
 var panel = document.getElementsByClassName('panel'); //selec piece et panel
 for (var i = 0; i < piece.length; i++) { //pour tout bouton
     piece[i].onclick = function () {
-        var setClasses = !this.classList.contains('active'); //selec classes actives qui ne sont pas celle sur laquelle on a cliqué
+        var setClasses = !this.classList.contains('active'); //selec classes actives qui ne sont pas celle sur laquelle on clique
         setClass(piece, 'active', 'remove'); //les rend inactives
         setClass(panel, 'show', 'remove'); // cache le contenu
         if (setClasses) {
@@ -11,7 +45,6 @@ for (var i = 0; i < piece.length; i++) { //pour tout bouton
         }
     }
 }
-
 $(document).on("click", "p.piece", function () {
     var a = !this.classList.contains("active");
     setClass(piece, "active", "remove");
@@ -19,17 +52,12 @@ $(document).on("click", "p.piece", function () {
     a && (this.classList.toggle("active"), this.nextElementSibling.classList.toggle("show"));
 });
 
-
-var help = document.getElementsByClassName("help")
-var helpPanel = document.getElementsByClassName("helpPanel")
-help[0].onclick = function () {
-    var setClasses = !this.classList.contains('active'); // vérifie si help actif
-    setClass(help, 'active', 'remove'); //les rend inactives
-    setClass(helpPanel, 'show', 'remove'); // cache le contenu
-    if (setClasses) { //si help pas deja actif
-        this.classList.toggle("active");
-        this.nextElementSibling.classList.toggle("show");
-    }
+function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if (e.style.display == 'block')
+        e.style.display = 'none';
+    else
+        e.style.display = 'block';
 }
 
 function setClass(els, className, fnName) {
@@ -46,16 +74,8 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
-function popupHelp() {
-    var myWindow = window.open("FAQ.html", "", "width=1200, height=1000");
-}
-
-function popupContact() {
-    var myWindow = window.open("contact.html", "", "width=800, height=500, left=500px, top=200px");
-}
-
 function tabFAQ() {
-    var win = window.open("FAQ.html", '_blank');
+    var win = window.open("views/FAQ/FAQ.php", '_blank');
     win.focus();
 }
 
@@ -69,7 +89,6 @@ function openPage(elmnt) {
     var ongletPresent = document.getElementById("liPresent");
     var ongletAbsent = document.getElementById("liAbsent");
     tabcontent = document.getElementsByClassName("fonctions");
-
     if (checkBox.checked == true) {
         pageName = "Present";
         ongletAbsent.classList.remove("active"); /*update les onglets*/
@@ -86,9 +105,5 @@ function openPage(elmnt) {
 }
 
 if (document.getElementById("switchPresence").checked == false) {
-    document.getElementById("switchPresence").click(); /*Permet d'update le switch lors d'un rafraichissement*/
-}
-
-function closeShit() {
-    document.getElementById("garbage").style.display = "none";
+    document.getElementById("switchPresence").click(); // Update le switch lors d'un rafraichissement
 }

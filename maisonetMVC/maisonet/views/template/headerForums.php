@@ -2,7 +2,7 @@
     <meta charset="utf-8">
     <title>User Interface</title>
 
-    <link rel="stylesheet" href="/maisonetgit/maisonetMVC/maisonet/views/forum/forum.css"<!--feuille css-->
+    <link rel="stylesheet" href="views/forum/forum.css"<!--feuille css-->
     <link rel="icon" href="Images-forum/favicon.png"> <!--icone-->
 
     <script type="text/javascript" src="views/forum/forumScripts.js"></script>

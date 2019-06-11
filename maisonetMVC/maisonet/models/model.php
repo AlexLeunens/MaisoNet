@@ -9,13 +9,12 @@
 include_once ROOT . "/models/mailSendingPhpMailer.php";
 require_once ROOT . "\controllers\controller.php";
 include_once ROOT . "/models/secure.php";
-include ROOT."/models/connect.php";
-include_once  ROOT."/models/secure.php";
+include ROOT . "/models/connect.php";
+include_once ROOT . "/models/secure.php";
 
 // Securite::bdd or html
 
-function dbConnect()
-{
+function dbConnect() {
     try {
         $db = new PDO("mysql:host=localhost;dbname=dbmaisonet;charset=utf8", 'root', '');
         return $db;
@@ -26,8 +25,7 @@ function dbConnect()
 }
 
 
-function insertUser($lastname, $name, $password, $email, $tel, $birthday, $type)
-{
+function insertUser($lastname, $name, $password, $email, $tel, $birthday, $type) {
 
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -74,8 +72,7 @@ function insertUser($lastname, $name, $password, $email, $tel, $birthday, $type)
     }
 }
 
-function userConnect($email, $password)
-{
+function userConnect($email, $password) {
     $db = dbConnect();
 
     session_start();
@@ -87,7 +84,7 @@ function userConnect($email, $password)
     if ($req) {
         $result = $req->fetch(PDO::FETCH_ASSOC);
         if (password_verify($password, $result['MotPasse'])) {   //$password == $result['password']) {
-            echo "<script>alert('connexion réussi !')</script>";
+            echo "<script>alert('connexion réussie !')</script>";
 
             $_SESSION['id'] = $result['idUtilisateur'];
             $_SESSION['name'] = $result['Nom'];
@@ -122,20 +119,20 @@ function userConnect($email, $password)
 
 }
 
-function userRegisterRequest($lastname, $name, $email, $birthday, $tel)
-{
+function userRegisterRequest($lastname, $name, $email, $birthday, $tel, $password) {
 
-    sendConfimMailToAdmin($lastname, $name, $email, $birthday, $tel, 3);
+    // sendConfimMailToAdmin($lastname, $name, $email, $birthday, $tel, 3);
     sendConfirmMail($lastname, $name, $email, $birthday, $tel, 3);
+    insertUser($lastname, $name, $password, $email, $tel, $birthday, $type);
+    // TODO mettre le type "Utilisateur"
 
-    echo "<script>alert('Votre demande a été envoyé. Si vous ne recevez pas de email de confirmation, veuillez nous contacter')</script>";
+    echo "<script>alert('Votre demande a été envoyé. Si vous ne recevez pas un email de confirmation, veuillez nous contacter')</script>";
     header('Location: index.php?action=see_register');
 
 }
 
 
-function insertHouse($userId, $adresse, $codePostal, $pay)
-{
+function insertHouse($userId, $adresse, $codePostal, $pay) {
 
 
     $db = dbConnect();
@@ -164,7 +161,7 @@ function insertHouse($userId, $adresse, $codePostal, $pay)
 
 }
 
-function inserRoom($adress, $roomName){
+function inserRoom($adress, $roomName) {
 
     $db = dbConnect();
 
@@ -194,7 +191,7 @@ function inserRoom($adress, $roomName){
 
 }
 
-function inserCapteur($roomId,$type){
+function inserCapteur($roomId, $type) {
 
     $db = dbConnect();
 
@@ -220,7 +217,7 @@ function inserCapteur($roomId,$type){
     }
 }
 
-function insertPay($nomPay){
+function insertPay($nomPay) {
     $db = dbConnect();
 
     $req = $db->prepare("INSERT INTO pays (Nom) VALUES( :Nom )");
@@ -240,28 +237,8 @@ function insertPay($nomPay){
     $req->closeCursor();
 }
 
-function insertCapteurType($type){
-    $db = dbConnect();
 
-    $req = $db->prepare("INSERT INTO typecapteur (TypeCapteur) VALUES( :type )");
-
-    $req->bindParam("type", $type);
-
-    $req->execute();
-
-    if ($req) {
-        echo '<script>alert("Ajouté :)")</script>';
-        header('Location: index.php?action=see_adminPage');
-    } else {
-        echo '<script>alert("Une erreur est survenu, réessayez :(")</script>';
-        header('Location: index.php?action=see_adminPage');
-    }
-
-    $req->closeCursor();
-}
-
-
-function insertNewCat($conn,$catName){
+function insertNewCat($conn, $catName) {
 
     $query = "BEGIN WORK;";
     $result = $conn->query($query);
@@ -270,7 +247,7 @@ function insertNewCat($conn,$catName){
         echo 'An error occurred while preparing the operation. Please try again later.';
     }
 
-    $sql = "INSERT INTO categorie(Nom) VALUES('" . Securite::bdd($conn, $catName). "')";
+    $sql = "INSERT INTO categorie(Nom) VALUES('" . Securite::bdd($conn, $catName) . "')";
 
     $result = $conn->query($sql);
     if (!$result) {
@@ -292,7 +269,7 @@ function insertNewCat($conn,$catName){
 
 }
 
-function insertNewSubject($conn,$topicSubject,$topicDescription,$catId,$userId){
+function insertNewSubject($conn, $topicSubject, $topicDescription, $catId, $userId) {
 
     $query = "BEGIN WORK;";
     $result = $conn->query($query);
@@ -309,7 +286,7 @@ function insertNewSubject($conn,$topicSubject,$topicDescription,$catId,$userId){
                    VALUES('" . Securite::bdd($conn, $topicSubject) . "',
                    '" . Securite::bdd($conn, $topicDescription) . "',
                                " . Securite::bdd($conn, $catId) . ",
-                               ".Securite::bdd($conn, $userId).")";
+                               " . Securite::bdd($conn, $userId) . ")";
 
     $result = $conn->query($sql);
     if (!$result) {
@@ -346,7 +323,7 @@ function displayTopics($incrementTopics, $conn, $rowCat) {
         //TODO create deleteTopic.php to delete a topic
 
         $isAdmin = $GLOBALS['isAdmin'];
-        if ($isAdmin == true){
+        if ($isAdmin == true) {
             echo "<form method='post' action=' deleteTopic.php?topicID=" . $row["idDiscussion"] . " '>";
         }
 

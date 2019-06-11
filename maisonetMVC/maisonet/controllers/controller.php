@@ -11,135 +11,113 @@
 require_once ROOT . "/models/model.php";
 
 
-function seeHome()
-{
+function seeHome() {
     require ROOT . "/views/home.php";
 }
 
-function seeLogin()
-{
+function seeLogin() {
     require ROOT . "/views/login.php";
 }
 
-function seeRegister()
-{
+function seeRegister() {
     require ROOT . "/views/register.php";
 }
 
-function seeForum()
-{
+function seeForum() {
     require ROOT . "/views/forum/forum.php";
 }
 
-function seeUserPage()
-{
+function seeUserPage() {
     require ROOT . "/views/user/user.php";
 }
 
-function seeAdminPage()
-{
+function seeAdminPage() {
     require ROOT . "/views/admin/admin.php";
 }
 
-function seeOurServices()
-{
+function seeOurServices() {
     require ROOT . "/views/service/Nos_services.php";
 }
 
-function seeAppartServices()
-{
+function seeAppartServices() {
     require ROOT . "/views/service/services_appart.php";
 }
 
-function seeHomeServices()
-{
+function seeHomeServices() {
     require ROOT . "/views/service/services_maison.php";
 }
 
-function seeFAQ()
-{
+function seeFAQ() {
     require ROOT . "/views/FAQ/FAQ.php";
 }
 
 
 // gestion des utilisateurs
-function addUser()
-{
+function addUser() {
     $lastname = htmlspecialchars($_POST["lastname"]);
     $name = htmlspecialchars($_POST["name"]);
     $password = htmlspecialchars($_POST["password"]);
     $email = htmlspecialchars($_POST["email"]);
-    $tel = htmlspecialchars($_POST["tel"]);
-    $birthday = htmlspecialchars($_POST["birthday"]);
-    $type = htmlspecialchars($_POST["type"]);
+    $tel = htmlspecialchars($_POST["numtel"]);
+    $birthday = htmlspecialchars($_POST["datenaissance"]);
+    $type = htmlspecialchars($_POST["type"]); // Wat ?
 
     insertUser($lastname, $name, $password, $email, $tel, $birthday, $type);
 
 }
 
-function addHouse()
-{
+function addHouse() {
     $userId = htmlspecialchars($_POST["userId"]);
     $adress = str_replace(" ", "", $_POST['adresse']); //htmlspecialchars($_POST["adresse"]);
     $codePostal = htmlspecialchars($_POST["codePostal"]);
     $pay = htmlspecialchars($_POST["pay"]);
 
-    insertHouse($userId,$adress,$codePostal,$pay);
+    insertHouse($userId, $adress, $codePostal, $pay);
 }
 
-function addRoom(){
+function addRoom() {
     $adress = str_replace(" ", "", $_POST['adresse']);//htmlspecialchars($_POST["adresse"]);
     $roomName = htmlspecialchars($_POST["roomName"]);
 
-    inserRoom($adress,$roomName);
+    inserRoom($adress, $roomName);
 }
 
-function addCapteur(){
+function addCapteur() {
     $roomId = htmlspecialchars($_POST["roomId"]);
-    $type =  htmlspecialchars($_POST["capteurType"]);
+    $type = htmlspecialchars($_POST["capteurType"]);
 
-    inserCapteur($roomId,$type);
+    inserCapteur($roomId, $type);
 
 }
 
-function addPay(){
-    $pay =  htmlspecialchars($_POST["nomPay"]);
+function addPay() {
+    $pay = htmlspecialchars($_POST["nomPay"]);
 
     insertPay($pay);
 
 }
 
-function addTypeCpteur(){
-    $type =  htmlspecialchars($_POST["capteurType"]);
-
-    insertCapteurType($type);
-}
-
-function registerRequest()
-{
+function registerRequest() {
 
     $lastname = $_POST['nom'];
     $name = $_POST['prenom'];
     $email = $_POST['email'];
     $birthday = $_POST['datenaissance'];
-    //$password_1 = $_POST['password_1'];
-    //$password_2 = $_POST['password_2'];
+    $password_1 = $_POST['password_1'];
+    // $password_2 = $_POST['password_2'];
     $tel = $_POST['numtel'];
 
-    userRegisterRequest($lastname, $name, $email, $birthday, $tel);
+    userRegisterRequest($lastname, $name, $email, $birthday, $tel, $password_1);
 
 
 }
 
 
-
 // gestion des sessions
 
-function login()
-{
-
+function login() {
     if (isset($_SESSION['name'])) {
-        echo 'vous êtes déja connceté';
+        echo 'vous êtes déjà connecté';
 
     } else if ($_POST['email'] && $_POST['password']) {
         $email = htmlspecialchars($_POST['email']);
@@ -148,13 +126,12 @@ function login()
         userConnect($email, $password);
 
     } else {
-        echo 'les cases ne sont pas tous remplient';
+        echo 'les cases ne sont pas toutes remplies';
     }
 
 }
 
-function logout()
-{
+function logout() {
     //session_unset();
     //session_abort();
 
@@ -170,14 +147,14 @@ function logout()
 
 }
 
-function newCat($conn){
+function newCat($conn) {
     $catName = $_POST['cat_name'];
 
-    insertNewCat($conn,$catName);
+    insertNewCat($conn, $catName);
 }
 
-function newDiscussion($conn){
-    if(session_status() !== PHP_SESSION_ACTIVE){
+function newDiscussion($conn) {
+    if (session_status() !== PHP_SESSION_ACTIVE) {
 
         session_start();
 
@@ -188,7 +165,7 @@ function newDiscussion($conn){
     $catId = $_POST['cat_id'];
     $userId = $_SESSION['id'];
 
-    insertNewSubject($conn,$topicSubject,$topicDescription,$catId,$userId);
+    insertNewSubject($conn, $topicSubject, $topicDescription, $catId, $userId);
 }
 
 
