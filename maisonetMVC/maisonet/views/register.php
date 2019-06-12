@@ -16,7 +16,7 @@ require ROOT . "/views/template/headerAccueil.php";
     <h2 class="titre-inscription">Inscription</h2>
 
 
-    <form method="post" action="index.php?action=register_request">
+    <form method="post" action="register.php">
 
         <?php //include_once(ROOT.'/models/errors.php'); ?>
 

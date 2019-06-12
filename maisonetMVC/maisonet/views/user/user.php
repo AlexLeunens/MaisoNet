@@ -1,6 +1,6 @@
 <?php
 //TODO implementer l'ajout de maison
-//TODO supprimer pièces et capteurs
+
 $title = "User Interface";
 $css = "/maisonet/views/user/utilisateur1.css";
 require ROOT . "/views/template/headerMainUser.php";
