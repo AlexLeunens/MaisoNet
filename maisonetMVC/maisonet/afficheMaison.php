@@ -77,13 +77,15 @@ if (mysqli_num_rows($result) == 0) {
             echo "<div class='affichageCapteurs' id='capteur" . $rowCapteur["idCapteur"] . "' style='display:none'>";
             echo "<h2>Votre Capteur " . $rowCapteur["Type"] . ":</h2>";
 
-            echo "<form>";
-            echo "<input type='text' name='valeur' value='0'>";
-            echo "<input type='button' value='Actionner Le Moteur' onClick='javascript:this.form.valeur.value++;'>";
-            echo "</form>";
+            echo "<a target='_blank' rel='noopener noreferrer' href='http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003D&TRAME=00000030000010000000'>Lever</a>";
+            echo "<a target='_blank' rel='noopener noreferrer' href='http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003D&TRAME=00000030000030000000'>Baisser</a>";
 
             echo "</div>";
 
+            // bit 7 : type = 3
+            // bit 10,11,12 = 0
+            // bit 13 = reponse 0 = antihorraire, 1 = horaire, 2 = stop, 3 = cycle
+            //
 
             echo "<img onclick=\"toggle_visibility('capteur" . $rowCapteur["idCapteur"] . "');\" class='imagestemperature' src='views/admin/Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
             echo "<p class=sstitre>Votre " . $rowCapteur["Type"] . "</p>";

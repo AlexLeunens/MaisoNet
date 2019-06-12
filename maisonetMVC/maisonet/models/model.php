@@ -5,7 +5,7 @@
  * Date: 06/01/2019
  * Time: 15:22
  */
-
+// TODO remove every unused function
 include_once ROOT . "/models/mailSendingPhpMailer.php";
 require_once ROOT . "\controllers\controller.php";
 include_once ROOT . "/models/secure.php";

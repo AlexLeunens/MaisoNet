@@ -38,10 +38,9 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
             }
 
         } else {
-            echo "<script>alert('Erreur lors de la vérification du mots de passe')</script>";
+            echo "<script>alert('Erreur lors de la vérification du mot de passe')</script>";
             //header('Location: index.php?action=see_login');
         }
-
 
     } else {
         echo "<script>alert('Utilisateur introuvable')</script>";
@@ -55,13 +54,15 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
 
 <body>
 
-<div class="card">
+
+<a href="index.php" class="back"></a>
+
+
+<div class="card connect">
     <h2 class="titre-inscription">Connexion</h2>
 
 
     <form method="post" action="">
-
-        <?php //include_once(ROOT.'/models/errors.php'); ?>
 
         <div class="aligner">
             <label>Email</label>
@@ -75,10 +76,11 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
         <div class="aligner">
             <button type="submit" class="btn" name="login_user">Connexion</button>
         </div>
-        <p class="lien-inscription">
-            Vous n'êtes pas membre?<a href="index.php?action=see_register">Inscrivez vous</a>
-        </p>
     </form>
+
+    <p class="lien-inscription" style="bottom: 0;">
+        Vous n'êtes pas membre?<a href="index.php?action=see_register">Inscrivez vous</a>
+    </p>
 </div>
 
 

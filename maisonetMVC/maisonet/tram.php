@@ -7,6 +7,21 @@
  */
 
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+global $conn;
+$dbname = "dbmaisonet";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 
 $ch = curl_init();
 curl_setopt(
@@ -61,12 +76,27 @@ for($i=2;$i!=$num+2;$i++){  // last trame empty (I don't know why)
     echo "<br />type requete : ".($r==1)?'donnée':'commande';
     echo "<br />type capteur : ".$c." => ".typeCapteur($c);        // 1=distance   3=temperature
     //echo "<br />numéro capteur : ".$n;    // not very useful to display
-    echo "<br />valeur : ".hexdec($v);      // hexa to dec
+        echo "<br />valeur : ".hexdec($v);      // hexa to dec
     //echo "<br />numero tram : ".$a;       // not very useful to display
     echo "<br />check sum : ".$x;
-    echo "<br />TIME : ".$year.".".$month.".".$day."  ".$hour.":".$min.":".$sec."<br />";
+    echo "<br />TIME : ".$year.".".($month).".".$day."  ".$hour.":".$min.":".$sec."<br />";
+
+
+
+    $date = $year."/".($month-1)."/".$day." ".$hour.":".$min.":".$sec;
+    //$date = strtotime($dateString);
+
+    if($c == 1){
+        $sql = "INSERT INTO `valeurcapteur` (`Date`, `Valeur`, `Capteur_idCapteur`) VALUES ('".$date."', $v, 1)";
+        echo $sql;
+        $req = $conn->query($sql);
+        if ($req){
+            echo "success";
+        }
+    }
+
+
 
 }
-
 
 

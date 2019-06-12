@@ -32,7 +32,12 @@ if (!empty($_POST["email"])) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
 <body>
-<div class="card">
+
+
+<button class="back" onclick="history.go(-1);"></button>
+
+
+<div class="card connect">
     <h2 class="titre-inscription">Inscription</h2>
 
 
