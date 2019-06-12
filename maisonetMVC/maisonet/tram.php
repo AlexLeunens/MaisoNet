@@ -42,10 +42,10 @@ function typeCapteur($capteur)
     }
 }
 
-$num =10;
+$num =10; //    10 last trames
 for($i=2;$i!=$num+2;$i++){
 
-    $trame = $data_tab[count($data_tab)-$i];     //recuperer le dernier tram
+    $trame = $data_tab[count($data_tab)-$i];
 // décodage avec des substring
     $t = substr($trame,0,1);
     $o = substr($trame,1,4);
@@ -61,7 +61,7 @@ for($i=2;$i!=$num+2;$i++){
     echo "<br />type requete : ".($r==1)?'donnée':'commande';
     echo "<br />type capteur : ".$c." => ".typeCapteur($c);        // 1=distance   3=temperature
     //echo "<br />numéro capteur : ".$n;    // not very useful to display
-    echo "<br />valeur : ".hexdec($v);
+    echo "<br />valeur : ".hexdec($v);      // convertion hexa
     //echo "<br />numero tram : ".$a;       // not very useful to display
     echo "<br />check sum : ".$x;
     echo "<br />TIME : ".$year.".".$month.".".$day."  ".$hour.":".$min.":".$sec."<br />";
