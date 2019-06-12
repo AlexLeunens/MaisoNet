@@ -26,23 +26,47 @@ for($i=0, $size=count($data_tab); $i<$size; $i++){
     echo "Trame $i: $data_tab[$i]<br />";
 }
 
-//rsort($data_tab);
-$trame = $data_tab[count($data_tab)-2];
+function typeCapteur($capteur)
+{
+
+    switch ($capteur) {
+        case 1:
+            return 'capteur distance IR';
+            break;
+        case 3:
+            return 'capteur temperature';
+            break;
+        default:
+            return 'unknown';
+            break;
+    }
+}
+
+$num =10;
+for($i=2;$i!=$num+2;$i++){
+
+    $trame = $data_tab[count($data_tab)-$i];     //recuperer le dernier tram
 // décodage avec des substring
-$t = substr($trame,0,1);
-$o = substr($trame,1,4);
+    $t = substr($trame,0,1);
+    $o = substr($trame,1,4);
 // …
 // décodage avec sscanf
-list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) =
-    sscanf($trame,"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
-echo("<br />$t,$o,$r,$c,$n,$v,$a,$x,$year,$month,$day,$hour,$min,$sec<br />");
-echo ($t==1)? "logueur fixe": "logeur variable" ;
-echo "<br /> numéro groupe : $o"."<br /> ";
-echo "<br />type requete : ".($r=="1")?'donnée':'commande';
-echo "<br />type capteur : ".$c;
-echo "<br />numéro capteur : ".$n;
-echo "<br />valeur : ".$v;
-echo "<br />numero tram : ".$a;
-echo "<br />check sum : ".$x;
-echo "<br />TIME : ".$year.".".$month.".".$day."  ".$hour.":".$min.":".$sec;
+    list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) =
+        sscanf($trame,"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
+
+    echo("<br />$t,$o,$r,$c,$n,$v,$a,$x,$year,$month,$day,$hour,$min,$sec<br />");
+
+    echo ($t==1)? "logueur fixe": "logeur variable" ;
+    echo "<br />numero groupe : $o"."<br /> ";
+    echo "<br />type requete : ".($r==1)?'donnée':'commande';
+    echo "<br />type capteur : ".$c." => ".typeCapteur($c);        // 1=distance   3=temperature
+    //echo "<br />numéro capteur : ".$n;    // not very useful to display
+    echo "<br />valeur : ".$v;
+    //echo "<br />numero tram : ".$a;       // not very useful to display
+    echo "<br />check sum : ".$x;
+    echo "<br />TIME : ".$year.".".$month.".".$day."  ".$hour.":".$min.":".$sec."<br />";
+
+}
+
+
 
