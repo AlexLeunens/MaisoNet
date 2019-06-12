@@ -1,10 +1,30 @@
 <?php
 
-//include_once(ROOT.'/models/server.php');
-
 $title = "Inscription";
 $css = "/maisonetgit/maisonetMVC/maisonet/views/accueil.css";
 require ROOT . "/views/template/headerAccueil.php";
+include ROOT . "/models/connect.php";
+
+if (!empty($_POST["email"])) {
+    session_start();
+
+    $password = password_hash($_POST["password_1"],PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO `utilisateur` (`Nom`, `Prenom`, `Mot de passe`, `Numero telephone`, `Email`, `Date de naissance`)
+            VALUES ('".$_POST["nom"]."', '".$_POST["prenom"]."', '".$password."', ".$_POST["numtel"].", '".$_POST["email"]."', '".$_POST["datenaissance"]."')";
+
+    $req = $conn->query($sql);
+
+    if($req){
+        echo "<script>alert('Vous avez bien été inscrit')</script>";
+    }else{
+        echo "<script>alert('Erreur lors de l`inscription')</script>";
+    }
+
+    unset($_POST);
+
+    //header("Location: " . $_SERVER['REQUEST_URL']);
+}
 ?>
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
@@ -16,9 +36,7 @@ require ROOT . "/views/template/headerAccueil.php";
     <h2 class="titre-inscription">Inscription</h2>
 
 
-    <form method="post" action="register.php">
-
-        <?php //include_once(ROOT.'/models/errors.php'); ?>
+    <form method="post" action="">
 
         <div class="aligner">
             <label>Nom</label>
@@ -71,12 +89,10 @@ require ROOT . "/views/template/headerAccueil.php";
         var password = $("#txtNewPassword").val();
         var confirmPassword = $("#txtConfirmPassword").val();
 
-        if (password != confirmPassword){
+        if (password != confirmPassword) {
             $("#divCheckPasswordMatch").html("Passwords do not match!");
             $("#submitButton").prop('disabled', true);
-        }
-
-        else{
+        } else {
             $("#divCheckPasswordMatch").html("Passwords match.");
             $("#submitButton").prop('disabled', false);
         }
