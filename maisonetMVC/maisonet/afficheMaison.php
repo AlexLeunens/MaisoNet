@@ -77,8 +77,10 @@ if (mysqli_num_rows($result) == 0) {
             echo "<div class='affichageCapteurs' id='capteur" . $rowCapteur["idCapteur"] . "' style='display:none'>";
             echo "<h2>Votre Capteur " . $rowCapteur["Type"] . ":</h2>";
 
-            echo "<a target='_blank' rel='noopener noreferrer' href='http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003D&TRAME=00000030000010000000'>Lever</a>";
-            echo "<a target='_blank' rel='noopener noreferrer' href='http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003D&TRAME=00000030000030000000'>Baisser</a>";
+            echo "<a target='_blank' rel='noopener noreferrer' href='http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003D&TRAME=1003D1301000090'>Lever</a>";
+            echo "<a target='_blank' rel='noopener noreferrer' href='http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003D&TRAME=1003D1301000190'>Baisser</a>";
+            echo "<a target='_blank' rel='noopener noreferrer' href='http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003D&TRAME=1003D1301000290'>Stop</a>";
+            echo "<a target='_blank' rel='noopener noreferrer' href='http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003D&TRAME=1003D1301000390'>Programme</a>";
 
             echo "</div>";
 
