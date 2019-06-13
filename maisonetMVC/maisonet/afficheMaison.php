@@ -89,7 +89,7 @@ if (mysqli_num_rows($result) == 0) {
             // bit 13 = reponse 0 = antihorraire, 1 = horaire, 2 = stop, 3 = cycle
             //
 
-            echo "<img onclick=\"toggle_visibility('capteur" . $rowCapteur["idCapteur"] . "');\" class='imagestemperature' src='views/admin/Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
+            echo "<img onclick=\"toggle_visibility('capteur" . $rowCapteur["idCapteur"] . "');\" class='imagestemperature' src='views/user/Images-utilisateur/" . $rowCapteur["Type"] . ".png' alt='" . $rowCapteur["Type"] . "'></img>";
             echo "<p class=sstitre>Votre " . $rowCapteur["Type"] . "</p>";
             // echo "</a>";
 
