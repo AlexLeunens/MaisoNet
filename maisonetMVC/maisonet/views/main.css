@@ -314,7 +314,7 @@ input[type="text1"] {
     width: 20px;
 }
 
-.imagesbutton, .imagestemperature {
+.imagesbutton, .imagesCapteurs {
     height: auto;
     width: 200px;
 }

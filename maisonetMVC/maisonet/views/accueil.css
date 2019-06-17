@@ -25,6 +25,15 @@ body {
     min-width: 150px;
 }
 
+.logoConnect{
+    display: block;
+    margin-left: 36%;
+    margin-right: auto;
+    width: 30%;
+    min-width: 150px;
+}
+
+
 .button {
     background-color: #ffffff;
     color: black;

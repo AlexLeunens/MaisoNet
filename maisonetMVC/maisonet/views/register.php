@@ -15,6 +15,11 @@ if (!empty($_POST["email"])) {
 
     $req = $conn->query($sql);
 
+// Utilisateur par défaut
+    $sql = "INSERT INTO `fonction`(`Type`, `Utilisateur_idUtilisateur`) VALUES ('Utilisateur', (SELECT `idUtilisateur` FROM `utilisateur` WHERE `Email` = '".$_POST["email"]."'))";
+    $req = $conn->query($sql);
+
+
     if($req){
         echo "<script>alert('Vous avez bien été inscrit')</script>";
     }else{
@@ -33,8 +38,8 @@ if (!empty($_POST["email"])) {
 
 <body>
 
-
-<button class="back" onclick="history.go(-1);"></button>
+<img class="logoConnect" src="Images-accueil/maisonlogolong.png"> </img>
+<a href="index.php" class="back"></a>
 
 
 <div class="card connect">

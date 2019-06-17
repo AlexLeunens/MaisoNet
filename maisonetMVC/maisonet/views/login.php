@@ -56,7 +56,7 @@ if (!empty($_POST["email"]) && !empty($_POST["password"])) {
 
 
 <a href="index.php" class="back"></a>
-
+<img class="logoConnect" src="Images-accueil/maisonlogolong.png"> </img>
 
 <div class="card connect">
     <h2 class="titre-inscription">Connexion</h2>

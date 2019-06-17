@@ -160,9 +160,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 
 
-<div id="Present" class="fonctions">
+<div id="Present" >
 
-    <div id="maisonAffiche"></div>
+    <div id="maisonAffiche" class="fonctions"></div>
 
 </div>
 
@@ -171,16 +171,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <p class="piece">Economies</p>
     <div class="panel">
         <div class="block">
-            <img class="imagesbutton" src="views/user/Images-utilisateur/temperature.png" alt="temperature"></img>
-            <p>Valeur température</p>
         </div>
     </div>
 
     <p class="piece">Sécurité</p>
     <div class="panel">
         <div class="block">
-            <img class="imagesbutton" src="/maisonet/views/user/Images-utilisateur/temperature+.png" alt="temperature"></img>
-            <p>Valeur température</p>
         </div>
     </div>
 </div>

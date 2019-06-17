@@ -162,15 +162,10 @@ div.avatarPanel.show {
     max-height: 500px; /* doit être sup à la hauteur des éléments */
 }
 
-img.imagesbutton {
-    width: 200px;
-    height: auto;
-    margin-left: 10px;
-}
-
 /*permet de s'adapter a la taille de la fenêtre*/
 div.fonctions {
     display: grid;
+    grid-auto-flow: row;
 
     overflow-y: visible;
     overflow-x: hidden;
@@ -191,6 +186,7 @@ p.piece {
     line-height: 150px;
     text-align: center;
     width: 150px;
+    margin: 5px 0 0 0;
 }
 
 p.piece.active, p.piece:hover {
@@ -222,7 +218,7 @@ div.panel {
     left: 200px;
 
     height: 85%;
-    width: 98%;
+    width: 85%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -231,7 +227,7 @@ div.panel {
 div.panel.show {
     opacity: 1;
     /*changed max-heigth to max-width*/
-    max-width: 88%; /* doit être sup à la hauteur des éléments */
+    max-width: 85%; /* doit être sup à la hauteur des éléments */
 }
 
 .imageshelp {
@@ -340,6 +336,10 @@ p.addCapteur:hover {
     border: none;
 }
 
+.imagesCapteurs {
+    height: 200px;
+    width: 200px;
+}
 
 
 
@@ -396,6 +396,7 @@ p.addCapteur:hover {
 
     div.fonctions {
         top: 12%;
+        grid-auto-flow: column;
     }
 
     /* Le bouton bleu selon la piece */
@@ -416,8 +417,10 @@ p.addCapteur:hover {
 
     div.panel {
         top: 120px;
-        height: 100%;
+        height: 70%;
         width: 98%;
+        max-width: 98%;
+        left:0;
     }
 
     p.help {
@@ -426,13 +429,6 @@ p.addCapteur:hover {
         align-items: center;
         width: 45px;
         height: 45px;
-    }
-
-    img.imagesbutton {
-        width: auto;
-        height: 50%;
-        max-height: 50px;
-        max-width: 100px;
     }
 
     div.bloc {
@@ -446,6 +442,11 @@ p.addCapteur:hover {
         height: 25%;
     }
 
+    .imagesCapteurs {
+        height: 50px;
+        width: 50px;
+    }
+
 }
 
 
@@ -456,10 +457,7 @@ img.btn-fermer {
     width: 45px;
 }
 
-.imagestemperature {
-    height: 225px;
-    width: 200px;
-}
+
 
 
 .displayGraph {
